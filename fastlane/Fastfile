@@ -1,0 +1,61 @@
+# Customize this file, documentation can be found here:
+# https://docs.fastlane.tools/actions/
+# All available actions: https://docs.fastlane.tools/actions
+# can also be listed using the `fastlane actions` command
+
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+min_fastlane_version("2.71.1")
+
+default_platform(:ios)
+
+platform :ios do
+  before_all do
+    carthage(
+      platform: "iOS",
+      command: "update"
+    )
+  end
+
+  lane :screenshots do
+    capture_screenshots
+  end
+
+  desc "Runs all the tests"
+  lane :test do
+    run_tests
+  end
+
+  desc "Deploy a new version to the App Store"
+  lane :release do
+    capture_screenshots
+    build_app(scheme: "Phantom")
+    upload_to_app_store(force: true)
+    # frame_screenshots
+  end
+
+  lane :upload do
+    build_app(scheme: "Phantom")
+    upload_to_app_store(force: true)
+  end  
+
+  after_all do |lane|
+    # This block is called, only if the executed lane was successful
+  end
+
+  error do |lane, exception|
+  end
+end
+
+
+# More information about multiple platforms in fastlane: https://docs.fastlane.tools/advanced/#control-configuration-by-lane-and-by-platform
+# All available actions: https://docs.fastlane.tools/actions
+
+# fastlane reports which actions are used. No personal data is recorded.
+# Learn more at https://docs.fastlane.tools/#metrics

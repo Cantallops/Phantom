@@ -1,0 +1,7 @@
+nesting: 
+  type_level: 2
+identifier_name:
+  min_length: 2
+
+excluded:
+- Carthage

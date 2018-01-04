@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ImageUploaderView" customModule="GhostApp" customModuleProvider="target">
+            <connections>
+                <outlet property="activityIndicatorView" destination="QE7-6L-V0C" id="c6J-pe-W2E"/>
+                <outlet property="errorLabel" destination="n6t-F3-rDq" id="Akm-LI-U2H"/>
+                <outlet property="imageView" destination="2LB-XG-zAj" id="46W-5G-i5i"/>
+                <outlet property="removeButton" destination="lnR-SL-V49" id="BX6-iv-11s"/>
+                <outlet property="uploadButton" destination="qvn-vl-WsV" id="yvT-fr-Xb0"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="171"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2LB-XG-zAj">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="171"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qvn-vl-WsV">
+                    <rect key="frame" x="125" y="66" width="125" height="38"/>
+                    <inset key="contentEdgeInsets" minX="15" minY="10" maxX="15" maxY="10"/>
+                    <state key="normal" title="Upload image">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </state>
+                    <connections>
+                        <action selector="tapUploadButton" destination="-1" eventType="touchUpInside" id="f4F-ww-X8v"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lnR-SL-V49">
+                    <rect key="frame" x="325" y="10" width="40" height="40"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="ejK-yP-KLy"/>
+                        <constraint firstAttribute="width" secondItem="lnR-SL-V49" secondAttribute="height" multiplier="1:1" id="nsP-CN-zNE"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="tapRemoveButton" destination="-1" eventType="touchUpInside" id="oiJ-Ds-03H"/>
+                    </connections>
+                </button>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="QE7-6L-V0C">
+                    <rect key="frame" x="169" y="67" width="37" height="37"/>
+                    <color key="color" cocoaTouchSystemColor="darkTextColor"/>
+                </activityIndicatorView>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6t-F3-rDq">
+                    <rect key="frame" x="20" y="150" width="335" height="16"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="QE7-6L-V0C" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="6Us-Ck-RQh"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="2LB-XG-zAj" secondAttribute="bottom" id="80C-CE-D8i"/>
+                <constraint firstItem="2LB-XG-zAj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Gfr-sO-DzG"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="n6t-F3-rDq" secondAttribute="bottom" constant="5" id="Gyz-An-Sx6"/>
+                <constraint firstItem="2LB-XG-zAj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Ld9-oQ-f1A"/>
+                <constraint firstItem="qvn-vl-WsV" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="LgK-ge-Wp4"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="n6t-F3-rDq" secondAttribute="trailing" constant="20" id="PdJ-fH-GcN"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="2LB-XG-zAj" secondAttribute="trailing" id="VQz-5Q-A6q"/>
+                <constraint firstItem="QE7-6L-V0C" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="cO8-5T-h1X"/>
+                <constraint firstItem="qvn-vl-WsV" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ikj-ve-duh"/>
+                <constraint firstItem="lnR-SL-V49" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="nTI-pe-1pA"/>
+                <constraint firstItem="n6t-F3-rDq" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="qo3-SZ-k7C"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="lnR-SL-V49" secondAttribute="trailing" constant="10" id="ysU-hk-cLn"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-143.5" y="-261.5"/>
+        </view>
+    </objects>
+</document>

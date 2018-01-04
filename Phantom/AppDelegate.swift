@@ -1,0 +1,52 @@
+//
+//  AppDelegate.swift
+//  Phantom
+//
+//  Created by Alberto Cantallops on 05/09/2017.
+//  Copyright © 2017 Alberto Cantallops. All rights reserved.
+//
+
+import UIKit
+import CoreData
+
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+    public var window: UIWindow?
+
+    var checkRunningTest: Bool = true
+
+    var services: [UIApplicationDelegate] = [
+        LoadStateService(),
+        LoadUIAppearanceService(),
+        InitialModuleService()
+    ]
+
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]? = nil
+    ) -> Bool {
+        let frame = UIScreen.main.bounds
+        window = UIWindow(frame: frame)
+        #if DEBUG
+        if checkRunningTest && isRunningTests {
+            return TestService().application(application, didFinishLaunchingWithOptions: launchOptions)
+        }
+        #endif
+        for service in services {
+            if let serviceResult = service.application?(application, didFinishLaunchingWithOptions: launchOptions) {
+                if !serviceResult {
+                    return false
+                }
+            }
+        }
+        return true
+    }
+}
+
+#if DEBUG
+extension UIApplicationDelegate {
+    var isRunningTests: Bool {
+        return ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
+    }
+}
+#endif

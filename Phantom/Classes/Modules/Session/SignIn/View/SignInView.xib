@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignInView" customModule="Phantom" customModuleProvider="target">
+            <connections>
+                <outlet property="emailField" destination="AEx-y3-0ec" id="JgA-8Y-VZe"/>
+                <outlet property="errorLabel" destination="zwf-Ir-aVD" id="Xbg-Fm-ppj"/>
+                <outlet property="passwordField" destination="5Bc-rg-hNh" id="pxr-8M-MuD"/>
+                <outlet property="signInButton" destination="mMt-1s-6PJ" id="PpE-Sb-idS"/>
+                <outlet property="view" destination="6cr-wc-J8x" id="Afx-yd-58w"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="6cr-wc-J8x">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="X2a-O9-IkO">
+                    <rect key="frame" x="37.5" y="266" width="300" height="136"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AEx-y3-0ec" customClass="TextField" customModule="Phantom" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="40"/>
+                            <accessibility key="accessibilityConfiguration" identifier="email"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="krI-eR-DaE"/>
+                            </constraints>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
+                        </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Bc-rg-hNh" customClass="TextField" customModule="Phantom" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="48" width="300" height="40"/>
+                            <accessibility key="accessibilityConfiguration" identifier="password"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="9qZ-86-OCg"/>
+                            </constraints>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="go" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mMt-1s-6PJ" customClass="Button" customModule="Phantom" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="96" width="300" height="40"/>
+                            <color key="backgroundColor" red="0.24313725489999999" green="0.69019607839999997" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <accessibility key="accessibilityConfiguration" identifier="signin"/>
+                            <state key="normal" title="Sign In"/>
+                            <connections>
+                                <action selector="onTapSignIn" destination="-1" eventType="touchUpInside" id="6jO-Em-4G6"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="5Bc-rg-hNh" firstAttribute="height" secondItem="AEx-y3-0ec" secondAttribute="height" id="E0a-gT-aDe"/>
+                        <constraint firstAttribute="width" constant="300" id="Ldd-cF-Pmr"/>
+                        <constraint firstItem="mMt-1s-6PJ" firstAttribute="height" secondItem="AEx-y3-0ec" secondAttribute="height" id="uhn-Wp-njw"/>
+                    </constraints>
+                </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zwf-Ir-aVD" customClass="Label" customModule="Phantom" customModuleProvider="target">
+                    <rect key="frame" x="37.5" y="412" width="300" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="zwf-Ir-aVD" firstAttribute="leading" secondItem="X2a-O9-IkO" secondAttribute="leading" id="Czx-FI-diP"/>
+                <constraint firstItem="X2a-O9-IkO" firstAttribute="centerY" secondItem="6cr-wc-J8x" secondAttribute="centerY" id="HP5-25-x6Y"/>
+                <constraint firstItem="X2a-O9-IkO" firstAttribute="centerX" secondItem="6cr-wc-J8x" secondAttribute="centerX" id="oeD-Bb-k2V"/>
+                <constraint firstItem="zwf-Ir-aVD" firstAttribute="trailing" secondItem="X2a-O9-IkO" secondAttribute="trailing" id="syu-yn-XCI"/>
+                <constraint firstItem="zwf-Ir-aVD" firstAttribute="top" secondItem="X2a-O9-IkO" secondAttribute="bottom" constant="10" id="xvy-vg-zyz"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="EsQ-kr-QBk"/>
+            <point key="canvasLocation" x="33.5" y="54.5"/>
+        </view>
+    </objects>
+</document>
