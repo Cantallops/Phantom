@@ -23,7 +23,9 @@ class DesignView: ViewController {
     override func setUpNavigation() {
         super.setUpNavigation()
         navigationItem.title = "Design"
-        navigationItem.largeTitleDisplayMode = .never
+        if #available(iOS 11.0, *) {
+            navigationItem.largeTitleDisplayMode = .never
+        }
     }
 
 }

@@ -18,9 +18,12 @@ enum BiometricType: Int {
 class GetBiometricSupport: Interactor<Any?, BiometricType> {
     override func execute(args: Any?) -> Result<BiometricType> {
         let context = LAContext()
-        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil),
-            let type = BiometricType(rawValue: context.biometryType.rawValue) {
-            return Result.success(type)
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) {
+            if #available(iOS 11.0, *), let type = BiometricType(rawValue: context.biometryType.rawValue) {
+                return Result.success(type)
+            } else {
+                return Result.success(.touchID)
+            }
         }
         return Result.success(.none)
     }

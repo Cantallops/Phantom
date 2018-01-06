@@ -64,8 +64,12 @@ class ImageUploader: NSObject {
     private func uploadImage(
         withInfo info: [String: Any]
     ) {
+        var imageURLKeyPath = UIImagePickerControllerMediaURL
+        if #available(iOS 11.0, *) {
+            imageURLKeyPath = UIImagePickerControllerImageURL
+        }
         guard let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage,
-            let url = info[UIImagePickerControllerImageURL] as? URL else {
+            let url = info[imageURLKeyPath] as? URL else {
                 onResult(.failure(NetworkError(kind: .unknown)), nil)
                 return
         }

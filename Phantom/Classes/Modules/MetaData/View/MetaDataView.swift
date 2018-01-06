@@ -29,8 +29,10 @@ class MetaDataView: ViewController {
 
     override func setUpNavigation() {
         navigationItem.title = "Meta Data"
-        navigationController?.navigationBar.prefersLargeTitles = false
-        navigationItem.largeTitleDisplayMode = .never
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = false
+            navigationItem.largeTitleDisplayMode = .never
+        }
     }
 
     private func setUpTable() {

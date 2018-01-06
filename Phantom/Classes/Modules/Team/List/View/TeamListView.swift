@@ -25,8 +25,10 @@ class TeamListView: TableViewController {
 
     override func setUpNavigation() {
         navigationItem.title = "Team members"
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .always
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+            navigationItem.largeTitleDisplayMode = .always
+        }
         // FIXME: Uncommnet when develop create teammember
         /*navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .add,

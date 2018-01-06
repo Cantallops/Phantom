@@ -22,8 +22,10 @@ class MoreView: TableViewController {
 
     override func setUpNavigation() {
         navigationItem.title = ""
-        navigationController?.navigationBar.prefersLargeTitles = false
-        navigationItem.largeTitleDisplayMode = .never
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = false
+            navigationItem.largeTitleDisplayMode = .never
+        }
     }
 
 }

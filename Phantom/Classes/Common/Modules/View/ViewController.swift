@@ -116,6 +116,9 @@ class ViewController: UIViewController, Presentable {
         }
         var contentInset = scrollView.contentInset
         contentInset.bottom = scrollView.frame.intersection(frame).height
+        if let navBar = navigationController?.navigationBar, !navBar.isTranslucent, contentInset.bottom != 0 {
+            contentInset.bottom += navBar.frame.maxY
+        }
 
         scrollView.contentInset = contentInset
         scrollView.scrollIndicatorInsets = contentInset
@@ -130,7 +133,7 @@ class ViewController: UIViewController, Presentable {
         var aRect = view.frame
         aRect.size.height -= frame.size.height
         let contains = aRect.contains(CGPoint(x: 0, y: convertedFrame.origin.y + convertedFrame.size.height))
-        if !aRect.contains(convertedFrame.origin) || !contains && !(scrollView is UITextView) {
+        if (!aRect.contains(convertedFrame.origin) || !contains) && !(scrollView is UITextView) {
             scrollView.scrollRectToVisible(convertedFrame, animated: true)
         }
     }

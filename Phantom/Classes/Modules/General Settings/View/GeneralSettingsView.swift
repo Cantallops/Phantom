@@ -23,7 +23,9 @@ class GeneralSettingsView: ViewController {
     override func setUpNavigation() {
         super.setUpNavigation()
         navigationItem.title = "General Settings"
-        navigationItem.largeTitleDisplayMode = .never
+        if #available(iOS 11.0, *) {
+            navigationItem.largeTitleDisplayMode = .never
+        }
     }
 
 }

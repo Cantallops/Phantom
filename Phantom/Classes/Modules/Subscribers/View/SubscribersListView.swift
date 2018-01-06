@@ -25,8 +25,10 @@ class SubscribersListView: TableViewController {
 
     override func setUpNavigation() {
         navigationItem.title = "Subscribers"
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .always
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+            navigationItem.largeTitleDisplayMode = .always
+        }
         // FIXME: Uncommnet when develop create subscriber
         /*navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .add,

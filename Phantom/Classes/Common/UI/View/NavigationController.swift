@@ -14,6 +14,8 @@ class NavigationController: UINavigationController {
         view.backgroundColor = Color.white
         navigationBar.barTintColor = Color.white
         toolbar.tintColor = Color.tint
+        navigationBar.isTranslucent = false
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.shadowImage = UIImage()
     }
 

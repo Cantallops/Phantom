@@ -22,6 +22,8 @@ class AppsView: ViewController {
 
     override func setUpNavigation() {
         navigationItem.title = "Apps"
-        navigationItem.largeTitleDisplayMode = .never
+        if #available(iOS 11.0, *) {
+            navigationItem.largeTitleDisplayMode = .never
+        }
     }
 }

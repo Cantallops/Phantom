@@ -23,7 +23,9 @@ class LabsView: ViewController {
     override func setUpNavigation() {
         super.setUpNavigation()
         navigationItem.title = "Labs"
-        navigationItem.largeTitleDisplayMode = .never
+        if #available(iOS 11.0, *) {
+            navigationItem.largeTitleDisplayMode = .never
+        }
     }
 
 }

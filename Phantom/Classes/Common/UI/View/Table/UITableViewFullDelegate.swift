@@ -121,7 +121,7 @@ extension UITableViewFullDelegate: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let s = sections[section]
         guard let header = s.header else {
-            return UITableViewAutomaticDimension
+            return 0.01
         }
         return header.height(forWidth: tableView.frame.width)
     }
@@ -129,7 +129,7 @@ extension UITableViewFullDelegate: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         let s = sections[section]
         guard let footer = s.footer else {
-            return UITableViewAutomaticDimension
+            return 0.01
         }
         return footer.height(forWidth: tableView.frame.width)
     }
@@ -171,7 +171,12 @@ extension UITableViewFullDelegate: UITableViewDataSource {
             cellConfiguration.onSelect?()
         }
         cell.refreshHeight = {
-            tableView.performBatchUpdates(nil)
+            if #available(iOS 11.0, *) {
+                tableView.performBatchUpdates(nil)
+            } else {
+                tableView.beginUpdates()
+                tableView.endUpdates()
+            }
         }
         return cell
     }

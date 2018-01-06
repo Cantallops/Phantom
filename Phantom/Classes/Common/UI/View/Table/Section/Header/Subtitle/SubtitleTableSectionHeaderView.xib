@@ -4,13 +4,14 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SubtitleTableSectionHeaderView" customModule="GhostApp" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SubtitleTableSectionHeaderView" customModule="Phantom" customModuleProvider="target">
             <connections>
                 <outlet property="subtitleLabel" destination="Zel-lI-dbM" id="hsz-4J-nlH"/>
                 <outlet property="titleLabel" destination="kgB-YE-KpA" id="jkE-73-nMQ"/>
@@ -22,15 +23,15 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Vzg-1M-Yqq">
-                    <rect key="frame" x="12" y="5" width="390" height="79"/>
+                    <rect key="frame" x="15" y="5" width="390" height="79"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgB-YE-KpA" customClass="Label" customModule="GhostApp" customModuleProvider="target">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgB-YE-KpA" customClass="Label" customModule="Phantom" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="390" height="39.5"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zel-lI-dbM" customClass="Label" customModule="GhostApp" customModuleProvider="target">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zel-lI-dbM" customClass="Label" customModule="Phantom" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="39.5" width="390" height="39.5"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                             <nil key="textColor"/>
@@ -43,8 +44,8 @@
             <constraints>
                 <constraint firstAttribute="bottomMargin" secondItem="Vzg-1M-Yqq" secondAttribute="bottom" constant="5" id="1Qe-vP-CyD"/>
                 <constraint firstItem="Vzg-1M-Yqq" firstAttribute="top" secondItem="lmx-3h-SJD" secondAttribute="topMargin" constant="5" id="G7l-cm-Xtk"/>
-                <constraint firstItem="Vzg-1M-Yqq" firstAttribute="leading" secondItem="xuz-qb-WEj" secondAttribute="leading" constant="12" id="hj1-BQ-5je"/>
-                <constraint firstItem="xuz-qb-WEj" firstAttribute="trailing" secondItem="Vzg-1M-Yqq" secondAttribute="trailing" constant="12" id="pdY-h4-BOx"/>
+                <constraint firstItem="Vzg-1M-Yqq" firstAttribute="leading" secondItem="xuz-qb-WEj" secondAttribute="leading" constant="15" id="hj1-BQ-5je"/>
+                <constraint firstItem="xuz-qb-WEj" firstAttribute="trailing" secondItem="Vzg-1M-Yqq" secondAttribute="trailing" constant="15" id="pdY-h4-BOx"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="xuz-qb-WEj"/>

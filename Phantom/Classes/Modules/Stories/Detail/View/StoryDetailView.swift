@@ -13,7 +13,7 @@ class StoryDetailView: ViewController {
 
     @IBOutlet private weak var titleTextView: TextView!
     @IBOutlet private weak var contentTextView: TextView!
-    @IBOutlet private weak var previewView: WKWebView!
+    // private weak var previewView: WKWebView!
     @IBOutlet weak var topTitleTextViewConstraint: NSLayoutConstraint!
 
     var onWriteContent: TextView.OnWriteClosure = { _ in } {
@@ -43,7 +43,7 @@ class StoryDetailView: ViewController {
     }
     var html: Story.HTML? {
         didSet {
-            previewView?.loadHTMLString(html?.getFull() ?? "", baseURL: nil)
+            //previewView?.loadHTMLString(html?.getFull() ?? "", baseURL: nil)
         }
     }
     var status: String? {
@@ -121,7 +121,9 @@ class StoryDetailView: ViewController {
 
     override func setUpNavigation() {
         navigationItem.titleView = UIView()
-        navigationItem.largeTitleDisplayMode = .never
+        if #available(iOS 11.0, *) {
+            navigationItem.largeTitleDisplayMode = .never
+        }
         setUpTootlbar()
         setUpStoryAction()
     }
@@ -166,6 +168,7 @@ class StoryDetailView: ViewController {
         let done = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(tapBack))
 
         navigationController?.toolbar.setShadowImage(UIImage(), forToolbarPosition: .any)
+        navigationController?.toolbar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
         navigationController?.toolbar.isTranslucent = false
         toolbarItems = [done, flex/*, preview*/]
     }
@@ -203,11 +206,12 @@ class StoryDetailView: ViewController {
         onStoryAction?()
     }
 
-    @objc func tapPreview() {
+    /*@objc func tapPreview() {
         previewView.scrollView.setContentOffset(.zero, animated: true)
         contentTextView.setContentOffset(.zero, animated: true)
         previewView.isHidden = !previewView.isHidden
-    }
+    }*/
+
     @objc func tapSettings() {
         onStorySettings?()
     }

@@ -29,7 +29,11 @@ class AttributedTableViewCell: TableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        label.textContainerInset = UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 0)
+        if #available(iOS 11.0, *) {
+            label.textContainerInset = UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 0)
+        } else {
+            label.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        }
     }
 
     override func configure(with configuration: TableCellConf) {

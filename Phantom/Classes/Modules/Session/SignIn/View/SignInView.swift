@@ -32,7 +32,9 @@ class SignInView: ViewController {
 
     override func setUpNavigation() {
         super.setUpNavigation()
-        navigationItem.largeTitleDisplayMode = .never
+        if #available(iOS 11.0, *) {
+            navigationItem.largeTitleDisplayMode = .never
+        }
     }
 
     fileprivate func tabToPasswordField() {

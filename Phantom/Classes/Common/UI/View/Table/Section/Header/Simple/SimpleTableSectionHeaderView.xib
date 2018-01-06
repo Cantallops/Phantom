@@ -4,12 +4,13 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SimpleTableSectionHeaderView" customModule="GhostApp" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SimpleTableSectionHeaderView" customModule="Phantom" customModuleProvider="target">
             <connections>
                 <outlet property="titleLabel" destination="eZW-Vg-b69" id="B9M-wc-n2s"/>
             </connections>
@@ -19,8 +20,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZW-Vg-b69" customClass="Label" customModule="GhostApp" customModuleProvider="target">
-                    <rect key="frame" x="12" y="5" width="351" height="38"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZW-Vg-b69" customClass="Label" customModule="Phantom" customModuleProvider="target">
+                    <rect key="frame" x="15" y="5" width="345" height="38"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -28,10 +29,10 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="eZW-Vg-b69" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="FWA-Iz-mDl"/>
+                <constraint firstItem="eZW-Vg-b69" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="FWA-Iz-mDl"/>
                 <constraint firstItem="eZW-Vg-b69" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="H39-Ml-FPu"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="eZW-Vg-b69" secondAttribute="bottom" constant="5" id="l2c-sH-dwa"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="eZW-Vg-b69" secondAttribute="trailing" constant="12" id="rha-El-ln4"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="eZW-Vg-b69" secondAttribute="trailing" constant="15" id="rha-El-ln4"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

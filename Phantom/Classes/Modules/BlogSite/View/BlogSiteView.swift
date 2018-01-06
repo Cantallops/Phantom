@@ -24,7 +24,9 @@ class BlogSiteView: ViewController {
 
     override func setUpNavigation() {
         super.setUpNavigation()
-        navigationItem.largeTitleDisplayMode = .never
+        if #available(iOS 11.0, *) {
+            navigationItem.largeTitleDisplayMode = .never
+        }
         title = "Ghost blog address"
     }
 

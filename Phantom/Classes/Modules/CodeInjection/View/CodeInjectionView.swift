@@ -23,7 +23,9 @@ class CodeInjectionView: ViewController {
     override func setUpNavigation() {
         super.setUpNavigation()
         navigationItem.title = "Code Injection"
-        navigationItem.largeTitleDisplayMode = .never
+        if #available(iOS 11.0, *) {
+            navigationItem.largeTitleDisplayMode = .never
+        }
     }
 
 }

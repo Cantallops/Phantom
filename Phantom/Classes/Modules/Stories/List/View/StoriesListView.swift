@@ -25,8 +25,10 @@ class StoriesListView: TableViewController {
 
     override func setUpNavigation() {
         navigationItem.title = "Your stories"
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .always
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+            navigationItem.largeTitleDisplayMode = .always
+        }
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: #imageLiteral(resourceName: "ic_nav_compose").withRenderingMode(.alwaysOriginal),
             style: .plain,

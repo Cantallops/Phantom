@@ -26,8 +26,6 @@ class TableViewController: UITableViewController, Presentable {
         }
     }
 
-    fileprivate var observers: [NSObjectProtocol] = []
-
     init(presenter: PresenterProtocol) {
         self.presenter = presenter
         super.init(style: .grouped)
@@ -53,20 +51,6 @@ class TableViewController: UITableViewController, Presentable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.willAppear()
-        let keyboardFrameChangeObserver = NotificationCenter.default.addObserver(
-            forName: .UIKeyboardWillChangeFrame,
-            object: nil,
-            queue: nil,
-            using: keyboardFrameChange
-        )
-        observers.append(keyboardFrameChangeObserver)
-        let keyboardWillHideObserver = NotificationCenter.default.addObserver(
-            forName: .UIKeyboardWillHide,
-            object: nil,
-            queue: nil,
-            using: keyboardWillBeHidden
-        )
-        observers.append(keyboardWillHideObserver)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -77,7 +61,6 @@ class TableViewController: UITableViewController, Presentable {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         presenter.willDisappear()
-        removeObservers()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -89,7 +72,7 @@ class TableViewController: UITableViewController, Presentable {
         _ viewControllerToPresent: UIViewController,
         animated flag: Bool,
         completion: (() -> Void)? = nil
-        ) {
+    ) {
         if let nav = navigationController {
             nav.present(viewControllerToPresent, animated: flag, completion: completion)
         } else {
@@ -133,51 +116,8 @@ class TableViewController: UITableViewController, Presentable {
         view.addGestureRecognizer(tap)
     }
 
-    @objc fileprivate func keyboardFrameChange(notification: Notification) {
-        if let userInfo = notification.userInfo,
-            let rect = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect {
-            keyboard(frame: rect)
-        }
-    }
-
-    @objc private func keyboardWillBeHidden(notification: Notification) {
-        keyboard(frame: .zero)
-    }
-
-    func keyboard(frame: CGRect) {
-        guard let scrollView = view.findScrollView(maxDeep: 0) else {
-            return
-        }
-        var contentInset = scrollView.contentInset
-        contentInset.bottom = scrollView.frame.intersection(frame).height
-
-        scrollView.contentInset = contentInset
-        scrollView.scrollIndicatorInsets = contentInset
-
-        guard let firstResponder = view.findFirstResponder() else {
-            return
-        }
-        let convertedFrame = firstResponder.convert(firstResponder.frame, to: scrollView)
-        if !scrollToViewWhenKeyboardShows {
-            return
-        }
-        var aRect = view.frame
-        aRect.size.height -= frame.size.height
-        let contains = aRect.contains(CGPoint(x: 0, y: convertedFrame.origin.y + convertedFrame.size.height))
-        if !aRect.contains(convertedFrame.origin) || !contains && !(scrollView is UITextView) {
-            scrollView.scrollRectToVisible(convertedFrame, animated: true)
-        }
-    }
-
     @objc func dismissKeyboard() {
         view.endEditing(true)
-    }
-
-    private func removeObservers() {
-        for observer in observers {
-            NotificationCenter.default.removeObserver(observer)
-        }
-        observers.removeAll()
     }
 
     @objc func refresh() {
