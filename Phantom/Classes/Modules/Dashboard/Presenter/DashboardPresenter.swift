@@ -12,15 +12,18 @@ class DashboardPresenter: Presenter<DashboardView> {
 
     private let getDashboardSections: Interactor<Any?, [Dashboard.Section]>
     private let sessionFactory: Factory<UIViewController>
+    private let getFavIconImage: Interactor<Any?, UIImage>
 
     private var sections: [Dashboard.Section]?
 
     init(
         getDashboardSections: Interactor<Any?, [Dashboard.Section]> = GetDashboardSections(),
-        sessionFactory: Factory<UIViewController> = SessionFactory()
+        sessionFactory: Factory<UIViewController> = SessionFactory(),
+        getFavIconImage: Interactor<Any?, UIImage> = GetFavIconImage()
     ) {
         self.getDashboardSections = getDashboardSections
         self.sessionFactory = sessionFactory
+        self.getFavIconImage = getFavIconImage
         super.init()
     }
 
@@ -91,16 +94,12 @@ class DashboardPresenter: Presenter<DashboardView> {
     }
 
     private func loadProfile() {
-        guard let account = Account.current,
-            let url = URL(string: "\(account.blogUrl)favicon.png") else {
-            return
-        }
         async(background: {
-            return Network.Image.get(fromURL: url)
+            return self.getFavIconImage.execute(args: nil)
         }, main: { [weak self] result in
             switch result {
             case .success(let image):
-                self?.addProfile(withImage: image?.resize(withSize: CGSize(width: 25, height: 25)))
+                self?.addProfile(withImage: image.resize(withSize: CGSize(width: 25, height: 25)))
             case .failure:
                 self?.addProfile(withImage: nil)
             }

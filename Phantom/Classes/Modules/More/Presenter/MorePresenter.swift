@@ -9,22 +9,33 @@
 import UIKit
 
 class MorePresenter: Presenter<MoreView> {
+    private var blogInfo: BlogInfo? {
+        didSet {
+            loadSections(withSettings: settings, andBlogInfo: blogInfo)
+        }
+    }
     private var settings: [UIViewController] = [] {
         didSet {
-            loadSections(withSettings: settings)
+            loadSections(withSettings: settings, andBlogInfo: blogInfo)
         }
     }
 
     private let doSignOutInteractor: Interactor<Any?, Any?>
+    private let getCurrentBlogInfo: Interactor<Any?, BlogInfo>
+    private let getFavIconImage: Interactor<Any?, UIImage>
     private let getSettingsSection: Interactor<Any?, [UIViewController]>
     private let aboutFactory: Factory<UIViewController>
 
     init(
         doSignOutInteractor: Interactor<Any?, Any?> = DoSignOut(),
+        getCurrentBlogInfo: Interactor<Any?, BlogInfo> = GetCurrentBlogInfo(),
+        getFavIconImage: Interactor<Any?, UIImage> = GetFavIconImage(),
         getSettingsSection: Interactor<Any?, [UIViewController]> = GetSettingsSections(),
         aboutFactory: Factory<UIViewController> = AboutFactory()
     ) {
         self.doSignOutInteractor = doSignOutInteractor
+        self.getCurrentBlogInfo = getCurrentBlogInfo
+        self.getFavIconImage = getFavIconImage
         self.getSettingsSection = getSettingsSection
         self.aboutFactory = aboutFactory
         super.init()
@@ -33,11 +44,18 @@ class MorePresenter: Presenter<MoreView> {
     override func didLoad() {
         super.didLoad()
         loadSections()
+        loadMe()
         loadSettingsSection()
     }
 
-    fileprivate func loadSections(withSettings settings: [UIViewController] = []) {
+    fileprivate func loadSections(
+        withSettings settings: [UIViewController] = [],
+        andBlogInfo blogInfo: BlogInfo? = nil
+    ) {
         var sections: [UITableView.Section] = []
+        if let blogInfo = blogInfo {
+            sections.append(getBlogInfoSection(using: blogInfo))
+        }
         if !settings.isEmpty {
             sections.append(getSettingSection(from: settings))
         }
@@ -66,6 +84,18 @@ class MorePresenter: Presenter<MoreView> {
         return section
     }
 
+    fileprivate func loadMe() {
+        async(background: { [unowned self] in
+            return self.getCurrentBlogInfo.execute(args: nil)
+            }, main: { [weak self] result in
+                switch result {
+                case .success(let blogInfo):
+                    self?.blogInfo = blogInfo
+                case .failure(let error):
+                    self?.show(error: error)
+                }
+        })
+    }
     fileprivate func loadSettingsSection() {
         async(background: { [unowned self] in
             return self.getSettingsSection.execute(args: nil)
@@ -77,6 +107,20 @@ class MorePresenter: Presenter<MoreView> {
                     self?.show(error: error)
                 }
         })
+    }
+
+    fileprivate func getBlogInfoSection(using blogInfo: BlogInfo) -> UITableView.Section {
+        let conf = SubtitleTableViewCell.Conf(
+            text: blogInfo.blogConf.blogTitle,
+            subtitle: blogInfo.user.name,
+            image: blogInfo.favicon?.resize(withSize: CGSize(width: 50, height: 50))
+        )
+        conf.canSelect = false
+        conf.accessoryType = .none
+        var section = UITableView.Section(cells: [conf])
+        section.header = EmptyTableSectionHeader(height: 20)
+        section.footer = EmptyTableSectionFooter(height: 20)
+        return section
     }
 
     fileprivate func getInfoSection() -> UITableView.Section {

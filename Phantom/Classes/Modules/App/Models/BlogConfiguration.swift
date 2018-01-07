@@ -13,4 +13,7 @@ struct BlogConfiguration: Codable {
     let blogTitle: String
     let clientId: String
     let clientSecret: String
+    var favIconURL: URL? {
+        return URL(string: "\(blogUrl)favicon.png")
+    }
 }

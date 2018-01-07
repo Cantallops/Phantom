@@ -27,7 +27,7 @@ private struct BlogConfigurationApi: Codable {
 
 class GetBlogConfiguration: DataSource<(String, String), BlogConfiguration> {
     override func execute(args: (String, String)) -> Result<BlogConfiguration> {
-        let provider =  BlogConfigurationProvider(baseUrl: args.0, versioning: args.1)
+        let provider = BlogConfigurationProvider(baseUrl: args.0, versioning: args.1)
         let result: Result<BlogConfigurationApi> = Network(provider: provider).call()
         switch result {
         case .success(let blogConfigurationApi):
