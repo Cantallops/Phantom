@@ -6,7 +6,7 @@
 //  Copyright © 2017 Alberto Cantallops. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class GetDashboardSections: Interactor<Any?, [Dashboard.Section]> {
 
@@ -69,15 +69,17 @@ class GetDashboardSections: Interactor<Any?, [Dashboard.Section]> {
             )
             sections.append(subscribersList)
         }
-        let more = Dashboard.Section(
-            kind: .more,
-            name: "More",
-            icon: #imageLiteral(resourceName: "ic_tab_more"),
-            selectedIcon: #imageLiteral(resourceName: "ic_tab_more_selected"),
-            factory: MoreFactory(),
-            nav: true
-        )
-        sections.append(more)
+        if UIDevice.current.userInterfaceIdiom != .pad {
+            let more = Dashboard.Section(
+                kind: .more,
+                name: "More",
+                icon: #imageLiteral(resourceName: "ic_tab_more"),
+                selectedIcon: #imageLiteral(resourceName: "ic_tab_more_selected"),
+                factory: MoreFactory(),
+                nav: true
+            )
+            sections.append(more)
+        }
 
         return sections
     }

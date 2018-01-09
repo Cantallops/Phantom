@@ -19,6 +19,9 @@ class TagDetailView: TableViewController {
 
     override func setUpNavigation() {
         super.setUpNavigation()
+        if #available(iOS 11.0, *), UIDevice.current.userInterfaceIdiom == .pad {
+            navigationItem.largeTitleDisplayMode = .never
+        }
         setUpSaveButton()
     }
 

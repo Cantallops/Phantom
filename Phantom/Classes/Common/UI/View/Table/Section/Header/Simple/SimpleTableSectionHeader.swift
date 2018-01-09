@@ -45,6 +45,7 @@ class SimpleTableSectionHeaderView: UIView {
 
     private func customInit() {
         setUpXib()
+        backgroundColor = Color.white
     }
 
     private func setUpXib() {

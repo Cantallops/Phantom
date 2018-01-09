@@ -73,6 +73,8 @@
 		565E809D1F670A4E000DC618 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E809C1F670A4E000DC618 /* TextField.swift */; };
 		565E80A01F670B03000DC618 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E809F1F670B03000DC618 /* Label.swift */; };
 		565E80A51F670E29000DC618 /* ButtonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E80A41F670E29000DC618 /* ButtonTest.swift */; };
+		566186A920055F0E00A503A8 /* TabletDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566186A820055F0E00A503A8 /* TabletDashboardView.swift */; };
+		566186AB2005616B00A503A8 /* TabletDashboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566186AA2005616B00A503A8 /* TabletDashboardPresenter.swift */; };
 		56622C0F1FC06EE000CD5B13 /* GetTeamRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56622C0E1FC06EE000CD5B13 /* GetTeamRemote.swift */; };
 		56622C111FC06F5700CD5B13 /* GetMembers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56622C101FC06F5700CD5B13 /* GetMembers.swift */; };
 		56622C151FC0742E00CD5B13 /* TeamMemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56622C131FC0742E00CD5B13 /* TeamMemberTableViewCell.swift */; };
@@ -394,6 +396,8 @@
 		565E809C1F670A4E000DC618 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		565E809F1F670B03000DC618 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		565E80A41F670E29000DC618 /* ButtonTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTest.swift; sourceTree = "<group>"; };
+		566186A820055F0E00A503A8 /* TabletDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabletDashboardView.swift; sourceTree = "<group>"; };
+		566186AA2005616B00A503A8 /* TabletDashboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabletDashboardPresenter.swift; sourceTree = "<group>"; };
 		56622C0E1FC06EE000CD5B13 /* GetTeamRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTeamRemote.swift; sourceTree = "<group>"; };
 		56622C101FC06F5700CD5B13 /* GetMembers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMembers.swift; sourceTree = "<group>"; };
 		56622C131FC0742E00CD5B13 /* TeamMemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMemberTableViewCell.swift; sourceTree = "<group>"; };
@@ -1086,6 +1090,40 @@
 				56958B851F72E6E0005A8B08 /* ButtonLoaderTest.swift */,
 			);
 			path = Button;
+			sourceTree = "<group>";
+		};
+		566186A420055E8F00A503A8 /* Tablet */ = {
+			isa = PBXGroup;
+			children = (
+				566186A720055EF200A503A8 /* Presenter */,
+				566186A620055EEC00A503A8 /* View */,
+			);
+			path = Tablet;
+			sourceTree = "<group>";
+		};
+		566186A520055E9800A503A8 /* Mobile */ = {
+			isa = PBXGroup;
+			children = (
+				56FDE12E1FB8F130009678AC /* Presenter */,
+				56AFDF0E1F816AA000ADA640 /* View */,
+			);
+			path = Mobile;
+			sourceTree = "<group>";
+		};
+		566186A620055EEC00A503A8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				566186A820055F0E00A503A8 /* TabletDashboardView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		566186A720055EF200A503A8 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				566186AA2005616B00A503A8 /* TabletDashboardPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		56622C121FC0740F00CD5B13 /* Cell */ = {
@@ -2837,11 +2875,11 @@
 		56AFDF0D1F816A9500ADA640 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				566186A520055E9800A503A8 /* Mobile */,
+				566186A420055E8F00A503A8 /* Tablet */,
 				56FDE1341FB8F486009678AC /* Model */,
 				56FDE1311FB8F416009678AC /* Interactor */,
 				56AFDF1B1F86A06100ADA640 /* Factory */,
-				56FDE12E1FB8F130009678AC /* Presenter */,
-				56AFDF0E1F816AA000ADA640 /* View */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -3465,6 +3503,7 @@
 				5608672C1FAA6C5A002A9790 /* DeleteTagInteractor.swift in Sources */,
 				56EC33131FABC1B400A5742A /* PostTagRemote.swift in Sources */,
 				56AFDF1A1F86A00400ADA640 /* StoriesListFactory.swift in Sources */,
+				566186A920055F0E00A503A8 /* TabletDashboardView.swift in Sources */,
 				569447D11FE991DC0045B752 /* GeneralSettings.swift in Sources */,
 				569335141FDD861E00F0B108 /* UIActivityIndicatorViewLoader.swift in Sources */,
 				569447F01FED542D0045B752 /* MetaDataPresenter.swift in Sources */,
@@ -3554,6 +3593,7 @@
 				56836BC01F7AC7FD009ADE15 /* NavigationController.swift in Sources */,
 				568558D81F894995000AA39F /* LabsPresenter.swift in Sources */,
 				565528EA1FA4A043006A0A65 /* TableCellConf.swift in Sources */,
+				566186AB2005616B00A503A8 /* TabletDashboardPresenter.swift in Sources */,
 				56988B2D1FEFEC170000EFBC /* GetSubscribersRemote.swift in Sources */,
 				5635691A20026DA200BAA968 /* GetFavIconImage.swift in Sources */,
 				56E2D4771FBE47BE00DD4A7D /* ImageUploader.swift in Sources */,

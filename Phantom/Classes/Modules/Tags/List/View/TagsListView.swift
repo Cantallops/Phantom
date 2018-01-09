@@ -26,8 +26,9 @@ class TagsListView: TableViewController {
     override func setUpNavigation() {
         super.setUpNavigation()
         navigationItem.title = "Tags"
-        if #available(iOS 11.0, *) {
-            navigationItem.largeTitleDisplayMode = .never
+        if #available(iOS 11.0, *), UIDevice.current.userInterfaceIdiom == .pad {
+            navigationItem.largeTitleDisplayMode = .always
+            navigationController?.navigationBar.prefersLargeTitles = true
         }
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .add,
