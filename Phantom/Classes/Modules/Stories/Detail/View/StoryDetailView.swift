@@ -75,11 +75,21 @@ class StoryDetailView: ViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        var left: CGFloat = 10
+        var right: CGFloat = 10
+        if view.frame.size.width > 620 {
+            left = (view.frame.size.width - 600)/2
+            right = left
+        }
+        var titleTextInsets = titleTextView.textContainerInset
+        titleTextInsets.right = right
+        titleTextInsets.left = left
+        titleTextView.textContainerInset = titleTextInsets
         contentTextView.textContainerInset = UIEdgeInsets(
             top: titleTextView.frame.height + 10,
-            left: 10,
+            left: left,
             bottom: 10,
-            right: 10
+            right: right
         )
     }
 
