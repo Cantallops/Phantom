@@ -14,6 +14,7 @@ class TableCellConf: NSObject {
 
     var accessoryView: UIView?
     var accessoryType: UITableViewCellAccessoryType = .none
+    var selectionColor: UIColor = Color.lightBlue
 
     var onSelect: (() -> Void)?
     var deselect: Bool = false
@@ -46,9 +47,22 @@ class TableCellConf: NSObject {
 class TableViewCell: UITableViewCell {
     var blockSelectChangeColor: [UIView] = []
     var showTickOnSelection: Bool = false
+    var showSelection: Bool = true
+    private let selectedView: UIView = {
+        let view = UIView()
+        view.backgroundColor = Color.lightBlue
+        view.layer.cornerRadius = 4
+        return view
+    }()
 
     var refreshHeight: (() -> Void)?
     var tapItself: (() -> Void)?
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        selectedView.frame = getFrameForSelection()
+        selectedBackgroundView = selectedView
+    }
 
     func configure(with configuration: TableCellConf) {
         contentView.autoresizingMask = .flexibleHeight
@@ -56,6 +70,8 @@ class TableViewCell: UITableViewCell {
         accessoryType = configuration.accessoryType
         selectionStyle = configuration.showSelection ? selectionStyle : .none
         showTickOnSelection = configuration.behaveAsRadioButton
+        showSelection = configuration.showSelection
+        selectedView.backgroundColor = configuration.selectionColor
     }
 
     func selectItself() {
@@ -72,7 +88,6 @@ class TableViewCell: UITableViewCell {
         if showTickOnSelection {
             accessoryType = selected ? .checkmark : .none
         }
-
         performBlockColor {
             super.setSelected(selected, animated: animated)
         }
@@ -82,6 +97,18 @@ class TableViewCell: UITableViewCell {
         performBlockColor {
             super.setHighlighted(highlighted, animated: animated)
         }
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        selectedView.frame = getFrameForSelection()
+    }
+
+    private func getFrameForSelection() -> CGRect {
+        var selectedFrame = bounds
+        selectedFrame.size.width -= 12
+        selectedFrame.origin.x += 6
+        return selectedFrame
     }
 }
 

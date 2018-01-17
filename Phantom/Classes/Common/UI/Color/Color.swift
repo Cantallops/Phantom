@@ -24,5 +24,7 @@ struct Color {
     static let green = UIColor(red: 0.64, green: 0.82, blue: 0.22, alpha: 1.0) // #A4D037
     static let blue = UIColor(red: 0.61, green: 0.84, blue: 0.97, alpha: 1.0) // #9CD7F7
 
+    static let lightBlue = UIColor(red: 0.87, green: 0.93, blue: 0.98, alpha: 1.0) // #DFEDF9
+
     static let placeholder = UIColor(red: 0.0, green: 0.0, blue: 0.0980392, alpha: 0.22)
 }
