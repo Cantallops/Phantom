@@ -32,6 +32,12 @@ platform :ios do
     run_tests
   end
 
+  desc "Deploy a new beta version to TestFlight"
+  lane :beta_release do
+    build_app(scheme: "Phantom")
+    upload_to_testflight
+  end
+
   desc "Deploy a new version to the App Store"
   lane :release do
     capture_screenshots
