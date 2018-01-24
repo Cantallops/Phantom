@@ -28,7 +28,7 @@ platform :ios do
 
   desc "Runs all the tests"
   lane :test do
-    run_tests
+    run_tests(scheme: "PhantomDev")
   end
 
   desc "Deploy a new beta version to TestFlight"
