@@ -10,22 +10,42 @@ import XCTest
 @testable import Phantom
 
 class DashboardFactoryTest: XCTestCase {
-    fileprivate var factory: Factory<UIViewController>!
 
-    override func setUp() {
-        super.setUp()
-        factory = DashboardFactory()
-    }
-
-    func testBuild() {
+    func testBuildForPhone() {
+        let factory = DashboardFactory(device: PhoneDeviceMock())
         let view = factory.build()
         guard let viewController = view as? DashboardView else {
-            XCTFail("Should return an instance of Should return an instance of")
+            XCTFail("Should return an instance of DashboardView instead of \(type(of: view))")
             return
         }
         XCTAssertTrue(
             type(of: viewController.presenter) == DashboardPresenter.self,
             "Presenter should be an instance of DashboardPresenter"
         )
+    }
+
+    func testBuildForTablet() {
+        let factory = DashboardFactory(device: PadDeviceMock())
+        let view = factory.build()
+        guard let viewController = view as? TabletDashboardView else {
+            XCTFail("Should return an instance of TabletDashboardView instead of \(type(of: view))")
+            return
+        }
+        XCTAssertTrue(
+            type(of: viewController.presenter) == TabletDashboardPresenter.self,
+            "Presenter should be an instance of TabletDashboardPresenter"
+        )
+    }
+}
+
+private class PadDeviceMock: UIDevice {
+    override var userInterfaceIdiom: UIUserInterfaceIdiom {
+        return .pad
+    }
+}
+
+private class PhoneDeviceMock: UIDevice {
+    override var userInterfaceIdiom: UIUserInterfaceIdiom {
+        return .phone
     }
 }

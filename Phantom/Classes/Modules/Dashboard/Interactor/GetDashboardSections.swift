@@ -12,13 +12,16 @@ class GetDashboardSections: Interactor<Any?, [Dashboard.Section]> {
 
     private let getMe: Interactor<Any?, TeamMember>
     private let getGeneralSettings: DataSource<Any?, GeneralSettings>
+    private let device: UIDevice
 
     init(
         getMe: Interactor<Any?, TeamMember> = GetMe(),
-        getGeneralSettings: DataSource<Any?, GeneralSettings> = GetGeneralSettings()
+        getGeneralSettings: DataSource<Any?, GeneralSettings> = GetGeneralSettings(),
+        device: UIDevice = .current
     ) {
         self.getMe = getMe
         self.getGeneralSettings = getGeneralSettings
+        self.device = device
         super.init()
     }
 
@@ -69,7 +72,7 @@ class GetDashboardSections: Interactor<Any?, [Dashboard.Section]> {
             )
             sections.append(subscribersList)
         }
-        if UIDevice.current.userInterfaceIdiom != .pad {
+        if !device.isPad {
             let more = Dashboard.Section(
                 kind: .more,
                 name: "More",

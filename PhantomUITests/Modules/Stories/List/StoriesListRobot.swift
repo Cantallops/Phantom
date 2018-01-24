@@ -13,7 +13,7 @@ class StoriesListRobot {
     @discardableResult
     func goToStory(_ bound: Int = 0) -> Self {
         let app = XCUIApplication()
-        app.cells.element(boundBy: bound).tap()
+        app.tables["storiesTable"].cells.element(boundBy: bound).tap()
         return self
     }
 }

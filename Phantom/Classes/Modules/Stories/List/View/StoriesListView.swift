@@ -39,6 +39,7 @@ class StoriesListView: TableViewController {
 
     override func setUpTable() {
         super.setUpTable()
+        tableView.accessibilityIdentifier = "storiesTable"
         emptyView = EmptyButtonTableView(
             title: "You haven't written any stories yet!",
             buttonTitle: "Write a new story",

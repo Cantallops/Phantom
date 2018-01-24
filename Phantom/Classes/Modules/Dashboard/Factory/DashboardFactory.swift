@@ -9,8 +9,16 @@
 import UIKit
 
 class DashboardFactory: Factory<UIViewController> {
+
+    private let device: UIDevice
+
+    init(device: UIDevice = .current) {
+        self.device = device
+        super.init()
+    }
+
     override func build() -> UIViewController {
-        if UIDevice.current.userInterfaceIdiom == .pad {
+        if device.isPad {
            return padBuild()
         }
         return phoneBuild()

@@ -10,10 +10,13 @@ import UIKit
 
 class TagsListView: TableViewController {
 
+    var device: UIDevice = .current
     var addTagAction: (() -> Void)?
     var refreshAction: (() -> Void)?
 
-    override init(presenter: PresenterProtocol) {
+    override init(
+        presenter: PresenterProtocol
+    ) {
         super.init(presenter: presenter)
         title = "Tags"
         tabBarItem.image = #imageLiteral(resourceName: "ic_table_tags")
@@ -26,7 +29,7 @@ class TagsListView: TableViewController {
     override func setUpNavigation() {
         super.setUpNavigation()
         navigationItem.title = "Tags"
-        if #available(iOS 11.0, *), UIDevice.current.userInterfaceIdiom == .pad {
+        if #available(iOS 11.0, *), device.isPad {
             navigationItem.largeTitleDisplayMode = .always
             navigationController?.navigationBar.prefersLargeTitles = true
         }

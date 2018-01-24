@@ -10,6 +10,7 @@ import UIKit
 
 class TagDetailView: TableViewController {
 
+    var device: UIDevice = .current
     var onTapSave: (() -> Void)?
     var enableSaveButton: Bool = true {
         didSet {
@@ -19,7 +20,7 @@ class TagDetailView: TableViewController {
 
     override func setUpNavigation() {
         super.setUpNavigation()
-        if #available(iOS 11.0, *), UIDevice.current.userInterfaceIdiom == .pad {
+        if #available(iOS 11.0, *), device.isPad {
             navigationItem.largeTitleDisplayMode = .never
         }
         setUpSaveButton()
