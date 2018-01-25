@@ -117,6 +117,7 @@
 		56787E1C1FE08049005F9B4E /* SessionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56787E1B1FE08049005F9B4E /* SessionFactory.swift */; };
 		56787E201FE1B317005F9B4E /* NetworkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56787E1F1FE1B317005F9B4E /* NetworkImage.swift */; };
 		56787E231FE1B9A3005F9B4E /* UIImageResize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56787E221FE1B9A3005F9B4E /* UIImageResize.swift */; };
+		5678B95F201A4D6000EBDD03 /* MetaTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678B95E201A4D6000EBDD03 /* MetaTest.swift */; };
 		5682D0621F86AA4E008DEC22 /* TeamListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5682D0611F86AA4E008DEC22 /* TeamListPresenter.swift */; };
 		5682D0651F86AA71008DEC22 /* TeamListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5682D0631F86AA71008DEC22 /* TeamListView.swift */; };
 		5682D0691F86AAB3008DEC22 /* TeamListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5682D0681F86AAB3008DEC22 /* TeamListFactory.swift */; };
@@ -447,6 +448,7 @@
 		56787E1B1FE08049005F9B4E /* SessionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionFactory.swift; sourceTree = "<group>"; };
 		56787E1F1FE1B317005F9B4E /* NetworkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkImage.swift; sourceTree = "<group>"; };
 		56787E221FE1B9A3005F9B4E /* UIImageResize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageResize.swift; sourceTree = "<group>"; };
+		5678B95E201A4D6000EBDD03 /* MetaTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaTest.swift; sourceTree = "<group>"; };
 		5682D0611F86AA4E008DEC22 /* TeamListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListPresenter.swift; sourceTree = "<group>"; };
 		5682D0631F86AA71008DEC22 /* TeamListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListView.swift; sourceTree = "<group>"; };
 		5682D0681F86AAB3008DEC22 /* TeamListFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListFactory.swift; sourceTree = "<group>"; };
@@ -2344,6 +2346,7 @@
 			isa = PBXGroup;
 			children = (
 				5692AEBE1F6D8973004A65A4 /* AsyncHelperTest.swift */,
+				5678B95E201A4D6000EBDD03 /* MetaTest.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -3648,6 +3651,7 @@
 				56958B861F72E6E0005A8B08 /* ButtonLoaderTest.swift in Sources */,
 				5692AE9F1F6D5D04004A65A4 /* InteractorTest.swift in Sources */,
 				566DB6881FF5790B0000124D /* GetAboutGhostConfigurationTest.swift in Sources */,
+				5678B95F201A4D6000EBDD03 /* MetaTest.swift in Sources */,
 				566DB6B31FF582600000124D /* SessionFactoryTest.swift in Sources */,
 				563189771F66F3E8006B29D5 /* BlogSitePresenterTest.swift in Sources */,
 				566BFDCC1F7C36B80051AD9F /* TestErrors.swift in Sources */,
