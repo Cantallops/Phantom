@@ -59,6 +59,21 @@
 		563569141FFD94C200BAA968 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563569131FFD94C200BAA968 /* TableViewController.swift */; };
 		5635691A20026DA200BAA968 /* GetFavIconImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5635691920026DA200BAA968 /* GetFavIconImage.swift */; };
 		5635691C2002746300BAA968 /* GetCurrentBlogInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5635691B2002746300BAA968 /* GetCurrentBlogInfo.swift */; };
+		5639AA5E201A6D7E00B8753E /* GetMeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5639AA5D201A6D7E00B8753E /* GetMeTest.swift */; };
+		5639AA60201A6F9D00B8753E /* GetMembersTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5639AA5F201A6F9D00B8753E /* GetMembersTest.swift */; };
+		5639AA63201A72D900B8753E /* GetTagListTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5639AA62201A72D900B8753E /* GetTagListTest.swift */; };
+		5639AA67201A73ED00B8753E /* CreateTagInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5639AA66201A73ED00B8753E /* CreateTagInteractorTest.swift */; };
+		5639AA69201A73F800B8753E /* DeleteTagInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5639AA68201A73F800B8753E /* DeleteTagInteractorTest.swift */; };
+		5639AA6B201A740200B8753E /* EditTagInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5639AA6A201A740200B8753E /* EditTagInteractorTest.swift */; };
+		5639AA6E201A754D00B8753E /* GetSubscribersTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5639AA6D201A754D00B8753E /* GetSubscribersTest.swift */; };
+		5639AA71201A761B00B8753E /* GetStoriesListTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5639AA70201A761B00B8753E /* GetStoriesListTest.swift */; };
+		5639AA75201A771000B8753E /* MockTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5639AA74201A771000B8753E /* MockTag.swift */; };
+		5639AA79201A778B00B8753E /* MockTeamMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5639AA78201A778B00B8753E /* MockTeamMember.swift */; };
+		5639AA7C201A782B00B8753E /* MockSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5639AA7B201A782B00B8753E /* MockSubscriber.swift */; };
+		5639AA7F201A786600B8753E /* MockStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5639AA7E201A786600B8753E /* MockStory.swift */; };
+		5639AA83201A78FD00B8753E /* CreateStoryInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5639AA82201A78FD00B8753E /* CreateStoryInteractorTest.swift */; };
+		5639AA86201A790F00B8753E /* EditStoryInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5639AA85201A790F00B8753E /* EditStoryInteractorTest.swift */; };
+		5639AA89201A792100B8753E /* DeleteStoryInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5639AA88201A792100B8753E /* DeleteStoryInteractorTest.swift */; };
 		563C39ED1FB5FA4100D2FD3B /* StoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563C39EB1FB5FA4100D2FD3B /* StoryTableViewCell.swift */; };
 		563C39EE1FB5FA4100D2FD3B /* StoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 563C39EC1FB5FA4100D2FD3B /* StoryTableViewCell.xib */; };
 		564111721FB864090093EAD0 /* DoSignOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564111711FB864090093EAD0 /* DoSignOut.swift */; };
@@ -386,6 +401,21 @@
 		563569131FFD94C200BAA968 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		5635691920026DA200BAA968 /* GetFavIconImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFavIconImage.swift; sourceTree = "<group>"; };
 		5635691B2002746300BAA968 /* GetCurrentBlogInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentBlogInfo.swift; sourceTree = "<group>"; };
+		5639AA5D201A6D7E00B8753E /* GetMeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMeTest.swift; sourceTree = "<group>"; };
+		5639AA5F201A6F9D00B8753E /* GetMembersTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMembersTest.swift; sourceTree = "<group>"; };
+		5639AA62201A72D900B8753E /* GetTagListTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTagListTest.swift; sourceTree = "<group>"; };
+		5639AA66201A73ED00B8753E /* CreateTagInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTagInteractorTest.swift; sourceTree = "<group>"; };
+		5639AA68201A73F800B8753E /* DeleteTagInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTagInteractorTest.swift; sourceTree = "<group>"; };
+		5639AA6A201A740200B8753E /* EditTagInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTagInteractorTest.swift; sourceTree = "<group>"; };
+		5639AA6D201A754D00B8753E /* GetSubscribersTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSubscribersTest.swift; sourceTree = "<group>"; };
+		5639AA70201A761B00B8753E /* GetStoriesListTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStoriesListTest.swift; sourceTree = "<group>"; };
+		5639AA74201A771000B8753E /* MockTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTag.swift; sourceTree = "<group>"; };
+		5639AA78201A778B00B8753E /* MockTeamMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTeamMember.swift; sourceTree = "<group>"; };
+		5639AA7B201A782B00B8753E /* MockSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSubscriber.swift; sourceTree = "<group>"; };
+		5639AA7E201A786600B8753E /* MockStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStory.swift; sourceTree = "<group>"; };
+		5639AA82201A78FD00B8753E /* CreateStoryInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateStoryInteractorTest.swift; sourceTree = "<group>"; };
+		5639AA85201A790F00B8753E /* EditStoryInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStoryInteractorTest.swift; sourceTree = "<group>"; };
+		5639AA88201A792100B8753E /* DeleteStoryInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteStoryInteractorTest.swift; sourceTree = "<group>"; };
 		563C39EB1FB5FA4100D2FD3B /* StoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTableViewCell.swift; sourceTree = "<group>"; };
 		563C39EC1FB5FA4100D2FD3B /* StoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoryTableViewCell.xib; sourceTree = "<group>"; };
 		564111711FB864090093EAD0 /* DoSignOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoSignOut.swift; sourceTree = "<group>"; };
@@ -957,6 +987,107 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		5639AA5C201A6D6700B8753E /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				5639AA5D201A6D7E00B8753E /* GetMeTest.swift */,
+				5639AA5F201A6F9D00B8753E /* GetMembersTest.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		5639AA61201A72C300B8753E /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				5639AA62201A72D900B8753E /* GetTagListTest.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		5639AA64201A73D500B8753E /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				5639AA65201A73DA00B8753E /* Interactor */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		5639AA65201A73DA00B8753E /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				5639AA66201A73ED00B8753E /* CreateTagInteractorTest.swift */,
+				5639AA68201A73F800B8753E /* DeleteTagInteractorTest.swift */,
+				5639AA6A201A740200B8753E /* EditTagInteractorTest.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		5639AA6C201A753C00B8753E /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				5639AA6D201A754D00B8753E /* GetSubscribersTest.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		5639AA6F201A760500B8753E /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				5639AA70201A761B00B8753E /* GetStoriesListTest.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		5639AA72201A76F400B8753E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5639AA74201A771000B8753E /* MockTag.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5639AA76201A777700B8753E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5639AA78201A778B00B8753E /* MockTeamMember.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5639AA7A201A782000B8753E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5639AA7B201A782B00B8753E /* MockSubscriber.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5639AA7D201A785800B8753E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5639AA7E201A786600B8753E /* MockStory.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5639AA80201A78E300B8753E /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				5639AA81201A78E800B8753E /* Interactor */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		5639AA81201A78E800B8753E /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				5639AA82201A78FD00B8753E /* CreateStoryInteractorTest.swift */,
+				5639AA85201A790F00B8753E /* EditStoryInteractorTest.swift */,
+				5639AA88201A792100B8753E /* DeleteStoryInteractorTest.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
 		563C39EA1FB5FA1500D2FD3B /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1327,7 +1458,9 @@
 		566DB69A1FF57F690000124D /* Stories */ = {
 			isa = PBXGroup;
 			children = (
+				5639AA80201A78E300B8753E /* Detail */,
 				566DB6B41FF582FD0000124D /* List */,
+				5639AA7D201A785800B8753E /* Model */,
 			);
 			path = Stories;
 			sourceTree = "<group>";
@@ -1336,6 +1469,8 @@
 			isa = PBXGroup;
 			children = (
 				566DB6A51FF580050000124D /* Factory */,
+				5639AA6C201A753C00B8753E /* Interactor */,
+				5639AA7A201A782000B8753E /* Model */,
 			);
 			path = Subscribers;
 			sourceTree = "<group>";
@@ -1343,7 +1478,9 @@
 		566DB69C1FF57F740000124D /* Tags */ = {
 			isa = PBXGroup;
 			children = (
+				5639AA64201A73D500B8753E /* Detail */,
 				566DB6BA1FF584260000124D /* List */,
+				5639AA72201A76F400B8753E /* Model */,
 			);
 			path = Tags;
 			sourceTree = "<group>";
@@ -1352,6 +1489,7 @@
 			isa = PBXGroup;
 			children = (
 				566DB6BD1FF584C00000124D /* List */,
+				5639AA76201A777700B8753E /* Model */,
 			);
 			path = Team;
 			sourceTree = "<group>";
@@ -1424,6 +1562,7 @@
 			isa = PBXGroup;
 			children = (
 				566DB6B51FF583020000124D /* Factory */,
+				5639AA6F201A760500B8753E /* Interactor */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -1440,6 +1579,7 @@
 			isa = PBXGroup;
 			children = (
 				566DB6A61FF5800A0000124D /* Factory */,
+				5639AA61201A72C300B8753E /* Interactor */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -1447,6 +1587,7 @@
 		566DB6BD1FF584C00000124D /* List */ = {
 			isa = PBXGroup;
 			children = (
+				5639AA5C201A6D6700B8753E /* Interactor */,
 				566DB6A71FF580100000124D /* Factory */,
 			);
 			path = List;
@@ -3679,13 +3820,17 @@
 				566BFDCC1F7C36B80051AD9F /* TestErrors.swift in Sources */,
 				566DB6B71FF583270000124D /* StoriesListFactoryTest.swift in Sources */,
 				569335091FDD7EFD00F0B108 /* BuilderTest.swift in Sources */,
+				5639AA86201A790F00B8753E /* EditStoryInteractorTest.swift in Sources */,
 				56958B841F72E12A005A8B08 /* URLHttpTest.swift in Sources */,
 				56016D8A1FF1AF1C00BB066F /* FakeAccount.swift in Sources */,
 				566DB6AD1FF580D30000124D /* LabsFactoryTest.swift in Sources */,
+				5639AA6E201A754D00B8753E /* GetSubscribersTest.swift in Sources */,
 				569E55D11FDD6E2400A22C22 /* DateTest.swift in Sources */,
 				56B836261F6719D70017905D /* TextFieldTest.swift in Sources */,
 				56241E721FE05EE400468062 /* MockLoader.swift in Sources */,
 				566BFDC91F7C35F40051AD9F /* DoCredentialSignInTest.swift in Sources */,
+				5639AA7F201A786600B8753E /* MockStory.swift in Sources */,
+				5639AA71201A761B00B8753E /* GetStoriesListTest.swift in Sources */,
 				566DB6A91FF580530000124D /* DesignFactoryTest.swift in Sources */,
 				566BFDD11F7C38F70051AD9F /* ClientKeysTest.swift in Sources */,
 				5631897C1F66F82B006B29D5 /* MockPresenter.swift in Sources */,
@@ -3698,22 +3843,31 @@
 				566BFDD41F7C39EC0051AD9F /* FormErrors.swift in Sources */,
 				566DB6851FF572B40000124D /* AboutFactoryTest.swift in Sources */,
 				566DB6B11FF581AA0000124D /* MoreFactoryTest.swift in Sources */,
+				5639AA75201A771000B8753E /* MockTag.swift in Sources */,
 				566DB6B91FF583F90000124D /* SubscribersListFactoryTest.swift in Sources */,
 				569E55D71FDD76BF00A22C22 /* CodableUtilsTest.swift in Sources */,
+				5639AA89201A792100B8753E /* DeleteStoryInteractorTest.swift in Sources */,
+				5639AA69201A73F800B8753E /* DeleteTagInteractorTest.swift in Sources */,
 				5631897A1F66F80E006B29D5 /* ViewControllerTest.swift in Sources */,
 				5692AEA81F6D66F0004A65A4 /* ResultTest.swift in Sources */,
+				5639AA5E201A6D7E00B8753E /* GetMeTest.swift in Sources */,
 				56241E761FE0665D00468062 /* NetworkErrorTest.swift in Sources */,
 				56241E741FE0605300468062 /* UIActivityIndicatorViewLoaderTest.swift in Sources */,
+				5639AA83201A78FD00B8753E /* CreateStoryInteractorTest.swift in Sources */,
 				566BFDCE1F7C380C0051AD9F /* DoBiometricSignInTest.swift in Sources */,
 				5672C9711F5F351300439F46 /* AppDelegateTest.swift in Sources */,
 				569335191FE04ED500F0B108 /* XCTestCase+Helper.swift in Sources */,
 				569E55D41FDD73D600A22C22 /* DebounceTest.swift in Sources */,
 				561CD1951F71C42600EF7C8F /* NetworkCall.swift in Sources */,
 				563189751F66F366006B29D5 /* BlogSiteViewTest.swift in Sources */,
+				5639AA67201A73ED00B8753E /* CreateTagInteractorTest.swift in Sources */,
 				566DB6BF1FF584D60000124D /* TeamListFactoryTest.swift in Sources */,
+				5639AA6B201A740200B8753E /* EditTagInteractorTest.swift in Sources */,
 				5631896C1F66EDAA006B29D5 /* InitialModuleServiceTest.swift in Sources */,
 				565E80A51F670E29000DC618 /* ButtonTest.swift in Sources */,
 				5692AEAE1F6D6AC5004A65A4 /* DataSourceTest.swift in Sources */,
+				5639AA7C201A782B00B8753E /* MockSubscriber.swift in Sources */,
+				5639AA79201A778B00B8753E /* MockTeamMember.swift in Sources */,
 				5692AEB91F6D7105004A65A4 /* DetectGhostInstallationTest.swift in Sources */,
 				5678B965201A610800EBDD03 /* DeviceTest.swift in Sources */,
 				569335041FDD7D7300F0B108 /* MockBuilder.swift in Sources */,
@@ -3724,7 +3878,9 @@
 				56836BC31F7ACA1F009ADE15 /* MockFactory.swift in Sources */,
 				566DB6AB1FF580A00000124D /* GeneralSettingsFactoryTest.swift in Sources */,
 				5692AEA51F6D6459004A65A4 /* MockInteractor.swift in Sources */,
+				5639AA60201A6F9D00B8753E /* GetMembersTest.swift in Sources */,
 				5693351F1FE059F000F0B108 /* UIViewUtilsTest.swift in Sources */,
+				5639AA63201A72D900B8753E /* GetTagListTest.swift in Sources */,
 				5693350B1FDD7F4A00F0B108 /* TestFatalError.swift in Sources */,
 				5678B962201A51E900EBDD03 /* InternalNotificationTest.swift in Sources */,
 				561CD1971F71C46100EF7C8F /* TestNetworkProvider.swift in Sources */,
