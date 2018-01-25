@@ -142,4 +142,30 @@ class NetworkErrorTest: XCTestCase {
         XCTAssertEqual(errors.networkError, .multiple)
         XCTAssertEqual(errors.message, "Message Validation\nMessage Too Many Requests")
     }
+
+    func testIsNotUnauthorizedError() {
+        let networError = NetworkError(kind: .validation)
+        XCTAssertFalse(networError.isUnauthoriezed)
+        let error = TestError()
+        XCTAssertFalse(error.isUnauthoriezed)
+    }
+
+    func testIsUnauthorizedError() {
+        let error = NetworkError(kind: .unauthorized)
+        XCTAssertTrue(error.isUnauthoriezed)
+    }
+
+    func testIsNotUnauthorizedErrorCombinedError() {
+        let validation = NetworkError(kind: .validation)
+        let parse = NetworkError(kind: .parse)
+        let combinedError = CombinedError(errors: [validation, parse])
+        XCTAssertFalse(combinedError.isUnauthoriezed)
+    }
+
+    func testIsUnauthorizedErrorCombinedError() {
+        let validation = NetworkError(kind: .validation)
+        let unauthorized = NetworkError(kind: .unauthorized)
+        let combinedError = CombinedError(errors: [validation, unauthorized])
+        XCTAssertTrue(combinedError.isUnauthoriezed)
+    }
 }
