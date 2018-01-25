@@ -119,6 +119,7 @@
 		56787E231FE1B9A3005F9B4E /* UIImageResize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56787E221FE1B9A3005F9B4E /* UIImageResize.swift */; };
 		5678B95F201A4D6000EBDD03 /* MetaTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678B95E201A4D6000EBDD03 /* MetaTest.swift */; };
 		5678B962201A51E900EBDD03 /* InternalNotificationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678B961201A51E900EBDD03 /* InternalNotificationTest.swift */; };
+		5678B965201A610800EBDD03 /* DeviceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678B964201A610800EBDD03 /* DeviceTest.swift */; };
 		5682D0621F86AA4E008DEC22 /* TeamListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5682D0611F86AA4E008DEC22 /* TeamListPresenter.swift */; };
 		5682D0651F86AA71008DEC22 /* TeamListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5682D0631F86AA71008DEC22 /* TeamListView.swift */; };
 		5682D0691F86AAB3008DEC22 /* TeamListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5682D0681F86AAB3008DEC22 /* TeamListFactory.swift */; };
@@ -451,6 +452,7 @@
 		56787E221FE1B9A3005F9B4E /* UIImageResize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageResize.swift; sourceTree = "<group>"; };
 		5678B95E201A4D6000EBDD03 /* MetaTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaTest.swift; sourceTree = "<group>"; };
 		5678B961201A51E900EBDD03 /* InternalNotificationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalNotificationTest.swift; sourceTree = "<group>"; };
+		5678B964201A610800EBDD03 /* DeviceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTest.swift; sourceTree = "<group>"; };
 		5682D0611F86AA4E008DEC22 /* TeamListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListPresenter.swift; sourceTree = "<group>"; };
 		5682D0631F86AA71008DEC22 /* TeamListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListView.swift; sourceTree = "<group>"; };
 		5682D0681F86AAB3008DEC22 /* TeamListFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListFactory.swift; sourceTree = "<group>"; };
@@ -1665,6 +1667,14 @@
 			path = Notification;
 			sourceTree = "<group>";
 		};
+		5678B963201A60F600EBDD03 /* Device */ = {
+			isa = PBXGroup;
+			children = (
+				5678B964201A610800EBDD03 /* DeviceTest.swift */,
+			);
+			path = Device;
+			sourceTree = "<group>";
+		};
 		5682D05D1F86AA2F008DEC22 /* Team */ = {
 			isa = PBXGroup;
 			children = (
@@ -2719,6 +2729,7 @@
 				569E55D51FDD76A800A22C22 /* Codable */,
 				569E55CF1FDD6E1000A22C22 /* Date */,
 				569E55D21FDD73B700A22C22 /* Debounce */,
+				5678B963201A60F600EBDD03 /* Device */,
 				566BFDD21F7C39DF0051AD9F /* Errors */,
 				56241E6E1FE05EAC00468062 /* Loader */,
 				569334FF1FDD7A4D00F0B108 /* String */,
@@ -3704,6 +3715,7 @@
 				565E80A51F670E29000DC618 /* ButtonTest.swift in Sources */,
 				5692AEAE1F6D6AC5004A65A4 /* DataSourceTest.swift in Sources */,
 				5692AEB91F6D7105004A65A4 /* DetectGhostInstallationTest.swift in Sources */,
+				5678B965201A610800EBDD03 /* DeviceTest.swift in Sources */,
 				569335041FDD7D7300F0B108 /* MockBuilder.swift in Sources */,
 				5692AEBF1F6D8973004A65A4 /* AsyncHelperTest.swift in Sources */,
 				56836BCA1F7ACEE8009ADE15 /* BlogSiteFactoryTest.swift in Sources */,
