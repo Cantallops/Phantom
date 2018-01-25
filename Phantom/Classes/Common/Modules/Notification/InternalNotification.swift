@@ -15,7 +15,7 @@ struct InternalNotification {
 class InternalNotificationCenter<T> {
     private let notificationCenter: NotificationCenter
 
-    init(notificationCenter: NotificationCenter = NotificationCenter.default) {
+    init(notificationCenter: NotificationCenter = .default) {
         self.notificationCenter = notificationCenter
     }
 

@@ -118,6 +118,7 @@
 		56787E201FE1B317005F9B4E /* NetworkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56787E1F1FE1B317005F9B4E /* NetworkImage.swift */; };
 		56787E231FE1B9A3005F9B4E /* UIImageResize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56787E221FE1B9A3005F9B4E /* UIImageResize.swift */; };
 		5678B95F201A4D6000EBDD03 /* MetaTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678B95E201A4D6000EBDD03 /* MetaTest.swift */; };
+		5678B962201A51E900EBDD03 /* InternalNotificationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678B961201A51E900EBDD03 /* InternalNotificationTest.swift */; };
 		5682D0621F86AA4E008DEC22 /* TeamListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5682D0611F86AA4E008DEC22 /* TeamListPresenter.swift */; };
 		5682D0651F86AA71008DEC22 /* TeamListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5682D0631F86AA71008DEC22 /* TeamListView.swift */; };
 		5682D0691F86AAB3008DEC22 /* TeamListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5682D0681F86AAB3008DEC22 /* TeamListFactory.swift */; };
@@ -449,6 +450,7 @@
 		56787E1F1FE1B317005F9B4E /* NetworkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkImage.swift; sourceTree = "<group>"; };
 		56787E221FE1B9A3005F9B4E /* UIImageResize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageResize.swift; sourceTree = "<group>"; };
 		5678B95E201A4D6000EBDD03 /* MetaTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaTest.swift; sourceTree = "<group>"; };
+		5678B961201A51E900EBDD03 /* InternalNotificationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalNotificationTest.swift; sourceTree = "<group>"; };
 		5682D0611F86AA4E008DEC22 /* TeamListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListPresenter.swift; sourceTree = "<group>"; };
 		5682D0631F86AA71008DEC22 /* TeamListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListView.swift; sourceTree = "<group>"; };
 		5682D0681F86AAB3008DEC22 /* TeamListFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListFactory.swift; sourceTree = "<group>"; };
@@ -1622,6 +1624,7 @@
 				56836BC11F7ACA0E009ADE15 /* Factory */,
 				5692AEBD1F6D8963004A65A4 /* Helper */,
 				5692AE9D1F6D5CD9004A65A4 /* Interactor */,
+				5678B960201A51C900EBDD03 /* Notification */,
 				5672C97D1F5F3FD400439F46 /* Presenter */,
 				5692AEA61F6D66C5004A65A4 /* Result */,
 				563189781F66F800006B29D5 /* View */,
@@ -1652,6 +1655,14 @@
 				56787E221FE1B9A3005F9B4E /* UIImageResize.swift */,
 			);
 			path = UIImage;
+			sourceTree = "<group>";
+		};
+		5678B960201A51C900EBDD03 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				5678B961201A51E900EBDD03 /* InternalNotificationTest.swift */,
+			);
+			path = Notification;
 			sourceTree = "<group>";
 		};
 		5682D05D1F86AA2F008DEC22 /* Team */ = {
@@ -3703,6 +3714,7 @@
 				5692AEA51F6D6459004A65A4 /* MockInteractor.swift in Sources */,
 				5693351F1FE059F000F0B108 /* UIViewUtilsTest.swift in Sources */,
 				5693350B1FDD7F4A00F0B108 /* TestFatalError.swift in Sources */,
+				5678B962201A51E900EBDD03 /* InternalNotificationTest.swift in Sources */,
 				561CD1971F71C46100EF7C8F /* TestNetworkProvider.swift in Sources */,
 				566BFDD71F7C3A590051AD9F /* SignInViewTest.swift in Sources */,
 			);
