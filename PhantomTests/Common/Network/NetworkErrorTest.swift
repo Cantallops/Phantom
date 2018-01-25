@@ -75,14 +75,14 @@ class NetworkErrorTest: XCTestCase {
         XCTAssertEqual(error.localizedDescription, errorText)
     }
 
-    func testInitWithResponseWithGhostErrors() {
+    func testInitWithResponseWithGhostErrors() throws {
         let ghostError = GhostError(
             message: "Message",
             context: "Context",
             errorType: NetworkError.Kind.validation.rawValue
         )
         let errors = GhostErrors(errors: [ghostError])
-        let data = try? JSONEncoder().encode(errors)
+        let data = try JSONEncoder().encode(errors)
         let networkResponse = Network.Response(
             data: data,
             response: nil,
