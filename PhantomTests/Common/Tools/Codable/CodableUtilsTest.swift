@@ -10,18 +10,14 @@ import XCTest
 
 class CodableUtilsTest: XCTestCase {
 
-    func testDecodeWithDate() {
+    func testDecodeWithDate() throws {
         let json = [
             "date": "01-02-1994 12:12",
             "string": "hi"
         ]
-        do {
-            let data = try JSONSerialization.data(withJSONObject: json, options: [])
-            let decodedObject = try CodableTestStruct.decode(data, dateFormat: "dd-MM-yyyy HH:mm")
-            XCTAssertEqual(decodedObject.string, "hi")
-        } catch let error {
-            XCTFail(error.localizedDescription)
-        }
+        let data = try JSONSerialization.data(withJSONObject: json, options: [])
+        let decodedObject = try CodableTestStruct.decode(data, dateFormat: "dd-MM-yyyy HH:mm")
+        XCTAssertEqual(decodedObject.string, "hi")
     }
 
 }
