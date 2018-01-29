@@ -23,7 +23,7 @@ enum ContentType: String {
     case multipart = "multipart/form-data"
 }
 
-struct Network {
+class Network: NSObject {
 
     var refreshOauth: DataSource<Oauth, Oauth>
 
@@ -38,6 +38,7 @@ struct Network {
     ) {
         self.provider = provider
         self.refreshOauth = refreshOauth
+        super.init()
     }
 
     var urlRequest: URLRequest {

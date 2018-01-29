@@ -10,7 +10,11 @@ import UIKit
 
 extension Network {
     func call<T: Codable>(tryRefreshOauth: Bool = true) -> Result<T> {
-        let session = URLSession.shared
+        let session = URLSession(
+            configuration: URLSession.shared.configuration,
+            delegate: self,
+            delegateQueue: nil
+        )
         let semaphore = DispatchSemaphore(value: 0)
         var result: Result<T> = .failure(NetworkError(kind: .unknown))
         networkIndicator(activate: true)
@@ -60,6 +64,18 @@ extension Network {
         return .failure(NetworkError(kind: .unknown, response: networkResponse))
     }
 
+}
+
+extension Network: URLSessionTaskDelegate {
+    func urlSession(_ session: URLSession,
+                    task: URLSessionTask,
+                    willPerformHTTPRedirection response: HTTPURLResponse,
+                    newRequest request: URLRequest,
+                    completionHandler: @escaping (URLRequest?) -> Void) {
+        var newRequest = urlRequest
+        newRequest.url = request.url
+        completionHandler(newRequest)
+    }
 }
 
 extension Network {
