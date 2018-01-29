@@ -1,6 +1,8 @@
-![](https://img.shields.io/badge/swift-v.4-green.svg)
-![](https://img.shields.io/badge/ios->=_10-green.svg)
-[![](https://img.shields.io/badge/manager-Carthage-blue.svg)](https://github.com/Carthage/Carthage)
+![](https://img.shields.io/badge/swift-4-green.svg)
+![](https://img.shields.io/badge/platform-iOS-lightgrey.svg)
+[![](https://img.shields.io/badge/dependecies-Carthage-blue.svg)](https://github.com/Carthage/Carthage)
+[![Build Status](https://travis-ci.org/Cantallops/Phantom.svg?branch=master)](https://travis-ci.org/Cantallops/Phantom)
+[![codecov](https://codecov.io/gh/Cantallops/Phantom/branch/master/graph/badge.svg)](https://codecov.io/gh/Cantallops/Phantom)
 
 **Currently in beta**
 

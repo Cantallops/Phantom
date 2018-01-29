@@ -20,6 +20,7 @@ class PresenterTest: XCTestCase {
         viewController = UIViewController()
         presenter.view = viewController
         set(rootViewController: presenter.view)
+        presenter.didLayoutSubviews()
     }
 
     override func tearDown() {
@@ -68,4 +69,11 @@ class PresenterTest: XCTestCase {
         waitForExpectations(timeout: 2, handler: nil)
     }
 
+    func testLoader() {
+        XCTAssertFalse(presenter.isLoading)
+        presenter.start()
+        XCTAssertTrue(presenter.isLoading)
+        presenter.stop()
+        XCTAssertFalse(presenter.isLoading)
+    }
 }

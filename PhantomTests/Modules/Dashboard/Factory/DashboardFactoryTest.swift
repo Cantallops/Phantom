@@ -37,15 +37,3 @@ class DashboardFactoryTest: XCTestCase {
         )
     }
 }
-
-private class PadDeviceMock: UIDevice {
-    override var userInterfaceIdiom: UIUserInterfaceIdiom {
-        return .pad
-    }
-}
-
-private class PhoneDeviceMock: UIDevice {
-    override var userInterfaceIdiom: UIUserInterfaceIdiom {
-        return .phone
-    }
-}

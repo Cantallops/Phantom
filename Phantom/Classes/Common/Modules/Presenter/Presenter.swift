@@ -78,17 +78,3 @@ extension Presenter: Loader {
         basicLoader.stop()
     }
 }
-
-extension Error {
-    var isUnauthoriezed: Bool {
-        if let error = self as? NetworkError {
-            return error.kind == .unauthorized
-        }
-        if let error = self as? CombinedError {
-            return error.errors.contains(where: {
-                return ($0 as? NetworkError)?.kind == .unauthorized
-            })
-        }
-        return false
-    }
-}
