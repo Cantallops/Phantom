@@ -10,7 +10,9 @@ languages([
   "en-US"
 ])
 
-scheme "PhantomDev"
+erase_simulator true
+
+scheme "PhantomScreenshots"
 
 output_directory "./fastlane/screenshots"
 
