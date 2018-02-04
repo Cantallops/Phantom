@@ -21,6 +21,16 @@ class StorySettingsPresenter: Presenter<StorySettingsView> {
     private let getMe: Interactor<Any?, TeamMember>
     private let metaDataBuilder: Builder<MetaDataArg, UIViewController>
 
+    private var me: TeamMember?
+    private var showAuthors: Bool {
+        if let me = me {
+            return me.role != .author
+        }
+        return false
+    }
+    private var authors: [Story.Author] = []
+    private var tags: [Tag] = []
+
     init(
         story: Story,
         onEdit: @escaping OnEditStoryAction,
@@ -43,31 +53,40 @@ class StorySettingsPresenter: Presenter<StorySettingsView> {
     override func didLoad() {
         super.didLoad()
         view.title = "Post settings"
-        loadSections()
+        loadTags()
+        loadAuthors()
     }
 
-    private func loadSections() {
-        async(background: { [unowned self] () -> Result<((Paginated<[Tag]>, Paginated<[TeamMember]>), TeamMember)> in
+    private func loadTags() {
+        async(background: { [unowned self]  () -> Result<Paginated<[Tag]>> in
             let meta = Meta(pagination: Meta.Pagination.all)
-            let result = self.getTags.execute(args: meta)
-                .combined(result: self.getMembers.execute(args: meta))
-                .combined(result: self.getMe.execute(args: nil))
-            return result
-        }, main: { [weak self] result in
+            return self.getTags.execute(args: meta)
+        }, main: {  [weak self] result in
             switch result {
-            case .success((let paginatedTag, let paginatedMembers), let me):
-                self?.loadSections(
-                    withTags: paginatedTag.object,
-                    authors: paginatedMembers.object.map({ $0.author }),
-                    showAuthors: me.role != .author)
-            case .failure(let error):
-                self?.show(error: error)
-                self?.loadSections(withTags: [], authors: [], showAuthors: false)
+            case .success(let paginatedTag): self?.tags = paginatedTag.object
+            case .failure(let error): self?.show(error: error)
             }
+            self?.showSections()
         })
     }
 
-    private func loadSections(withTags tags: [Tag], authors: [Story.Author], showAuthors: Bool) {
+    private func loadAuthors() {
+        async(background: { [unowned self] () -> Result<(Paginated<[TeamMember]>, TeamMember)> in
+            let meta = Meta(pagination: Meta.Pagination.all)
+            let result = self.getMembers.execute(args: meta).combined(result: self.getMe.execute(args: nil))
+            return result
+            }, main: { [weak self] result in
+                switch result {
+                case .success(let paginatedMembers, let me):
+                    self?.authors = paginatedMembers.object.map({ $0.author })
+                    self?.me = me
+                case .failure(let error): self?.show(error: error)
+                }
+                self?.showSections()
+        })
+    }
+
+    private func showSections() {
         view.sections = getSections(withTags: tags, authors: authors, showAuthors: showAuthors)
     }
 
@@ -128,8 +147,10 @@ class StorySettingsPresenter: Presenter<StorySettingsView> {
     private func edited(story: Story) {
         onEdit(story)
     }
+}
 
-    private func getUploadImageCellConf() -> TableCellConf {
+private extension StorySettingsPresenter {
+    func getUploadImageCellConf() -> TableCellConf {
         var featuredImageUrl = story.featureImage
         if let blogurl = Account.current?.blogUrl,
             let featureImage = story.featureImage, featureImage.starts(with: "/") {
@@ -152,7 +173,7 @@ class StorySettingsPresenter: Presenter<StorySettingsView> {
         return uploadImageCellConf
     }
 
-    private func getUrlFieldCellConf() -> TableCellConf {
+    func getUrlFieldCellConf() -> TableCellConf {
         func postURI(text: String?) -> String {
             let slug: String = text ?? ""
             var uri = "/"
@@ -175,7 +196,7 @@ class StorySettingsPresenter: Presenter<StorySettingsView> {
         return urlFieldCellConf
     }
 
-    private func getPreviewCellConf() -> TableCellConf {
+    func getPreviewCellConf() -> TableCellConf {
         let previewCellConf = BasicTableViewCell.Conf(
             text: "Preview",
             textColor: UIColor.darkText,
@@ -191,7 +212,7 @@ class StorySettingsPresenter: Presenter<StorySettingsView> {
         return previewCellConf
     }
 
-    private func getTagsTextViewCellConf(withTags tags: [Tag]) -> TableCellConf {
+    func getTagsTextViewCellConf(withTags tags: [Tag]) -> TableCellConf {
         let tagsTextViewCellConf = TagsTableViewCell.Conf(
             title: "Tags",
             onTagsChange: { [unowned self] _, tags in
@@ -204,7 +225,7 @@ class StorySettingsPresenter: Presenter<StorySettingsView> {
         return tagsTextViewCellConf
     }
 
-    private func getExcerptTextViewCellConf() -> TableCellConf {
+    func getExcerptTextViewCellConf() -> TableCellConf {
         let excerptTextViewCellConf = TextViewTableViewCell.Conf(
             title: "Excerpt",
             textViewText: story.excerpt,
@@ -216,7 +237,7 @@ class StorySettingsPresenter: Presenter<StorySettingsView> {
         return excerptTextViewCellConf
     }
 
-    private func getAuthorPickerCellConf(withAuthors authors: [Story.Author]) -> TableCellConf {
+    func getAuthorPickerCellConf(withAuthors authors: [Story.Author]) -> TableCellConf {
         let authorPicker = PickerTableViewCell.Conf(
             title: "Author",
             selected: story.author,
@@ -230,7 +251,7 @@ class StorySettingsPresenter: Presenter<StorySettingsView> {
         return authorPicker
     }
 
-    private func getMetaDataSection() -> [TableCellConf] {
+    func getMetaDataSection() -> [TableCellConf] {
         let metaDataInfoCellConf = SubtitleTableViewCell.Conf(
             text: "Meta Data",
             subtitle: "Extra content for SEO and social media"
@@ -243,7 +264,7 @@ class StorySettingsPresenter: Presenter<StorySettingsView> {
         return [metaDataInfoCellConf]
     }
 
-    private func getIsPageCellConf() -> TableCellConf {
+    func getIsPageCellConf() -> TableCellConf {
         let isPageCellConf = SwitchTableViewCell.Conf(
             text: "Turn this post into a page",
             onSwitch: { [unowned self] isPage in
@@ -255,7 +276,7 @@ class StorySettingsPresenter: Presenter<StorySettingsView> {
         return isPageCellConf
     }
 
-    private func getIsFeaturedCellConf() -> TableCellConf {
+    func getIsFeaturedCellConf() -> TableCellConf {
         let isFeaturedCellConf = SwitchTableViewCell.Conf(
             text: "Feature this post",
             onSwitch: { [unowned self] isFeatured in
@@ -267,7 +288,7 @@ class StorySettingsPresenter: Presenter<StorySettingsView> {
         return isFeaturedCellConf
     }
 
-    private func getDeleteCellConf() -> TableCellConf {
+    func getDeleteCellConf() -> TableCellConf {
         let deleteCellConf = BasicTableViewCell.Conf(
             text: "Delete post",
             textColor: Color.red,
@@ -280,7 +301,7 @@ class StorySettingsPresenter: Presenter<StorySettingsView> {
         return deleteCellConf
     }
 
-    private func openMetaDataEditor() {
+    func openMetaDataEditor() {
         let onEdit: OnEditMetaDataAction = { [unowned self] metaData in
             self.story.metaData = metaData
             self.edited(story: self.story)

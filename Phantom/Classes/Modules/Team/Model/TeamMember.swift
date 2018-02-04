@@ -12,7 +12,7 @@ struct TeamMember: Codable {
     let id: String
     var name: String
     var slug: String
-    let email: String
+    let email: String?
     var status: Status
     var roles: [Role]
     var lastSeen: Date?
