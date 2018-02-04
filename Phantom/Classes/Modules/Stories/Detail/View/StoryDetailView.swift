@@ -33,12 +33,12 @@ class StoryDetailView: ViewController {
 
     override var title: String? {
         didSet {
-            titleTextView.text = title
+            titleTextView.setTextKeepingSelection(title ?? "")
         }
     }
     var markdown: String = "" {
         didSet {
-            contentTextView?.text = markdown
+            contentTextView.setTextKeepingSelection(markdown)
         }
     }
     var html: Story.HTML? {

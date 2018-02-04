@@ -212,3 +212,13 @@ extension TextView {
         onScroll?(scrollView)
     }
 }
+
+extension TextView {
+    func setTextKeepingSelection(_ text: String) {
+        let range = selectedTextRange
+        self.text = text
+        if let range = range {
+            selectedTextRange = textRange(from: range.start, to: range.end)
+        }
+    }
+}
