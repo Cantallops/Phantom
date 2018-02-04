@@ -99,6 +99,7 @@ class TableViewController: UITableViewController, Presentable {
     }
 
     private func addRefresh() {
+        extendedLayoutIncludesOpaqueBars = true
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
     }
