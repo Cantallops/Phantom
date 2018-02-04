@@ -11,7 +11,6 @@ import UIKit
 class StoryDetailPresenter: Presenter<StoryDetailView> {
 
     private var autoSaveDebounce: Debounce!
-    private var autoHardSaveDebounce: Debounce!
 
     let createInteractor: Interactor<Story, Story>
     let editInteractor: Interactor<Story, Story>
@@ -60,7 +59,7 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
             }
         )
         autoSaveDebounce = Debounce(delay: 5) { [weak self] in
-            self?.save()
+            self?.save(auto: true)
         }
     }
 
@@ -96,7 +95,7 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
         }
     }
 
-    private func save() {
+    private func save(auto: Bool = false) {
         if story == initialStory || story.status == .published || story.status == .scheduled {
             return
         }
@@ -106,14 +105,22 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
             }, main: { [weak self] result in
                 switch result {
                 case .success(let story): self?.saveSucceed(story: story)
-                case .failure(let error): self?.handle(error: error)
+                case .failure(let error):
+                    if !auto {
+                        self?.handle(error: error)
+                    }
+                    self?.autoSave()
                 }
             })
         } else {
             update(story: story, loaders: [view]) { [weak self] result in
                 switch result {
                 case .success(let story): self?.saveSucceed(story: story)
-                case .failure(let error): self?.handle(error: error)
+                case .failure(let error):
+                    if !auto {
+                        self?.handle(error: error)
+                    }
+                    self?.autoSave()
                 }
             }
         }
@@ -127,8 +134,8 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
             switch result {
             case .success: self?.deleteSucceed()
             case .failure(let error):
-                self?.autoSaveDebounce.reset()
                 self?.handle(error: error)
+                self?.autoSave()
             }
         })
     }
@@ -166,7 +173,6 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
 
     private func handle(error: Error) {
         self.show(error: error)
-        autoSave()
     }
 
     private func changeContent(_ text: String?) {
