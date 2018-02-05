@@ -16,24 +16,14 @@ class ResultTest: XCTestCase {
         let result = Result {
             return expectedResult
         }
-        switch result {
-        case .success(let successResult):
-            XCTAssertEqual(successResult, expectedResult)
-        default:
-            XCTFail("Should initialize as success")
-        }
+        XCTAssertEqual(result.value!, expectedResult)
     }
 
     func testResultInitShoulInitializeWithFailure() {
         let result = Result {
             throw TestError()
         }
-        switch result {
-        case .failure(let errorResult):
-            XCTAssertTrue(errorResult is TestError)
-        default:
-            XCTFail("Should initialize as failure")
-        }
+        XCTAssertTrue(result.error! is TestError)
     }
 
     func testResultIsSuccessShouldReturnTrueAndIsFailureFalse() {

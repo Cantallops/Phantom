@@ -25,11 +25,7 @@ class InitialModuleServiceTest: XCTestCase {
             dashboardFactory: MockFactory<UIViewController>(result: dashboard)
         )
         application = UIApplication.shared
-        guard let delegate = application.delegate as? AppDelegate else {
-            XCTFail("Delegeta must be an AppDelegate instance")
-            return
-        }
-        self.delegate = delegate
+        self.delegate = (application.delegate as? AppDelegate)!
     }
 
     override func tearDown() {
@@ -61,10 +57,7 @@ class InitialModuleServiceTest: XCTestCase {
     func testShouldInitializeNavigationViewWithBlogSiteAsRoot() {
         let result = service.application?(application, didFinishLaunchingWithOptions: [:]) ?? false
         XCTAssertTrue(result, "Should return true")
-        guard let viewController = getRootViewController() else {
-            XCTFail("Root view controller should be initialized")
-            return
-        }
+        let viewController = getRootViewController()!
         XCTAssertTrue(viewController == dashboard, "The initial view should be Dashboard instance")
         XCTAssertTrue(viewController.presentedViewController == sessionView)
     }

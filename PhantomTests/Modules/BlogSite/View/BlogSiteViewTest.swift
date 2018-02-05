@@ -51,9 +51,7 @@ class BlogSiteViewTest: XCTestCase {
         let errorText = "Error"
         view.show(error: errorText)
         view.clearError()
-        if let errorLabelText = view.errorLabel.text {
-            XCTAssertTrue(errorLabelText.isEmpty, "Error label should be empty or nil")
-        }
+        XCTAssertNil(view.errorLabel.text)
     }
 
 }

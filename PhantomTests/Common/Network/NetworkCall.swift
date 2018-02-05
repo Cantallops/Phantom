@@ -30,11 +30,7 @@ class NetworkCall: XCTestCase {
 
         let response: Result<Data> = network.process(data: data, response: nil, error: nil)
         XCTAssertTrue(response.isSuccess)
-        switch response {
-        case .success(let value):
-            XCTAssertEqual(value, data)
-        default: XCTFail("Should succed")
-        }
+        XCTAssertEqual(response.value, data)
     }
 
     func testProcessFailure() {

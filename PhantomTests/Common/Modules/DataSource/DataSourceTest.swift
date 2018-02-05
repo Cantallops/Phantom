@@ -20,12 +20,7 @@ class DataSourceTest: XCTestCase {
 
     func testNotImplemented() {
         let result = dataSource.execute(args: "Hi")
-        switch result {
-        case .success:
-            XCTFail("Should return an error")
-        case .failure(let error):
-            XCTAssertTrue(error is NotImplementedError)
-        }
+        XCTAssertTrue(result.error! is NotImplementedError)
     }
 
 }

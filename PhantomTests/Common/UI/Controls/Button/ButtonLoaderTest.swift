@@ -21,10 +21,7 @@ class ButtonLoaderTest: XCTestCase {
     func testShouldAddSpinnerWhenLoadAndRemoveWhenStop() {
         XCTAssertNil(button.viewWithTag(9876))
         button.start()
-        guard let activeSpinner = button.viewWithTag(9876) as? UIActivityIndicatorView else {
-            XCTFail("Should have a activity indicator")
-            return
-        }
+        let activeSpinner = (button.viewWithTag(9876) as? UIActivityIndicatorView)!
         XCTAssertTrue(activeSpinner.isAnimating)
         button.stop()
         XCTAssertNil(button.viewWithTag(9876))

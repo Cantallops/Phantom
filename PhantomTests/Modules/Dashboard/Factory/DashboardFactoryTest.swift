@@ -14,10 +14,7 @@ class DashboardFactoryTest: XCTestCase {
     func testBuildForPhone() {
         let factory = DashboardFactory(device: PhoneDeviceMock())
         let view = factory.build()
-        guard let viewController = view as? DashboardView else {
-            XCTFail("Should return an instance of DashboardView instead of \(type(of: view))")
-            return
-        }
+        let viewController = (view as? DashboardView)!
         XCTAssertTrue(
             type(of: viewController.presenter) == DashboardPresenter.self,
             "Presenter should be an instance of DashboardPresenter"
@@ -27,10 +24,7 @@ class DashboardFactoryTest: XCTestCase {
     func testBuildForTablet() {
         let factory = DashboardFactory(device: PadDeviceMock())
         let view = factory.build()
-        guard let viewController = view as? TabletDashboardView else {
-            XCTFail("Should return an instance of TabletDashboardView instead of \(type(of: view))")
-            return
-        }
+        let viewController = (view as? TabletDashboardView)!
         XCTAssertTrue(
             type(of: viewController.presenter) == TabletDashboardPresenter.self,
             "Presenter should be an instance of TabletDashboardPresenter"

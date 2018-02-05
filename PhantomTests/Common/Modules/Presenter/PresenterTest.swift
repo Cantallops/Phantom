@@ -51,10 +51,7 @@ class PresenterTest: XCTestCase {
         XCTAssertNil(viewController.presentedViewController, "Should not present anything")
         let error = NetworkError(kind: .unknown, localizedDescription: "Text to show in error")
         presenter.show(error: error)
-        guard let alert = viewController.presentedViewController as? UIAlertController else {
-            XCTFail("Should present UIAlertController")
-            return
-        }
+        let alert = (viewController.presentedViewController as? UIAlertController)!
         XCTAssertEqual(alert.title, "Something was wrong")
         XCTAssertEqual(alert.message, error.localizedDescription)
         XCTAssertEqual(alert.actions.count, 1)

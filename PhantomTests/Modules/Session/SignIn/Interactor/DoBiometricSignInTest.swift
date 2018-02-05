@@ -19,12 +19,7 @@ class DoBiometricSignInTest: XCTestCase {
 
     func testShouldFailureBecauseIsNotImplemented() {
         let result = interactor.execute(args: nil)
-        switch result {
-        case .failure(let error):
-            XCTAssertTrue(error is Errors.Biometric)
-        default:
-            XCTFail("Should failure")
-        }
+        XCTAssertTrue(result.error! is Errors.Biometric)
     }
 
 }

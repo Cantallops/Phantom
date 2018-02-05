@@ -25,7 +25,7 @@ class InternalNotificationTest: XCTestCase {
         XCTAssertNil(notificationCenter.lastObjectObserver)
         let observer = internalNotificationCenter.addObserver(forType: notification) { _ in
         }
-        XCTAssertTrue(observer.isEqual(notificationCenter.lastObjectObserver), "Add observer does not work")
+        XCTAssertTrue(observer.isEqual(notificationCenter.lastObjectObserver))
     }
 
     func testRemoveObserver() {
@@ -33,7 +33,7 @@ class InternalNotificationTest: XCTestCase {
         let observer = internalNotificationCenter.addObserver(forType: notification) { _ in
         }
         internalNotificationCenter.remove(observer: observer)
-        XCTAssertTrue(observer.isEqual(notificationCenter.lastObjectObserverRemoved), "Add observer does not work")
+        XCTAssertTrue(observer.isEqual(notificationCenter.lastObjectObserverRemoved))
     }
 
     func testPostNotification() {

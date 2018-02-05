@@ -36,11 +36,7 @@ class ViewControllerTest: XCTestCase {
         XCTAssertNil(view.presentedViewController, "Should not present anything")
         let viewControllerToPresent = UIViewController()
         view.present(viewControllerToPresent, animated: false)
-        guard let presentedViewController = view.presentedViewController else {
-            XCTFail("Should present viewControllerToPresent")
-            return
-        }
-        XCTAssertEqual(presentedViewController, viewControllerToPresent)
+        XCTAssertEqual(view.presentedViewController, viewControllerToPresent)
     }
 
     func testPresentViewControllerShoulPresentOnTopOfNavController() {
@@ -51,10 +47,6 @@ class ViewControllerTest: XCTestCase {
         XCTAssertNil(view.presentedViewController, "View should not present anything")
         let viewControllerToPresent = UIViewController()
         view.present(viewControllerToPresent, animated: false)
-        guard let presentedViewController = nav.presentedViewController else {
-            XCTFail("Should present viewControllerToPresent on nav")
-            return
-        }
-        XCTAssertEqual(presentedViewController, viewControllerToPresent)
+        XCTAssertEqual(nav.presentedViewController, viewControllerToPresent)
     }
 }
