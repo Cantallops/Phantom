@@ -35,11 +35,15 @@ class UploadFile: DataSource<File, String> {
         let result: Result<Data> = Network(provider: provider).call()
         switch result {
         case .success(let data):
-            if let uri = String(data: data, encoding: .utf8) {
-                return .success(uri.replacing("\"", ""))
-            }
             let error = NetworkError(kind: .parse, debugDescription: "No image's URI found")
-            return .failure(error)
+            guard let escapedUri = String(data: data, encoding: .utf8) else {
+                return .failure(error)
+            }
+            let uri = escapedUri.replacing("\"", "")
+            if URL(string: uri) == nil {
+                return .failure(error)
+            }
+            return .success(uri)
         case .failure(let error):
             return .failure(error)
         }
