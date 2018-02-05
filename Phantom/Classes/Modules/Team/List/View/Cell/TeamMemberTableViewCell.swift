@@ -12,8 +12,8 @@ class TeamMemberTableViewCell: TableViewCell {
 
     @IBOutlet weak var nameLabel: Label!
     @IBOutlet weak var lastSeenLabel: Label!
-    @IBOutlet weak var roleView: UIView!
-    @IBOutlet weak var roleLabel: Label!
+    @IBOutlet weak var roleBadge: BadgeView!
+    @IBOutlet weak var statusBadge: BadgeView!
 
     class Conf: TableCellConf {
         var user: TeamMember
@@ -32,11 +32,9 @@ class TeamMemberTableViewCell: TableViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-        blockSelectChangeColor = [roleView]
-        roleView.clipsToBounds = true
-        roleView.layer.cornerRadius = 3
-        roleView.layer.borderWidth = 0
-        roleView.layer.borderColor = UIColor.clear.cgColor
+        blockSelectChangeColor = [roleBadge]
+        roleBadge.showBorder = false
+        statusBadge.isHidden = true
         lastSeenLabel.text = ""
     }
 
@@ -44,6 +42,8 @@ class TeamMemberTableViewCell: TableViewCell {
         super.prepareForReuse()
         imageView?.image = nil
         lastSeenLabel.text = ""
+        statusBadge.isHidden = true
+        statusBadge.text = nil
     }
 
     override func configure(with configuration: TableCellConf) {
@@ -59,12 +59,14 @@ class TeamMemberTableViewCell: TableViewCell {
         } else {
             lastSeenLabel.text = "Last seen: never"
         }
-        roleView.backgroundColor = conf.user.role.backgroundColor
-        roleLabel.textColor = conf.user.role.textColor
-        roleLabel.text = conf.user.role.rawValue.capitalized
-        if conf.user.role == .author {
-            roleView.layer.borderWidth = 1
-            roleView.layer.borderColor = Color.lightGrey.cgColor
+        roleBadge.color = conf.user.role.backgroundColor
+        roleBadge.textColor = conf.user.role.textColor
+        roleBadge.text = conf.user.role.rawValue.capitalized
+        roleBadge.showBorder = conf.user.role == .author
+
+        if conf.user.status == .locked {
+            statusBadge.isHidden = false
+            statusBadge.text =  conf.user.status.rawValue.capitalized
         }
     }
 

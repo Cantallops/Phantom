@@ -275,6 +275,8 @@
 		56A1FC761FFADB7800E88EF2 /* EmptyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A1FC751FFADB7800E88EF2 /* EmptyTableView.swift */; };
 		56A1FC781FFADB8700E88EF2 /* EmptyTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A1FC771FFADB8700E88EF2 /* EmptyTableView.xib */; };
 		56A69B1C2028C494008544F7 /* TeamMemberStatusTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A69B1B2028C494008544F7 /* TeamMemberStatusTest.swift */; };
+		56A69B1F2028C6EE008544F7 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A69B1E2028C6EE008544F7 /* BadgeView.swift */; };
+		56A69B212028C701008544F7 /* BadgeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A69B202028C701008544F7 /* BadgeView.xib */; };
 		56AFDF101F816AD600ADA640 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AFDF0F1F816AD600ADA640 /* DashboardView.swift */; };
 		56AFDF161F869FE500ADA640 /* StoriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AFDF141F869FE500ADA640 /* StoriesListView.swift */; };
 		56AFDF1A1F86A00400ADA640 /* StoriesListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AFDF191F86A00400ADA640 /* StoriesListFactory.swift */; };
@@ -622,6 +624,8 @@
 		56A1FC771FFADB8700E88EF2 /* EmptyTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyTableView.xib; sourceTree = "<group>"; };
 		56A1FC791FFB055700E88EF2 /* SimulatorStatusMagiciOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SimulatorStatusMagiciOS.framework; path = Carthage/Build/iOS/SimulatorStatusMagiciOS.framework; sourceTree = "<group>"; };
 		56A69B1B2028C494008544F7 /* TeamMemberStatusTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMemberStatusTest.swift; sourceTree = "<group>"; };
+		56A69B1E2028C6EE008544F7 /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
+		56A69B202028C701008544F7 /* BadgeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BadgeView.xib; sourceTree = "<group>"; };
 		56AFDF0F1F816AD600ADA640 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		56AFDF141F869FE500ADA640 /* StoriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListView.swift; sourceTree = "<group>"; };
 		56AFDF191F86A00400ADA640 /* StoriesListFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListFactory.swift; sourceTree = "<group>"; };
@@ -1201,6 +1205,7 @@
 		565E809E1F670AF8000DC618 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				56A69B1D2028C6D2008544F7 /* Badge */,
 				5690513F1FA3D9D7007DF910 /* Table */,
 				565E809F1F670B03000DC618 /* Label.swift */,
 				56836BBF1F7AC7FD009ADE15 /* NavigationController.swift */,
@@ -3044,6 +3049,15 @@
 			path = Empty;
 			sourceTree = "<group>";
 		};
+		56A69B1D2028C6D2008544F7 /* Badge */ = {
+			isa = PBXGroup;
+			children = (
+				56A69B1E2028C6EE008544F7 /* BadgeView.swift */,
+				56A69B202028C701008544F7 /* BadgeView.xib */,
+			);
+			path = Badge;
+			sourceTree = "<group>";
+		};
 		56AFDF0D1F816A9500ADA640 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -3510,6 +3524,7 @@
 				568558C61F8947ED000AA39F /* DesignView.xib in Resources */,
 				56A1FC781FFADB8700E88EF2 /* EmptyTableView.xib in Resources */,
 				560867121FA9D7F7002A9790 /* TextViewTableViewCell.xib in Resources */,
+				56A69B212028C701008544F7 /* BadgeView.xib in Resources */,
 				56A1FC741FFAD4D800E88EF2 /* EmptyButtonTableView.xib in Resources */,
 				56622C1A1FC08A5900CD5B13 /* logo.png in Resources */,
 				569448011FEEB4590045B752 /* PickerTableViewCell.xib in Resources */,
@@ -3671,6 +3686,7 @@
 				568558DE1F894A94000AA39F /* TagDetailView.swift in Sources */,
 				56178B721FAF8C0000EA8026 /* LoadStateService.swift in Sources */,
 				56FDE12A1FB8AA3D009678AC /* AccountKeychain.swift in Sources */,
+				56A69B1F2028C6EE008544F7 /* BadgeView.swift in Sources */,
 				56622C111FC06F5700CD5B13 /* GetMembers.swift in Sources */,
 				5694480B1FEEFF560045B752 /* AboutGhost.swift in Sources */,
 				568558B71F894682000AA39F /* AppsPresenter.swift in Sources */,

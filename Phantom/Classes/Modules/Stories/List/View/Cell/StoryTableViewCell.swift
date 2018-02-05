@@ -11,8 +11,7 @@ import UIKit
 class StoryTableViewCell: TableViewCell {
 
     @IBOutlet weak var titleLabel: Label!
-    @IBOutlet weak var statusLabel: Label!
-    @IBOutlet weak var statusView: UIView!
+    @IBOutlet weak var statusBadge: BadgeView!
     @IBOutlet weak var authorLabel: Label!
     @IBOutlet weak var timeLabel: Label!
 
@@ -32,9 +31,7 @@ class StoryTableViewCell: TableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        blockSelectChangeColor = [statusView]
-        statusView.layer.cornerRadius = 3
-        statusView.clipsToBounds = true
+        blockSelectChangeColor = [statusBadge]
     }
 
     override func prepareForReuse() {
@@ -56,13 +53,14 @@ class StoryTableViewCell: TableViewCell {
     }
 
     private func configure(badgeWith conf: Conf) {
-        statusLabel.text = conf.story.status.rawValue.capitalized
-        statusView.backgroundColor = conf.story.status.backgroundColor
-        statusLabel.textColor = conf.story.status.textColor
+        statusBadge.showBorder = false
+        statusBadge.text = conf.story.status.rawValue.capitalized
+        statusBadge.color = conf.story.status.backgroundColor
+        statusBadge.textColor = conf.story.status.textColor
         if conf.story.page && conf.story.status != .draft {
-            statusLabel.text = "Page"
-            statusView.backgroundColor = UIColor.black
-            statusLabel.textColor = Color.white
+            statusBadge.text = "Page"
+            statusBadge.color = UIColor.black
+            statusBadge.textColor = Color.white
         }
     }
 
