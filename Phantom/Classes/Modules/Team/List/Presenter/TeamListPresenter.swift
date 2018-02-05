@@ -68,10 +68,9 @@ class TeamListPresenter: Presenter<TeamListView> {
             conf.canSelect = false
             // End fixme
             conf.deselect = true
-            switch user.status {
-            case .active:
+            if user.status.isActiveStatus() {
                 activeCells.append(conf)
-            case .inactive:
+            } else {
                 inactiveCells.append(conf)
             }
         }

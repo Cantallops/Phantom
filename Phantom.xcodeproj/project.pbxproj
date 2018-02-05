@@ -274,6 +274,7 @@
 		56A1FC741FFAD4D800E88EF2 /* EmptyButtonTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A1FC731FFAD4D800E88EF2 /* EmptyButtonTableView.xib */; };
 		56A1FC761FFADB7800E88EF2 /* EmptyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A1FC751FFADB7800E88EF2 /* EmptyTableView.swift */; };
 		56A1FC781FFADB8700E88EF2 /* EmptyTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A1FC771FFADB8700E88EF2 /* EmptyTableView.xib */; };
+		56A69B1C2028C494008544F7 /* TeamMemberStatusTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A69B1B2028C494008544F7 /* TeamMemberStatusTest.swift */; };
 		56AFDF101F816AD600ADA640 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AFDF0F1F816AD600ADA640 /* DashboardView.swift */; };
 		56AFDF161F869FE500ADA640 /* StoriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AFDF141F869FE500ADA640 /* StoriesListView.swift */; };
 		56AFDF1A1F86A00400ADA640 /* StoriesListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AFDF191F86A00400ADA640 /* StoriesListFactory.swift */; };
@@ -620,6 +621,7 @@
 		56A1FC751FFADB7800E88EF2 /* EmptyTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableView.swift; sourceTree = "<group>"; };
 		56A1FC771FFADB8700E88EF2 /* EmptyTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyTableView.xib; sourceTree = "<group>"; };
 		56A1FC791FFB055700E88EF2 /* SimulatorStatusMagiciOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SimulatorStatusMagiciOS.framework; path = Carthage/Build/iOS/SimulatorStatusMagiciOS.framework; sourceTree = "<group>"; };
+		56A69B1B2028C494008544F7 /* TeamMemberStatusTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMemberStatusTest.swift; sourceTree = "<group>"; };
 		56AFDF0F1F816AD600ADA640 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		56AFDF141F869FE500ADA640 /* StoriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListView.swift; sourceTree = "<group>"; };
 		56AFDF191F86A00400ADA640 /* StoriesListFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListFactory.swift; sourceTree = "<group>"; };
@@ -1050,6 +1052,7 @@
 			isa = PBXGroup;
 			children = (
 				5639AA78201A778B00B8753E /* MockTeamMember.swift */,
+				56A69B1B2028C494008544F7 /* TeamMemberStatusTest.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3838,6 +3841,7 @@
 				566DB6BC1FF584960000124D /* TagsListFactoryTest.swift in Sources */,
 				566DB67D1FF570230000124D /* AcknowledgementsFactoryTest.swift in Sources */,
 				566DB68C1FF57B160000124D /* AppsFactoryTest.swift in Sources */,
+				56A69B1C2028C494008544F7 /* TeamMemberStatusTest.swift in Sources */,
 				561CD18B1F7191F400EF7C8F /* NetworkTest.swift in Sources */,
 				56836BC71F7ACD80009ADE15 /* SignInFactoryTest.swift in Sources */,
 				566BFDD41F7C39EC0051AD9F /* FormErrors.swift in Sources */,
