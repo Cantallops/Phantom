@@ -26,6 +26,7 @@ class StoryDetailView: ViewController {
             titleTextView?.onWrite = onWriteTitle
         }
     }
+    var onTitleResignFirstResponder: TextView.OnResignFirstResponder
     var onStoryAction: (() -> Void)?
     var onStorySettings: (() -> Void)?
     var onBack: (() -> Void)?
@@ -111,6 +112,7 @@ class StoryDetailView: ViewController {
         titleTextView.layer.borderWidth = 0
         titleTextView.layer.cornerRadius = 0
         titleTextView.onWrite = onWriteTitle
+        titleTextView.onResignFirstResponder = onTitleResignFirstResponder
         titleTextView.backgroundColor = .clear
         titleTextView.onEnter = { [unowned self] in
             self.contentTextView.selectedRange = NSRange(location: 0, length: 0)

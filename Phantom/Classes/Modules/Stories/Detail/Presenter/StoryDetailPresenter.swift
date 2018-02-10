@@ -50,6 +50,7 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
         view.onStorySettings = settingsAction
         view.onBack = askToSaveIfNecessaryBeforeDismiss
         view.onInsertImage = uploadImage
+        view.onTitleResignFirstResponder = saveIfIsNewStory
         imageUploader = ImageUploader(
             onResult: { [weak self] result, _ in
                 switch result {
@@ -68,9 +69,12 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
         autoSaveDebounce.invalidate()
     }
 
-    private func setUpView() {
+    private func setUpView(firstSave: Bool = false) {
         view?.title = story.title
-        view?.markdown = story.markdown
+        // Avoid to change the text when user is typing
+        if !firstSave {
+            view?.markdown = story.markdown
+        }
         view?.html = story.html
         view?.status = story.status.rawValue.capitalized
         var actionText: String? = nil
@@ -82,7 +86,7 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
         case .scheduled:
             actionText = "Scheduled"
         }
-        if story.id.isEmpty {
+        if story.isNew {
             actionText = nil
         }
         view?.storyAction = actionText
@@ -90,8 +94,12 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
 
     private func autoSave() {
         autoSaveDebounce.call()
-        if story.id.isEmpty && !view.isLoading {
-            autoSaveDebounce.fire()
+    }
+
+    private func saveIfIsNewStory() {
+        if story.isNew {
+            autoSaveDebounce.invalidate()
+            save()
         }
     }
 
@@ -141,9 +149,10 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
     }
 
     private func saveSucceed(story: Story) {
+        let firstSave = self.story.isNew
         self.story = story
         self.initialStory = story
-        setUpView()
+        setUpView(firstSave: firstSave)
         autoSave()
     }
 
@@ -176,8 +185,12 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
     }
 
     private func changeContent(_ text: String?) {
-        story.markdown = text ?? ""
+        let text: String = text ?? ""
+        story.markdown = text
         autoSave()
+        if !text.isEmpty && !view.isLoading {
+            saveIfIsNewStory()
+        }
     }
 
     private func changeTitle(_ text: String?) {
