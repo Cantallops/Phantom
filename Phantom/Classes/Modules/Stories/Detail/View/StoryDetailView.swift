@@ -29,6 +29,7 @@ class StoryDetailView: ViewController {
     var onTitleResignFirstResponder: TextView.OnResignFirstResponder
     var onStoryAction: (() -> Void)?
     var onStorySettings: (() -> Void)?
+    var onPreview: (() -> Void)?
     var onBack: (() -> Void)?
     var onInsertImage: (() -> Void)?
 
@@ -155,9 +156,17 @@ class StoryDetailView: ViewController {
                 target: self,
                 action: #selector(tapSettings)
             )
+
+            let preview = UIBarButtonItem(
+                image: #imageLiteral(resourceName: "ic_post_preview").withRenderingMode(.alwaysOriginal),
+                style: .plain,
+                target: self,
+                action: #selector(tapPreview)
+            )
+
             conf.accessibilityIdentifier = "storySettings"
 
-            navigationItem.rightBarButtonItems = [conf, action]
+            navigationItem.rightBarButtonItems = [conf, preview, action]
         } else {
             navigationItem.rightBarButtonItems = []
         }
@@ -168,21 +177,14 @@ class StoryDetailView: ViewController {
         navigationItem.leftBarButtonItem = status
     }
 
-    // FIXME: Reenable preview
     private func setUpTootlbar() {
         let flex = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        /*let preview = UIBarButtonItem(
-            image: #imageLiteral(resourceName: "ic_post_preview").withRenderingMode(.alwaysOriginal),
-            style: .plain,
-            target: self,
-            action: #selector(tapPreview)
-        )*/
         let done = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(tapBack))
 
         navigationController?.toolbar.setShadowImage(UIImage(), forToolbarPosition: .any)
         navigationController?.toolbar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
         navigationController?.toolbar.isTranslucent = false
-        toolbarItems = [done, flex/*, preview*/]
+        toolbarItems = [done, flex]
     }
 
     private func setUpContentToolbar() {
@@ -218,11 +220,9 @@ class StoryDetailView: ViewController {
         onStoryAction?()
     }
 
-    /*@objc func tapPreview() {
-        previewView.scrollView.setContentOffset(.zero, animated: true)
-        contentTextView.setContentOffset(.zero, animated: true)
-        previewView.isHidden = !previewView.isHidden
-    }*/
+    @objc func tapPreview() {
+        onPreview?()
+    }
 
     @objc func tapSettings() {
         onStorySettings?()
@@ -286,5 +286,12 @@ extension StoryDetailView: Loader {
 
     func stop() {
         setUpTootlbar()
+    }
+}
+
+class StoryPreview: WebViewController {
+    func load(story: Story) {
+        title = "Preview"
+        load(url: URL(string: "\(Account.current!.blogUrl)p/\(story.uuid)/")!)
     }
 }

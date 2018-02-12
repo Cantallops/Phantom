@@ -204,9 +204,8 @@ private extension StorySettingsPresenter {
         )
         previewCellConf.deselect = true
         previewCellConf.onSelect = { [unowned self] in
-            let webView = WebViewController()
-            webView.title = "Preview"
-            webView.load(url: URL(string: "\(Account.current!.blogUrl)p/\(self.story.uuid)/")!)
+            let webView = StoryPreview()
+            webView.load(story: self.story)
             self.view.navigationController?.pushViewController(webView, animated: true)
         }
         return previewCellConf

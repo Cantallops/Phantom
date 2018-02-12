@@ -26,7 +26,7 @@ class GetAcknowledgementsTest: XCTestCase {
 
     func testShouldReturnThreeAcknowledgements() {
         let result = interactor.execute(args: nil)
-        XCTAssertEqual(result.value?.count, 3)
+        XCTAssertEqual(result.value?.count, 4)
     }
 
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ToastSwiftFramework
 
 class StoryDetailPresenter: Presenter<StoryDetailView> {
 
@@ -51,6 +52,7 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
         view.onBack = askToSaveIfNecessaryBeforeDismiss
         view.onInsertImage = uploadImage
         view.onTitleResignFirstResponder = saveIfIsNewStory
+        view.onPreview = preview
         imageUploader = ImageUploader(
             onResult: { [weak self] result, _ in
                 switch result {
@@ -103,8 +105,9 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
         }
     }
 
-    private func save(auto: Bool = false) {
+    private func save(auto: Bool = false, onSave: (() -> Void)? = nil) {
         if story == initialStory || story.status == .published || story.status == .scheduled {
+            autoSave()
             return
         }
         if story.isNew {
@@ -112,7 +115,9 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
                 return self.createInteractor.execute(args: self.story)
             }, main: { [weak self] result in
                 switch result {
-                case .success(let story): self?.saveSucceed(story: story)
+                case .success(let story):
+                    self?.saveSucceed(story: story)
+                    onSave?()
                 case .failure(let error):
                     if !auto {
                         self?.handle(error: error)
@@ -123,7 +128,9 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
         } else {
             update(story: story, loaders: [view]) { [weak self] result in
                 switch result {
-                case .success(let story): self?.saveSucceed(story: story)
+                case .success(let story):
+                    self?.saveSucceed(story: story)
+                    onSave?()
                 case .failure(let error):
                     if !auto {
                         self?.handle(error: error)
@@ -215,31 +222,46 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
         var story = self.story
         switch publishAction {
         case .none: break
-        case .publish:
-            story.publish()
-        case .update:
-            story.publish()
-        case .unschedule:
-            story.setDraft()
-        case .unpublish:
-            story.setDraft()
-        case .schedule(let date):
-            story.schedule(forDate: date)
+        case .publish, .update: story.publish()
+        case .unschedule, .unpublish: story.setDraft()
+        case .schedule(let date): story.schedule(forDate: date)
         }
-
         update(story: story, loaders: loaders, onResult: { [weak self] result in
             switch result {
-            case .success(let story):
-                self?.saveSucceed(story: story)
+            case .success(let story): self?.saveSucceed(story: story)
             case .failure: break
             }
             resultAction(result)
         })
     }
 
+    private func preview() {
+        if needToBeSaved(story: story) {
+            var text = "You should save the post before preview it correctly"
+            if story.status == .draft {
+                text = "Saving, when it finishes you will see the preview"
+                save(auto: true) { [weak self] in
+                    self?.goToPreview()
+                    self?.view.view.hideToast()
+                    self?.view.view.hideToastActivity()
+                }
+                view.view.makeToastActivity(.center)
+            }
+            view.view.makeToast(text, duration: 3.0, position: .top)
+            return
+        }
+        goToPreview()
+    }
+
+    private func goToPreview() {
+        let webView = StoryPreview()
+        webView.load(story: story)
+        view.navigationController?.pushViewController(webView, animated: true)
+    }
+
     private func askToSaveIfNecessaryBeforeDismiss() {
         guard let nav = view.navigationController else { return }
-        if story == initialStory || story.isNew {
+        if !needToBeSaved(story: story) {
             nav.dismiss(animated: true)
             return
         }
@@ -250,6 +272,13 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
             message: "Hey there! It looks like you're in the middle of writing something and you haven't saved all of your content.",
             preferredStyle: .alert
         )
+        if story.status == .draft {
+            alert.addAction(UIAlertAction(title: "Save and leave", style: .default, handler: { _ in
+                self.save {
+                    nav.dismiss(animated: true)
+                }
+            }))
+        }
         alert.addAction(UIAlertAction(title: "Leave", style: .destructive, handler: { _ in
             nav.dismiss(animated: true)
         }))
@@ -257,6 +286,10 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
             self?.autoSaveDebounce.reset()
         }))
         nav.present(alert, animated: true, completion: nil)
+    }
+
+    private func needToBeSaved(story: Story) -> Bool {
+        return story.isNew || story != initialStory
     }
 
     private func uploadImage() {
