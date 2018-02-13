@@ -312,6 +312,11 @@
 		56EB105F2033719E0070BE17 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EB105E2033719E0070BE17 /* Bundle.swift */; };
 		56EB1062203371DF0070BE17 /* BundleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EB1061203371DF0070BE17 /* BundleTest.swift */; };
 		56EB106420337A830070BE17 /* BlogConfigurationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EB106320337A830070BE17 /* BlogConfigurationTest.swift */; };
+		56EB106A20337E960070BE17 /* UITableViewSectionFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EB106920337E960070BE17 /* UITableViewSectionFooter.swift */; };
+		56EB106C20337EE20070BE17 /* UITableViewSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EB106B20337EE20070BE17 /* UITableViewSectionHeader.swift */; };
+		56EB106E203381410070BE17 /* UITableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EB106D203381410070BE17 /* UITableViewSection.swift */; };
+		56EB107020338CD60070BE17 /* UITableViewFullDelegateTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EB106F20338CD60070BE17 /* UITableViewFullDelegateTest.swift */; };
+		56EB107320338EA80070BE17 /* UITableViewSectionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EB107220338EA80070BE17 /* UITableViewSectionTest.swift */; };
 		56EC330C1FABA9C100A5742A /* GetTagListRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EC330B1FABA9C100A5742A /* GetTagListRemote.swift */; };
 		56EC330F1FABB42900A5742A /* DeleteTagRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EC330E1FABB42900A5742A /* DeleteTagRemote.swift */; };
 		56EC33111FABB57D00A5742A /* PutTagRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EC33101FABB57D00A5742A /* PutTagRemote.swift */; };
@@ -662,6 +667,11 @@
 		56EB105E2033719E0070BE17 /* Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		56EB1061203371DF0070BE17 /* BundleTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleTest.swift; sourceTree = "<group>"; };
 		56EB106320337A830070BE17 /* BlogConfigurationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogConfigurationTest.swift; sourceTree = "<group>"; };
+		56EB106920337E960070BE17 /* UITableViewSectionFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewSectionFooter.swift; sourceTree = "<group>"; };
+		56EB106B20337EE20070BE17 /* UITableViewSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewSectionHeader.swift; sourceTree = "<group>"; };
+		56EB106D203381410070BE17 /* UITableViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewSection.swift; sourceTree = "<group>"; };
+		56EB106F20338CD60070BE17 /* UITableViewFullDelegateTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewFullDelegateTest.swift; sourceTree = "<group>"; };
+		56EB107220338EA80070BE17 /* UITableViewSectionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewSectionTest.swift; sourceTree = "<group>"; };
 		56EC330B1FABA9C100A5742A /* GetTagListRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTagListRemote.swift; sourceTree = "<group>"; };
 		56EC330E1FABB42900A5742A /* DeleteTagRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTagRemote.swift; sourceTree = "<group>"; };
 		56EC33101FABB57D00A5742A /* PutTagRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PutTagRemote.swift; sourceTree = "<group>"; };
@@ -1219,6 +1229,7 @@
 		565E80A11F670E0E000DC618 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				56EB106520337DCD0070BE17 /* View */,
 				565E80A21F670E14000DC618 /* Controls */,
 			);
 			path = UI;
@@ -2384,7 +2395,7 @@
 		5690513F1FA3D9D7007DF910 /* Table */ = {
 			isa = PBXGroup;
 			children = (
-				569051411FA3DA26007DF910 /* UITableViewFullDelegate.swift */,
+				56EB106720337E630070BE17 /* Delegate */,
 				56A1FC701FFAD45400E88EF2 /* Empty */,
 				569447DD1FE9C3310045B752 /* Section */,
 			);
@@ -2616,9 +2627,10 @@
 		569447D21FE9AD0A0045B752 /* Header */ = {
 			isa = PBXGroup;
 			children = (
-				569447E21FE9C46B0045B752 /* Subtitle */,
+				56EB106B20337EE20070BE17 /* UITableViewSectionHeader.swift */,
 				569447DA1FE9C1AE0045B752 /* Empty */,
 				569447D91FE9C1A60045B752 /* Simple */,
+				569447E21FE9C46B0045B752 /* Subtitle */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -2643,6 +2655,7 @@
 		569447DD1FE9C3310045B752 /* Section */ = {
 			isa = PBXGroup;
 			children = (
+				56EB106D203381410070BE17 /* UITableViewSection.swift */,
 				569051401FA3D9E2007DF910 /* Cell */,
 				569447DE1FE9C33B0045B752 /* Footer */,
 				569447D21FE9AD0A0045B752 /* Header */,
@@ -2653,6 +2666,7 @@
 		569447DE1FE9C33B0045B752 /* Footer */ = {
 			isa = PBXGroup;
 			children = (
+				56EB106920337E960070BE17 /* UITableViewSectionFooter.swift */,
 				569447DF1FE9C34A0045B752 /* Empty */,
 			);
 			path = Footer;
@@ -3275,6 +3289,47 @@
 			path = Bundle;
 			sourceTree = "<group>";
 		};
+		56EB106520337DCD0070BE17 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				56EB106620337DD20070BE17 /* Table */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		56EB106620337DD20070BE17 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				56EB106820337E750070BE17 /* Delegate */,
+				56EB107120338E760070BE17 /* Section */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
+		56EB106720337E630070BE17 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				569051411FA3DA26007DF910 /* UITableViewFullDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		56EB106820337E750070BE17 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				56EB106F20338CD60070BE17 /* UITableViewFullDelegateTest.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		56EB107120338E760070BE17 /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				56EB107220338EA80070BE17 /* UITableViewSectionTest.swift */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
 		56EC330A1FABA97F00A5742A /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
@@ -3649,6 +3704,7 @@
 				561C26351FB7A65400840DA9 /* CodableUtils.swift in Sources */,
 				560F6E9E1FA509EC00A9464D /* Meta.swift in Sources */,
 				56A1FC761FFADB7800E88EF2 /* EmptyTableView.swift in Sources */,
+				56EB106C20337EE20070BE17 /* UITableViewSectionHeader.swift in Sources */,
 				56E2D4621FBC9FC200DD4A7D /* ImageUploaderView.swift in Sources */,
 				56FDE13D1FB8F953009678AC /* GetMe.swift in Sources */,
 				560F6E9C1FA5099600A9464D /* GetTagList.swift in Sources */,
@@ -3669,6 +3725,7 @@
 				569448111FEEFFEC0045B752 /* AboutPresenter.swift in Sources */,
 				565E80991F67037E000DC618 /* Button.swift in Sources */,
 				56787E201FE1B317005F9B4E /* NetworkImage.swift in Sources */,
+				56EB106E203381410070BE17 /* UITableViewSection.swift in Sources */,
 				565BC4BF1FB23EAF005B4F84 /* GetStoriesList.swift in Sources */,
 				56622C0F1FC06EE000CD5B13 /* GetTeamRemote.swift in Sources */,
 				568558D51F89496E000AA39F /* LabsView.swift in Sources */,
@@ -3757,6 +3814,7 @@
 				568558861F86BC58000AA39F /* MorePresenter.swift in Sources */,
 				56EC330F1FABB42900A5742A /* DeleteTagRemote.swift in Sources */,
 				56AFDF101F816AD600ADA640 /* DashboardView.swift in Sources */,
+				56EB106A20337E960070BE17 /* UITableViewSectionFooter.swift in Sources */,
 				568558881F86BC6D000AA39F /* MoreFactory.swift in Sources */,
 				56AFDF1E1F86A0E000ADA640 /* StoriesListPresenter.swift in Sources */,
 				56FDE1331FB8F42E009678AC /* GetDashboardSections.swift in Sources */,
@@ -3850,6 +3908,7 @@
 				566DB6B31FF582600000124D /* SessionFactoryTest.swift in Sources */,
 				563189771F66F3E8006B29D5 /* BlogSitePresenterTest.swift in Sources */,
 				566BFDCC1F7C36B80051AD9F /* TestErrors.swift in Sources */,
+				56EB107320338EA80070BE17 /* UITableViewSectionTest.swift in Sources */,
 				566DB6B71FF583270000124D /* StoriesListFactoryTest.swift in Sources */,
 				569335091FDD7EFD00F0B108 /* BuilderTest.swift in Sources */,
 				5639AA86201A790F00B8753E /* EditStoryInteractorTest.swift in Sources */,
@@ -3884,6 +3943,7 @@
 				5631897A1F66F80E006B29D5 /* ViewControllerTest.swift in Sources */,
 				5692AEA81F6D66F0004A65A4 /* ResultTest.swift in Sources */,
 				5639AA5E201A6D7E00B8753E /* GetMeTest.swift in Sources */,
+				56EB107020338CD60070BE17 /* UITableViewFullDelegateTest.swift in Sources */,
 				56241E761FE0665D00468062 /* NetworkErrorTest.swift in Sources */,
 				56241E741FE0605300468062 /* UIActivityIndicatorViewLoaderTest.swift in Sources */,
 				5639AA83201A78FD00B8753E /* CreateStoryInteractorTest.swift in Sources */,

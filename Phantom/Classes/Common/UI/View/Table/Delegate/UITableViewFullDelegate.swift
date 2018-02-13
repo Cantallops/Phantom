@@ -9,22 +9,6 @@
 import UIKit
 
 extension UITableView {
-    struct Section {
-        var header: UITableViewSectionHeader?
-        var cells: [TableCellConf]
-        var footer: UITableViewSectionFooter?
-
-        init(
-            header: UITableViewSectionHeader? = nil,
-            cells: [TableCellConf],
-            footer: UITableViewSectionFooter? = nil
-        ) {
-            self.header = header
-            self.cells = cells
-            self.footer = footer
-        }
-    }
-
     weak var fullDelegate: UITableViewFullDelegate? {
         set {
             newValue?.table = self
@@ -34,28 +18,6 @@ extension UITableView {
         get {
             return delegate as? UITableViewFullDelegate
         }
-    }
-}
-
-protocol UITableViewSectionHeader {
-    var customView: UIView { get set }
-    func height(forWidth width: CGFloat) -> CGFloat
-}
-
-extension UITableViewSectionHeader {
-    func height(forWidth width: CGFloat) -> CGFloat {
-        return customView.systemLayoutSizeFitting(CGSize(width: width, height: 0)).height
-    }
-}
-
-protocol UITableViewSectionFooter {
-    var customView: UIView { get set }
-    func height(forWidth width: CGFloat) -> CGFloat
-}
-
-extension UITableViewSectionFooter {
-    func height(forWidth width: CGFloat) -> CGFloat {
-        return customView.systemLayoutSizeFitting(CGSize(width: width, height: 0)).height
     }
 }
 
