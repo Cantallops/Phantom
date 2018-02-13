@@ -29,4 +29,10 @@ class GetAcknowledgementsTest: XCTestCase {
         XCTAssertEqual(result.value?.count, 4)
     }
 
+    func testNoAcknowledgementsPath() {
+        interactor.acknowledgementsResoursePath = nil
+        let result = interactor.execute(args: nil)
+        XCTAssertEqual(result.value?.count, 0)
+    }
+
 }

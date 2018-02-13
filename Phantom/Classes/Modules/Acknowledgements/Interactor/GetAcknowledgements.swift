@@ -9,9 +9,11 @@
 import Foundation
 
 class GetAcknowledgements: Interactor<Any?, [Acknowledgement]> {
+
+    var acknowledgementsResoursePath = Bundle.main.path(forResource: "Acknowledgements", ofType: "plist")
+
     override func execute(args: Any?) -> Result<[Acknowledgement]> {
-        guard let acknowledgementsPlistPath = Bundle.main.path(
-                forResource: "Acknowledgements", ofType: "plist") else {
+        guard let acknowledgementsPlistPath = acknowledgementsResoursePath else {
                 return .success([])
         }
         var acknowledgements: [Acknowledgement] = []
