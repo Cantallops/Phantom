@@ -311,6 +311,7 @@
 		56E2D4801FBFA50200DD4A7D /* WSTagsField.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56E2D47F1FBFA50100DD4A7D /* WSTagsField.framework */; };
 		56EB105F2033719E0070BE17 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EB105E2033719E0070BE17 /* Bundle.swift */; };
 		56EB1062203371DF0070BE17 /* BundleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EB1061203371DF0070BE17 /* BundleTest.swift */; };
+		56EB106420337A830070BE17 /* BlogConfigurationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EB106320337A830070BE17 /* BlogConfigurationTest.swift */; };
 		56EC330C1FABA9C100A5742A /* GetTagListRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EC330B1FABA9C100A5742A /* GetTagListRemote.swift */; };
 		56EC330F1FABB42900A5742A /* DeleteTagRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EC330E1FABB42900A5742A /* DeleteTagRemote.swift */; };
 		56EC33111FABB57D00A5742A /* PutTagRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EC33101FABB57D00A5742A /* PutTagRemote.swift */; };
@@ -660,6 +661,7 @@
 		56E2D47F1FBFA50100DD4A7D /* WSTagsField.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WSTagsField.framework; path = Carthage/Build/iOS/WSTagsField.framework; sourceTree = "<group>"; };
 		56EB105E2033719E0070BE17 /* Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		56EB1061203371DF0070BE17 /* BundleTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleTest.swift; sourceTree = "<group>"; };
+		56EB106320337A830070BE17 /* BlogConfigurationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogConfigurationTest.swift; sourceTree = "<group>"; };
 		56EC330B1FABA9C100A5742A /* GetTagListRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTagListRemote.swift; sourceTree = "<group>"; };
 		56EC330E1FABB42900A5742A /* DeleteTagRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTagRemote.swift; sourceTree = "<group>"; };
 		56EC33101FABB57D00A5742A /* PutTagRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PutTagRemote.swift; sourceTree = "<group>"; };
@@ -1306,6 +1308,7 @@
 			isa = PBXGroup;
 			children = (
 				566BFDD01F7C38F70051AD9F /* ClientKeysTest.swift */,
+				56EB106320337A830070BE17 /* BlogConfigurationTest.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -3890,6 +3893,7 @@
 				561CD1951F71C42600EF7C8F /* NetworkCall.swift in Sources */,
 				563189751F66F366006B29D5 /* BlogSiteViewTest.swift in Sources */,
 				5639AA67201A73ED00B8753E /* CreateTagInteractorTest.swift in Sources */,
+				56EB106420337A830070BE17 /* BlogConfigurationTest.swift in Sources */,
 				566DB6BF1FF584D60000124D /* TeamListFactoryTest.swift in Sources */,
 				5639AA6B201A740200B8753E /* EditTagInteractorTest.swift in Sources */,
 				5631896C1F66EDAA006B29D5 /* InitialModuleServiceTest.swift in Sources */,

@@ -13,7 +13,13 @@ struct BlogConfiguration: Codable {
     let blogTitle: String
     let clientId: String
     let clientSecret: String
+
+}
+
+extension BlogConfiguration {
     var favIconURL: URL? {
-        return URL(string: "\(blogUrl)favicon.png")
+        var url = URL(string: blogUrl)
+        url?.appendPathComponent("favicon.png")
+        return url
     }
 }
