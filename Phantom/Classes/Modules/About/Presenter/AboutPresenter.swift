@@ -121,17 +121,3 @@ class AboutPresenter: Presenter<AboutView> {
         view.navigationController?.pushViewController(acknowledgementsView, animated: true)
     }
 }
-
-extension Bundle {
-    var appName: String {
-        return (infoDictionary?["CFBundleDisplayName"] as? String)!
-    }
-
-    var versionNumber: String {
-        return (infoDictionary?["CFBundleShortVersionString"] as? String)!
-    }
-
-    var buildNumber: String {
-        return (infoDictionary?["CFBundleVersion"] as? String)!
-    }
-}

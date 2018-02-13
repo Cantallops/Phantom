@@ -310,6 +310,8 @@
 		56E2D47B1FBF47C400DD4A7D /* TagsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E2D4791FBF47C400DD4A7D /* TagsTableViewCell.swift */; };
 		56E2D47C1FBF47C400DD4A7D /* TagsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56E2D47A1FBF47C400DD4A7D /* TagsTableViewCell.xib */; };
 		56E2D4801FBFA50200DD4A7D /* WSTagsField.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56E2D47F1FBFA50100DD4A7D /* WSTagsField.framework */; };
+		56EB105F2033719E0070BE17 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EB105E2033719E0070BE17 /* Bundle.swift */; };
+		56EB1062203371DF0070BE17 /* BundleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EB1061203371DF0070BE17 /* BundleTest.swift */; };
 		56EC330C1FABA9C100A5742A /* GetTagListRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EC330B1FABA9C100A5742A /* GetTagListRemote.swift */; };
 		56EC330F1FABB42900A5742A /* DeleteTagRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EC330E1FABB42900A5742A /* DeleteTagRemote.swift */; };
 		56EC33111FABB57D00A5742A /* PutTagRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EC33101FABB57D00A5742A /* PutTagRemote.swift */; };
@@ -660,6 +662,8 @@
 		56E2D4791FBF47C400DD4A7D /* TagsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsTableViewCell.swift; sourceTree = "<group>"; };
 		56E2D47A1FBF47C400DD4A7D /* TagsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagsTableViewCell.xib; sourceTree = "<group>"; };
 		56E2D47F1FBFA50100DD4A7D /* WSTagsField.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WSTagsField.framework; path = Carthage/Build/iOS/WSTagsField.framework; sourceTree = "<group>"; };
+		56EB105E2033719E0070BE17 /* Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		56EB1061203371DF0070BE17 /* BundleTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleTest.swift; sourceTree = "<group>"; };
 		56EC330B1FABA9C100A5742A /* GetTagListRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTagListRemote.swift; sourceTree = "<group>"; };
 		56EC330E1FABB42900A5742A /* DeleteTagRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTagRemote.swift; sourceTree = "<group>"; };
 		56EC33101FABB57D00A5742A /* PutTagRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PutTagRemote.swift; sourceTree = "<group>"; };
@@ -2853,6 +2857,7 @@
 		56958B7D1F72E02F005A8B08 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				56EB105D2033719E0070BE17 /* Bundle */,
 				561C26331FB7A64900840DA9 /* Codable */,
 				56E2D4581FBB5E7B00DD4A7D /* Date */,
 				564AD2FE1FBA179A00D086A8 /* Debounce */,
@@ -2878,6 +2883,7 @@
 		56958B811F72E0FA005A8B08 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				56EB1060203371CD0070BE17 /* Bundle */,
 				569E55D51FDD76A800A22C22 /* Codable */,
 				569E55CF1FDD6E1000A22C22 /* Date */,
 				569E55D21FDD73B700A22C22 /* Debounce */,
@@ -3256,6 +3262,22 @@
 				56E2D47A1FBF47C400DD4A7D /* TagsTableViewCell.xib */,
 			);
 			path = Tags;
+			sourceTree = "<group>";
+		};
+		56EB105D2033719E0070BE17 /* Bundle */ = {
+			isa = PBXGroup;
+			children = (
+				56EB105E2033719E0070BE17 /* Bundle.swift */,
+			);
+			path = Bundle;
+			sourceTree = "<group>";
+		};
+		56EB1060203371CD0070BE17 /* Bundle */ = {
+			isa = PBXGroup;
+			children = (
+				56EB1061203371DF0070BE17 /* BundleTest.swift */,
+			);
+			path = Bundle;
 			sourceTree = "<group>";
 		};
 		56EC330A1FABA97F00A5742A /* DataSource */ = {
@@ -3667,6 +3689,7 @@
 				568558D51F89496E000AA39F /* LabsView.swift in Sources */,
 				564AD3121FBA3E0300D086A8 /* PublisherPresenter.swift in Sources */,
 				56AFDF201F86A3F500ADA640 /* DashboardFactory.swift in Sources */,
+				56EB105F2033719E0070BE17 /* Bundle.swift in Sources */,
 				5682D0621F86AA4E008DEC22 /* TeamListPresenter.swift in Sources */,
 				56E2D45B1FBB8ECC00DD4A7D /* UploadFile.swift in Sources */,
 				56FDE12C1FB8AA93009678AC /* Account.swift in Sources */,
@@ -3907,6 +3930,7 @@
 				5639AA60201A6F9D00B8753E /* GetMembersTest.swift in Sources */,
 				5693351F1FE059F000F0B108 /* UIViewUtilsTest.swift in Sources */,
 				5639AA63201A72D900B8753E /* GetTagListTest.swift in Sources */,
+				56EB1062203371DF0070BE17 /* BundleTest.swift in Sources */,
 				5693350B1FDD7F4A00F0B108 /* TestFatalError.swift in Sources */,
 				5678B962201A51E900EBDD03 /* InternalNotificationTest.swift in Sources */,
 				561CD1971F71C46100EF7C8F /* TestNetworkProvider.swift in Sources */,
