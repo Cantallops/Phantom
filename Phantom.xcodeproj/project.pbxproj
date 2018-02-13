@@ -101,7 +101,6 @@
 		566BFDC61F7C30BD0051AD9F /* ClientKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566BFDC51F7C30BD0051AD9F /* ClientKeys.swift */; };
 		566BFDC91F7C35F40051AD9F /* DoCredentialSignInTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566BFDC81F7C35F40051AD9F /* DoCredentialSignInTest.swift */; };
 		566BFDCC1F7C36B80051AD9F /* TestErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566BFDCB1F7C36B80051AD9F /* TestErrors.swift */; };
-		566BFDCE1F7C380C0051AD9F /* DoBiometricSignInTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566BFDCD1F7C380C0051AD9F /* DoBiometricSignInTest.swift */; };
 		566BFDD11F7C38F70051AD9F /* ClientKeysTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566BFDD01F7C38F70051AD9F /* ClientKeysTest.swift */; };
 		566BFDD41F7C39EC0051AD9F /* FormErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566BFDD31F7C39EC0051AD9F /* FormErrors.swift */; };
 		566BFDD71F7C3A590051AD9F /* SignInViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566BFDD61F7C3A590051AD9F /* SignInViewTest.swift */; };
@@ -318,9 +317,7 @@
 		56EC33131FABC1B400A5742A /* PostTagRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EC33121FABC1B400A5742A /* PostTagRemote.swift */; };
 		56ED3EF11FDAFC6C0069736A /* TestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ED3EF01FDAFC6C0069736A /* TestService.swift */; };
 		56F003DF1F7C112500E9707A /* DoCredentialSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F003DE1F7C112500E9707A /* DoCredentialSignIn.swift */; };
-		56F003E11F7C11D300E9707A /* DoBiometricSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F003E01F7C11D300E9707A /* DoBiometricSignIn.swift */; };
 		56F003E41F7C1EBD00E9707A /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56F003E31F7C1EBD00E9707A /* LocalAuthentication.framework */; };
-		56F003E61F7C1EE300E9707A /* GetBiometricSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F003E51F7C1EE300E9707A /* GetBiometricSupport.swift */; };
 		56FDE12A1FB8AA3D009678AC /* AccountKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FDE1291FB8AA3D009678AC /* AccountKeychain.swift */; };
 		56FDE12C1FB8AA93009678AC /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FDE12B1FB8AA93009678AC /* Account.swift */; };
 		56FDE1301FB8F21D009678AC /* DashboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FDE12F1FB8F21D009678AC /* DashboardPresenter.swift */; };
@@ -449,7 +446,6 @@
 		566BFDC51F7C30BD0051AD9F /* ClientKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientKeys.swift; sourceTree = "<group>"; };
 		566BFDC81F7C35F40051AD9F /* DoCredentialSignInTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoCredentialSignInTest.swift; sourceTree = "<group>"; };
 		566BFDCB1F7C36B80051AD9F /* TestErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestErrors.swift; sourceTree = "<group>"; };
-		566BFDCD1F7C380C0051AD9F /* DoBiometricSignInTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoBiometricSignInTest.swift; sourceTree = "<group>"; };
 		566BFDD01F7C38F70051AD9F /* ClientKeysTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientKeysTest.swift; sourceTree = "<group>"; };
 		566BFDD31F7C39EC0051AD9F /* FormErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormErrors.swift; sourceTree = "<group>"; };
 		566BFDD61F7C3A590051AD9F /* SignInViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewTest.swift; sourceTree = "<group>"; };
@@ -670,9 +666,7 @@
 		56EC33121FABC1B400A5742A /* PostTagRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTagRemote.swift; sourceTree = "<group>"; };
 		56ED3EF01FDAFC6C0069736A /* TestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestService.swift; sourceTree = "<group>"; };
 		56F003DE1F7C112500E9707A /* DoCredentialSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoCredentialSignIn.swift; sourceTree = "<group>"; };
-		56F003E01F7C11D300E9707A /* DoBiometricSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoBiometricSignIn.swift; sourceTree = "<group>"; };
 		56F003E31F7C1EBD00E9707A /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
-		56F003E51F7C1EE300E9707A /* GetBiometricSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBiometricSupport.swift; sourceTree = "<group>"; };
 		56FDE1291FB8AA3D009678AC /* AccountKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountKeychain.swift; sourceTree = "<group>"; };
 		56FDE12B1FB8AA93009678AC /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		56FDE12F1FB8F21D009678AC /* DashboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardPresenter.swift; sourceTree = "<group>"; };
@@ -1293,7 +1287,6 @@
 			isa = PBXGroup;
 			children = (
 				566BFDC81F7C35F40051AD9F /* DoCredentialSignInTest.swift */,
-				566BFDCD1F7C380C0051AD9F /* DoBiometricSignInTest.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -1935,7 +1928,6 @@
 		56836BAD1F7AB3CA009ADE15 /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
-				56FDE1371FB8F86E009678AC /* Interactor */,
 				56836BBC1F7AB6E5009ADE15 /* Factory */,
 				56836BAF1F7AB3EA009ADE15 /* Presenter */,
 				56836BAE1F7AB3DF009ADE15 /* View */,
@@ -3367,15 +3359,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		56FDE1371FB8F86E009678AC /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-				56F003E01F7C11D300E9707A /* DoBiometricSignIn.swift */,
-				56F003E51F7C1EE300E9707A /* GetBiometricSupport.swift */,
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
 		56FDE1381FB8F915009678AC /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
@@ -3669,7 +3652,6 @@
 				561E90E01F895102008DDCF5 /* TeamMemberDetailView.swift in Sources */,
 				5694482D1FEFD46A0045B752 /* GetAcknowledgements.swift in Sources */,
 				569448281FEFD2400045B752 /* AcknowledgementsView.swift in Sources */,
-				56F003E11F7C11D300E9707A /* DoBiometricSignIn.swift in Sources */,
 				56E2D4701FBE0BF100DD4A7D /* DeleteStoryInteractor.swift in Sources */,
 				561E90E31F89511A008DDCF5 /* TeamMemberDetailPresenter.swift in Sources */,
 				5692AEBC1F6D7881004A65A4 /* AsyncHelper.swift in Sources */,
@@ -3778,7 +3760,6 @@
 				569447E11FE9C3590045B752 /* EmptyTableSectionFooter.swift in Sources */,
 				565BC4BB1FB23C64005B4F84 /* Story.swift in Sources */,
 				56E2D4501FBA3E6D00DD4A7D /* PublisherView.swift in Sources */,
-				56F003E61F7C1EE300E9707A /* GetBiometricSupport.swift in Sources */,
 				56E2D4541FBA3EF800DD4A7D /* PublisherBuilder.swift in Sources */,
 				56FDE1301FB8F21D009678AC /* DashboardPresenter.swift in Sources */,
 				56836BBE1F7AB6F5009ADE15 /* SignInFactory.swift in Sources */,
@@ -3903,7 +3884,6 @@
 				56241E761FE0665D00468062 /* NetworkErrorTest.swift in Sources */,
 				56241E741FE0605300468062 /* UIActivityIndicatorViewLoaderTest.swift in Sources */,
 				5639AA83201A78FD00B8753E /* CreateStoryInteractorTest.swift in Sources */,
-				566BFDCE1F7C380C0051AD9F /* DoBiometricSignInTest.swift in Sources */,
 				5672C9711F5F351300439F46 /* AppDelegateTest.swift in Sources */,
 				569335191FE04ED500F0B108 /* XCTestCase+Helper.swift in Sources */,
 				569E55D41FDD73D600A22C22 /* DebounceTest.swift in Sources */,

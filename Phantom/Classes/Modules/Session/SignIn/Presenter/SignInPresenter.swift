@@ -10,42 +10,18 @@ import UIKit
 
 class SignInPresenter: Presenter<SignInView> {
     private let doCredentialSignIn: Interactor<Credentials, Any?>
-    private let doBiometricSignIn: Interactor<Any?, Any?>
-    private let getBiometricSupport: Interactor<Any?, BiometricType>
 
     init(
-        doCredentialSignIn: Interactor<Credentials, Any?> = DoCredentialSignIn(),
-        doBiometricSignIn: Interactor<Any?, Any?> = DoBiometricSignIn(),
-        getBiometricSupport: Interactor<Any?, BiometricType> = GetBiometricSupport()
+        doCredentialSignIn: Interactor<Credentials, Any?> = DoCredentialSignIn()
     ) {
         self.doCredentialSignIn = doCredentialSignIn
-        self.doBiometricSignIn = doBiometricSignIn
-        self.getBiometricSupport = getBiometricSupport
         super.init()
     }
 
     override func didLoad() {
         super.didLoad()
-        setBiometricSupport()
         view.onTapSignInButton = doSignIn
         view.emailField.text = Account.last?.username
-    }
-
-    private func setBiometricSupport() {
-        view.removeBiometric() // FIX WHEN IMPLEMENT BIOMETRIC LOGIN
-        switch getBiometricSupport.execute(args: nil) {
-        case .success(let type):
-            switch type {
-            case .touchID:
-                return
-            case .faceID:
-                view.removeBiometric()
-            case .none:
-                view.removeBiometric()
-            }
-        default:
-            view.removeBiometric()
-        }
     }
 
     private func doSignIn(withCredentials credentials: SignInView.Credentials) {

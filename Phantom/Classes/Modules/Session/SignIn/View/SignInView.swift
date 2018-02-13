@@ -21,7 +21,6 @@ class SignInView: ViewController {
     @IBOutlet weak var errorLabel: Label!
 
     var onTapSignInButton: ((SignInView.Credentials) -> Void)?
-    var onTapBiometricButton: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,10 +48,6 @@ class SignInView: ViewController {
         onTapSignInButton?(credentials)
     }
 
-    @IBAction func onTapBiometric() {
-        onTapBiometricButton?()
-    }
-
     func show(error: String) {
         errorLabel.text = error
         emailField.setError()
@@ -65,9 +60,5 @@ class SignInView: ViewController {
         emailField.dismissError()
         passwordField.dismissError()
         signInButton.dismissError()
-    }
-
-    func removeBiometric() {
-        //biometricButton.removeFromSuperview()
     }
 }
