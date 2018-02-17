@@ -32,6 +32,13 @@ class UITableViewFullDelegateTest: XCTestCase {
         XCTAssertTrue(tableView.fullDelegate === fullD)
     }
 
+    func testEmptyView() {
+        tableView.backgroundView = nil
+        let emptyView = UIView()
+        fullD.emptyView = emptyView
+        XCTAssertEqual(fullD.emptyView, tableView.backgroundView)
+    }
+
     func testDidSelectRow() {
         var selected = false
         fullD.sections = getSections(onSelect: {
@@ -72,9 +79,16 @@ class UITableViewFullDelegateTest: XCTestCase {
         fullD.tableView(tableView, didEndDisplaying: cell, forRowAt: idxPath)
         XCTAssertTrue(cell.didEndDisplayCalled)
     }
+
+    func testHeightForRow() {
+        fullD.sections = getSections(height: 10)
+        let idxPath = IndexPath(row: 0, section: 0)
+        let height = fullD.tableView(tableView, heightForRowAt: idxPath)
+        XCTAssertEqual(height, 10)
+    }
 }
 
-class TestTableViewCell: BasicTableViewCell {
+class TestTableViewCell: TableViewCell {
     var willDisplayCalled = false
     override func willDisplay() {
         willDisplayCalled = true
@@ -90,13 +104,15 @@ extension UITableViewFullDelegateTest {
     func getSections(
         onSelect: (() -> Void)? = nil,
         canSelect: Bool = true,
-        initialySelected: Bool = false
+        initialySelected: Bool = false,
+        height: CGFloat = UITableViewAutomaticDimension
     ) -> [UITableView.Section] {
-        let cellConf = BasicTableViewCell.Conf(text: "text")
+        let cellConf = TableCellConf(identifier: "id", nib: nil)
         cellConf.onSelect = onSelect
         cellConf.deselect = true
         cellConf.canSelect = canSelect
         cellConf.initialySelected = initialySelected
+        cellConf.height = height
         return [UITableView.Section(cells: [cellConf])]
     }
 }
