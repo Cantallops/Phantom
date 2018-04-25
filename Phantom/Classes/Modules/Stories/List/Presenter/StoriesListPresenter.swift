@@ -16,20 +16,29 @@ class StoriesListPresenter: Presenter<StoriesListView> {
     private var tagObservers: [NSObjectProtocol] = []
 
     private let getStoriesListInteractor: Interactor<Meta?, Paginated<[Story]>>
+    private let filterStories: Interactor<([Story], String), [Story]>
     private let storyDetailBuilder: Builder<Story?, ViewController>
     private var meta: Meta?
     private var stories: [Story] = []
+    private var filterText: String = "" {
+        didSet {
+            let result = filterStories.execute(args: (stories, filterText))
+            show(stories: result.value ?? [])
+        }
+    }
 
     init(
         storyInternalNotificationCenter: InternalNotificationCenter<Story>,
         tagInternalNotificationCenter: InternalNotificationCenter<Tag>,
         getStoriesListInteractor: Interactor<Meta?, Paginated<[Story]>> = GetStoriesList(),
-        storyDetailBuilder: Builder<Story?, ViewController> = StoryDetailBuilder()
+        storyDetailBuilder: Builder<Story?, ViewController> = StoryDetailBuilder(),
+        filterStories: Interactor<([Story], String), [Story]> = FilterStories()
     ) {
         self.storyInternalNotificationCenter = storyInternalNotificationCenter
         self.tagInternalNotificationCenter = tagInternalNotificationCenter
         self.getStoriesListInteractor = getStoriesListInteractor
         self.storyDetailBuilder = storyDetailBuilder
+        self.filterStories = filterStories
         super.init()
     }
 
@@ -39,6 +48,7 @@ class StoriesListPresenter: Presenter<StoriesListView> {
         loadTagObservers()
         view.newStoryAction = newStory
         view.refreshAction = loadList
+        view.searchAction = filter
         loadList()
     }
 
@@ -199,5 +209,11 @@ extension StoriesListPresenter {
             tagInternalNotificationCenter.remove(observer: observer)
         }
         tagObservers.removeAll()
+    }
+}
+
+extension StoriesListPresenter {
+    func filter(text: String) {
+        filterText = text
     }
 }

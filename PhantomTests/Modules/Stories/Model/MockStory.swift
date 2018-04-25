@@ -30,4 +30,10 @@ extension Story {
         metaTitle: nil,
         metaDescription: nil
     )
+
+    func settingTitle(title: String) -> Story {
+        var story = self
+        story.title = title
+        return story
+    }
 }

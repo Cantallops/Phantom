@@ -324,6 +324,8 @@
 		56ED3EF11FDAFC6C0069736A /* TestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ED3EF01FDAFC6C0069736A /* TestService.swift */; };
 		56F003DF1F7C112500E9707A /* DoCredentialSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F003DE1F7C112500E9707A /* DoCredentialSignIn.swift */; };
 		56F003E41F7C1EBD00E9707A /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56F003E31F7C1EBD00E9707A /* LocalAuthentication.framework */; };
+		56F95DB52090EBB500EDD56C /* FilterStories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DB42090EBB500EDD56C /* FilterStories.swift */; };
+		56F95DB72090F75500EDD56C /* FilterStoriesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DB62090F75500EDD56C /* FilterStoriesTest.swift */; };
 		56FDE12A1FB8AA3D009678AC /* AccountKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FDE1291FB8AA3D009678AC /* AccountKeychain.swift */; };
 		56FDE12C1FB8AA93009678AC /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FDE12B1FB8AA93009678AC /* Account.swift */; };
 		56FDE1301FB8F21D009678AC /* DashboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FDE12F1FB8F21D009678AC /* DashboardPresenter.swift */; };
@@ -679,6 +681,8 @@
 		56ED3EF01FDAFC6C0069736A /* TestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestService.swift; sourceTree = "<group>"; };
 		56F003DE1F7C112500E9707A /* DoCredentialSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoCredentialSignIn.swift; sourceTree = "<group>"; };
 		56F003E31F7C1EBD00E9707A /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		56F95DB42090EBB500EDD56C /* FilterStories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterStories.swift; sourceTree = "<group>"; };
+		56F95DB62090F75500EDD56C /* FilterStoriesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterStoriesTest.swift; sourceTree = "<group>"; };
 		56FDE1291FB8AA3D009678AC /* AccountKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountKeychain.swift; sourceTree = "<group>"; };
 		56FDE12B1FB8AA93009678AC /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		56FDE12F1FB8F21D009678AC /* DashboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardPresenter.swift; sourceTree = "<group>"; };
@@ -1053,6 +1057,7 @@
 			isa = PBXGroup;
 			children = (
 				5639AA70201A761B00B8753E /* GetStoriesListTest.swift */,
+				56F95DB62090F75500EDD56C /* FilterStoriesTest.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -1172,6 +1177,7 @@
 			isa = PBXGroup;
 			children = (
 				565BC4BE1FB23EAF005B4F84 /* GetStoriesList.swift */,
+				56F95DB42090EBB500EDD56C /* FilterStories.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -3783,6 +3789,7 @@
 				569447E41FE9C4840045B752 /* SubtitleTableSectionHeader.swift in Sources */,
 				566BFDC41F7C2D880051AD9F /* GetOauth.swift in Sources */,
 				56178B701FAF809900EA8026 /* RefreshOauth.swift in Sources */,
+				56F95DB52090EBB500EDD56C /* FilterStories.swift in Sources */,
 				561C26301FB791E000840DA9 /* PutStoryRemote.swift in Sources */,
 				56787E1C1FE08049005F9B4E /* SessionFactory.swift in Sources */,
 				56C4655D1F654132001ABAC8 /* BlogSiteView.swift in Sources */,
@@ -3975,6 +3982,7 @@
 				5693351F1FE059F000F0B108 /* UIViewUtilsTest.swift in Sources */,
 				5639AA63201A72D900B8753E /* GetTagListTest.swift in Sources */,
 				56EB1062203371DF0070BE17 /* BundleTest.swift in Sources */,
+				56F95DB72090F75500EDD56C /* FilterStoriesTest.swift in Sources */,
 				5693350B1FDD7F4A00F0B108 /* TestFatalError.swift in Sources */,
 				5678B962201A51E900EBDD03 /* InternalNotificationTest.swift in Sources */,
 				561CD1971F71C46100EF7C8F /* TestNetworkProvider.swift in Sources */,

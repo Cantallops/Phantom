@@ -12,6 +12,32 @@ class TableViewController: UITableViewController, Presentable {
     var presenter: PresenterProtocol
     var scrollToViewWhenKeyboardShows: Bool = true
 
+    lazy var emptySearchView: UIView? = {
+        return EmptyTableView(title: "There are no stories with your search")
+    }()
+    private var searchController: UISearchController? {
+        didSet {
+            if #available(iOS 11.0, *) {
+                navigationItem.searchController = searchController
+            } else {
+                searchController?.searchBar.searchBarStyle = .minimal
+                tableView.tableHeaderView = searchController?.searchBar
+            }
+        }
+
+    }
+    var searchAction: ((String) -> Void)?
+    var searchPlaceholder: String? {
+        didSet {
+            searchController?.searchBar.placeholder = searchPlaceholder
+        }
+    }
+    var searcheable: Bool = false {
+        didSet {
+            setUpSearcheable()
+        }
+    }
+
     // swiftlint:disable:next weak_delegate
     private var fullDelegate: UITableViewFullDelegate?
     var emptyView: UIView? {
@@ -19,6 +45,7 @@ class TableViewController: UITableViewController, Presentable {
             fullDelegate?.emptyView = emptyView
         }
     }
+
     var sections: [UITableView.Section] = [] {
         didSet {
             fullDelegate?.sections = sections
@@ -73,7 +100,9 @@ class TableViewController: UITableViewController, Presentable {
         animated flag: Bool,
         completion: (() -> Void)? = nil
     ) {
-        if let nav = navigationController {
+        if viewControllerToPresent == searchController {
+            super.present(viewControllerToPresent, animated: flag, completion: completion)
+        } else if let nav = navigationController {
             nav.present(viewControllerToPresent, animated: flag, completion: completion)
         } else {
             super.present(viewControllerToPresent, animated: flag, completion: completion)
@@ -105,6 +134,7 @@ class TableViewController: UITableViewController, Presentable {
     }
 
     func setUpNavigation() {
+
     }
 
     func hideKeyboardWhenTappedAround() {
@@ -122,5 +152,33 @@ class TableViewController: UITableViewController, Presentable {
     }
 
     @objc func refresh() {
+    }
+}
+
+extension TableViewController: UISearchResultsUpdating {
+
+    private func setUpSearcheable() {
+        guard searcheable else {
+            self.searchController = nil
+            return
+        }
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchResultsUpdater = self
+        definesPresentationContext = true
+        searchController.searchBar.placeholder = searchPlaceholder
+        self.searchController = searchController
+    }
+
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else {
+            return
+        }
+        if let emptyView = emptySearchView, !text.isEmpty {
+            fullDelegate?.emptyView = emptyView
+        } else {
+            fullDelegate?.emptyView = emptyView
+        }
+        searchAction?(text)
     }
 }

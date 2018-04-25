@@ -24,10 +24,11 @@ class StoriesListView: TableViewController {
     }
 
     override func setUpNavigation() {
+        super.setUpNavigation()
         navigationItem.title = "Your stories"
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
-            navigationItem.largeTitleDisplayMode = .always
+            navigationItem.largeTitleDisplayMode = .automatic
         }
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: #imageLiteral(resourceName: "ic_nav_compose").withRenderingMode(.alwaysOriginal),
@@ -39,11 +40,16 @@ class StoriesListView: TableViewController {
 
     override func setUpTable() {
         super.setUpTable()
+        searcheable = true
+        searchPlaceholder = "Search stories…"
         tableView.accessibilityIdentifier = "storiesTable"
         emptyView = EmptyButtonTableView(
             title: "You haven't written any stories yet!",
             buttonTitle: "Write a new story",
             buttonAction: tapAdd
+        )
+        emptySearchView = EmptyTableView(
+            title: "There are no stories with your search"
         )
     }
 
