@@ -71,7 +71,7 @@ struct CombinedError: Error {
 
 extension CombinedError: LocalizedError {
     public var errorDescription: String? {
-        let descriptions: [String] = errors.flatMap({ $0.localizedDescription })
+        let descriptions: [String] = errors.compactMap({ $0.localizedDescription })
         let set = Set(descriptions)
         let array = Array(set)
         return array.joined(separator: "\n")

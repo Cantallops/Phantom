@@ -128,8 +128,8 @@ class ImageUploaderView: UIView {
         })
     }
 
-    private func handleUpload(withResult onResult: (Result<String>, UIImage?)) {
-        let (result, image) = onResult
+    private func handleUpload(withResult imageResult: ImageUploader.ImageResult) {
+        let (result, image) = imageResult
         imageView.image = image
         switch result {
         case .success(let uri): upload(successfulImage: image!, withUri: uri)

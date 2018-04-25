@@ -28,7 +28,8 @@ extension ImageUploader: UINavigationControllerDelegate {
 
 class ImageUploader: NSObject {
 
-    typealias OnResult = (Result<String>, UIImage?) -> Void
+    typealias ImageResult = (Result<String>, UIImage?)
+    typealias OnResult = (ImageResult) -> Void
     typealias OnCancel = () -> Void
 
     private var imagePicker: UIImagePickerController = {
@@ -70,7 +71,7 @@ class ImageUploader: NSObject {
         }
         guard let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage,
             let url = info[imageURLKeyPath] as? URL else {
-                onResult(.failure(NetworkError(kind: .unknown)), nil)
+                onResult((.failure(NetworkError(kind: .unknown)), nil))
                 return
         }
         var resized = chosenImage
@@ -79,7 +80,7 @@ class ImageUploader: NSObject {
             resized = chosenImage.resize(withSize: CGSize(width: maxWidthOrHeight, height: maxWidthOrHeight))
         }
         guard let data = UIImageJPEGRepresentation(resized, 0.5) else {
-                onResult(.failure(NetworkError(kind: .unknown)), nil)
+                onResult((.failure(NetworkError(kind: .unknown)), nil))
                 return
         }
 
@@ -93,7 +94,7 @@ class ImageUploader: NSObject {
         async(loaders: loaders, background: {
             return self.uploader.execute(args: file)
         }, main: { [weak self] result in
-            self?.onResult(result, chosenImage)
+            self?.onResult((result, chosenImage))
         })
     }
 }

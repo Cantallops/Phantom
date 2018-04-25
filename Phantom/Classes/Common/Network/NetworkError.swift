@@ -103,10 +103,10 @@ struct GhostErrors: Codable {
     let errors: [GhostError]
 
     var message: String {
-        return errors.flatMap({ return $0.message }).joined(separator: "\n")
+        return errors.compactMap({ return $0.message }).joined(separator: "\n")
     }
     var networkError: NetworkError.Kind {
-        let networkErrors = errors.flatMap({ return $0.networkErrorKind })
+        let networkErrors = errors.compactMap({ return $0.networkErrorKind })
         switch networkErrors.count {
         case 0:
             return .unknown
