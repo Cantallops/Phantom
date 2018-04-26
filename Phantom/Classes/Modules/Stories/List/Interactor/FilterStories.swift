@@ -8,12 +8,15 @@
 
 import Foundation
 
-class FilterStories: Interactor<([Story], String), [Story]> {
-
-    override func execute(args: ([Story], String)) -> Result<[Story]> {
-        return .success(args.0.filter({ story -> Bool in
-            return story.title.lowercased().contains(args.1.lowercased()) || args.1.isEmpty
-        }))
+extension Story: Searcheable {
+    func searchTerms() -> [String] {
+        return [self.title]
     }
+}
 
+class FilterStories: Interactor<([Story], String), [Story]> {
+    override func execute(args: ([Story], String)) -> Result<[Story]> {
+        let stories = args.0.search(text: args.1)
+        return .success(stories)
+    }
 }

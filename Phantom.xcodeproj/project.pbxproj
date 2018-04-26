@@ -326,6 +326,8 @@
 		56F003E41F7C1EBD00E9707A /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56F003E31F7C1EBD00E9707A /* LocalAuthentication.framework */; };
 		56F95DB52090EBB500EDD56C /* FilterStories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DB42090EBB500EDD56C /* FilterStories.swift */; };
 		56F95DB72090F75500EDD56C /* FilterStoriesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DB62090F75500EDD56C /* FilterStoriesTest.swift */; };
+		56F95DBA209111FF00EDD56C /* Searcheable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DB9209111FF00EDD56C /* Searcheable.swift */; };
+		56F95DC12092796100EDD56C /* SearcheableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DC02092796100EDD56C /* SearcheableTest.swift */; };
 		56FDE12A1FB8AA3D009678AC /* AccountKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FDE1291FB8AA3D009678AC /* AccountKeychain.swift */; };
 		56FDE12C1FB8AA93009678AC /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FDE12B1FB8AA93009678AC /* Account.swift */; };
 		56FDE1301FB8F21D009678AC /* DashboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FDE12F1FB8F21D009678AC /* DashboardPresenter.swift */; };
@@ -683,6 +685,8 @@
 		56F003E31F7C1EBD00E9707A /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		56F95DB42090EBB500EDD56C /* FilterStories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterStories.swift; sourceTree = "<group>"; };
 		56F95DB62090F75500EDD56C /* FilterStoriesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterStoriesTest.swift; sourceTree = "<group>"; };
+		56F95DB9209111FF00EDD56C /* Searcheable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Searcheable.swift; sourceTree = "<group>"; };
+		56F95DC02092796100EDD56C /* SearcheableTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearcheableTest.swift; sourceTree = "<group>"; };
 		56FDE1291FB8AA3D009678AC /* AccountKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountKeychain.swift; sourceTree = "<group>"; };
 		56FDE12B1FB8AA93009678AC /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		56FDE12F1FB8F21D009678AC /* DashboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardPresenter.swift; sourceTree = "<group>"; };
@@ -2872,6 +2876,7 @@
 		56958B7D1F72E02F005A8B08 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				56F95DB8209111E500EDD56C /* Util */,
 				56EB105D2033719E0070BE17 /* Bundle */,
 				561C26331FB7A64900840DA9 /* Codable */,
 				56E2D4581FBB5E7B00DD4A7D /* Date */,
@@ -2898,6 +2903,7 @@
 		56958B811F72E0FA005A8B08 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				56F95DBF2092794F00EDD56C /* Util */,
 				56EB1060203371CD0070BE17 /* Bundle */,
 				569E55D51FDD76A800A22C22 /* Codable */,
 				569E55CF1FDD6E1000A22C22 /* Date */,
@@ -3378,6 +3384,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		56F95DB8209111E500EDD56C /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				56F95DB9209111FF00EDD56C /* Searcheable.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		56F95DBF2092794F00EDD56C /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				56F95DC02092796100EDD56C /* SearcheableTest.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		56FDE1281FB8AA17009678AC /* Session */ = {
 			isa = PBXGroup;
 			children = (
@@ -3751,6 +3773,7 @@
 				569051421FA3DA26007DF910 /* UITableViewFullDelegate.swift in Sources */,
 				56E2D4571FBB5E7800DD4A7D /* Date.swift in Sources */,
 				569447F31FED54C30045B752 /* MetaData.swift in Sources */,
+				56F95DBA209111FF00EDD56C /* Searcheable.swift in Sources */,
 				563569141FFD94C200BAA968 /* TableViewController.swift in Sources */,
 				56CFA0452017C6E20029509F /* Device.swift in Sources */,
 				566BFDC61F7C30BD0051AD9F /* ClientKeys.swift in Sources */,
@@ -3911,6 +3934,7 @@
 				56958B861F72E6E0005A8B08 /* ButtonLoaderTest.swift in Sources */,
 				5692AE9F1F6D5D04004A65A4 /* InteractorTest.swift in Sources */,
 				566DB6881FF5790B0000124D /* GetAboutGhostConfigurationTest.swift in Sources */,
+				56F95DC12092796100EDD56C /* SearcheableTest.swift in Sources */,
 				5678B95F201A4D6000EBDD03 /* MetaTest.swift in Sources */,
 				566DB6B31FF582600000124D /* SessionFactoryTest.swift in Sources */,
 				563189771F66F3E8006B29D5 /* BlogSitePresenterTest.swift in Sources */,
