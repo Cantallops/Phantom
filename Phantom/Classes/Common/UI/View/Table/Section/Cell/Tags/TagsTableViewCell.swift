@@ -62,7 +62,7 @@ class TagsTableViewCell: TableViewCell {
         tagsField.layer.borderColor = Color.border.cgColor
         tagsField.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         tagsField.spaceBetweenTags = 5.0
-        tagsField.font = UIFont.preferredFont(forTextStyle: .body)
+        tagsField.font = UIFont.preferredFont(forTextStyle: .footnote)
         tagsField.tintColor = Color.tint
         tagsField.textColor = Color.white
         tagsField.fieldTextColor = .darkText

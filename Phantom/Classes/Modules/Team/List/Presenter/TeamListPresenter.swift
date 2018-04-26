@@ -75,6 +75,7 @@ class TeamListPresenter: Presenter<TeamListView> {
             }
         }
         var activeSection = UITableView.Section(
+            id: "ActiveUsers",
             header: SimpleTableSectionHeader(title: "Active users"),
             cells: activeCells,
             footer: EmptyTableSectionFooter(height: 20)
@@ -84,6 +85,7 @@ class TeamListPresenter: Presenter<TeamListView> {
             return [activeSection]
         }
         let inactiveSection = UITableView.Section(
+            id: "InactiveUsers",
             header: SimpleTableSectionHeader(title: "Suspended users"),
             cells: inactiveCells,
             footer: EmptyTableSectionFooter(height: 20)

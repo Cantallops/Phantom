@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Diff
 
 extension UITableView {
     weak var fullDelegate: UITableViewFullDelegate? {
@@ -23,6 +24,7 @@ extension UITableView {
 
 class UITableViewFullDelegate: NSObject {
     var table: UITableView!
+    var animatedChanges: Bool = false
     var emptyView: UIView? {
         didSet {
             table?.backgroundView = emptyView
@@ -30,7 +32,18 @@ class UITableViewFullDelegate: NSObject {
     }
     var sections: [UITableView.Section] = [] {
         didSet {
-            table?.reloadData()
+            if !animatedChanges {
+                table?.reloadData()
+            } else {
+                table?.animateRowAndSectionChanges(
+                    oldData: oldValue,
+                    newData: sections,
+                    rowDeletionAnimation: .middle,
+                    rowInsertionAnimation: .middle,
+                    sectionDeletionAnimation: .middle,
+                    sectionInsertionAnimation: .middle
+                )
+            }
         }
     }
 }

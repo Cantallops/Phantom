@@ -140,7 +140,7 @@ class StorySettingsPresenter: Presenter<StorySettingsView> {
             spaceCellConf
         ])
 
-        let section = UITableView.Section(cells: cells)
+        let section = UITableView.Section(id: "Settings", cells: cells)
         return [section]
     }
 

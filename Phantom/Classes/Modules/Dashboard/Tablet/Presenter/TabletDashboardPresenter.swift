@@ -155,7 +155,7 @@ class TabletDashboardPresenter: Presenter<TabletDashboardView> {
         }
         cells.first?.initialySelected = true
         cells.first?.onSelect?()
-        var section = UITableView.Section(cells: cells)
+        var section = UITableView.Section(id: "Dashboard", cells: cells)
         section.header = EmptyTableSectionHeader(height: 10)
         section.footer = EmptyTableSectionFooter(height: 20)
         return section
@@ -174,7 +174,7 @@ class TabletDashboardPresenter: Presenter<TabletDashboardView> {
             }
             cells.append(conf)
         }
-        var section = UITableView.Section(cells: cells)
+        var section = UITableView.Section(id: "Settings", cells: cells)
         let header = SimpleTableSectionHeader(title: "Settings")
         header.customView.backgroundColor = Color.lighterGrey
         section.header = header
@@ -189,7 +189,7 @@ class TabletDashboardPresenter: Presenter<TabletDashboardView> {
             image: blogInfo.favicon?.resize(withSize: CGSize(width: 50, height: 50))
         )
         conf.canSelect = false
-        var section = UITableView.Section(cells: [conf])
+        var section = UITableView.Section(id: "BlogInfo", cells: [conf])
         section.header = EmptyTableSectionHeader(height: 20)
         section.footer = EmptyTableSectionFooter(height: 20)
         return section
@@ -204,7 +204,7 @@ class TabletDashboardPresenter: Presenter<TabletDashboardView> {
         conf.onSelect = { [weak self] in
             self?.openInfo()
         }
-        var section = UITableView.Section(cells: [conf])
+        var section = UITableView.Section(id: "Abour", cells: [conf])
         section.header = EmptyTableSectionHeader(height: 20)
         section.footer = EmptyTableSectionFooter(height: 20)
         return section
@@ -219,7 +219,7 @@ class TabletDashboardPresenter: Presenter<TabletDashboardView> {
         conf.onSelect = { [weak self] in
             self?.signOut()
         }
-        var section = UITableView.Section(cells: [conf])
+        var section = UITableView.Section(id: "SignOut", cells: [conf])
         section.header = EmptyTableSectionHeader(height: 20)
         section.footer = EmptyTableSectionFooter(height: 20)
         return section

@@ -27,6 +27,10 @@ class StoryTableViewCell: TableViewCell {
                 nib: UINib(nibName: "StoryTableViewCell", bundle: nil)
             )
         }
+
+        override func isEqual(_ object: Any?) -> Bool {
+            return story.id == (object as? Conf)?.story.id
+        }
     }
 
     override func awakeFromNib() {

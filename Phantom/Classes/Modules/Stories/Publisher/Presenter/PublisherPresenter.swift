@@ -116,7 +116,7 @@ class PublisherPresenter: Presenter<PublisherView> {
         }
         separator.behaveAsRadioButton = false
 
-        let section = UITableView.Section(cells: cells)
+        let section = UITableView.Section(id: "Publisher", cells: cells)
         let sections = [section]
         view.sections = sections
     }

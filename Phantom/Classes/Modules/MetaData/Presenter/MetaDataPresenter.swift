@@ -26,7 +26,7 @@ class MetaDataPresenter: Presenter<MetaDataView> {
 
     override func didLoad() {
         super.didLoad()
-        view.sections = [UITableView.Section(cells: getMetaDataFields())]
+        view.sections = [UITableView.Section(id: "Meta", cells: getMetaDataFields())]
     }
 
     private func getMetaDataFields() -> [TableCellConf] {

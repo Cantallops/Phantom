@@ -11,6 +11,11 @@ import UIKit
 class TableViewController: UITableViewController, Presentable {
     var presenter: PresenterProtocol
     var scrollToViewWhenKeyboardShows: Bool = true
+    var animatedChanges: Bool = false {
+        didSet {
+            fullDelegate?.animatedChanges = animatedChanges
+        }
+    }
 
     lazy var emptySearchView: UIView? = {
         return EmptyTableView(title: "There are no stories with your search")

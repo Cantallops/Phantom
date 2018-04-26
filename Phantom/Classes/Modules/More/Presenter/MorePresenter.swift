@@ -78,7 +78,7 @@ class MorePresenter: Presenter<MoreView> {
             }
             cells.append(conf)
         }
-        var section = UITableView.Section(cells: cells)
+        var section = UITableView.Section(id: "Settings", cells: cells)
         section.header = SimpleTableSectionHeader(title: "Settings")
         section.footer = EmptyTableSectionFooter(height: 20)
         return section
@@ -117,7 +117,7 @@ class MorePresenter: Presenter<MoreView> {
         )
         conf.canSelect = false
         conf.accessoryType = .none
-        var section = UITableView.Section(cells: [conf])
+        var section = UITableView.Section(id: "BlogInfo", cells: [conf])
         section.header = EmptyTableSectionHeader(height: 20)
         section.footer = EmptyTableSectionFooter(height: 20)
         return section
@@ -133,7 +133,7 @@ class MorePresenter: Presenter<MoreView> {
         conf.onSelect = { [weak self] in
             self?.openInfo()
         }
-        var section = UITableView.Section(cells: [conf])
+        var section = UITableView.Section(id: "About", cells: [conf])
         section.header = EmptyTableSectionHeader(height: 20)
         section.footer = EmptyTableSectionFooter(height: 20)
         return section
@@ -148,7 +148,7 @@ class MorePresenter: Presenter<MoreView> {
         conf.onSelect = { [weak self] in
             self?.signOut()
         }
-        var section = UITableView.Section(cells: [conf])
+        var section = UITableView.Section(id: "SignOut", cells: [conf])
         section.header = EmptyTableSectionHeader(height: 20)
         section.footer = EmptyTableSectionFooter(height: 20)
         return section

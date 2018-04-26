@@ -99,7 +99,7 @@ class StoriesListPresenter: Presenter<StoriesListView> {
             }
             cells.append(conf)
         }
-        return UITableView.Section(cells: cells)
+        return UITableView.Section(id: "Stories", cells: cells)
     }
 
     private func newStory() {

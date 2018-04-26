@@ -14,7 +14,7 @@ class UITableViewSectionTest: XCTestCase {
     var section: UITableView.Section!
 
     func testDefaultValues() {
-        section = UITableView.Section(cells: [])
+        section = UITableView.Section(id: "section", cells: [])
         XCTAssertNil(section.header)
         XCTAssertNil(section.footer)
     }

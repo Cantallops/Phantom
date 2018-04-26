@@ -66,7 +66,7 @@ class SubscribersListPresenter: Presenter<SubscribersListView> {
             conf.canSelect = false
             cells.append(conf)
         }
-        return UITableView.Section(cells: cells)
+        return UITableView.Section(id: "Subscribers", cells: cells)
     }
 
     private func process(error: Error) {

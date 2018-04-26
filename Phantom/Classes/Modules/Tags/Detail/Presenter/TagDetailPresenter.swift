@@ -127,7 +127,7 @@ class TagDetailPresenter: Presenter<TagDetailView> {
             )
         }
 
-        let section = UITableView.Section(cells: cells)
+        let section = UITableView.Section(id: "Tag", cells: cells)
         return [section]
     }
 

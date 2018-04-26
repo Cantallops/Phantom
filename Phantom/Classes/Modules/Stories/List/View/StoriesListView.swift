@@ -40,6 +40,7 @@ class StoriesListView: TableViewController {
 
     override func setUpTable() {
         super.setUpTable()
+        animatedChanges = true
         searcheable = true
         searchPlaceholder = "Search stories…"
         tableView.accessibilityIdentifier = "storiesTable"

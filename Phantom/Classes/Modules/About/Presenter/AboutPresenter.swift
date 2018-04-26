@@ -74,6 +74,7 @@ class AboutPresenter: Presenter<AboutView> {
         mailConf.canSelect = false
         let cells: [TableCellConf] = [versionConf, envConf, dbConf, mailConf]
         return UITableView.Section(
+            id: "About",
             header: SimpleTableSectionHeader(title: "About Ghost"),
             cells: cells,
             footer: EmptyTableSectionFooter(height: 20)
@@ -96,6 +97,7 @@ class AboutPresenter: Presenter<AboutView> {
             buildConf
         ]
         return UITableView.Section(
+            id: "About \(bundle.appName)",
             header: SimpleTableSectionHeader(title: "About \(bundle.appName)"),
             cells: cells,
             footer: EmptyTableSectionFooter(height: 20)
@@ -110,6 +112,7 @@ class AboutPresenter: Presenter<AboutView> {
         acknowledgementsCellConf.deselect = true
         acknowledgementsCellConf.accessoryType = .disclosureIndicator
         return UITableView.Section(
+            id: "Acknowledgements",
             header: EmptyTableSectionHeader(height: 20),
             cells: [acknowledgementsCellConf],
             footer: EmptyTableSectionFooter(height: 20)

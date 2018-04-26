@@ -105,7 +105,7 @@ class TagsListPresenter: Presenter<TagsListView> {
             }
             cells.append(conf)
         }
-        return UITableView.Section(cells: cells)
+        return UITableView.Section(id: "Tags", cells: cells)
     }
 
     private func addTag() {

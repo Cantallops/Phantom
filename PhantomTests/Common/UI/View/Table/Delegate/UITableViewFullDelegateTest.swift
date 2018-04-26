@@ -113,6 +113,6 @@ extension UITableViewFullDelegateTest {
         cellConf.canSelect = canSelect
         cellConf.initialySelected = initialySelected
         cellConf.height = height
-        return [UITableView.Section(cells: [cellConf])]
+        return [UITableView.Section(id: "id", cells: [cellConf])]
     }
 }
