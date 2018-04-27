@@ -22,7 +22,6 @@ class PublisherBuilder: Builder<PublisherArg, UIViewController> {
             transitionStyle: .zoomIn,
             gestureDismissal: true
         )
-
         return popup
     }
 }

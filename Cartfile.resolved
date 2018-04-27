@@ -1,4 +1,5 @@
-github "Orderella/PopupDialog" "0.6.2"
+github "KyoheiG3/DynamicBlurView" "2.0.2"
+github "Orderella/PopupDialog" "0.7.1"
 github "malcommac/SwiftDate" "4.5.1"
 github "scalessec/Toast-Swift" "3.0.1"
 github "shinydevelopment/SimulatorStatusMagic" "2.1"

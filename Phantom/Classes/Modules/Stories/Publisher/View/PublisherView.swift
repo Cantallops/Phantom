@@ -37,11 +37,14 @@ class PublisherView: ViewController {
         }
     }
 
+    private var canActivateAnchor = false
     private var height: CGFloat? {
         didSet {
             heightAnchor?.isActive = false
-            if let height = height {
+            if let height = height, canActivateAnchor {
                 heightAnchor = view.heightAnchor.constraint(equalToConstant: height)
+                heightAnchor?.identifier = "HOLA"
+                print("Active height: \(height)")
                 heightAnchor?.isActive = true
             }
         }
@@ -58,6 +61,11 @@ class PublisherView: ViewController {
         setUpTable()
         setUpView()
         removeError()
+    }
+
+    override func didMove(toParentViewController parent: UIViewController?) {
+        super.didMove(toParentViewController: parent)
+        canActivateAnchor = true
     }
 
     override func viewDidLayoutSubviews() {

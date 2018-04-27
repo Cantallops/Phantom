@@ -1,5 +1,5 @@
-github "malcommac/SwiftDate" ~> 4.0
-github "Orderella/PopupDialog" ~> 0.6
-github "whitesmith/WSTagsField"
+github "malcommac/SwiftDate" ~> 4.5
+github "Orderella/PopupDialog" ~> 0.7
+github "whitesmith/WSTagsField" ~> 3.1
 github "scalessec/Toast-Swift" ~> 3.0.1
 github "wokalski/Diff.swift"

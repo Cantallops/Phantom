@@ -327,8 +327,9 @@
 		56F95DB52090EBB500EDD56C /* FilterStories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DB42090EBB500EDD56C /* FilterStories.swift */; };
 		56F95DB72090F75500EDD56C /* FilterStoriesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DB62090F75500EDD56C /* FilterStoriesTest.swift */; };
 		56F95DBA209111FF00EDD56C /* Searcheable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DB9209111FF00EDD56C /* Searcheable.swift */; };
-		56F95DC12092796100EDD56C /* SearcheableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DC02092796100EDD56C /* SearcheableTest.swift */; };
 		56F95DBE2092662E00EDD56C /* Diff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56F95DBD2092662E00EDD56C /* Diff.framework */; };
+		56F95DC12092796100EDD56C /* SearcheableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DC02092796100EDD56C /* SearcheableTest.swift */; };
+		56F95DC5209281DF00EDD56C /* DynamicBlurView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56F95DC4209281DF00EDD56C /* DynamicBlurView.framework */; };
 		56FDE12A1FB8AA3D009678AC /* AccountKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FDE1291FB8AA3D009678AC /* AccountKeychain.swift */; };
 		56FDE12C1FB8AA93009678AC /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FDE12B1FB8AA93009678AC /* Account.swift */; };
 		56FDE1301FB8F21D009678AC /* DashboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FDE12F1FB8F21D009678AC /* DashboardPresenter.swift */; };
@@ -687,9 +688,11 @@
 		56F95DB42090EBB500EDD56C /* FilterStories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterStories.swift; sourceTree = "<group>"; };
 		56F95DB62090F75500EDD56C /* FilterStoriesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterStoriesTest.swift; sourceTree = "<group>"; };
 		56F95DB9209111FF00EDD56C /* Searcheable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Searcheable.swift; sourceTree = "<group>"; };
-		56F95DC02092796100EDD56C /* SearcheableTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearcheableTest.swift; sourceTree = "<group>"; };
 		56F95DBB2092634900EDD56C /* DeepDiff.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeepDiff.framework; path = Carthage/Build/iOS/DeepDiff.framework; sourceTree = "<group>"; };
 		56F95DBD2092662E00EDD56C /* Diff.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Diff.framework; path = Carthage/Build/iOS/Diff.framework; sourceTree = "<group>"; };
+		56F95DC02092796100EDD56C /* SearcheableTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearcheableTest.swift; sourceTree = "<group>"; };
+		56F95DC2209281C200EDD56C /* DynamicBlurView.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = DynamicBlurView.framework.dSYM; path = Carthage/Build/iOS/DynamicBlurView.framework.dSYM; sourceTree = "<group>"; };
+		56F95DC4209281DF00EDD56C /* DynamicBlurView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DynamicBlurView.framework; path = Carthage/Build/iOS/DynamicBlurView.framework; sourceTree = "<group>"; };
 		56FDE1291FB8AA3D009678AC /* AccountKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountKeychain.swift; sourceTree = "<group>"; };
 		56FDE12B1FB8AA93009678AC /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		56FDE12F1FB8F21D009678AC /* DashboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardPresenter.swift; sourceTree = "<group>"; };
@@ -704,6 +707,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56F95DC5209281DF00EDD56C /* DynamicBlurView.framework in Frameworks */,
 				56F95DBE2092662E00EDD56C /* Diff.framework in Frameworks */,
 				5683C11A2030F8FE00291C77 /* ToastSwiftFramework.framework in Frameworks */,
 				56F003E41F7C1EBD00E9707A /* LocalAuthentication.framework in Frameworks */,
@@ -3378,6 +3382,8 @@
 		56F003E21F7C1EBC00E9707A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				56F95DC4209281DF00EDD56C /* DynamicBlurView.framework */,
+				56F95DC2209281C200EDD56C /* DynamicBlurView.framework.dSYM */,
 				56F95DBD2092662E00EDD56C /* Diff.framework */,
 				56F95DBB2092634900EDD56C /* DeepDiff.framework */,
 				5683C1192030F8FE00291C77 /* ToastSwiftFramework.framework */,
@@ -3691,6 +3697,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/WSTagsField.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ToastSwiftFramework.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Diff.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/DynamicBlurView.framework",
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftDate.framework",
@@ -3698,6 +3705,7 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/WSTagsField.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/ToastSwiftFramework.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Diff.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/DynamicBlurView.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
