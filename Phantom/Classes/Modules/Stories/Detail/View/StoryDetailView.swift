@@ -144,6 +144,7 @@ class StoryDetailView: ViewController {
         layoutManager.addTextContainer(textContainer)
         contentTextView = TextView(frame: view.frame, textContainer: textContainer)
         contentTextView.text = markdown
+        contentTextView.accessibilityIdentifier = "content"
         contentTextView.placeholder = "Begin writing your story..."
         contentTextView.layer.borderWidth = 0
         contentTextView.layer.cornerRadius = 0
