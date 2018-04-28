@@ -8,11 +8,11 @@
 
 import UIKit
 import WebKit
+import Highlightr
 
 class StoryDetailView: ViewController {
 
     @IBOutlet private weak var titleTextView: TextView!
-    @IBOutlet private weak var contentTextView: TextView!
     // private weak var previewView: WKWebView!
     @IBOutlet weak var topTitleTextViewConstraint: NSLayoutConstraint!
 
@@ -33,6 +33,11 @@ class StoryDetailView: ViewController {
     var onBack: (() -> Void)?
     var onInsertImage: (() -> Void)?
 
+    var contentTextView: TextView!
+    var textContainer: NSTextContainer!
+    var highlightr: Highlightr!
+    let textStorage = CodeAttributedString()
+
     override var title: String? {
         didSet {
             titleTextView.setTextKeepingSelection(title ?? "")
@@ -40,7 +45,7 @@ class StoryDetailView: ViewController {
     }
     var markdown: String = "" {
         didSet {
-            contentTextView.setTextKeepingSelection(markdown)
+            contentTextView?.setTextKeepingSelection(markdown)
         }
     }
     var html: Story.HTML? {
@@ -71,8 +76,9 @@ class StoryDetailView: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollToViewWhenKeyboardShows = false
+        setUpTitleTextView()
+        setUpEditor()
         setUpContentToolbar()
-        setUpTextViews()
     }
 
     override func viewDidLayoutSubviews() {
@@ -88,9 +94,9 @@ class StoryDetailView: ViewController {
         titleTextInsets.left = left
         titleTextView.textContainerInset = titleTextInsets
         contentTextView.textContainerInset = UIEdgeInsets(
-            top: titleTextView.frame.height + 10,
+            top: titleTextView.frame.height,
             left: left,
-            bottom: 10,
+            bottom: 20,
             right: right
         )
     }
@@ -106,7 +112,7 @@ class StoryDetailView: ViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
-    func setUpTextViews() {
+    private func setUpTitleTextView() {
         titleTextView.text = title
         titleTextView.placeholder = "Post title"
         titleTextView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
@@ -122,6 +128,21 @@ class StoryDetailView: ViewController {
             self.contentTextView.becomeFirstResponder()
             return false
         }
+    }
+
+    private func setUpEditor() {
+        textStorage.language = "Markdown"
+        highlightr = textStorage.highlightr
+        highlightr.setTheme(to: "atom-one-light")
+        let theme = highlightr.theme!
+        theme.setCodeFont(.systemFont(ofSize: 18))
+        highlightr.theme = theme
+
+        let layoutManager = NSLayoutManager()
+        textStorage.addLayoutManager(layoutManager)
+        textContainer = NSTextContainer(size: .zero)
+        layoutManager.addTextContainer(textContainer)
+        contentTextView = TextView(frame: view.frame, textContainer: textContainer)
         contentTextView.text = markdown
         contentTextView.placeholder = "Begin writing your story..."
         contentTextView.layer.borderWidth = 0
@@ -130,6 +151,19 @@ class StoryDetailView: ViewController {
         contentTextView.onScroll = { [unowned self] scroll in
             self.topTitleTextViewConstraint.constant = -scroll.contentOffset.y
         }
+        contentTextView.translatesAutoresizingMaskIntoConstraints = false
+        contentTextView.autocorrectionType = .no
+        contentTextView.autocapitalizationType = .none
+        view.addSubview(contentTextView)
+        view.sendSubview(toBack: contentTextView)
+        var layoutGuide = view.layoutMarginsGuide
+        if #available(iOS 11.0, *) {
+            layoutGuide = view.safeAreaLayoutGuide
+        }
+        contentTextView.topAnchor.constraint(equalTo: layoutGuide.topAnchor).isActive = true
+        contentTextView.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor).isActive = true
+        contentTextView.leftAnchor.constraint(equalTo: layoutGuide.leftAnchor).isActive = true
+        contentTextView.rightAnchor.constraint(equalTo: layoutGuide.rightAnchor).isActive = true
     }
 
     override func setUpNavigation() {
@@ -293,5 +327,17 @@ class StoryPreview: WebViewController {
     func load(story: Story) {
         title = "Preview"
         load(url: URL(string: "\(Account.current!.blogUrl)p/\(story.uuid)/")!)
+    }
+}
+
+private extension String {
+    func height(withConstrainedWidth width: CGFloat, theme: Theme) -> CGSize {
+        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+        let boundingBox = self.boundingRect(
+            with: constraintRect,
+            options: .usesLineFragmentOrigin,
+            attributes: [.font: theme.boldCodeFont], context: nil)
+
+        return boundingBox.size
     }
 }
