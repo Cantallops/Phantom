@@ -38,10 +38,12 @@ extension UITableView {
             return cells.endIndex
         }
 
+        // swiftlint:disable:next identifier_name
         subscript(i: Int) -> TableCellConf {
             return cells[i]
         }
 
+        // swiftlint:disable:next identifier_name
         public func index(after i: Int) -> Int {
             return cells.index(after: i)
         }

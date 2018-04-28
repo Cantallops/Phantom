@@ -146,10 +146,10 @@ class TagsTableViewCell: TableViewCell {
     private func changeTags(wsTags: [WSTag], conf: Conf) {
         let possibleTags = self.possibleTags
         let tags = wsTags.map { wsTag -> Tag in
-            let t = possibleTags.filter { $0.name == wsTag.text }
-            switch t.count {
+            let filteredTags = possibleTags.filter { $0.name == wsTag.text }
+            switch filteredTags.count {
             case 0: return Tag(id: "", name: wsTag.text)
-            case 0...: return t.first!
+            case 0...: return filteredTags.first!
             default:
                 fatalError() // Count should be positive
             }

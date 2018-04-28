@@ -94,16 +94,16 @@ extension UITableViewFullDelegate: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        let s = sections[section]
-        guard let header = s.header else {
+        let tableSection = sections[section]
+        guard let header = tableSection.header else {
             return 0.01
         }
         return header.height(forWidth: tableView.frame.width)
     }
 
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        let s = sections[section]
-        guard let footer = s.footer else {
+        let tableSection = sections[section]
+        guard let footer = tableSection.footer else {
             return 0.01
         }
         return footer.height(forWidth: tableView.frame.width)
