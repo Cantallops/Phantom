@@ -77,7 +77,6 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
         if !firstSave {
             view?.markdown = story.markdown
         }
-        view?.html = story.html
         view?.status = story.status.rawValue.capitalized
         var actionText: String? = nil
         switch story.status {
