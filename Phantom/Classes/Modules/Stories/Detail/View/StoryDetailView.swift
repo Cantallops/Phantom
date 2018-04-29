@@ -7,13 +7,11 @@
 //
 
 import UIKit
-import WebKit
 import Highlightr
 
 class StoryDetailView: ViewController {
 
     @IBOutlet private weak var titleTextView: TextView!
-    // private weak var previewView: WKWebView!
     @IBOutlet weak var topTitleTextViewConstraint: NSLayoutConstraint!
 
     var onWriteContent: TextView.OnWriteClosure = { _ in } {
@@ -322,24 +320,5 @@ extension StoryDetailView: Loader {
 
     func stop() {
         setUpTootlbar()
-    }
-}
-
-class StoryPreview: WebViewController {
-    func load(story: Story) {
-        title = "Preview"
-        load(url: URL(string: "\(Account.current!.blogUrl)p/\(story.uuid)/")!)
-    }
-}
-
-private extension String {
-    func height(withConstrainedWidth width: CGFloat, theme: Theme) -> CGSize {
-        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-        let boundingBox = self.boundingRect(
-            with: constraintRect,
-            options: .usesLineFragmentOrigin,
-            attributes: [.font: theme.boldCodeFont], context: nil)
-
-        return boundingBox.size
     }
 }

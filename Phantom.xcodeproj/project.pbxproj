@@ -331,6 +331,7 @@
 		56F95DC12092796100EDD56C /* SearcheableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DC02092796100EDD56C /* SearcheableTest.swift */; };
 		56F95DC5209281DF00EDD56C /* DynamicBlurView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56F95DC4209281DF00EDD56C /* DynamicBlurView.framework */; };
 		56F95DC92094F43E00EDD56C /* Highlightr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56F95DC82094F43D00EDD56C /* Highlightr.framework */; };
+		56F95DCF2095DB8100EDD56C /* StoryPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DCE2095DB8100EDD56C /* StoryPreview.swift */; };
 		56FDE12A1FB8AA3D009678AC /* AccountKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FDE1291FB8AA3D009678AC /* AccountKeychain.swift */; };
 		56FDE12C1FB8AA93009678AC /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FDE12B1FB8AA93009678AC /* Account.swift */; };
 		56FDE1301FB8F21D009678AC /* DashboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FDE12F1FB8F21D009678AC /* DashboardPresenter.swift */; };
@@ -696,6 +697,7 @@
 		56F95DC4209281DF00EDD56C /* DynamicBlurView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DynamicBlurView.framework; path = Carthage/Build/iOS/DynamicBlurView.framework; sourceTree = "<group>"; };
 		56F95DC620939CA200EDD56C /* RichEditorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RichEditorView.framework; path = Carthage/Build/iOS/RichEditorView.framework; sourceTree = "<group>"; };
 		56F95DC82094F43D00EDD56C /* Highlightr.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Highlightr.framework; path = Carthage/Build/iOS/Highlightr.framework; sourceTree = "<group>"; };
+		56F95DCE2095DB8100EDD56C /* StoryPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryPreview.swift; sourceTree = "<group>"; };
 		56FDE1291FB8AA3D009678AC /* AccountKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountKeychain.swift; sourceTree = "<group>"; };
 		56FDE12B1FB8AA93009678AC /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		56FDE12F1FB8F21D009678AC /* DashboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardPresenter.swift; sourceTree = "<group>"; };
@@ -3127,6 +3129,7 @@
 				56AFDF121F869FB100ADA640 /* List */,
 				565BC4B91FB23C58005B4F84 /* Model */,
 				569447C61FE866850045B752 /* Notification */,
+				56F95DCD2095DB5900EDD56C /* Preview */,
 				564AD30E1FBA3DE400D086A8 /* Publisher */,
 				568558AA1F87F4FB000AA39F /* Settings */,
 			);
@@ -3416,6 +3419,14 @@
 				56F95DC02092796100EDD56C /* SearcheableTest.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		56F95DCD2095DB5900EDD56C /* Preview */ = {
+			isa = PBXGroup;
+			children = (
+				56F95DCE2095DB8100EDD56C /* StoryPreview.swift */,
+			);
+			path = Preview;
 			sourceTree = "<group>";
 		};
 		56FDE1281FB8AA17009678AC /* Session */ = {
@@ -3808,6 +3819,7 @@
 				569447FC1FEEB0700045B752 /* Picker.swift in Sources */,
 				56AFDF161F869FE500ADA640 /* StoriesListView.swift in Sources */,
 				568558DE1F894A94000AA39F /* TagDetailView.swift in Sources */,
+				56F95DCF2095DB8100EDD56C /* StoryPreview.swift in Sources */,
 				56178B721FAF8C0000EA8026 /* LoadStateService.swift in Sources */,
 				56FDE12A1FB8AA3D009678AC /* AccountKeychain.swift in Sources */,
 				56A69B1F2028C6EE008544F7 /* BadgeView.swift in Sources */,
