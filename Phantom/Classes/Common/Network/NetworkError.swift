@@ -36,6 +36,7 @@ struct NetworkError: Error {
         case unauthorized = "UnauthorizedError"
         case validation = "ValidationError"
         case tooManyRequests = "TooManyRequestsError"
+        case cannotConnect
         case multiple
         case parse
     }
@@ -60,6 +61,10 @@ struct NetworkError: Error {
             kind = .unknown
             localizedDescription = error.localizedDescription
             debugDescription = localizedDescription
+            self.error = error
+            if error.cannotConnect {
+                kind = .cannotConnect
+            }
             return
         } else if let data = response.data, let errors = try? GhostErrors.decode(data) {
             kind = errors.networkError
@@ -88,6 +93,16 @@ extension Error {
             return error.errors.contains(where: {
                 return ($0 as? NetworkError)?.kind == .unauthorized
             })
+        }
+        return false
+    }
+
+    var cannotConnect: Bool {
+        if let error = self as? NetworkError {
+            return error.kind == .cannotConnect
+        }
+        if (self as NSError).code == -1004 {
+            return true
         }
         return false
     }
