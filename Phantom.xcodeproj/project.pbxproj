@@ -335,6 +335,9 @@
 		56F95DD420A0CB3000EDD56C /* StoryFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DD320A0CB3000EDD56C /* StoryFilters.swift */; };
 		56F95DD820A0CDB200EDD56C /* StoriesListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DD720A0CDB200EDD56C /* StoriesListFactory.swift */; };
 		56F95DDC20A0E03600EDD56C /* RevokeRefreshToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DDB20A0E03600EDD56C /* RevokeRefreshToken.swift */; };
+		56F95DDE20A0E60B00EDD56C /* IndexStories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DDD20A0E60B00EDD56C /* IndexStories.swift */; };
+		56F95DE020A0EC7200EDD56C /* SearcheableIndexService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DDF20A0EC7200EDD56C /* SearcheableIndexService.swift */; };
+		56F95DE220A0F67C00EDD56C /* StoryDetailBuilderById.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DE120A0F67C00EDD56C /* StoryDetailBuilderById.swift */; };
 		56FDE12A1FB8AA3D009678AC /* AccountKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FDE1291FB8AA3D009678AC /* AccountKeychain.swift */; };
 		56FDE12C1FB8AA93009678AC /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FDE12B1FB8AA93009678AC /* Account.swift */; };
 		56FDE1301FB8F21D009678AC /* DashboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FDE12F1FB8F21D009678AC /* DashboardPresenter.swift */; };
@@ -702,6 +705,9 @@
 		56F95DD320A0CB3000EDD56C /* StoryFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryFilters.swift; sourceTree = "<group>"; };
 		56F95DD720A0CDB200EDD56C /* StoriesListFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoriesListFactory.swift; sourceTree = "<group>"; };
 		56F95DDB20A0E03600EDD56C /* RevokeRefreshToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevokeRefreshToken.swift; sourceTree = "<group>"; };
+		56F95DDD20A0E60B00EDD56C /* IndexStories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexStories.swift; sourceTree = "<group>"; };
+		56F95DDF20A0EC7200EDD56C /* SearcheableIndexService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearcheableIndexService.swift; sourceTree = "<group>"; };
+		56F95DE120A0F67C00EDD56C /* StoryDetailBuilderById.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryDetailBuilderById.swift; sourceTree = "<group>"; };
 		56FDE1291FB8AA3D009678AC /* AccountKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountKeychain.swift; sourceTree = "<group>"; };
 		56FDE12B1FB8AA93009678AC /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		56FDE12F1FB8F21D009678AC /* DashboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardPresenter.swift; sourceTree = "<group>"; };
@@ -952,6 +958,7 @@
 				56178B711FAF8C0000EA8026 /* LoadStateService.swift */,
 				56622C1D1FC0A4EF00CD5B13 /* LoadUIAppearanceService.swift */,
 				56ED3EF01FDAFC6C0069736A /* TestService.swift */,
+				56F95DDF20A0EC7200EDD56C /* SearcheableIndexService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1201,6 +1208,7 @@
 			children = (
 				565BC4BE1FB23EAF005B4F84 /* GetStoriesList.swift */,
 				56F95DB42090EBB500EDD56C /* FilterStories.swift */,
+				56F95DDD20A0E60B00EDD56C /* IndexStories.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -2405,6 +2413,7 @@
 			isa = PBXGroup;
 			children = (
 				56894A771FB62779005F9EF9 /* StoryDetailBuilder.swift */,
+				56F95DE120A0F67C00EDD56C /* StoryDetailBuilderById.swift */,
 			);
 			path = Builder;
 			sourceTree = "<group>";
@@ -3792,6 +3801,7 @@
 				5692AEBC1F6D7881004A65A4 /* AsyncHelper.swift in Sources */,
 				561C262B1FB7906D00840DA9 /* CreateStoryInteractor.swift in Sources */,
 				561C26281FB78D9100840DA9 /* StringUtils.swift in Sources */,
+				56F95DE020A0EC7200EDD56C /* SearcheableIndexService.swift in Sources */,
 				569448251FEFD2310045B752 /* AcknowledgementsPresenter.swift in Sources */,
 				569447D61FE9AD5D0045B752 /* SimpleTableSectionHeader.swift in Sources */,
 				569447DC1FE9C1CC0045B752 /* EmptyTableHeader.swift in Sources */,
@@ -3882,6 +3892,7 @@
 				56FDE13A1FB8F940009678AC /* GetMeRemote.swift in Sources */,
 				565E809D1F670A4E000DC618 /* TextField.swift in Sources */,
 				568558B91F89469F000AA39F /* AppsFactory.swift in Sources */,
+				56F95DDE20A0E60B00EDD56C /* IndexStories.swift in Sources */,
 				565BC4C11FB23FB7005B4F84 /* GetStoriesListRemote.swift in Sources */,
 				56F95DDC20A0E03600EDD56C /* RevokeRefreshToken.swift in Sources */,
 				5612C53D1FA4BA21004974E1 /* RightDetailTableViewCell.swift in Sources */,
@@ -3913,6 +3924,7 @@
 				569447C81FE866B30045B752 /* StoryInternalNotification.swift in Sources */,
 				561CD1931F71C07000EF7C8F /* NetworkProvider.swift in Sources */,
 				569447F51FED58640045B752 /* MetaDataBuilder.swift in Sources */,
+				56F95DE220A0F67C00EDD56C /* StoryDetailBuilderById.swift in Sources */,
 				561CD1911F71BFAA00EF7C8F /* NetworkCall.swift in Sources */,
 				5682D0731F86AC73008DEC22 /* StoryDetailPresenter.swift in Sources */,
 				56894A781FB62779005F9EF9 /* StoryDetailBuilder.swift in Sources */,

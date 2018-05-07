@@ -18,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var services: [UIApplicationDelegate] = [
         LoadStateService(),
         LoadUIAppearanceService(),
-        InitialModuleService()
+        InitialModuleService(),
+        SearcheableIndexService()
     ]
 
     func application(
@@ -34,6 +35,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #endif
         for service in services {
             if let serviceResult = service.application?(application, didFinishLaunchingWithOptions: launchOptions) {
+                if !serviceResult {
+                    return false
+                }
+            }
+        }
+        return true
+    }
+
+    func application(
+        _ application: UIApplication,
+        continue userActivity: NSUserActivity,
+        restorationHandler: @escaping ([Any]?) -> Void
+    ) -> Bool {
+        for service in services {
+            if let serviceResult = service.application?(
+                application,
+                continue: userActivity,
+                restorationHandler: restorationHandler
+            ) {
                 if !serviceResult {
                     return false
                 }

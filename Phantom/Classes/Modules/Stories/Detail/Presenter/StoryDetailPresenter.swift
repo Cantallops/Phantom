@@ -21,6 +21,9 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
 
     private var imageUploader: ImageUploader!
 
+    var loadById: Bool = false
+    var id: String?
+
     var story: Story
     var initialStory: Story
 
@@ -32,6 +35,27 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
         publisherBuilder: Builder<PublisherArg, UIViewController>,
         settingsBuilder: Builder<StorySettingsArg, UIViewController>
     ) {
+        self.initialStory = story.mutated
+        self.story = story.mutated
+        self.createInteractor = createInteractor
+        self.editInteractor = editInteractor
+        self.deleteInteractor = deleteInteractor
+        self.publisherBuilder = publisherBuilder
+        self.settingsBuilder = settingsBuilder
+        super.init()
+    }
+
+    init(
+        id: String,
+        createInteractor: Interactor<Story, Story>,
+        editInteractor: Interactor<Story, Story>,
+        deleteInteractor: Interactor<Story, Story>,
+        publisherBuilder: Builder<PublisherArg, UIViewController>,
+        settingsBuilder: Builder<StorySettingsArg, UIViewController>
+    ) {
+        self.loadById = true
+        self.id = id
+        let story: Story? = nil
         self.initialStory = story.mutated
         self.story = story.mutated
         self.createInteractor = createInteractor
@@ -63,6 +87,14 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
         )
         autoSaveDebounce = Debounce(delay: 5) { [weak self] in
             self?.save(auto: true)
+        }
+    }
+
+    override func willAppear() {
+        super.willAppear()
+        if let id = self.id, loadById {
+            loadById = false
+            load(byID: id)
         }
     }
 
@@ -297,6 +329,23 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
 
     private func onImageUploaded(uri: String) {
         view.insert(imageWithUri: uri)
+    }
+}
+
+extension StoryDetailPresenter {
+    func load(byID id: String) {
+        async(loaders: [self], background: {
+            return GetStoriesList().execute(args: nil)
+        }, main: { result in
+            switch result {
+            case .success(let stories):
+                let story = stories.object.filter({ $0.id == self.id }).first!
+                self.story = story
+                self.initialStory = story
+                self.setUpView(firstSave: false)
+            case .failure(let error): self.show(error: error)
+            }
+        })
     }
 }
 
