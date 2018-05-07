@@ -43,8 +43,6 @@ class PublisherView: ViewController {
             heightAnchor?.isActive = false
             if let height = height, canActivateAnchor {
                 heightAnchor = view.heightAnchor.constraint(equalToConstant: height)
-                heightAnchor?.identifier = "HOLA"
-                print("Active height: \(height)")
                 heightAnchor?.isActive = true
             }
         }

@@ -70,11 +70,15 @@ class StoriesListPresenter: Presenter<StoriesListView> {
     private func process(paginated: Paginated<[Story]>) {
         meta = paginated.meta
         stories = paginated.object
-        let result = filterStories.execute(args: (stories, filters))
-        show(stories: result.value ?? [])
+        show(stories: stories)
     }
 
     private func show(stories: [Story]) {
+        let result = filterStories.execute(args: (stories, filters))
+        guard let stories = result.value else {
+            view.sections = []
+            return
+        }
         if stories.isEmpty {
             view.sections = []
         } else {

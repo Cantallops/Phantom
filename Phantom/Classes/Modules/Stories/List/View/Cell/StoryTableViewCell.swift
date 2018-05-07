@@ -29,7 +29,7 @@ class StoryTableViewCell: TableViewCell {
         }
 
         override func isEqual(_ object: Any?) -> Bool {
-            return story.id == (object as? Conf)?.story.id
+            return story == (object as? Conf)?.story
         }
     }
 
