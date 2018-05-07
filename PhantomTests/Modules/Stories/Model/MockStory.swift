@@ -31,9 +31,15 @@ extension Story {
         metaDescription: nil
     )
 
-    func settingTitle(title: String) -> Story {
+    func setting(title: String) -> Story {
         var story = self
         story.title = title
+        return story
+    }
+
+    func setting(tags: [Tag]) -> Story {
+        var story = self
+        story.tags = tags
         return story
     }
 }

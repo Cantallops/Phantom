@@ -16,6 +16,7 @@ class TagDetailPresenter: Presenter<TagDetailView> {
     private let editInteractor: Interactor<Tag, Tag>
     private let deleteInteractor: Interactor<Tag, Tag>
     private let metaDataBuilder: Builder<MetaDataArg, UIViewController>
+    private let postListBuilder: Builder<StoryFilters?, UIViewController>
 
     private var shouldEnableSave: Bool {
         return !tag.name.isEmpty
@@ -26,13 +27,15 @@ class TagDetailPresenter: Presenter<TagDetailView> {
         createInteractor: Interactor<Tag, Tag>,
         editInteractor: Interactor<Tag, Tag>,
         deleteInteractor: Interactor<Tag, Tag>,
-        metaDataBuilder: Builder<MetaDataArg, UIViewController>
+        metaDataBuilder: Builder<MetaDataArg, UIViewController>,
+        postListBuilder: Builder<StoryFilters?, UIViewController>
     ) {
         self.tag = tag.mutated
         self.createInteractor = createInteractor
         self.editInteractor = editInteractor
         self.deleteInteractor = deleteInteractor
         self.metaDataBuilder = metaDataBuilder
+        self.postListBuilder = postListBuilder
         super.init()
     }
 
@@ -121,6 +124,8 @@ class TagDetailPresenter: Presenter<TagDetailView> {
 
         if !tag.isNew {
             cells.append(contentsOf: [
+                    getPostListCellConf(),
+                    spaceCellConf,
                     getDeleteCellConf(),
                     spaceCellConf
                 ]
@@ -212,6 +217,20 @@ class TagDetailPresenter: Presenter<TagDetailView> {
         return [metaDataInfoCellConf]
     }
 
+    private func getPostListCellConf() -> TableCellConf {
+        let postsCellConf = SubtitleTableViewCell.Conf(
+            text: "Posts",
+            subtitle: "All posts with \(tag.name) tag"
+        )
+        postsCellConf.accessoryType = .disclosureIndicator
+        postsCellConf.onSelect = { [unowned self] in
+            self.openPostList()
+        }
+        postsCellConf.deselect = true
+        postsCellConf.accessoryType = .disclosureIndicator
+        return postsCellConf
+    }
+
     private func getDeleteCellConf() -> TableCellConf {
         let deleteCellConf = BasicTableViewCell.Conf(
             text: "Delete tag",
@@ -232,6 +251,17 @@ class TagDetailPresenter: Presenter<TagDetailView> {
         let args: MetaDataArg = (tag.metaData, onEdit)
         let metaDataView = metaDataBuilder.build(arg: args)
         view.navigationController?.pushViewController(metaDataView, animated: true)
+    }
+
+    private func openPostList() {
+        let filters = StoryFilters(tagID: tag.id, text: "")
+        let postsView = postListBuilder.build(arg: filters)
+        view.navigationController?.pushViewController(postsView, animated: true)
+        if tag.name.hasSuffix("s") {
+            postsView.navigationItem.title = "\(tag.name)' posts"
+        } else {
+            postsView.navigationItem.title = "\(tag.name)'s posts"
+        }
     }
 }
 

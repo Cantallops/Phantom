@@ -279,7 +279,6 @@
 		56A69B212028C701008544F7 /* BadgeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A69B202028C701008544F7 /* BadgeView.xib */; };
 		56AFDF101F816AD600ADA640 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AFDF0F1F816AD600ADA640 /* DashboardView.swift */; };
 		56AFDF161F869FE500ADA640 /* StoriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AFDF141F869FE500ADA640 /* StoriesListView.swift */; };
-		56AFDF1A1F86A00400ADA640 /* StoriesListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AFDF191F86A00400ADA640 /* StoriesListFactory.swift */; };
 		56AFDF1E1F86A0E000ADA640 /* StoriesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AFDF1D1F86A0E000ADA640 /* StoriesListPresenter.swift */; };
 		56AFDF201F86A3F500ADA640 /* DashboardFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AFDF1F1F86A3F500ADA640 /* DashboardFactory.swift */; };
 		56B836261F6719D70017905D /* TextFieldTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B836251F6719D70017905D /* TextFieldTest.swift */; };
@@ -332,6 +331,9 @@
 		56F95DC5209281DF00EDD56C /* DynamicBlurView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56F95DC4209281DF00EDD56C /* DynamicBlurView.framework */; };
 		56F95DC92094F43E00EDD56C /* Highlightr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56F95DC82094F43D00EDD56C /* Highlightr.framework */; };
 		56F95DCF2095DB8100EDD56C /* StoryPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DCE2095DB8100EDD56C /* StoryPreview.swift */; };
+		56F95DD220A0CAF800EDD56C /* StoriesListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DD120A0CAF800EDD56C /* StoriesListBuilder.swift */; };
+		56F95DD420A0CB3000EDD56C /* StoryFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DD320A0CB3000EDD56C /* StoryFilters.swift */; };
+		56F95DD820A0CDB200EDD56C /* StoriesListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DD720A0CDB200EDD56C /* StoriesListFactory.swift */; };
 		56FDE12A1FB8AA3D009678AC /* AccountKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FDE1291FB8AA3D009678AC /* AccountKeychain.swift */; };
 		56FDE12C1FB8AA93009678AC /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FDE12B1FB8AA93009678AC /* Account.swift */; };
 		56FDE1301FB8F21D009678AC /* DashboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FDE12F1FB8F21D009678AC /* DashboardPresenter.swift */; };
@@ -642,7 +644,6 @@
 		56A69B202028C701008544F7 /* BadgeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BadgeView.xib; sourceTree = "<group>"; };
 		56AFDF0F1F816AD600ADA640 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		56AFDF141F869FE500ADA640 /* StoriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListView.swift; sourceTree = "<group>"; };
-		56AFDF191F86A00400ADA640 /* StoriesListFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListFactory.swift; sourceTree = "<group>"; };
 		56AFDF1D1F86A0E000ADA640 /* StoriesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListPresenter.swift; sourceTree = "<group>"; };
 		56AFDF1F1F86A3F500ADA640 /* DashboardFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardFactory.swift; sourceTree = "<group>"; };
 		56B836251F6719D70017905D /* TextFieldTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTest.swift; sourceTree = "<group>"; };
@@ -698,6 +699,9 @@
 		56F95DC620939CA200EDD56C /* RichEditorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RichEditorView.framework; path = Carthage/Build/iOS/RichEditorView.framework; sourceTree = "<group>"; };
 		56F95DC82094F43D00EDD56C /* Highlightr.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Highlightr.framework; path = Carthage/Build/iOS/Highlightr.framework; sourceTree = "<group>"; };
 		56F95DCE2095DB8100EDD56C /* StoryPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryPreview.swift; sourceTree = "<group>"; };
+		56F95DD120A0CAF800EDD56C /* StoriesListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListBuilder.swift; sourceTree = "<group>"; };
+		56F95DD320A0CB3000EDD56C /* StoryFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryFilters.swift; sourceTree = "<group>"; };
+		56F95DD720A0CDB200EDD56C /* StoriesListFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoriesListFactory.swift; sourceTree = "<group>"; };
 		56FDE1291FB8AA3D009678AC /* AccountKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountKeychain.swift; sourceTree = "<group>"; };
 		56FDE12B1FB8AA93009678AC /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		56FDE12F1FB8F21D009678AC /* DashboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardPresenter.swift; sourceTree = "<group>"; };
@@ -1179,6 +1183,7 @@
 			isa = PBXGroup;
 			children = (
 				565BC4BA1FB23C64005B4F84 /* Story.swift */,
+				56F95DD320A0CB3000EDD56C /* StoryFilters.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3139,8 +3144,9 @@
 		56AFDF121F869FB100ADA640 /* List */ = {
 			isa = PBXGroup;
 			children = (
+				56F95DD020A0CAC700EDD56C /* Builder */,
 				565BC4BC1FB23E85005B4F84 /* DataSource */,
-				56AFDF181F869FF200ADA640 /* Factory */,
+				56F95DD620A0CDB200EDD56C /* Factory */,
 				565BC4BD1FB23E9A005B4F84 /* Interactor */,
 				56AFDF1C1F86A0D100ADA640 /* Presenter */,
 				56AFDF131F869FBB00ADA640 /* View */,
@@ -3155,14 +3161,6 @@
 				56AFDF141F869FE500ADA640 /* StoriesListView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		56AFDF181F869FF200ADA640 /* Factory */ = {
-			isa = PBXGroup;
-			children = (
-				56AFDF191F86A00400ADA640 /* StoriesListFactory.swift */,
-			);
-			path = Factory;
 			sourceTree = "<group>";
 		};
 		56AFDF1B1F86A06100ADA640 /* Factory */ = {
@@ -3427,6 +3425,22 @@
 				56F95DCE2095DB8100EDD56C /* StoryPreview.swift */,
 			);
 			path = Preview;
+			sourceTree = "<group>";
+		};
+		56F95DD020A0CAC700EDD56C /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				56F95DD120A0CAF800EDD56C /* StoriesListBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		56F95DD620A0CDB200EDD56C /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				56F95DD720A0CDB200EDD56C /* StoriesListFactory.swift */,
+			);
+			path = Factory;
 			sourceTree = "<group>";
 		};
 		56FDE1281FB8AA17009678AC /* Session */ = {
@@ -3825,6 +3839,7 @@
 				56A69B1F2028C6EE008544F7 /* BadgeView.swift in Sources */,
 				56622C111FC06F5700CD5B13 /* GetMembers.swift in Sources */,
 				5694480B1FEEFF560045B752 /* AboutGhost.swift in Sources */,
+				56F95DD820A0CDB200EDD56C /* StoriesListFactory.swift in Sources */,
 				568558B71F894682000AA39F /* AppsPresenter.swift in Sources */,
 				5694481A1FEFB4E80045B752 /* GetAboutGhostConfiguration.swift in Sources */,
 				568558831F86BC19000AA39F /* MoreView.swift in Sources */,
@@ -3834,8 +3849,8 @@
 				56836BB21F7AB40F009ADE15 /* SignInView.swift in Sources */,
 				5692AE991F6D57DA004A65A4 /* Interactor.swift in Sources */,
 				5608672C1FAA6C5A002A9790 /* DeleteTagInteractor.swift in Sources */,
+				56F95DD420A0CB3000EDD56C /* StoryFilters.swift in Sources */,
 				56EC33131FABC1B400A5742A /* PostTagRemote.swift in Sources */,
-				56AFDF1A1F86A00400ADA640 /* StoriesListFactory.swift in Sources */,
 				566186A920055F0E00A503A8 /* TabletDashboardView.swift in Sources */,
 				569447D11FE991DC0045B752 /* GeneralSettings.swift in Sources */,
 				569335141FDD861E00F0B108 /* UIActivityIndicatorViewLoader.swift in Sources */,
@@ -3954,6 +3969,7 @@
 				568558E41F894C3F000AA39F /* TagsListView.swift in Sources */,
 				568558E11F894BCE000AA39F /* TagDetailPresenter.swift in Sources */,
 				561CD18F1F71B94A00EF7C8F /* NetworkError.swift in Sources */,
+				56F95DD220A0CAF800EDD56C /* StoriesListBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

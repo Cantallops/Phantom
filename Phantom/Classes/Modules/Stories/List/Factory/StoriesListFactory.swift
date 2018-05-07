@@ -9,14 +9,9 @@
 import UIKit
 
 class StoriesListFactory: Factory<UIViewController> {
-
     override func build() -> UIViewController {
-        let presenter = StoriesListPresenter(
-            storyInternalNotificationCenter: storyInternalNotificationCenter,
-            tagInternalNotificationCenter: tagInternalNotificationCenter
-        )
-        let view = StoriesListView(presenter: presenter)
-        presenter.view = view
+        let view = StoriesListBuilder().build(arg: nil)
+        view.navigationItem.title = "Your stories"
         return view
     }
 }

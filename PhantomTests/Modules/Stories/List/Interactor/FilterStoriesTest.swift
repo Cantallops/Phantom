@@ -12,29 +12,38 @@ import XCTest
 class FilterStoriesTest: XCTestCase {
 
     fileprivate var interactor: FilterStories!
+    fileprivate var stories = [
+        Story.any.setting(title: "Title").setting(tags: [Tag.any.setting(id: "tagID1")]),
+        Story.any.setting(title: "A second title").setting(tags: [Tag.any.setting(id: "tagID2")]),
+        Story.any.setting(title: "A third story").setting(tags: [Tag.any.setting(id: "tagID2")])
+    ]
 
     override func setUp() {
         super.setUp()
         interactor = FilterStories()
     }
 
-    func testFilterWithResults() {
-        let stories: [Story] = [
-            Story.any.settingTitle(title: "Title"),
-            Story.any.settingTitle(title: "A second title"),
-            Story.any.settingTitle(title: "A third story")
-        ]
-        let result = interactor.execute(args: (stories, "Title"))
+    func testFilterByTextWithResults() {
+        let filter = StoryFilters(tagID: nil, text: "Title")
+        let result = interactor.execute(args: (stories, filter))
         XCTAssertEqual(result.value!.count, 2)
     }
 
-    func testFilterWithoutResults() {
-        let stories: [Story] = [
-            Story.any.settingTitle(title: "Title"),
-            Story.any.settingTitle(title: "A second title"),
-            Story.any.settingTitle(title: "A third story")
-        ]
-        let result = interactor.execute(args: (stories, "stories"))
+    func testFilterByTestWithoutResults() {
+        let filter = StoryFilters(tagID: nil, text: "stories")
+        let result = interactor.execute(args: (stories, filter))
+        XCTAssertTrue(result.value!.isEmpty)
+    }
+
+    func testFilterByTagWithResults() {
+        let filter = StoryFilters(tagID: "tagID2", text: "")
+        let result = interactor.execute(args: (stories, filter))
+        XCTAssertEqual(result.value!.count, 2)
+    }
+
+    func testFilterByTagWithoutResults() {
+        let filter = StoryFilters(tagID: "tagID3", text: "")
+        let result = interactor.execute(args: (stories, filter))
         XCTAssertTrue(result.value!.isEmpty)
     }
 }

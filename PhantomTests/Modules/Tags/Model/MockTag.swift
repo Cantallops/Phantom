@@ -20,4 +20,18 @@ extension Tag {
         metaDescription: nil,
         count: nil
     )
+
+    func setting(id: String) -> Tag {
+        let tag = Tag(
+            id: id,
+            name: name,
+            slug: slug,
+            description: description,
+            featureImage: featureImage,
+            metaTitle: metaTitle,
+            metaDescription: metaDescription,
+            count: count
+        )
+        return tag
+    }
 }

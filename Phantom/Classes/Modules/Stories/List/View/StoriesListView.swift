@@ -25,7 +25,6 @@ class StoriesListView: TableViewController {
 
     override func setUpNavigation() {
         super.setUpNavigation()
-        navigationItem.title = "Your stories"
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
             navigationItem.largeTitleDisplayMode = .automatic

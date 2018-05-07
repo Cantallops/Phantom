@@ -15,7 +15,8 @@ class TagDetailBuilder: Builder<Tag?, UIViewController> {
             createInteractor: CreateTagInteractor(createTagRemote: PostTagRemote()),
             editInteractor: EditTagInteractor(editTagRemote: PutTagRemote()),
             deleteInteractor: DeleteTagInteractor(deleteTagRemote: DeleteTagRemote()),
-            metaDataBuilder: MetaDataBuilder()
+            metaDataBuilder: MetaDataBuilder(),
+            postListBuilder: StoriesListBuilder()
         )
         let view = TagDetailView(presenter: presenter)
         presenter.view = view

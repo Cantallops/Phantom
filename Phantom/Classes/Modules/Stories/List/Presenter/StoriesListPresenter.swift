@@ -14,25 +14,23 @@ class StoriesListPresenter: Presenter<StoriesListView> {
     private var storyObservers: [NSObjectProtocol] = []
     private let tagInternalNotificationCenter: InternalNotificationCenter<Tag>
     private var tagObservers: [NSObjectProtocol] = []
-
+    private var filters = StoryFilters() {
+        didSet {
+            loadList()
+        }
+    }
     private let getStoriesListInteractor: Interactor<Meta?, Paginated<[Story]>>
-    private let filterStories: Interactor<([Story], String), [Story]>
+    private let filterStories: Interactor<([Story], StoryFilters), [Story]>
     private let storyDetailBuilder: Builder<Story?, ViewController>
     private var meta: Meta?
     private var stories: [Story] = []
-    private var filterText: String = "" {
-        didSet {
-            let result = filterStories.execute(args: (stories, filterText))
-            show(stories: result.value ?? [])
-        }
-    }
 
     init(
         storyInternalNotificationCenter: InternalNotificationCenter<Story>,
         tagInternalNotificationCenter: InternalNotificationCenter<Tag>,
         getStoriesListInteractor: Interactor<Meta?, Paginated<[Story]>> = GetStoriesList(),
         storyDetailBuilder: Builder<Story?, ViewController> = StoryDetailBuilder(),
-        filterStories: Interactor<([Story], String), [Story]> = FilterStories()
+        filterStories: Interactor<([Story], StoryFilters), [Story]> = FilterStories()
     ) {
         self.storyInternalNotificationCenter = storyInternalNotificationCenter
         self.tagInternalNotificationCenter = tagInternalNotificationCenter
@@ -72,7 +70,8 @@ class StoriesListPresenter: Presenter<StoriesListView> {
     private func process(paginated: Paginated<[Story]>) {
         meta = paginated.meta
         stories = paginated.object
-        show(stories: stories)
+        let result = filterStories.execute(args: (stories, filters))
+        show(stories: result.value ?? [])
     }
 
     private func show(stories: [Story]) {
@@ -157,6 +156,10 @@ extension StoriesListPresenter {
         stories[index] = story
         show(stories: stories)
     }
+
+    func filter(by filters: StoryFilters) {
+        self.filters = filters
+    }
 }
 
 extension StoriesListPresenter {
@@ -214,6 +217,6 @@ extension StoriesListPresenter {
 
 extension StoriesListPresenter {
     func filter(text: String) {
-        filterText = text
+        filters.text = text
     }
 }

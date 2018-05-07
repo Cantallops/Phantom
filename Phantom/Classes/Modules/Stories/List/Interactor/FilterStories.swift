@@ -14,9 +14,17 @@ extension Story: Searcheable {
     }
 }
 
-class FilterStories: Interactor<([Story], String), [Story]> {
-    override func execute(args: ([Story], String)) -> Result<[Story]> {
-        let stories = args.0.search(text: args.1)
+class FilterStories: Interactor<([Story], StoryFilters), [Story]> {
+    override func execute(args: ([Story], StoryFilters)) -> Result<[Story]> {
+        var stories = args.0.search(text: args.1.text)
+        stories = stories.filter { story -> Bool in
+            return story.tags.contains(where: { tag -> Bool in
+                guard let tagID = args.1.tagID else {
+                    return true
+                }
+                return tag.id == tagID
+            })
+        }
         return .success(stories)
     }
 }
