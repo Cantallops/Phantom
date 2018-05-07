@@ -283,7 +283,7 @@
 		56AFDF201F86A3F500ADA640 /* DashboardFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AFDF1F1F86A3F500ADA640 /* DashboardFactory.swift */; };
 		56B836261F6719D70017905D /* TextFieldTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B836251F6719D70017905D /* TextFieldTest.swift */; };
 		56B836291F672C160017905D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B836281F672C160017905D /* Color.swift */; };
-		56BBA1CC1FB860E300C46916 /* RevokeOauth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BBA1CB1FB860E300C46916 /* RevokeOauth.swift */; };
+		56BBA1CC1FB860E300C46916 /* RevokeAccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BBA1CB1FB860E300C46916 /* RevokeAccessToken.swift */; };
 		56C4655A1F654048001ABAC8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C465591F654048001ABAC8 /* ViewController.swift */; };
 		56C4655D1F654132001ABAC8 /* BlogSiteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C4655B1F654132001ABAC8 /* BlogSiteView.swift */; };
 		56C4655E1F654132001ABAC8 /* BlogSiteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56C4655C1F654132001ABAC8 /* BlogSiteView.xib */; };
@@ -334,6 +334,7 @@
 		56F95DD220A0CAF800EDD56C /* StoriesListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DD120A0CAF800EDD56C /* StoriesListBuilder.swift */; };
 		56F95DD420A0CB3000EDD56C /* StoryFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DD320A0CB3000EDD56C /* StoryFilters.swift */; };
 		56F95DD820A0CDB200EDD56C /* StoriesListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DD720A0CDB200EDD56C /* StoriesListFactory.swift */; };
+		56F95DDC20A0E03600EDD56C /* RevokeRefreshToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DDB20A0E03600EDD56C /* RevokeRefreshToken.swift */; };
 		56FDE12A1FB8AA3D009678AC /* AccountKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FDE1291FB8AA3D009678AC /* AccountKeychain.swift */; };
 		56FDE12C1FB8AA93009678AC /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FDE12B1FB8AA93009678AC /* Account.swift */; };
 		56FDE1301FB8F21D009678AC /* DashboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FDE12F1FB8F21D009678AC /* DashboardPresenter.swift */; };
@@ -648,7 +649,7 @@
 		56AFDF1F1F86A3F500ADA640 /* DashboardFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardFactory.swift; sourceTree = "<group>"; };
 		56B836251F6719D70017905D /* TextFieldTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTest.swift; sourceTree = "<group>"; };
 		56B836281F672C160017905D /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		56BBA1CB1FB860E300C46916 /* RevokeOauth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevokeOauth.swift; sourceTree = "<group>"; };
+		56BBA1CB1FB860E300C46916 /* RevokeAccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevokeAccessToken.swift; sourceTree = "<group>"; };
 		56C465591F654048001ABAC8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		56C4655B1F654132001ABAC8 /* BlogSiteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogSiteView.swift; sourceTree = "<group>"; };
 		56C4655C1F654132001ABAC8 /* BlogSiteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlogSiteView.xib; sourceTree = "<group>"; };
@@ -702,6 +703,7 @@
 		56F95DD120A0CAF800EDD56C /* StoriesListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListBuilder.swift; sourceTree = "<group>"; };
 		56F95DD320A0CB3000EDD56C /* StoryFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryFilters.swift; sourceTree = "<group>"; };
 		56F95DD720A0CDB200EDD56C /* StoriesListFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoriesListFactory.swift; sourceTree = "<group>"; };
+		56F95DDB20A0E03600EDD56C /* RevokeRefreshToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevokeRefreshToken.swift; sourceTree = "<group>"; };
 		56FDE1291FB8AA3D009678AC /* AccountKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountKeychain.swift; sourceTree = "<group>"; };
 		56FDE12B1FB8AA93009678AC /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		56FDE12F1FB8F21D009678AC /* DashboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardPresenter.swift; sourceTree = "<group>"; };
@@ -2523,7 +2525,8 @@
 				5692AEB21F6D6C78004A65A4 /* GetBlogConfiguration.swift */,
 				566BFDC31F7C2D880051AD9F /* GetOauth.swift */,
 				56178B6F1FAF809900EA8026 /* RefreshOauth.swift */,
-				56BBA1CB1FB860E300C46916 /* RevokeOauth.swift */,
+				56BBA1CB1FB860E300C46916 /* RevokeAccessToken.swift */,
+				56F95DDB20A0E03600EDD56C /* RevokeRefreshToken.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -3884,6 +3887,7 @@
 				565E809D1F670A4E000DC618 /* TextField.swift in Sources */,
 				568558B91F89469F000AA39F /* AppsFactory.swift in Sources */,
 				565BC4C11FB23FB7005B4F84 /* GetStoriesListRemote.swift in Sources */,
+				56F95DDC20A0E03600EDD56C /* RevokeRefreshToken.swift in Sources */,
 				5612C53D1FA4BA21004974E1 /* RightDetailTableViewCell.swift in Sources */,
 				568558BF1F894756000AA39F /* CodeInjectionPresenter.swift in Sources */,
 				56988B301FEFEC490000EFBC /* Subscriber.swift in Sources */,
@@ -3891,7 +3895,7 @@
 				5682D0831F86B8B5008DEC22 /* SubscribersListPresenter.swift in Sources */,
 				56836BBB1F7AB62D009ADE15 /* BlogSiteFactory.swift in Sources */,
 				5692AEA11F6D6261004A65A4 /* DetectGhostInstallation.swift in Sources */,
-				56BBA1CC1FB860E300C46916 /* RevokeOauth.swift in Sources */,
+				56BBA1CC1FB860E300C46916 /* RevokeAccessToken.swift in Sources */,
 				568558861F86BC58000AA39F /* MorePresenter.swift in Sources */,
 				56EC330F1FABB42900A5742A /* DeleteTagRemote.swift in Sources */,
 				56AFDF101F816AD600ADA640 /* DashboardView.swift in Sources */,

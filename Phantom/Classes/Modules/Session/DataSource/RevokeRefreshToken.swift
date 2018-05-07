@@ -1,14 +1,14 @@
 //
-//  RevokeOauth.swift
+//  RevokeRefreshToken.swift
 //  Phantom
 //
-//  Created by Alberto Cantallops on 12/11/2017.
-//  Copyright © 2017 Alberto Cantallops. All rights reserved.
+//  Created by Alberto Cantallops on 07/05/2018.
+//  Copyright © 2018 Alberto Cantallops. All rights reserved.
 //
 
 import Foundation
 
-private struct RevokeOauthProvider: NetworkProvider {
+private struct RevokeRefreshTokenProvider: NetworkProvider {
     let oauth: Oauth
 
     var method: HTTPMethod {
@@ -19,26 +19,23 @@ private struct RevokeOauthProvider: NetworkProvider {
     }
     var parameters: JSON {
         return [
-            "tokenTypeHint": "access_token",
-            "token": oauth.accessToken
+            "tokenTypeHint": "refresh_token",
+            "token": oauth.refreshToken
         ]
-    }
-    var useClientKeys: Bool {
-        return true
     }
     var authenticated: Bool {
         return true
     }
 }
 
-struct RevokedOauth: Codable {
+struct RevokedRefreshToken: Codable {
     let token: String
 }
 
-class RevokeOauth: DataSource<Oauth, Any?> {
+class RevokeRefreshToken: DataSource<Oauth, Any?> {
     override func execute(args: Oauth) -> Result<Any?> {
-        let provider = RevokeOauthProvider(oauth: args)
-        let result: Result<RevokedOauth> = Network(provider: provider).call(tryRefreshOauth: false)
+        let provider = RevokeRefreshTokenProvider(oauth: args)
+        let result: Result<RevokedRefreshToken> = Network(provider: provider).call(tryRefreshOauth: false)
         switch result {
         case .success(let revokedOauth):
             if revokedOauth.token != args.accessToken {

@@ -12,12 +12,15 @@ let signOutNotification = Notification(name: Notification.Name(rawValue: "signOu
 
 class DoSignOut: Interactor<Any?, Any?> {
 
-    let revokeOauth: DataSource<Oauth, Any?>
+    let revokeAccessToken: DataSource<Oauth, Any?>
+    let revokeRefreshToken: DataSource<Oauth, Any?>
 
     init(
-        revokeOauth: DataSource<Oauth, Any?> = RevokeOauth()
+        revokeAccessToken: DataSource<Oauth, Any?> = RevokeAccessToken(),
+        revokeRefreshToken: DataSource<Oauth, Any?> = RevokeRefreshToken()
     ) {
-        self.revokeOauth = revokeOauth
+        self.revokeAccessToken = revokeAccessToken
+        self.revokeRefreshToken = revokeRefreshToken
         super.init()
     }
 
@@ -26,7 +29,13 @@ class DoSignOut: Interactor<Any?, Any?> {
 
         if var account = Account.current {
             if let oauth = account.oauth {
-                result = revokeOauth.execute(args: oauth)
+                let revokedRefreshTokenResult = revokeRefreshToken.execute(args: oauth)
+                let revokedAccessTokenResult = revokeAccessToken.execute(args: oauth)
+                let combinedResult = revokedAccessTokenResult.combined(result: revokedRefreshTokenResult)
+                switch combinedResult {
+                case .failure(let error): result = .failure(error)
+                case .success: result = .success(nil)
+                }
             }
             account.signOut()
         }
