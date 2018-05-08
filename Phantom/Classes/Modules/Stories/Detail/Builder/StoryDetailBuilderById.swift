@@ -10,8 +10,9 @@ import Foundation
 
 class StoryDetailBuilderById: Builder<String, ViewController> {
     override func build(arg: String) -> ViewController {
-        let presenter = StoryDetailPresenter(
+        let presenter = StoryDetailByIdPresenter(
             id: arg,
+            getStoryById: GetStoryByIdInteractor(),
             createInteractor: CreateStoryInteractor(createRemote: PostStoryRemote()),
             editInteractor: EditStoryInteractor(editRemote: PutStoryRemote()),
             deleteInteractor: DeleteStoryInteractor(deleteRemote: DeleteStoryRemote()),
