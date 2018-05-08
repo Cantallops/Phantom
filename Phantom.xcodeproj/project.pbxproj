@@ -694,7 +694,6 @@
 		56F95DB9209111FF00EDD56C /* Searcheable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Searcheable.swift; sourceTree = "<group>"; };
 		56F95DBD2092662E00EDD56C /* Diff.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Diff.framework; path = Carthage/Build/iOS/Diff.framework; sourceTree = "<group>"; };
 		56F95DC02092796100EDD56C /* SearcheableTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearcheableTest.swift; sourceTree = "<group>"; };
-		56F95DC2209281C200EDD56C /* DynamicBlurView.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = DynamicBlurView.framework.dSYM; path = Carthage/Build/iOS/DynamicBlurView.framework.dSYM; sourceTree = "<group>"; };
 		56F95DC4209281DF00EDD56C /* DynamicBlurView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DynamicBlurView.framework; path = Carthage/Build/iOS/DynamicBlurView.framework; sourceTree = "<group>"; };
 		56F95DC620939CA200EDD56C /* RichEditorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RichEditorView.framework; path = Carthage/Build/iOS/RichEditorView.framework; sourceTree = "<group>"; };
 		56F95DC82094F43D00EDD56C /* Highlightr.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Highlightr.framework; path = Carthage/Build/iOS/Highlightr.framework; sourceTree = "<group>"; };
@@ -3392,7 +3391,6 @@
 				56F95DC82094F43D00EDD56C /* Highlightr.framework */,
 				56F95DC620939CA200EDD56C /* RichEditorView.framework */,
 				56F95DC4209281DF00EDD56C /* DynamicBlurView.framework */,
-				56F95DC2209281C200EDD56C /* DynamicBlurView.framework.dSYM */,
 				56F95DBD2092662E00EDD56C /* Diff.framework */,
 				5683C1192030F8FE00291C77 /* ToastSwiftFramework.framework */,
 				56A1FC791FFB055700E88EF2 /* SimulatorStatusMagiciOS.framework */,
