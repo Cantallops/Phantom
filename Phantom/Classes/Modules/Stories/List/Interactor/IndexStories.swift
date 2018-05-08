@@ -40,7 +40,7 @@ class IndexStories: Interactor<[Story], Any?> {
             searcheableItems.append(searchableItem)
         }
         let index = CSSearchableIndex.default()
-        index.deleteAllSearchableItems { _ in
+        index.deleteSearchableItems(withDomainIdentifiers: [domainIdentifier]) { _ in
             index.indexSearchableItems(searcheableItems, completionHandler: nil)
         }
         return .success(nil)
