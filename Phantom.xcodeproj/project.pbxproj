@@ -692,7 +692,6 @@
 		56F95DB42090EBB500EDD56C /* FilterStories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterStories.swift; sourceTree = "<group>"; };
 		56F95DB62090F75500EDD56C /* FilterStoriesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterStoriesTest.swift; sourceTree = "<group>"; };
 		56F95DB9209111FF00EDD56C /* Searcheable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Searcheable.swift; sourceTree = "<group>"; };
-		56F95DBB2092634900EDD56C /* DeepDiff.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeepDiff.framework; path = Carthage/Build/iOS/DeepDiff.framework; sourceTree = "<group>"; };
 		56F95DBD2092662E00EDD56C /* Diff.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Diff.framework; path = Carthage/Build/iOS/Diff.framework; sourceTree = "<group>"; };
 		56F95DC02092796100EDD56C /* SearcheableTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearcheableTest.swift; sourceTree = "<group>"; };
 		56F95DC2209281C200EDD56C /* DynamicBlurView.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = DynamicBlurView.framework.dSYM; path = Carthage/Build/iOS/DynamicBlurView.framework.dSYM; sourceTree = "<group>"; };
@@ -3395,7 +3394,6 @@
 				56F95DC4209281DF00EDD56C /* DynamicBlurView.framework */,
 				56F95DC2209281C200EDD56C /* DynamicBlurView.framework.dSYM */,
 				56F95DBD2092662E00EDD56C /* Diff.framework */,
-				56F95DBB2092634900EDD56C /* DeepDiff.framework */,
 				5683C1192030F8FE00291C77 /* ToastSwiftFramework.framework */,
 				56A1FC791FFB055700E88EF2 /* SimulatorStatusMagiciOS.framework */,
 				56E2D47F1FBFA50100DD4A7D /* WSTagsField.framework */,
