@@ -1,5 +1,5 @@
 //
-//  GeneralSettingsFactory.swift
+//  GeneralSettingsBuilder.swift
 //  Phantom
 //
 //  Created by Alberto Cantallops on 07/10/2017.
@@ -8,9 +8,10 @@
 
 import UIKit
 
-class GeneralSettingsFactory: Factory<UIViewController> {
-    override func build() -> UIViewController {
-        let presenter = GeneralSettingsPresenter()
+class GeneralSettingsBuilder: Builder<Account, UIViewController> {
+
+    override func build(arg: Account) -> UIViewController {
+        let presenter = GeneralSettingsPresenter(account: arg)
         let view = GeneralSettingsView(presenter: presenter)
         presenter.view = view
         return view

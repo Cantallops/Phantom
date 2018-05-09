@@ -54,7 +54,7 @@ class Presenter<VC: UIViewController>: PresenterProtocol {
 
     func show(error: Error) {
         if error.isUnauthoriezed || error.cannotConnect {
-            NotificationCenter.default.post(signOutNotification)
+            sessionNotificationCenter.post(.signOut, object: Account.current)
             return
         }
         let alert = UIAlertController(

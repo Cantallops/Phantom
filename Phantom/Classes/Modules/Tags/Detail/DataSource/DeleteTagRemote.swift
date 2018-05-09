@@ -37,7 +37,7 @@ class DeleteTagRemote: DataSource<Tag, Tag> {
         let result: Result<Data> = Network(provider: provider).call()
         switch result {
         case .success:
-            internalNotificationCenter.post(.TagDelete, object: args)
+            internalNotificationCenter.post(.tagDelete, object: args)
             return .success(args)
         case .failure(let error):
             return .failure(error)

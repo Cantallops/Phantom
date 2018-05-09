@@ -33,6 +33,16 @@ struct Account: Codable {
 }
 
 extension Account {
+    var storyIndexDomain: String {
+        return "\(Story.searcheableDomain)+\(identifier)"
+    }
+
+    var preferences: UserDefaults {
+        return UserDefaults(suiteName: blogUrl)!
+    }
+}
+
+extension Account {
     static var current: Account? {
         didSet {
             if let current = current {

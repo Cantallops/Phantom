@@ -11,7 +11,7 @@ import Foundation
 let storyInternalNotificationCenter = InternalNotificationCenter<Story>()
 
 extension InternalNotification {
-    static let StoryNew = InternalNotification(name: "NewTag")
-    static let StoryEdit = InternalNotification(name: "EditTag")
-    static let StoryDelete = InternalNotification(name: "DeleteTag")
+    static let storyNew = InternalNotification(name: "NewTag")
+    static let storyEdit = InternalNotification(name: "EditTag")
+    static let storyDelete = InternalNotification(name: "DeleteTag")
 }

@@ -55,7 +55,7 @@ class PostTagRemote: DataSource<Tag, Tag> {
         switch result {
         case .success(let tagRemote):
             if let tag = tagRemote.tag {
-                internalNotificationCenter.post(.TagNew, object: tag)
+                internalNotificationCenter.post(.tagNew, object: tag)
                 return .success(tag)
             }
             let error = NetworkError(kind: .parse, localizedDescription: "No tag found")

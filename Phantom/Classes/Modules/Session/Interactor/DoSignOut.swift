@@ -8,8 +8,6 @@
 
 import Foundation
 
-let signOutNotification = Notification(name: Notification.Name(rawValue: "signOut"))
-
 class DoSignOut: Interactor<Any?, Any?> {
 
     let revokeAccessToken: DataSource<Oauth, Any?>
@@ -40,11 +38,10 @@ class DoSignOut: Interactor<Any?, Any?> {
             account.signOut()
         }
 
-        Account.current = nil
-
         DispatchQueue.main.async {
-            NotificationCenter.default.post(signOutNotification)
+            sessionNotificationCenter.post(.signOut, object: Account.current)
         }
+        Account.current = nil
 
         return result
     }

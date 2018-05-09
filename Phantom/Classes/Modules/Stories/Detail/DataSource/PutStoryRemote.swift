@@ -109,8 +109,8 @@ class PutStoryRemote: DataSource<Story, Story> {
     private func sendNotifications(forInitialStory initialStory: Story, newStory: Story) {
         let newTags = initialStory.tags.filter({ $0.isNew })
         for tag in newStory.tags where newTags.contains(where: { $0.name == tag.name }) {
-            tagInternalNC.post(.TagNew, object: tag)
+            tagInternalNC.post(.tagNew, object: tag)
         }
-        storyInternalNC.post(.StoryEdit, object: newStory)
+        storyInternalNC.post(.storyEdit, object: newStory)
     }
 }

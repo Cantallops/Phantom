@@ -11,7 +11,7 @@ import Foundation
 let tagInternalNotificationCenter = InternalNotificationCenter<Tag>()
 
 extension InternalNotification {
-    static let TagNew = InternalNotification(name: "NewTag")
-    static let TagEdit = InternalNotification(name: "EditTag")
-    static let TagDelete = InternalNotification(name: "DeleteTag")
+    static let tagNew = InternalNotification(name: "NewTag")
+    static let tagEdit = InternalNotification(name: "EditTag")
+    static let tagDelete = InternalNotification(name: "DeleteTag")
 }

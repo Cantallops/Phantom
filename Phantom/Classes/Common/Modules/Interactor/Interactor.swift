@@ -9,6 +9,7 @@
 import Foundation
 
 class Interactor<Input, Output> {
+    @discardableResult
     func execute(args: Input) -> Result<Output> {
         let error = NotImplementedError()
         return Result.failure(error)

@@ -60,4 +60,16 @@ class DashboardView: UITabBarController {
         tabBar.barTintColor = Color.white
         tabBar.isTranslucent = true
     }
+
+    override func present(
+        _ viewControllerToPresent: UIViewController,
+        animated flag: Bool,
+        completion: (() -> Void)? = nil
+    ) {
+        if let presented = presentedViewController {
+            presented.present(viewControllerToPresent, animated: flag, completion: completion)
+        } else {
+            super.present(viewControllerToPresent, animated: flag, completion: completion)
+        }
+    }
 }

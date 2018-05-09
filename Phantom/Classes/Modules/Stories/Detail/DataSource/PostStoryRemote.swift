@@ -69,7 +69,7 @@ class PostStoryRemote: DataSource<Story, Story> {
             if let story = storyRemote.story {
                 let resultStoryDetail = GetStoryRemote().execute(args: story.id)
                 if let storyDetail = resultStoryDetail.value {
-                    storyInternalNC.post(.StoryNew, object: storyDetail)
+                    storyInternalNC.post(.storyNew, object: storyDetail)
                 }
                 return GetStoryRemote().execute(args: story.id)
             }

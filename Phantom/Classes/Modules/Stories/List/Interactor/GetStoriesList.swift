@@ -11,22 +11,15 @@ import Foundation
 class GetStoriesList: Interactor<Meta?, Paginated<[Story]>> {
 
     let getStoriesListDataSource: DataSource<Meta?, Paginated<[Story]>>
-    let indexStories: Interactor<[Story], Any?>
 
     init(
-        getStoriesListDataSource: DataSource<Meta?, Paginated<[Story]>> = GetStoriesListRemote(),
-        indexStories: Interactor<[Story], Any?> = IndexStories()
+        getStoriesListDataSource: DataSource<Meta?, Paginated<[Story]>> = GetStoriesListRemote()
     ) {
         self.getStoriesListDataSource = getStoriesListDataSource
-        self.indexStories = indexStories
         super.init()
     }
 
     override func execute(args: Meta?) -> Result<Paginated<[Story]>> {
-        let result = getStoriesListDataSource.execute(args: args)
-        if let stories = result.value?.object {
-            _ = indexStories.execute(args: stories)
-        }
-        return result
+        return getStoriesListDataSource.execute(args: args)
     }
 }

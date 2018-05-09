@@ -124,13 +124,13 @@ class StoriesListPresenter: Presenter<StoriesListView> {
 extension StoriesListPresenter {
     private func loadStoryObservers() {
         let nc = storyInternalNotificationCenter
-        let newStoryObserver = nc.addObserver(forType: .StoryNew) { [unowned self] _ in
+        let newStoryObserver = nc.addObserver(forType: .storyNew) { [unowned self] _ in
             self.loadList()
         }
-        let deleteStoryObserver = nc.addObserver(forType: .StoryDelete) { [unowned self] story in
+        let deleteStoryObserver = nc.addObserver(forType: .storyDelete) { [unowned self] story in
             self.onDelete(story: story)
         }
-        let editStoryObserver = nc.addObserver(forType: .StoryEdit) { [unowned self] story in
+        let editStoryObserver = nc.addObserver(forType: .storyEdit) { [unowned self] story in
             self.onEdit(story: story)
         }
         storyObservers = [newStoryObserver, editStoryObserver, deleteStoryObserver]
@@ -168,10 +168,10 @@ extension StoriesListPresenter {
 
 extension StoriesListPresenter {
     private func loadTagObservers() {
-        let deleteTagObserver = tagInternalNotificationCenter.addObserver(forType: .TagDelete) { [unowned self] tag in
+        let deleteTagObserver = tagInternalNotificationCenter.addObserver(forType: .tagDelete) { [unowned self] tag in
             self.onDelete(tag: tag)
         }
-        let editTagObserver = tagInternalNotificationCenter.addObserver(forType: .TagEdit) { [unowned self] tag in
+        let editTagObserver = tagInternalNotificationCenter.addObserver(forType: .tagEdit) { [unowned self] tag in
             self.onEdit(tag: tag)
         }
 

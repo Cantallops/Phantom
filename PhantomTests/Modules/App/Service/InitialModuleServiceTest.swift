@@ -42,7 +42,11 @@ class InitialModuleServiceTest: XCTestCase {
 
     func testShouldInitializeNavigationViewLogged() {
         Account.current = .logged
-        expectation(forNotification: signInNotification.name, object: nil, handler: nil)
+        expectation(
+            forNotification: NSNotification.Name(rawValue: InternalNotification.signIn.name),
+            object: nil,
+            handler: nil
+        )
         let result = service.application?(application, didFinishLaunchingWithOptions: [:]) ?? false
         XCTAssertTrue(result)
         waitForExpectations(timeout: 2, handler: nil)

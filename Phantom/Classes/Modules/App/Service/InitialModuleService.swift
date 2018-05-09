@@ -36,7 +36,8 @@ class InitialModuleService: NSObject, UIApplicationDelegate {
         window.rootViewController = dashboard
         window.makeKeyAndVisible()
         if let account = Account.current, account.loggedIn {
-            NotificationCenter.default.post(signInNotification)
+            sessionNotificationCenter.post(.signIn, object: account)
+
         } else {
             let sessionView = sessionFactory.build()
             dashboard.present(sessionView, animated: false, completion: nil)

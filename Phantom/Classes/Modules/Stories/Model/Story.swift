@@ -236,3 +236,7 @@ extension Story {
         }
     }
 }
+
+extension Story {
+    static let searcheableDomain = "stories"
+}

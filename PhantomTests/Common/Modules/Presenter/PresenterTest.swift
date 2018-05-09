@@ -61,7 +61,11 @@ class PresenterTest: XCTestCase {
     func testUnauthorizedError() {
         XCTAssertNil(viewController.presentedViewController, "Should not present anything")
         let error = NetworkError(kind: .unauthorized)
-        expectation(forNotification: signOutNotification.name, object: nil, handler: nil)
+        expectation(
+            forNotification: NSNotification.Name(rawValue: InternalNotification.signOut.name),
+            object: nil,
+            handler: nil
+        )
         presenter.show(error: error)
         waitForExpectations(timeout: 2, handler: nil)
     }

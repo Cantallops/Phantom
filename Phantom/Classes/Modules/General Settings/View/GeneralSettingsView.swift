@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GeneralSettingsView: ViewController {
+class GeneralSettingsView: TableViewController {
 
     override init(presenter: PresenterProtocol) {
         super.init(presenter: presenter)
@@ -17,7 +17,7 @@ class GeneralSettingsView: ViewController {
     }
 
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func setUpNavigation() {

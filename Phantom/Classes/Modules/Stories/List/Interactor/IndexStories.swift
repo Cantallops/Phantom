@@ -10,11 +10,23 @@ import UIKit
 import CoreSpotlight
 import MobileCoreServices
 
-class IndexStories: Interactor<[Story], Any?> {
-    override func execute(args: [Story]) -> Result<Any?> {
-        let domainIdentifier = "stories"
+class IndexStories: Interactor<([Story], Account), Any?> {
+
+    private let index: CSSearchableIndex
+    private let removeIndexStories: Interactor<Account, Any?>
+
+    init(
+        index: CSSearchableIndex = .default(),
+        removeIndexStories: Interactor<Account, Any?> = RemoveIndexStories()
+    ) {
+        self.index = index
+        self.removeIndexStories = removeIndexStories
+        super.init()
+    }
+
+    override func execute(args: ([Story], Account)) -> Result<Any?> {
         var searcheableItems: [CSSearchableItem] = []
-        for story in args {
+        for story in args.0 {
             let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeData as String)
             attributeSet.title = story.title
             var authors: [String] = []
@@ -26,6 +38,8 @@ class IndexStories: Interactor<[Story], Any?> {
             attributeSet.keywords = story.tags.compactMap({ tag -> String? in
                 return tag.name
             })
+            attributeSet.contentModificationDate = story.updatedAt
+            attributeSet.completionDate = story.publishedAt
             if let imageSURL = story.featureImage,
                 let imageURL = URL(string: imageSURL),
                 let data = try? NSData(contentsOf: imageURL) as Data,
@@ -33,16 +47,19 @@ class IndexStories: Interactor<[Story], Any?> {
                 attributeSet.thumbnailData = UIImagePNGRepresentation(image)
             }
             let searchableItem = CSSearchableItem(
-                uniqueIdentifier: story.id,
-                domainIdentifier: domainIdentifier,
+                uniqueIdentifier: "\(story.id)~\(args.1.identifier)",
+                domainIdentifier: args.1.storyIndexDomain,
                 attributeSet: attributeSet
             )
             searcheableItems.append(searchableItem)
         }
-        let index = CSSearchableIndex.default()
-        index.deleteSearchableItems(withDomainIdentifiers: [domainIdentifier]) { _ in
-            index.indexSearchableItems(searcheableItems, completionHandler: nil)
-        }
+
+        removeIndexStories.execute(args: args.1)
+        let semaphore = DispatchSemaphore(value: 0)
+        index.indexSearchableItems(searcheableItems, completionHandler: { _ in
+            semaphore.signal()
+        })
+        _ = semaphore.wait(timeout: DispatchTime.distantFuture)
         return .success(nil)
     }
 }

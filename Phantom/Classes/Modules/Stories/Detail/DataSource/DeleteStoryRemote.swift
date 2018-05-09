@@ -41,7 +41,7 @@ class DeleteStoryRemote: DataSource<Story, Story> {
         let result: Result<Data> = Network(provider: provider).call()
         switch result {
         case .success:
-            storyInternalNC.post(.StoryDelete, object: args)
+            storyInternalNC.post(.storyDelete, object: args)
             return .success(args)
         case .failure(let error):
             return .failure(error)

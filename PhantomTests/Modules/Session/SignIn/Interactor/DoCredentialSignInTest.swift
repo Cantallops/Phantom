@@ -38,7 +38,11 @@ class DoCredentialSignInTest: XCTestCase {
 
     func testShouldSuccedIfGetOauthReturnsAOauthObject() {
         getOauthDataSource.result = Result.success(oauth)
-        expectation(forNotification: signInNotification.name, object: nil, handler: nil)
+        expectation(
+            forNotification: NSNotification.Name(rawValue: InternalNotification.signIn.name),
+            object: nil,
+            handler: nil
+        )
         let result = interactor.execute(args: credentials)
         XCTAssertTrue(result.isSuccess)
         waitForExpectations(timeout: 2, handler: nil)

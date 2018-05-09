@@ -38,15 +38,15 @@ class TagsListPresenter: Presenter<TagsListView> {
     }
 
     private func loadTagObservers() {
-        let newTagObserver = tagInternalNotificationCenter.addObserver(forType: .TagNew) { [unowned self] _ in
+        let newTagObserver = tagInternalNotificationCenter.addObserver(forType: .tagNew) { [unowned self] _ in
             self.loadTagList()
         }
 
-        let deleteTagObserver = tagInternalNotificationCenter.addObserver(forType: .TagDelete) { [unowned self] tag in
+        let deleteTagObserver = tagInternalNotificationCenter.addObserver(forType: .tagDelete) { [unowned self] tag in
             self.onDelete(tag: tag)
         }
 
-        let editTagObserver = tagInternalNotificationCenter.addObserver(forType: .TagEdit) { [unowned self] tag in
+        let editTagObserver = tagInternalNotificationCenter.addObserver(forType: .tagEdit) { [unowned self] tag in
             self.onEdit(tag: tag)
         }
 

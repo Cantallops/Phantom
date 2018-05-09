@@ -12,7 +12,7 @@ class GetSettingsSections: Interactor<Any?, [UIViewController]> {
 
     private let getMe: Interactor<Any?, TeamMember>
 
-    private let generalSettingsFactory: Factory<UIViewController>
+    private let generalSettingsBuilder: Builder<Account, UIViewController>
     private let designFactory: Factory<UIViewController>
     private let tagsListFactory: Factory<UIViewController>
     private let codeInjectionFactory: Factory<UIViewController>
@@ -21,7 +21,7 @@ class GetSettingsSections: Interactor<Any?, [UIViewController]> {
 
     init(
         getMe: Interactor<Any?, TeamMember> = GetMe(),
-        generalSettingsFactory: Factory<UIViewController> = GeneralSettingsFactory(),
+        generalSettingsBuilder: Builder<Account, UIViewController> = GeneralSettingsBuilder(),
         designFactory: Factory<UIViewController> = DesignFactory(),
         tagsListFactory: Factory<UIViewController> = TagsListFactory(),
         codeInjectionFactory: Factory<UIViewController> = CodeInjectionFactory(),
@@ -29,7 +29,7 @@ class GetSettingsSections: Interactor<Any?, [UIViewController]> {
         labsFactory: Factory<UIViewController> = LabsFactory()
     ) {
         self.getMe = getMe
-        self.generalSettingsFactory = generalSettingsFactory
+        self.generalSettingsBuilder = generalSettingsBuilder
         self.designFactory = designFactory
         self.tagsListFactory = tagsListFactory
         self.codeInjectionFactory = codeInjectionFactory
@@ -53,10 +53,14 @@ class GetSettingsSections: Interactor<Any?, [UIViewController]> {
         case .author:
             return []
         case .editor:
-            return [tagsListFactory.build()]
+            return [
+                tagsListFactory.build(),
+                generalSettingsBuilder.build(arg: Account.current!)
+            ]
         default:
             return [
-                tagsListFactory.build()
+                tagsListFactory.build(),
+                generalSettingsBuilder.build(arg: Account.current!)
             ]
         }
     }

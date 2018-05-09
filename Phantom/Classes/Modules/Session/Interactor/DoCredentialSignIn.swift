@@ -8,8 +8,6 @@
 
 import Foundation
 
-let signInNotification = Notification(name: Notification.Name(rawValue: "signIn"))
-
 struct Credentials {
     let email: String
     let password: String
@@ -37,7 +35,7 @@ class DoCredentialSignIn: Interactor<Credentials, Any?> {
             )
             Account.current = account
             DispatchQueue.main.async {
-                NotificationCenter.default.post(signInNotification)
+                sessionNotificationCenter.post(.signIn, object: account)
             }
             return .success(nil)
         case .failure(let error):

@@ -15,6 +15,7 @@ class DashboardPresenter: Presenter<DashboardView> {
     private let getFavIconImage: Interactor<Any?, UIImage>
 
     private var sections: [Dashboard.Section]?
+    private var observers: [NSObjectProtocol] = []
 
     init(
         getDashboardSections: Interactor<Any?, [Dashboard.Section]> = GetDashboardSections(),
@@ -29,25 +30,20 @@ class DashboardPresenter: Presenter<DashboardView> {
 
     override func didLoad() {
         super.didLoad()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(signOut),
-            name: signOutNotification.name,
-            object: nil
-        )
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(signIn),
-            name: signInNotification.name,
-            object: nil
-        )
+        let signOutObserver = sessionNotificationCenter.addObserver(forType: .signOut) { [weak self] _ in
+            self?.signOut()
+        }
+        let signInObserver = sessionNotificationCenter.addObserver(forType: .signIn) { [weak self] _ in
+            self?.signIn()
+        }
+        observers = [signOutObserver, signInObserver]
     }
 
-    @objc fileprivate func signIn() {
+    fileprivate func signIn() {
         loadSections()
     }
 
-    @objc fileprivate func signOut() {
+    fileprivate func signOut() {
         let sessionView = sessionFactory.build()
         view.present(sessionView, animated: true) {
             self.view.viewControllers?.removeAll()
@@ -126,6 +122,9 @@ class DashboardPresenter: Presenter<DashboardView> {
     }
 
     deinit {
-        NotificationCenter.default.removeObserver(self)
+        for observer in observers {
+            sessionNotificationCenter.remove(observer: observer)
+        }
+        observers.removeAll()
     }
 }

@@ -9,6 +9,8 @@
 import UIKit
 
 class TabletDashboardPresenter: Presenter<TabletDashboardView> {
+
+    private var observers: [NSObjectProtocol] = []
     private var dashboardSections: [Dashboard.Section] = [] {
         didSet {
             loadSections(dashboard: dashboardSections, settings: settings, blogInfo: blogInfo)
@@ -56,28 +58,23 @@ class TabletDashboardPresenter: Presenter<TabletDashboardView> {
 
     override func didLoad() {
         super.didLoad()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(signOut),
-            name: signOutNotification.name,
-            object: nil
-        )
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(signIn),
-            name: signInNotification.name,
-            object: nil
-        )
+        let signOutObserver = sessionNotificationCenter.addObserver(forType: .signOut) { [weak self] _ in
+            self?.signOut()
+        }
+        let signInObserver = sessionNotificationCenter.addObserver(forType: .signIn) { [weak self] _ in
+            self?.signIn()
+        }
+        observers = [signOutObserver, signInObserver]
     }
 
-    @objc fileprivate func signIn() {
+    fileprivate func signIn() {
         loadSections()
         loadDashboardSections()
         loadMe()
         loadSettingsSection()
     }
 
-    @objc fileprivate func signOut() {
+    fileprivate func signOut() {
         let sessionView = sessionFactory.build()
         view.present(sessionView, animated: true)
     }
@@ -235,6 +232,9 @@ class TabletDashboardPresenter: Presenter<TabletDashboardView> {
     }
 
     deinit {
-        NotificationCenter.default.removeObserver(self)
+        for observer in observers {
+            sessionNotificationCenter.remove(observer: observer)
+        }
+        observers.removeAll()
     }
 }
