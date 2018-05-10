@@ -18,10 +18,10 @@ class FilterStoriesInteractor: Interactor<([Story], StoryFilters), [Story]> {
     override func execute(args: ([Story], StoryFilters)) -> Result<[Story]> {
         var stories = args.0.search(text: args.1.text)
         stories = stories.filter { story -> Bool in
+            guard let tagID = args.1.tagID else {
+                return true
+            }
             return story.tags.contains(where: { tag -> Bool in
-                guard let tagID = args.1.tagID else {
-                    return true
-                }
                 return tag.id == tagID
             })
         }
