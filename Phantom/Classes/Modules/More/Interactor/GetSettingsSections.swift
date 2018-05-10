@@ -20,7 +20,7 @@ class GetSettingsSections: Interactor<Any?, [UIViewController]> {
     private let labsFactory: Factory<UIViewController>
 
     init(
-        getMe: Interactor<Any?, TeamMember> = GetMe(),
+        getMe: Interactor<Any?, TeamMember> = GetMeInteractor(),
         generalSettingsBuilder: Builder<Account, UIViewController> = GeneralSettingsBuilder(),
         designFactory: Factory<UIViewController> = DesignFactory(),
         tagsListFactory: Factory<UIViewController> = TagsListFactory(),

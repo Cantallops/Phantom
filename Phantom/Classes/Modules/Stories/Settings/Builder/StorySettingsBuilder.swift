@@ -16,9 +16,9 @@ class StorySettingsBuilder: Builder<StorySettingsArg, UIViewController> {
             story: arg.story,
             onEdit: arg.onEdit,
             onDelete: arg.onDelete,
-            getTags: GetTagList(getTagListDataSource: GetTagListRemote()),
-            getMembers: GetMembers(getMembersRemote: GetTeamRemote()),
-            getMe: GetMe(getMeRemote: GetMeRemote()),
+            getTags: GetTagListInteractor(getTagListDataSource: GetTagListRemote()),
+            getMembers: GetMembersInteractor(getMembersRemote: GetTeamRemote()),
+            getMe: GetMeInteractor(getMeRemote: GetMeRemote()),
             metaDataBuilder: MetaDataBuilder()
         )
         let view = StorySettingsView(presenter: presenter)

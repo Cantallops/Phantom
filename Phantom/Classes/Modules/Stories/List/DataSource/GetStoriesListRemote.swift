@@ -39,7 +39,7 @@ class GetStoriesListRemote: DataSource<Meta?, Paginated<[Story]>> {
 
     private let getMe: Interactor<Any?, TeamMember>
 
-    init(getMe: Interactor<Any?, TeamMember> = GetMe()) {
+    init(getMe: Interactor<Any?, TeamMember> = GetMeInteractor()) {
         self.getMe = getMe
     }
     struct PaginatedStories: Codable {

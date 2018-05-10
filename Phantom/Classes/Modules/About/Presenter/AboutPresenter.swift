@@ -14,7 +14,7 @@ class AboutPresenter: Presenter<AboutView> {
     private let acknowledgementsFactory: Factory<UIViewController>
 
     init(
-        getAboutGhost: Interactor<Any?, AboutGhost> = GetAboutGhostConfiguration(),
+        getAboutGhost: Interactor<Any?, AboutGhost> = GetAboutGhostConfigurationInteractor(),
         acknowledgementsFactory: Factory<UIViewController> = AcknowledgementsFactory()
     ) {
         self.getAboutGhost = getAboutGhost

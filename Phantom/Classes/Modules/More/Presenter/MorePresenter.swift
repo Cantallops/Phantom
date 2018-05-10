@@ -27,9 +27,9 @@ class MorePresenter: Presenter<MoreView> {
     private let aboutFactory: Factory<UIViewController>
 
     init(
-        doSignOutInteractor: Interactor<Any?, Any?> = DoSignOut(),
-        getCurrentBlogInfo: Interactor<Any?, BlogInfo> = GetCurrentBlogInfo(),
-        getFavIconImage: Interactor<Any?, UIImage> = GetFavIconImage(),
+        doSignOutInteractor: Interactor<Any?, Any?> = DoSignOutInteractor(),
+        getCurrentBlogInfo: Interactor<Any?, BlogInfo> = GetCurrentBlogInfoInteractor(),
+        getFavIconImage: Interactor<Any?, UIImage> = GetFavIconImageInteractor(),
         getSettingsSection: Interactor<Any?, [UIViewController]> = GetSettingsSections(),
         aboutFactory: Factory<UIViewController> = AboutFactory()
     ) {

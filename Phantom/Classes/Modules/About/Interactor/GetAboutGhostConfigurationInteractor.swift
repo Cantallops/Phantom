@@ -1,5 +1,5 @@
 //
-//  GetAboutGhostConfiguration.swift
+//  GetAboutGhostConfigurationInteractor.swift
 //  Phantom
 //
 //  Created by Alberto Cantallops on 24/12/2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GetAboutGhostConfiguration: Interactor<Any?, AboutGhost> {
+class GetAboutGhostConfigurationInteractor: Interactor<Any?, AboutGhost> {
     private let getAboutConfiguration: DataSource<Any?, AboutGhost>
 
     init(

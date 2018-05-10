@@ -1,5 +1,5 @@
 //
-//  GetTagList.swift
+//  GetTagListInteractor.swift
 //  Phantom
 //
 //  Created by Alberto Cantallops on 28/10/2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GetTagList: Interactor<Meta?, Paginated<[Tag]>> {
+class GetTagListInteractor: Interactor<Meta?, Paginated<[Tag]>> {
 
     let getTagListDataSource: DataSource<Meta?, Paginated<[Tag]>>
 

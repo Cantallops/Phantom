@@ -15,7 +15,7 @@ class TeamListPresenter: Presenter<TeamListView> {
     var users: [TeamMember] = []
 
     init(
-        getMemberListInteractor: Interactor<Meta?, Paginated<[TeamMember]>> = GetMembers()
+        getMemberListInteractor: Interactor<Meta?, Paginated<[TeamMember]>> = GetMembersInteractor()
     ) {
         self.getMemberListInteractor = getMemberListInteractor
         super.init()

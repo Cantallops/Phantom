@@ -11,14 +11,14 @@ import XCTest
 
 class GetSubscribersTest: XCTestCase {
 
-    fileprivate var interactor: GetSubscribers!
+    fileprivate var interactor: GetSubscribersInteractor!
     fileprivate var remote: MockDataSource<Meta?, Paginated<[Subscriber]>>!
     fileprivate let subscriber = Subscriber.any
 
     override func setUp() {
         super.setUp()
         remote = MockDataSource(result: Result.failure(TestError()))
-        interactor = GetSubscribers(getSubscribersDataSource: remote)
+        interactor = GetSubscribersInteractor(getSubscribersDataSource: remote)
     }
 
     func testWhenRemoteFailsExecuteShouldFail() {

@@ -1,5 +1,5 @@
 //
-//  GetMe.swift
+//  GetMeInteractor.swift
 //  Phantom
 //
 //  Created by Alberto Cantallops on 12/11/2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GetMe: Interactor<Any?, TeamMember> {
+class GetMeInteractor: Interactor<Any?, TeamMember> {
 
     private let getMeRemote: DataSource<Any?, TeamMember>
 

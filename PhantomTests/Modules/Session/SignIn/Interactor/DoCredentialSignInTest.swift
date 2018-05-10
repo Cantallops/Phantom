@@ -11,7 +11,7 @@ import XCTest
 
 class DoCredentialSignInTest: XCTestCase {
 
-    fileprivate var interactor: DoCredentialSignIn!
+    fileprivate var interactor: DoCredentialSignInInteractor!
     fileprivate var getOauthDataSource: MockDataSource<Credentials, Oauth>!
     fileprivate let credentials = Credentials(email: "email", password: "pass")
     fileprivate let oauth = Oauth(
@@ -25,7 +25,7 @@ class DoCredentialSignInTest: XCTestCase {
         super.setUp()
         Account.current = .signedout
         getOauthDataSource = MockDataSource<Credentials, Oauth>(result: .success(oauth))
-        interactor = DoCredentialSignIn(
+        interactor = DoCredentialSignInInteractor(
             getOauth: getOauthDataSource
         )
     }

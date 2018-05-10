@@ -15,7 +15,7 @@ class SubscribersListPresenter: Presenter<SubscribersListView> {
     private var subscribers: [Subscriber] = []
 
     init(
-        getSubscribers: Interactor<Meta?, Paginated<[Subscriber]>> = GetSubscribers()
+        getSubscribers: Interactor<Meta?, Paginated<[Subscriber]>> = GetSubscribersInteractor()
     ) {
         self.getSubscribers = getSubscribers
         super.init()

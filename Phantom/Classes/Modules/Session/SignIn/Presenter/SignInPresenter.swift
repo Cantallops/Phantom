@@ -12,7 +12,7 @@ class SignInPresenter: Presenter<SignInView> {
     private let doCredentialSignIn: Interactor<Credentials, Any?>
 
     init(
-        doCredentialSignIn: Interactor<Credentials, Any?> = DoCredentialSignIn()
+        doCredentialSignIn: Interactor<Credentials, Any?> = DoCredentialSignInInteractor()
     ) {
         self.doCredentialSignIn = doCredentialSignIn
         super.init()

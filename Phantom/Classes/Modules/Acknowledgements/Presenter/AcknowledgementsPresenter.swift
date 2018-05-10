@@ -13,7 +13,7 @@ class AcknowledgementsPresenter: Presenter<AcknowledgementsView> {
     let getAcknowledgements: Interactor<Any?, [Acknowledgement]>
 
     init(
-        getAcknowledgements: Interactor<Any?, [Acknowledgement]> = GetAcknowledgements()
+        getAcknowledgements: Interactor<Any?, [Acknowledgement]> = GetAcknowledgementsInteractor()
     ) {
         self.getAcknowledgements = getAcknowledgements
         super.init()

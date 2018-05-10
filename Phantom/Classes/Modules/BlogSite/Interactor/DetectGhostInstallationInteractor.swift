@@ -1,5 +1,5 @@
 //
-//  DetectGhostInstallation.swift
+//  DetectGhostInstallationInteractor.swift
 //  Phantom
 //
 //  Created by Alberto Cantallops on 16/09/2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DetectGhostInstallation: Interactor<URL, String> {
+class DetectGhostInstallationInteractor: Interactor<URL, String> {
 
     private let blogConfigurationDataSource: DataSource<(String, String), BlogConfiguration>
 

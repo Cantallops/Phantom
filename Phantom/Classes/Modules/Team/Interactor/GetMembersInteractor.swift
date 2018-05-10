@@ -1,5 +1,5 @@
 //
-//  GetMembers.swift
+//  GetMembersInteractor.swift
 //  Phantom
 //
 //  Created by Alberto Cantallops on 18/11/2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GetMembers: Interactor<Meta?, Paginated<[TeamMember]>> {
+class GetMembersInteractor: Interactor<Meta?, Paginated<[TeamMember]>> {
 
     private let getMembersRemote: DataSource<Meta?, Paginated<[TeamMember]>>
 

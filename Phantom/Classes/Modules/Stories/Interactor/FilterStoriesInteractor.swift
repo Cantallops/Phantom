@@ -1,5 +1,5 @@
 //
-//  FilterStories.swift
+//  FilterStoriesInteractor.swift
 //  Phantom
 //
 //  Created by Alberto Cantallops on 25/04/2018.
@@ -14,7 +14,7 @@ extension Story: Searcheable {
     }
 }
 
-class FilterStories: Interactor<([Story], StoryFilters), [Story]> {
+class FilterStoriesInteractor: Interactor<([Story], StoryFilters), [Story]> {
     override func execute(args: ([Story], StoryFilters)) -> Result<[Story]> {
         var stories = args.0.search(text: args.1.text)
         stories = stories.filter { story -> Bool in

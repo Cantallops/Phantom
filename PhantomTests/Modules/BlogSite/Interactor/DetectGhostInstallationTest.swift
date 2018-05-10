@@ -11,7 +11,7 @@ import XCTest
 
 class DetectGhostInstallationTest: XCTestCase {
 
-    fileprivate var interactor: DetectGhostInstallation!
+    fileprivate var interactor: DetectGhostInstallationInteractor!
     fileprivate var confDataSource: MockDataSource<(String, String), BlogConfiguration>!
     fileprivate let blogConf = BlogConfiguration(
         blogUrl: "blog.ghost.org",
@@ -25,7 +25,7 @@ class DetectGhostInstallationTest: XCTestCase {
         confDataSource = MockDataSource<(String, String), BlogConfiguration>(
             result: Result.success(blogConf)
         )
-        interactor = DetectGhostInstallation(
+        interactor = DetectGhostInstallationInteractor(
             blogConfigurationDataSource: confDataSource
         )
     }

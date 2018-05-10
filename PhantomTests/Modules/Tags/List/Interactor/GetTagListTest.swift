@@ -11,14 +11,14 @@ import XCTest
 
 class GetTagListTest: XCTestCase {
 
-    fileprivate var interactor: GetTagList!
+    fileprivate var interactor: GetTagListInteractor!
     fileprivate var remote: MockDataSource<Meta?, Paginated<[Tag]>>!
     fileprivate let tag = Tag.any
 
     override func setUp() {
         super.setUp()
         remote = MockDataSource(result: Result.failure(TestError()))
-        interactor = GetTagList(getTagListDataSource: remote)
+        interactor = GetTagListInteractor(getTagListDataSource: remote)
     }
 
     func testWhenRemoteFailsExecuteShouldFail() {

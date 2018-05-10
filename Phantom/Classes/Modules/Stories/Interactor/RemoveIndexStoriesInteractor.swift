@@ -1,5 +1,5 @@
 //
-//  RemoveIndexStories.swift
+//  RemoveIndexStoriesInteractor.swift
 //  Phantom
 //
 //  Created by Alberto Cantallops on 09/05/2018.
@@ -9,7 +9,7 @@
 import Foundation
 import CoreSpotlight
 
-class RemoveIndexStories: Interactor<Account, Any?> {
+class RemoveIndexStoriesInteractor: Interactor<Account, Any?> {
     private let index: CSSearchableIndex
 
     init(

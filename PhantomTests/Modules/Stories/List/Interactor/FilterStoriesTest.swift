@@ -11,7 +11,7 @@ import XCTest
 
 class FilterStoriesTest: XCTestCase {
 
-    fileprivate var interactor: FilterStories!
+    fileprivate var interactor: FilterStoriesInteractor!
     fileprivate var stories = [
         Story.any.setting(title: "Title").setting(tags: [Tag.any.setting(id: "tagID1")]),
         Story.any.setting(title: "A second title").setting(tags: [Tag.any.setting(id: "tagID2")]),
@@ -20,7 +20,7 @@ class FilterStoriesTest: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        interactor = FilterStories()
+        interactor = FilterStoriesInteractor()
     }
 
     func testFilterByTextWithResults() {

@@ -18,9 +18,9 @@ class DashboardPresenter: Presenter<DashboardView> {
     private var observers: [NSObjectProtocol] = []
 
     init(
-        getDashboardSections: Interactor<Any?, [Dashboard.Section]> = GetDashboardSections(),
+        getDashboardSections: Interactor<Any?, [Dashboard.Section]> = GetDashboardSectionsInteractor(),
         sessionFactory: Factory<UIViewController> = SessionFactory(),
-        getFavIconImage: Interactor<Any?, UIImage> = GetFavIconImage()
+        getFavIconImage: Interactor<Any?, UIImage> = GetFavIconImageInteractor()
     ) {
         self.getDashboardSections = getDashboardSections
         self.sessionFactory = sessionFactory

@@ -1,5 +1,5 @@
 //
-//  GetStoriesList.swift
+//  GetStoriesListInteractor.swift
 //  Phantom
 //
 //  Created by Alberto Cantallops on 07/11/2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GetStoriesList: Interactor<Meta?, Paginated<[Story]>> {
+class GetStoriesListInteractor: Interactor<Meta?, Paginated<[Story]>> {
 
     let getStoriesListDataSource: DataSource<Meta?, Paginated<[Story]>>
 

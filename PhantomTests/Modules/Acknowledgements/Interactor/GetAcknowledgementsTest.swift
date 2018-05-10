@@ -11,11 +11,11 @@ import XCTest
 
 class GetAcknowledgementsTest: XCTestCase {
 
-    fileprivate var interactor: GetAcknowledgements!
+    fileprivate var interactor: GetAcknowledgementsInteractor!
 
     override func setUp() {
         super.setUp()
-        interactor = GetAcknowledgements()
+        interactor = GetAcknowledgementsInteractor()
     }
 
     override func tearDown() {

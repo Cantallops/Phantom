@@ -14,7 +14,7 @@ class BlogSitePresenter: Presenter<BlogSiteView> {
     private let signInFactory: Factory<UIViewController>
 
     init(
-        detectGhostInstallation: Interactor<URL, String> = DetectGhostInstallation(),
+        detectGhostInstallation: Interactor<URL, String> = DetectGhostInstallationInteractor(),
         signInFactory: Factory<UIViewController> = SignInFactory()
     ) {
         self.detectGhostInstallation = detectGhostInstallation

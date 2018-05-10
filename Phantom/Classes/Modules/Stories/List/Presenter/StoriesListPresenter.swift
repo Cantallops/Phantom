@@ -28,9 +28,9 @@ class StoriesListPresenter: Presenter<StoriesListView> {
     init(
         storyInternalNotificationCenter: InternalNotificationCenter<Story>,
         tagInternalNotificationCenter: InternalNotificationCenter<Tag>,
-        getStoriesListInteractor: Interactor<Meta?, Paginated<[Story]>> = GetStoriesList(),
+        getStoriesListInteractor: Interactor<Meta?, Paginated<[Story]>> = GetStoriesListInteractor(),
         storyDetailBuilder: Builder<Story?, ViewController> = StoryDetailBuilder(),
-        filterStories: Interactor<([Story], StoryFilters), [Story]> = FilterStories()
+        filterStories: Interactor<([Story], StoryFilters), [Story]> = FilterStoriesInteractor()
     ) {
         self.storyInternalNotificationCenter = storyInternalNotificationCenter
         self.tagInternalNotificationCenter = tagInternalNotificationCenter

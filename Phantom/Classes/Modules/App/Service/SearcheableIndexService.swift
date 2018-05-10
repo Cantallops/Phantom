@@ -18,9 +18,9 @@ class SearcheableIndexService: NSObject, UIApplicationDelegate {
     private var observers: [NSObjectProtocol] = []
 
     init(
-        getStories: Interactor<Meta?, Paginated<[Story]>> = GetStoriesList(),
-        indexStories: Interactor<([Story], Account), Any?> = IndexStories(),
-        removeIndexStories: Interactor<Account, Any?> = RemoveIndexStories()
+        getStories: Interactor<Meta?, Paginated<[Story]>> = GetStoriesListInteractor(),
+        indexStories: Interactor<([Story], Account), Any?> = IndexStoriesInteractor(),
+        removeIndexStories: Interactor<Account, Any?> = RemoveIndexStoriesInteractor()
     ) {
         self.getStories = getStories
         self.indexStories = indexStories

@@ -1,5 +1,5 @@
 //
-//  GetCurrentBlogInfo.swift
+//  GetCurrentBlogInfoInteractor.swift
 //  Phantom
 //
 //  Created by Alberto Cantallops on 07/01/2018.
@@ -14,7 +14,7 @@ struct BlogInfo {
     let user: TeamMember
 }
 
-class GetCurrentBlogInfo: Interactor<Any?, BlogInfo> {
+class GetCurrentBlogInfoInteractor: Interactor<Any?, BlogInfo> {
 
     private let getBlogConfiguration: DataSource<(String, String), BlogConfiguration>
     private let getMe: Interactor<Any?, TeamMember>
@@ -22,8 +22,8 @@ class GetCurrentBlogInfo: Interactor<Any?, BlogInfo> {
 
     init(
         getBlogConfiguration: DataSource<(String, String), BlogConfiguration> = GetBlogConfiguration(),
-        getMe: Interactor<Any?, TeamMember> = GetMe(),
-        getFavIconImage: Interactor<Any?, UIImage> = GetFavIconImage()
+        getMe: Interactor<Any?, TeamMember> = GetMeInteractor(),
+        getFavIconImage: Interactor<Any?, UIImage> = GetFavIconImageInteractor()
     ) {
         self.getBlogConfiguration = getBlogConfiguration
         self.getMe = getMe

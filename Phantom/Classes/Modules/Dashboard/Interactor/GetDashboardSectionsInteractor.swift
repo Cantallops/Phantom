@@ -1,5 +1,5 @@
 //
-//  GetDashboardSections.swift
+//  GetDashboardSectionsInteractor.swift
 //  Phantom
 //
 //  Created by Alberto Cantallops on 12/11/2017.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-class GetDashboardSections: Interactor<Any?, [Dashboard.Section]> {
+class GetDashboardSectionsInteractor: Interactor<Any?, [Dashboard.Section]> {
 
     private let getMe: Interactor<Any?, TeamMember>
     private let getGeneralSettings: DataSource<Any?, GeneralSettings>
     private let device: UIDevice
 
     init(
-        getMe: Interactor<Any?, TeamMember> = GetMe(),
+        getMe: Interactor<Any?, TeamMember> = GetMeInteractor(),
         getGeneralSettings: DataSource<Any?, GeneralSettings> = GetGeneralSettings(),
         device: UIDevice = .current
     ) {

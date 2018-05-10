@@ -1,5 +1,5 @@
 //
-//  GetAcknowledgements.swift
+//  GetAcknowledgementsInteractor.swift
 //  Phantom
 //
 //  Created by Alberto Cantallops on 24/12/2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GetAcknowledgements: Interactor<Any?, [Acknowledgement]> {
+class GetAcknowledgementsInteractor: Interactor<Any?, [Acknowledgement]> {
 
     var acknowledgementsResoursePath = Bundle.main.path(forResource: "Acknowledgements", ofType: "plist")
 

@@ -1,5 +1,5 @@
 //
-//  GetSubscribers.swift
+//  GetSubscribersInteractor.swift
 //  Phantom
 //
 //  Created by Alberto Cantallops on 24/12/2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GetSubscribers: Interactor<Meta?, Paginated<[Subscriber]>> {
+class GetSubscribersInteractor: Interactor<Meta?, Paginated<[Subscriber]>> {
 
     let getSubscribersDataSource: DataSource<Meta?, Paginated<[Subscriber]>>
 

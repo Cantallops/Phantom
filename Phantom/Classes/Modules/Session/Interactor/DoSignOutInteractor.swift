@@ -1,5 +1,5 @@
 //
-//  DoSignOut.swift
+//  DoSignOutInteractor.swift
 //  Phantom
 //
 //  Created by Alberto Cantallops on 12/11/2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DoSignOut: Interactor<Any?, Any?> {
+class DoSignOutInteractor: Interactor<Any?, Any?> {
 
     let revokeAccessToken: DataSource<Oauth, Any?>
     let revokeRefreshToken: DataSource<Oauth, Any?>

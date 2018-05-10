@@ -1,5 +1,5 @@
 //
-//  IndexStories.swift
+//  IndexStoriesInteractor.swift
 //  Phantom
 //
 //  Created by Alberto Cantallops on 07/05/2018.
@@ -10,14 +10,14 @@ import UIKit
 import CoreSpotlight
 import MobileCoreServices
 
-class IndexStories: Interactor<([Story], Account), Any?> {
+class IndexStoriesInteractor: Interactor<([Story], Account), Any?> {
 
     private let index: CSSearchableIndex
     private let removeIndexStories: Interactor<Account, Any?>
 
     init(
         index: CSSearchableIndex = .default(),
-        removeIndexStories: Interactor<Account, Any?> = RemoveIndexStories()
+        removeIndexStories: Interactor<Account, Any?> = RemoveIndexStoriesInteractor()
     ) {
         self.index = index
         self.removeIndexStories = removeIndexStories

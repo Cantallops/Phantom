@@ -20,7 +20,7 @@ class TagsListPresenter: Presenter<TagsListView> {
 
     init(
         tagInternalNotificationCenter: InternalNotificationCenter<Tag>,
-        getTagsListInteractor: Interactor<Meta?, Paginated<[Tag]>> = GetTagList(),
+        getTagsListInteractor: Interactor<Meta?, Paginated<[Tag]>> = GetTagListInteractor(),
         tagDetailBuilder: Builder<Tag?, UIViewController> = TagDetailBuilder()
     ) {
         self.tagInternalNotificationCenter = tagInternalNotificationCenter

@@ -1,5 +1,5 @@
 //
-//  DoCredentialSignIn.swift
+//  DoCredentialSignInInteractor.swift
 //  Phantom
 //
 //  Created by Alberto Cantallops on 27/09/2017.
@@ -13,7 +13,7 @@ struct Credentials {
     let password: String
 }
 
-class DoCredentialSignIn: Interactor<Credentials, Any?> {
+class DoCredentialSignInInteractor: Interactor<Credentials, Any?> {
 
     fileprivate let getOauth: DataSource<Credentials, Oauth>
 

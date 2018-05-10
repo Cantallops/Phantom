@@ -11,7 +11,7 @@ import XCTest
 
 class GetAboutGhostConfigurationTest: XCTestCase {
 
-    fileprivate var interactor: GetAboutGhostConfiguration!
+    fileprivate var interactor: GetAboutGhostConfigurationInteractor!
     fileprivate var aboutDataSource: MockDataSource<Any?, AboutGhost>!
     fileprivate let about = AboutGhost(
         version: "About-Version",
@@ -25,7 +25,7 @@ class GetAboutGhostConfigurationTest: XCTestCase {
         aboutDataSource = MockDataSource<Any?, AboutGhost>(
             result: Result.success(about)
         )
-        interactor = GetAboutGhostConfiguration(getAboutConfiguration: aboutDataSource)
+        interactor = GetAboutGhostConfigurationInteractor(getAboutConfiguration: aboutDataSource)
     }
 
     func testShouldReturnAboutIfDataSourceReturnAbout() {

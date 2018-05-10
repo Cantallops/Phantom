@@ -1,5 +1,5 @@
 //
-//  GetFavIconImage.swift
+//  GetFavIconImageInteractor.swift
 //  Phantom
 //
 //  Created by Alberto Cantallops on 07/01/2018.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GetFavIconImage: Interactor<Any?, UIImage> {
+class GetFavIconImageInteractor: Interactor<Any?, UIImage> {
     override func execute(args: Any?) -> Result<UIImage> {
         guard let account = Account.current,
             let url = URL(string: "\(account.blogUrl)favicon.png")else {
