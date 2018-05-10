@@ -27,30 +27,7 @@ class IndexStoriesInteractor: Interactor<([Story], Account), Any?> {
     override func execute(args: ([Story], Account)) -> Result<Any?> {
         var searcheableItems: [CSSearchableItem] = []
         for story in args.0 {
-            let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeData as String)
-            attributeSet.title = story.title
-            var authors: [String] = []
-            if let author = story.author?.name {
-                authors = [author]
-            }
-            attributeSet.authorNames = authors
-            attributeSet.contentDescription = story.excerpt ?? story.plaintext
-            attributeSet.keywords = story.tags.compactMap({ tag -> String? in
-                return tag.name
-            })
-            attributeSet.contentModificationDate = story.updatedAt
-            attributeSet.completionDate = story.publishedAt
-            if let imageSURL = story.featureImage,
-                let imageURL = URL(string: imageSURL),
-                let data = try? NSData(contentsOf: imageURL) as Data,
-                let image = UIImage(data: data) {
-                attributeSet.thumbnailData = UIImagePNGRepresentation(image)
-            }
-            let searchableItem = CSSearchableItem(
-                uniqueIdentifier: "\(story.id)~\(args.1.identifier)",
-                domainIdentifier: args.1.storyIndexDomain,
-                attributeSet: attributeSet
-            )
+            let searchableItem = story.searcheableItem(forAccount: args.1)
             searcheableItems.append(searchableItem)
         }
 

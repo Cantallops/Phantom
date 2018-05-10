@@ -342,6 +342,8 @@
 		56F95DE920A2436800EDD56C /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DE820A2436800EDD56C /* UserPreferences.swift */; };
 		56F95DEB20A38A0200EDD56C /* RemoveIndexStoriesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DEA20A38A0200EDD56C /* RemoveIndexStoriesInteractor.swift */; };
 		56F95DEE20A39C8C00EDD56C /* SessionNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DED20A39C8C00EDD56C /* SessionNotificationCenter.swift */; };
+		56F95DF220A4C42D00EDD56C /* IndexStoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DF120A4C42D00EDD56C /* IndexStoryInteractor.swift */; };
+		56F95DF420A4C59300EDD56C /* RemoveIndexStoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DF320A4C59300EDD56C /* RemoveIndexStoryInteractor.swift */; };
 		56FDE12A1FB8AA3D009678AC /* AccountKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FDE1291FB8AA3D009678AC /* AccountKeychain.swift */; };
 		56FDE12C1FB8AA93009678AC /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FDE12B1FB8AA93009678AC /* Account.swift */; };
 		56FDE1301FB8F21D009678AC /* DashboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FDE12F1FB8F21D009678AC /* DashboardPresenter.swift */; };
@@ -716,6 +718,8 @@
 		56F95DE820A2436800EDD56C /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		56F95DEA20A38A0200EDD56C /* RemoveIndexStoriesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveIndexStoriesInteractor.swift; sourceTree = "<group>"; };
 		56F95DED20A39C8C00EDD56C /* SessionNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionNotificationCenter.swift; sourceTree = "<group>"; };
+		56F95DF120A4C42D00EDD56C /* IndexStoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexStoryInteractor.swift; sourceTree = "<group>"; };
+		56F95DF320A4C59300EDD56C /* RemoveIndexStoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveIndexStoryInteractor.swift; sourceTree = "<group>"; };
 		56FDE1291FB8AA3D009678AC /* AccountKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountKeychain.swift; sourceTree = "<group>"; };
 		56FDE12B1FB8AA93009678AC /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		56FDE12F1FB8F21D009678AC /* DashboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardPresenter.swift; sourceTree = "<group>"; };
@@ -873,6 +877,7 @@
 		561C262E1FB791B000840DA9 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				565BC4C01FB23FB7005B4F84 /* GetStoriesListRemote.swift */,
 				561C262F1FB791E000840DA9 /* PutStoryRemote.swift */,
 				561C26311FB7A3A600840DA9 /* PostStoryRemote.swift */,
 				56E2D46D1FBE0B9F00DD4A7D /* DeleteStoryRemote.swift */,
@@ -1187,14 +1192,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		565BC4BC1FB23E85005B4F84 /* DataSource */ = {
-			isa = PBXGroup;
-			children = (
-				565BC4C01FB23FB7005B4F84 /* GetStoriesListRemote.swift */,
-			);
-			path = DataSource;
-			sourceTree = "<group>";
-		};
 		565BC4BD1FB23E9A005B4F84 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
@@ -1206,6 +1203,8 @@
 				56F95DB42090EBB500EDD56C /* FilterStoriesInteractor.swift */,
 				56F95DDD20A0E60B00EDD56C /* IndexStoriesInteractor.swift */,
 				56F95DEA20A38A0200EDD56C /* RemoveIndexStoriesInteractor.swift */,
+				56F95DF120A4C42D00EDD56C /* IndexStoryInteractor.swift */,
+				56F95DF320A4C59300EDD56C /* RemoveIndexStoryInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -2418,7 +2417,6 @@
 			isa = PBXGroup;
 			children = (
 				56894A751FB61724005F9EF9 /* Builder */,
-				561C262E1FB791B000840DA9 /* DataSource */,
 				5682D06C1F86AC33008DEC22 /* Presenter */,
 				5682D06B1F86AC2E008DEC22 /* View */,
 			);
@@ -3135,8 +3133,9 @@
 		56AFDF111F869FA300ADA640 /* Stories */ = {
 			isa = PBXGroup;
 			children = (
-				565BC4BD1FB23E9A005B4F84 /* Interactor */,
+				561C262E1FB791B000840DA9 /* DataSource */,
 				56894A761FB61B05005F9EF9 /* Detail */,
+				565BC4BD1FB23E9A005B4F84 /* Interactor */,
 				56AFDF121F869FB100ADA640 /* List */,
 				565BC4B91FB23C58005B4F84 /* Model */,
 				569447C61FE866850045B752 /* Notification */,
@@ -3151,7 +3150,6 @@
 			isa = PBXGroup;
 			children = (
 				56F95DD020A0CAC700EDD56C /* Builder */,
-				565BC4BC1FB23E85005B4F84 /* DataSource */,
 				56F95DD620A0CDB200EDD56C /* Factory */,
 				56AFDF1C1F86A0D100ADA640 /* Presenter */,
 				56AFDF131F869FBB00ADA640 /* View */,
@@ -3838,6 +3836,7 @@
 				568558CA1F894880000AA39F /* DesignFactory.swift in Sources */,
 				56958B801F72E04B005A8B08 /* URLHttp.swift in Sources */,
 				5692AE9C1F6D5A2A004A65A4 /* Result.swift in Sources */,
+				56F95DF420A4C59300EDD56C /* RemoveIndexStoryInteractor.swift in Sources */,
 				568558D21F894919000AA39F /* GeneralSettingsFactory.swift in Sources */,
 				5682D0651F86AA71008DEC22 /* TeamListView.swift in Sources */,
 				569051421FA3DA26007DF910 /* UITableViewFullDelegate.swift in Sources */,
@@ -3869,6 +3868,7 @@
 				569447CE1FE991520045B752 /* GetGeneralSettings.swift in Sources */,
 				56836BB21F7AB40F009ADE15 /* SignInView.swift in Sources */,
 				5692AE991F6D57DA004A65A4 /* Interactor.swift in Sources */,
+				56F95DF220A4C42D00EDD56C /* IndexStoryInteractor.swift in Sources */,
 				5608672C1FAA6C5A002A9790 /* DeleteTagInteractor.swift in Sources */,
 				56F95DD420A0CB3000EDD56C /* StoryFilters.swift in Sources */,
 				56EC33131FABC1B400A5742A /* PostTagRemote.swift in Sources */,

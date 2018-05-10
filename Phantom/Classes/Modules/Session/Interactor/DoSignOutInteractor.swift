@@ -38,8 +38,9 @@ class DoSignOutInteractor: Interactor<Any?, Any?> {
             account.signOut()
         }
 
+        let account = Account.current
         DispatchQueue.main.async {
-            sessionNotificationCenter.post(.signOut, object: Account.current)
+            sessionNotificationCenter.post(.signOut, object: account)
         }
         Account.current = nil
 

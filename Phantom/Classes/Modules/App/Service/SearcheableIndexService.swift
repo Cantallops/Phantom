@@ -14,17 +14,23 @@ class SearcheableIndexService: NSObject, UIApplicationDelegate {
     private let getStories: Interactor<Meta?, Paginated<[Story]>>
     private let indexStories: Interactor<([Story], Account), Any?>
     private let removeIndexStories: Interactor<Account, Any?>
+    private let indexStory: Interactor<(Story, Account), Any?>
+    private let removeIndexStory: Interactor<(Story, Account), Any?>
 
     private var observers: [NSObjectProtocol] = []
 
     init(
         getStories: Interactor<Meta?, Paginated<[Story]>> = GetStoriesListInteractor(),
         indexStories: Interactor<([Story], Account), Any?> = IndexStoriesInteractor(),
-        removeIndexStories: Interactor<Account, Any?> = RemoveIndexStoriesInteractor()
+        removeIndexStories: Interactor<Account, Any?> = RemoveIndexStoriesInteractor(),
+        indexStory: Interactor<(Story, Account), Any?> = IndexStoryInteractor(),
+        removeIndexStory: Interactor<(Story, Account), Any?> = RemoveIndexStoryInteractor()
     ) {
         self.getStories = getStories
         self.indexStories = indexStories
         self.removeIndexStories = removeIndexStories
+        self.indexStory = indexStory
+        self.removeIndexStory = removeIndexStory
         super.init()
         setUpObservers()
     }
@@ -65,7 +71,29 @@ class SearcheableIndexService: NSObject, UIApplicationDelegate {
         app.keyWindow?.rootViewController?.present(nav, animated: true)
     }
 
-    private func setUpObservers() {
+    private func doIndexStories(account: Account) {
+        async(background: {
+            let result = self.getStories.execute(args: nil)
+            let args = (result.value?.object ?? [], account)
+            self.indexStories.execute(args: args)
+        })
+    }
+
+    private func doRemoveIndexStories(account: Account) {
+        async(background: { self.removeIndexStories.execute(args: account) })
+    }
+
+    private func doIndex(story: Story, account: Account) {
+        async(background: { self.indexStory.execute(args: (story, account)) })
+    }
+
+    private func doRemoveIndex(story: Story, account: Account) {
+        async(background: { self.removeIndexStory.execute(args: (story, account)) })
+    }
+}
+
+private extension SearcheableIndexService {
+    func setUpObservers() {
         let indexStoriesObserver = indexStoriesNotificationCenter.addObserver(
             forType: .indexStories
         ) { [unowned self] index in
@@ -84,19 +112,25 @@ class SearcheableIndexService: NSObject, UIApplicationDelegate {
             }
         }
 
-        observers = [indexStoriesObserver, signOutObserver]
+        let storyNotificationCenter = storyInternalNotificationCenter
 
-    }
+        let newStoryObserver = storyNotificationCenter.addObserver(forType: .storyNew) { [unowned self] story in
+            if let account = Account.current, account.preferences.indexStories {
+                self.doIndex(story: story, account: account)
+            }
+        }
 
-    private func doIndexStories(account: Account) {
-        async(background: {
-            let result = self.getStories.execute(args: nil)
-            let args = (result.value?.object ?? [], account)
-            self.indexStories.execute(args: args)
-        })
-    }
+        let editStoryObserver = storyNotificationCenter.addObserver(forType: .storyEdit) { [unowned self] story in
+            if let account = Account.current, account.preferences.indexStories {
+                self.doIndex(story: story, account: account)
+            }
+        }
 
-    private func doRemoveIndexStories(account: Account) {
-        async(background: { self.removeIndexStories.execute(args: account) })
+        let deleteStoryObserver = storyNotificationCenter.addObserver(forType: .storyDelete) { [unowned self] story in
+            if let account = Account.current {
+                self.doRemoveIndex(story: story, account: account)
+            }
+        }
+        observers = [indexStoriesObserver, signOutObserver, newStoryObserver, editStoryObserver, deleteStoryObserver]
     }
 }
