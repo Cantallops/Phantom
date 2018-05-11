@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Diff
+import Differ
 
 extension UITableView {
     weak var fullDelegate: UITableViewFullDelegate? {

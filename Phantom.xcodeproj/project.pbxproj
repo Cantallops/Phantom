@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		56016D8A1FF1AF1C00BB066F /* FakeAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56016D891FF1AF1C00BB066F /* FakeAccount.swift */; };
+		56038D7220A643CE0071F03B /* Differ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56038D7120A643CE0071F03B /* Differ.framework */; };
 		5608670D1FA9D644002A9790 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5608670C1FA9D644002A9790 /* TextView.swift */; };
 		560867111FA9D7F7002A9790 /* TextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5608670F1FA9D7F7002A9790 /* TextViewTableViewCell.swift */; };
 		560867121FA9D7F7002A9790 /* TextViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 560867101FA9D7F7002A9790 /* TextViewTableViewCell.xib */; };
@@ -325,7 +326,6 @@
 		56F95DB52090EBB500EDD56C /* FilterStoriesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DB42090EBB500EDD56C /* FilterStoriesInteractor.swift */; };
 		56F95DB72090F75500EDD56C /* FilterStoriesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DB62090F75500EDD56C /* FilterStoriesTest.swift */; };
 		56F95DBA209111FF00EDD56C /* Searcheable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DB9209111FF00EDD56C /* Searcheable.swift */; };
-		56F95DBE2092662E00EDD56C /* Diff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56F95DBD2092662E00EDD56C /* Diff.framework */; };
 		56F95DC12092796100EDD56C /* SearcheableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DC02092796100EDD56C /* SearcheableTest.swift */; };
 		56F95DC5209281DF00EDD56C /* DynamicBlurView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56F95DC4209281DF00EDD56C /* DynamicBlurView.framework */; };
 		56F95DC92094F43E00EDD56C /* Highlightr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56F95DC82094F43D00EDD56C /* Highlightr.framework */; };
@@ -379,6 +379,7 @@
 
 /* Begin PBXFileReference section */
 		56016D891FF1AF1C00BB066F /* FakeAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAccount.swift; sourceTree = "<group>"; };
+		56038D7120A643CE0071F03B /* Differ.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Differ.framework; path = Carthage/Build/iOS/Differ.framework; sourceTree = "<group>"; };
 		5608670C1FA9D644002A9790 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		5608670F1FA9D7F7002A9790 /* TextViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewTableViewCell.swift; sourceTree = "<group>"; };
 		560867101FA9D7F7002A9790 /* TextViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextViewTableViewCell.xib; sourceTree = "<group>"; };
@@ -734,9 +735,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56038D7220A643CE0071F03B /* Differ.framework in Frameworks */,
 				56F95DC92094F43E00EDD56C /* Highlightr.framework in Frameworks */,
 				56F95DC5209281DF00EDD56C /* DynamicBlurView.framework in Frameworks */,
-				56F95DBE2092662E00EDD56C /* Diff.framework in Frameworks */,
 				5683C11A2030F8FE00291C77 /* ToastSwiftFramework.framework in Frameworks */,
 				56F003E41F7C1EBD00E9707A /* LocalAuthentication.framework in Frameworks */,
 				564AD2FD1FBA159700D086A8 /* PopupDialog.framework in Frameworks */,
@@ -3390,6 +3391,7 @@
 		56F003E21F7C1EBC00E9707A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				56038D7120A643CE0071F03B /* Differ.framework */,
 				56F95DC82094F43D00EDD56C /* Highlightr.framework */,
 				56F95DC620939CA200EDD56C /* RichEditorView.framework */,
 				56F95DC4209281DF00EDD56C /* DynamicBlurView.framework */,
@@ -3744,7 +3746,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/PopupDialog.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/WSTagsField.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ToastSwiftFramework.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Diff.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Differ.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/DynamicBlurView.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Highlightr.framework",
 			);
@@ -3753,7 +3755,7 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/PopupDialog.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/WSTagsField.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/ToastSwiftFramework.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Diff.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Differ.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/DynamicBlurView.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Highlightr.framework",
 			);
