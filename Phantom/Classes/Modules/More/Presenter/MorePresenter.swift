@@ -87,25 +87,25 @@ class MorePresenter: Presenter<MoreView> {
     fileprivate func loadMe() {
         async(background: { [unowned self] in
             return self.getCurrentBlogInfo.execute(args: nil)
-            }, main: { [weak self] result in
-                switch result {
-                case .success(let blogInfo):
-                    self?.blogInfo = blogInfo
-                case .failure(let error):
-                    self?.show(error: error)
-                }
+        }, main: { [weak self] result in
+            switch result {
+            case .success(let blogInfo):
+                self?.blogInfo = blogInfo
+            case .failure(let error):
+                self?.show(error: error)
+            }
         })
     }
     fileprivate func loadSettingsSection() {
         async(background: { [unowned self] in
             return self.getSettingsSection.execute(args: nil)
         }, main: { [weak self] result in
-                switch result {
-                case .success(let settings):
-                    self?.settings = settings
-                case .failure(let error):
-                    self?.show(error: error)
-                }
+            switch result {
+            case .success(let settings):
+                self?.settings = settings
+            case .failure(let error):
+                self?.show(error: error)
+            }
         })
     }
 
