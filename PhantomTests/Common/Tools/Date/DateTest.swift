@@ -51,4 +51,11 @@ class DateTest: XCTestCase {
         let formattedDate = date.apiFormated()
         XCTAssertEqual(formattedDate, "1970-01-01T00:00:00.000Z")
     }
+
+    func testDaysPassed() {
+        let days: Double = 3
+        let date = Date(timeIntervalSinceNow: 0)
+        let dateToCompare = Date(timeInterval: days*24*60*60, since: date)
+        XCTAssertEqual(dateToCompare.daysPassed(date: date), Int(days))
+    }
 }

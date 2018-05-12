@@ -1,5 +1,5 @@
 //
-//  UserPreferences.swift
+//  UserPreferences+IndexStories.swift
 //  Phantom
 //
 //  Created by Alberto Cantallops on 08/05/2018.
@@ -27,5 +27,4 @@ extension UserDefaults {
             indexStoriesNotificationCenter.post(.indexStories, object: newValue)
         }
     }
-
 }

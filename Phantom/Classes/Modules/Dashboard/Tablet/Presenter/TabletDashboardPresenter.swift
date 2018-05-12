@@ -27,6 +27,7 @@ class TabletDashboardPresenter: Presenter<TabletDashboardView> {
         }
     }
 
+    private let account: Account?
     private let getDashboardSections: Interactor<Any?, [Dashboard.Section]>
     private let sessionFactory: Factory<UIViewController>
     private let doSignOutInteractor: Interactor<Any?, Any?>
@@ -34,18 +35,22 @@ class TabletDashboardPresenter: Presenter<TabletDashboardView> {
     private let getFavIconImage: Interactor<Any?, UIImage>
     private let getSettingsSection: Interactor<Any?, [UIViewController]>
     private let aboutFactory: Factory<UIViewController>
+    private let openRateAppURLInteractor: Interactor<Account?, Any?>
 
     private var sections: [Dashboard.Section]?
 
     init(
+        account: Account?,
         getDashboardSections: Interactor<Any?, [Dashboard.Section]> = GetDashboardSectionsInteractor(),
         sessionFactory: Factory<UIViewController> = SessionFactory(),
         doSignOutInteractor: Interactor<Any?, Any?> = DoSignOutInteractor(),
         getCurrentBlogInfo: Interactor<Any?, BlogInfo> = GetCurrentBlogInfoInteractor(),
         getFavIconImage: Interactor<Any?, UIImage> = GetFavIconImageInteractor(),
         getSettingsSection: Interactor<Any?, [UIViewController]> = GetSettingsSections(),
-        aboutFactory: Factory<UIViewController> = AboutFactory()
+        aboutFactory: Factory<UIViewController> = AboutFactory(),
+        openRateAppURLInteractor: Interactor<Account?, Any?> = OpenRateAppURLInteractor()
     ) {
+        self.account = account
         self.getDashboardSections = getDashboardSections
         self.sessionFactory = sessionFactory
         self.doSignOutInteractor = doSignOutInteractor
@@ -53,6 +58,7 @@ class TabletDashboardPresenter: Presenter<TabletDashboardView> {
         self.getFavIconImage = getFavIconImage
         self.getSettingsSection = getSettingsSection
         self.aboutFactory = aboutFactory
+        self.openRateAppURLInteractor = openRateAppURLInteractor
         super.init()
     }
 
@@ -193,18 +199,25 @@ class TabletDashboardPresenter: Presenter<TabletDashboardView> {
     }
 
     fileprivate func getInfoSection() -> UITableView.Section {
-        let conf = BasicTableViewCell.Conf(
+        let aboutConf = BasicTableViewCell.Conf(
             text: "About",
             image: #imageLiteral(resourceName: "ic_table_info")
         )
-        conf.deselect = false
-        conf.onSelect = { [weak self] in
-            self?.openInfo()
-        }
-        var section = UITableView.Section(id: "Abour", cells: [conf])
+        aboutConf.onSelect = openInfo
+        let rateConf = BasicTableViewCell.Conf(
+            text: "Rate the app",
+            image: #imageLiteral(resourceName: "ic_table_rate")
+        )
+        rateConf.deselect = true
+        rateConf.onSelect = openRateApp
+        var section = UITableView.Section(id: "Info", cells: [aboutConf, rateConf])
         section.header = EmptyTableSectionHeader(height: 20)
         section.footer = EmptyTableSectionFooter(height: 20)
         return section
+    }
+
+    private func openRateApp() {
+        openRateAppURLInteractor.execute(args: account)
     }
 
     fileprivate func getLogOutSection() -> UITableView.Section {
@@ -213,9 +226,7 @@ class TabletDashboardPresenter: Presenter<TabletDashboardView> {
             image: #imageLiteral(resourceName: "ic_table_signout")
         )
         conf.deselect = true
-        conf.onSelect = { [weak self] in
-            self?.signOut()
-        }
+        conf.onSelect = signOut
         var section = UITableView.Section(id: "SignOut", cells: [conf])
         section.header = EmptyTableSectionHeader(height: 20)
         section.footer = EmptyTableSectionFooter(height: 20)

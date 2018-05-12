@@ -20,24 +20,30 @@ class MorePresenter: Presenter<MoreView> {
         }
     }
 
+    private let account: Account?
     private let doSignOutInteractor: Interactor<Any?, Any?>
     private let getCurrentBlogInfo: Interactor<Any?, BlogInfo>
     private let getFavIconImage: Interactor<Any?, UIImage>
     private let getSettingsSection: Interactor<Any?, [UIViewController]>
     private let aboutFactory: Factory<UIViewController>
+    private let openRateAppURLInteractor: Interactor<Account?, Any?>
 
     init(
+        account: Account?,
         doSignOutInteractor: Interactor<Any?, Any?> = DoSignOutInteractor(),
         getCurrentBlogInfo: Interactor<Any?, BlogInfo> = GetCurrentBlogInfoInteractor(),
         getFavIconImage: Interactor<Any?, UIImage> = GetFavIconImageInteractor(),
         getSettingsSection: Interactor<Any?, [UIViewController]> = GetSettingsSections(),
-        aboutFactory: Factory<UIViewController> = AboutFactory()
+        aboutFactory: Factory<UIViewController> = AboutFactory(),
+        openRateAppURLInteractor: Interactor<Account?, Any?> = OpenRateAppURLInteractor()
     ) {
+        self.account = account
         self.doSignOutInteractor = doSignOutInteractor
         self.getCurrentBlogInfo = getCurrentBlogInfo
         self.getFavIconImage = getFavIconImage
         self.getSettingsSection = getSettingsSection
         self.aboutFactory = aboutFactory
+        self.openRateAppURLInteractor = openRateAppURLInteractor
         super.init()
     }
 
@@ -124,16 +130,20 @@ class MorePresenter: Presenter<MoreView> {
     }
 
     fileprivate func getInfoSection() -> UITableView.Section {
-        let conf = BasicTableViewCell.Conf(
+        let aboutConf = BasicTableViewCell.Conf(
             text: "About",
             image: #imageLiteral(resourceName: "ic_table_info")
         )
-        conf.deselect = true
-        conf.accessoryType = .disclosureIndicator
-        conf.onSelect = { [weak self] in
-            self?.openInfo()
-        }
-        var section = UITableView.Section(id: "About", cells: [conf])
+        aboutConf.deselect = true
+        aboutConf.accessoryType = .disclosureIndicator
+        aboutConf.onSelect = openInfo
+        let rateConf = BasicTableViewCell.Conf(
+            text: "Rate the app",
+            image: #imageLiteral(resourceName: "ic_table_rate")
+        )
+        rateConf.deselect = true
+        rateConf.onSelect = openRateApp
+        var section = UITableView.Section(id: "Info", cells: [aboutConf, rateConf])
         section.header = EmptyTableSectionHeader(height: 20)
         section.footer = EmptyTableSectionFooter(height: 20)
         return section
@@ -157,6 +167,10 @@ class MorePresenter: Presenter<MoreView> {
     private func openInfo() {
         let aboutView = aboutFactory.build()
         open(viewController: aboutView)
+    }
+
+    private func openRateApp() {
+        openRateAppURLInteractor.execute(args: account)
     }
 
     private func open(viewController: UIViewController) {

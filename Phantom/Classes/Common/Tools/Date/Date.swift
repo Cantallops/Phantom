@@ -26,3 +26,10 @@ public extension Date {
         return inGMTRegion().string(custom: Date.defaultFormat)
     }
 }
+
+public extension Date {
+    func daysPassed(date: Date) -> Int {
+        let diff = timeIntervalSince1970 - date.timeIntervalSince1970
+        return Int(diff/60/60/24)
+    }
+}

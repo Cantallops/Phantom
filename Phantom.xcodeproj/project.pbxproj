@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		56016D8A1FF1AF1C00BB066F /* FakeAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56016D891FF1AF1C00BB066F /* FakeAccount.swift */; };
 		56038D7220A643CE0071F03B /* Differ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56038D7120A643CE0071F03B /* Differ.framework */; };
+		56038D7620A7026D0071F03B /* OpenRateAppNativeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56038D7520A7026D0071F03B /* OpenRateAppNativeInteractor.swift */; };
+		56038D7820A7028D0071F03B /* OpenRateAppURLInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56038D7720A7028D0071F03B /* OpenRateAppURLInteractor.swift */; };
+		56038D7A20A707C50071F03B /* UserPreferences+Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56038D7920A707C50071F03B /* UserPreferences+Rate.swift */; };
 		5608670D1FA9D644002A9790 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5608670C1FA9D644002A9790 /* TextView.swift */; };
 		560867111FA9D7F7002A9790 /* TextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5608670F1FA9D7F7002A9790 /* TextViewTableViewCell.swift */; };
 		560867121FA9D7F7002A9790 /* TextViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 560867101FA9D7F7002A9790 /* TextViewTableViewCell.xib */; };
@@ -339,7 +342,7 @@
 		56F95DE220A0F67C00EDD56C /* StoryDetailBuilderById.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DE120A0F67C00EDD56C /* StoryDetailBuilderById.swift */; };
 		56F95DE420A23B5300EDD56C /* StoryDetailByIdPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DE320A23B5300EDD56C /* StoryDetailByIdPresenter.swift */; };
 		56F95DE620A23C4000EDD56C /* GetStoryByIdInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DE520A23C4000EDD56C /* GetStoryByIdInteractor.swift */; };
-		56F95DE920A2436800EDD56C /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DE820A2436800EDD56C /* UserPreferences.swift */; };
+		56F95DE920A2436800EDD56C /* UserPreferences+IndexStories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DE820A2436800EDD56C /* UserPreferences+IndexStories.swift */; };
 		56F95DEB20A38A0200EDD56C /* RemoveIndexStoriesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DEA20A38A0200EDD56C /* RemoveIndexStoriesInteractor.swift */; };
 		56F95DEE20A39C8C00EDD56C /* SessionNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DED20A39C8C00EDD56C /* SessionNotificationCenter.swift */; };
 		56F95DF220A4C42D00EDD56C /* IndexStoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F95DF120A4C42D00EDD56C /* IndexStoryInteractor.swift */; };
@@ -380,6 +383,9 @@
 /* Begin PBXFileReference section */
 		56016D891FF1AF1C00BB066F /* FakeAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAccount.swift; sourceTree = "<group>"; };
 		56038D7120A643CE0071F03B /* Differ.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Differ.framework; path = Carthage/Build/iOS/Differ.framework; sourceTree = "<group>"; };
+		56038D7520A7026D0071F03B /* OpenRateAppNativeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenRateAppNativeInteractor.swift; sourceTree = "<group>"; };
+		56038D7720A7028D0071F03B /* OpenRateAppURLInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenRateAppURLInteractor.swift; sourceTree = "<group>"; };
+		56038D7920A707C50071F03B /* UserPreferences+Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserPreferences+Rate.swift"; sourceTree = "<group>"; };
 		5608670C1FA9D644002A9790 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		5608670F1FA9D7F7002A9790 /* TextViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewTableViewCell.swift; sourceTree = "<group>"; };
 		560867101FA9D7F7002A9790 /* TextViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextViewTableViewCell.xib; sourceTree = "<group>"; };
@@ -714,7 +720,7 @@
 		56F95DE120A0F67C00EDD56C /* StoryDetailBuilderById.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryDetailBuilderById.swift; sourceTree = "<group>"; };
 		56F95DE320A23B5300EDD56C /* StoryDetailByIdPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryDetailByIdPresenter.swift; sourceTree = "<group>"; };
 		56F95DE520A23C4000EDD56C /* GetStoryByIdInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStoryByIdInteractor.swift; sourceTree = "<group>"; };
-		56F95DE820A2436800EDD56C /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
+		56F95DE820A2436800EDD56C /* UserPreferences+IndexStories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserPreferences+IndexStories.swift"; sourceTree = "<group>"; };
 		56F95DEA20A38A0200EDD56C /* RemoveIndexStoriesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveIndexStoriesInteractor.swift; sourceTree = "<group>"; };
 		56F95DED20A39C8C00EDD56C /* SessionNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionNotificationCenter.swift; sourceTree = "<group>"; };
 		56F95DF120A4C42D00EDD56C /* IndexStoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexStoryInteractor.swift; sourceTree = "<group>"; };
@@ -784,6 +790,15 @@
 				56016D891FF1AF1C00BB066F /* FakeAccount.swift */,
 			);
 			path = Account;
+			sourceTree = "<group>";
+		};
+		56038D7420A702550071F03B /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				56038D7520A7026D0071F03B /* OpenRateAppNativeInteractor.swift */,
+				56038D7720A7028D0071F03B /* OpenRateAppURLInteractor.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 		5608670B1FA9D61E002A9790 /* TextView */ = {
@@ -939,6 +954,7 @@
 		563189631F66E8B3006B29D5 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				56038D7420A702550071F03B /* Interactor */,
 				56E2D4591FBB8EB500DD4A7D /* DataSource */,
 				5692AEB41F6D6CA1004A65A4 /* Models */,
 				56F95DE720A2433500EDD56C /* Preferences */,
@@ -953,8 +969,8 @@
 				563189661F66E956006B29D5 /* InitialModuleService.swift */,
 				56178B711FAF8C0000EA8026 /* LoadStateService.swift */,
 				56622C1D1FC0A4EF00CD5B13 /* LoadUIAppearanceService.swift */,
-				56ED3EF01FDAFC6C0069736A /* TestService.swift */,
 				56F95DDF20A0EC7200EDD56C /* SearcheableIndexService.swift */,
+				56ED3EF01FDAFC6C0069736A /* TestService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -3445,7 +3461,8 @@
 		56F95DE720A2433500EDD56C /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				56F95DE820A2436800EDD56C /* UserPreferences.swift */,
+				56F95DE820A2436800EDD56C /* UserPreferences+IndexStories.swift */,
+				56038D7920A707C50071F03B /* UserPreferences+Rate.swift */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
@@ -3817,7 +3834,7 @@
 				5692AEAB1F6D6A6E004A65A4 /* DataSource.swift in Sources */,
 				569448111FEEFFEC0045B752 /* AboutPresenter.swift in Sources */,
 				565E80991F67037E000DC618 /* Button.swift in Sources */,
-				56F95DE920A2436800EDD56C /* UserPreferences.swift in Sources */,
+				56F95DE920A2436800EDD56C /* UserPreferences+IndexStories.swift in Sources */,
 				56787E201FE1B317005F9B4E /* NetworkImage.swift in Sources */,
 				56EB106E203381410070BE17 /* UITableViewSection.swift in Sources */,
 				565BC4BF1FB23EAF005B4F84 /* GetStoriesListInteractor.swift in Sources */,
@@ -3849,6 +3866,7 @@
 				563189671F66E956006B29D5 /* InitialModuleService.swift in Sources */,
 				56E2D46E1FBE0B9F00DD4A7D /* DeleteStoryRemote.swift in Sources */,
 				569447FC1FEEB0700045B752 /* Picker.swift in Sources */,
+				56038D7A20A707C50071F03B /* UserPreferences+Rate.swift in Sources */,
 				56AFDF161F869FE500ADA640 /* StoriesListView.swift in Sources */,
 				568558DE1F894A94000AA39F /* TagDetailView.swift in Sources */,
 				56F95DCF2095DB8100EDD56C /* StoryPreview.swift in Sources */,
@@ -3960,6 +3978,7 @@
 				564AD3001FBA17BB00D086A8 /* Debounce.swift in Sources */,
 				568558CD1F8948C9000AA39F /* GeneralSettingsView.swift in Sources */,
 				560F6EA11FA5100100A9464D /* Builder.swift in Sources */,
+				56038D7620A7026D0071F03B /* OpenRateAppNativeInteractor.swift in Sources */,
 				561CD1881F718BF500EF7C8F /* Network.swift in Sources */,
 				56988B2B1FEFEC090000EFBC /* GetSubscribersInteractor.swift in Sources */,
 				56894A741FB60871005F9EF9 /* TeamMember.swift in Sources */,
@@ -3973,6 +3992,7 @@
 				5635691A20026DA200BAA968 /* GetFavIconImageInteractor.swift in Sources */,
 				56E2D4771FBE47BE00DD4A7D /* ImageUploader.swift in Sources */,
 				569335121FDD857A00F0B108 /* Loader.swift in Sources */,
+				56038D7820A7028D0071F03B /* OpenRateAppURLInteractor.swift in Sources */,
 				56C4655A1F654048001ABAC8 /* ViewController.swift in Sources */,
 				568558C81F894847000AA39F /* DesignPresenter.swift in Sources */,
 				56E2D4681FBCA27D00DD4A7D /* ImageUploaderTableViewCell.swift in Sources */,

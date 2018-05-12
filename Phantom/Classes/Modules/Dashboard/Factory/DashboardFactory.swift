@@ -32,7 +32,7 @@ class DashboardFactory: Factory<UIViewController> {
     }
 
     private func padBuild() -> UIViewController {
-        let presenter = TabletDashboardPresenter()
+        let presenter = TabletDashboardPresenter(account: .current)
         let view = TabletDashboardView(presenter: presenter)
         presenter.view = view
         return view

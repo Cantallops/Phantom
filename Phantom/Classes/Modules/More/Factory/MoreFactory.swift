@@ -10,7 +10,7 @@ import UIKit
 
 class MoreFactory: Factory<UIViewController> {
     override func build() -> UIViewController {
-        let presenter = MorePresenter()
+        let presenter = MorePresenter(account: .current)
         let view = MoreView(presenter: presenter)
         presenter.view = view
         return view

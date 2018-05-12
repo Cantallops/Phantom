@@ -25,11 +25,17 @@ class PublisherPresenter: Presenter<PublisherView> {
     private var story: Story
     private var publishDate: Date?
     private var publishAction: PublishAction = .none
-    private var onPublishAction: OnPublishAction
+    private let onPublishAction: OnPublishAction
+    private let openRateAppNativeInteractor: Interactor<Account, Any?>
 
-    init(story: Story, onPublishAction: @escaping OnPublishAction) {
+    init(
+        story: Story,
+        onPublishAction: @escaping OnPublishAction,
+        openRateAppNativeInteractor: Interactor<Account, Any?> = OpenRateAppNativeInteractor()
+    ) {
         self.story = story
         self.onPublishAction = onPublishAction
+        self.openRateAppNativeInteractor = openRateAppNativeInteractor
         super.init()
     }
 
@@ -58,6 +64,7 @@ class PublisherPresenter: Presenter<PublisherView> {
         case .success(let story):
             self.story = story
             view.dismiss(animated: true)
+            askForRating()
         case .failure(let error):
             view.setError(error.localizedDescription)
         }
@@ -168,5 +175,11 @@ class PublisherPresenter: Presenter<PublisherView> {
             self?.change(toPublishAction: .update)
         }
         return published
+    }
+
+    private func askForRating() {
+        if let account = Account.current {
+            openRateAppNativeInteractor.execute(args: account)
+        }
     }
 }
