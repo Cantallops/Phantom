@@ -106,8 +106,10 @@ class TableViewCell: UITableViewCell {
 
     private func getFrameForSelection() -> CGRect {
         var selectedFrame = bounds
-        selectedFrame.size.width -= 12
-        selectedFrame.origin.x += 6
+        let correction: CGFloat = 8
+        selectedFrame.size.width -= layoutMargins.left + layoutMargins.right - correction*2
+        selectedFrame.origin.x += layoutMargins.left - correction
+
         return selectedFrame
     }
 }
