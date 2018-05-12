@@ -170,31 +170,6 @@ extension Story {
     }
 }
 
-extension Story.HTML {
-    func getFull() -> Story.HTML {
-        return """
-        <html>
-            <head>
-                <meta name="viewport" content="initial-scale=1.0" />
-                <style>
-                    body {
-                        padding: 10px;
-                    }
-                    img, iframe {
-                        max-width:100%;
-                        height:auto;
-                        max-height:100%;
-                    }
-                </style>
-            </head>
-            <body>
-                \(self)
-            </body>
-        </html>
-        """
-    }
-}
-
 extension Story.MobileDoc {
     static func get(from markdown: Story.Markdown) -> Story.MobileDoc {
         let scapedMarkdown = markdown
