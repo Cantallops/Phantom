@@ -11,6 +11,7 @@ import WebKit
 class WebViewController: UIViewController, WKUIDelegate {
     private var webView: WKWebView!
     private var progressView: UIProgressView!
+    private var progressViewObserver: Any?
 
     private var url: URL! {
         didSet {
@@ -33,8 +34,8 @@ class WebViewController: UIViewController, WKUIDelegate {
         super.viewDidLoad()
         webView.load(URLRequest(url: url))
 
-        _ = webView.observe(\.estimatedProgress) { [weak self] webView, _ in
-            self?.progressView.progress = Float(webView.estimatedProgress)
+        progressViewObserver = webView.observe(\.estimatedProgress) { [weak self] webView, _ in
+            self?.progressView.setProgress(Float(webView.estimatedProgress), animated: true)
         }
     }
 
@@ -44,19 +45,18 @@ class WebViewController: UIViewController, WKUIDelegate {
 
     private func setUpProgressBar() {
         progressView = UIProgressView(progressViewStyle: .default)
-        progressView.trackTintColor = Color.tint
-
-        progressView.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
-        if let nav = navigationController {
-            nav.navigationBar.addSubview(progressView)
-            let navigationBarBounds = nav.navigationBar.bounds
-            progressView.frame = CGRect(
-                x: 0,
-                y: navigationBarBounds.size.height - 2,
-                width: navigationBarBounds.size.width,
-                height: 2
-            )
-        }
+        progressView.trackTintColor = .clear
+        progressView.progressTintColor = Color.tint
+        progressView.progress = 0
+        progressView.isHidden = true
+        progressView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(progressView)
+        NSLayoutConstraint.activate([
+            progressView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            progressView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            progressView.topAnchor.constraint(equalTo: view.topAnchor),
+            progressView.heightAnchor.constraint(equalToConstant: 2)
+        ])
     }
 }
 
