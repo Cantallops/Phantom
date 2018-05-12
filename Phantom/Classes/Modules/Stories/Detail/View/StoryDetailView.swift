@@ -57,6 +57,37 @@ class StoryDetailView: ViewController {
         }
     }
 
+    override var keyCommands: [UIKeyCommand]? {
+        return [
+            UIKeyCommand(
+                input: "b", modifierFlags: .command, action: #selector(tapBold), discoverabilityTitle: "Bold"
+            ),
+            UIKeyCommand(
+                input: "i", modifierFlags: .command, action: #selector(tapItalic), discoverabilityTitle: "Emphasize"
+            ),
+            UIKeyCommand(
+                input: "h", modifierFlags: .command, action: #selector(tapHeader), discoverabilityTitle: "Heading"
+            ),
+            UIKeyCommand(
+                input: "l", modifierFlags: .command, action: #selector(tapList), discoverabilityTitle: "List"
+            ),
+            UIKeyCommand(
+                input: "l", modifierFlags: [.command, .alternate], action: #selector(tapNumeredList),
+                discoverabilityTitle: "Ordered List"
+            ),
+            UIKeyCommand(
+                input: "'", modifierFlags: .command, action: #selector(tapQuote), discoverabilityTitle: "Blockquote"
+            ),
+            UIKeyCommand(
+                input: "k", modifierFlags: .command, action: #selector(tapLink), discoverabilityTitle: "Link"
+            ),
+            UIKeyCommand(
+                input: "i", modifierFlags: [.command, .shift], action: #selector(tapImage),
+                discoverabilityTitle: "Image"
+            )
+        ]
+    }
+
     override init(presenter: PresenterProtocol) {
         super.init(presenter: presenter)
         tabBarItem.image = #imageLiteral(resourceName: "ic_tab_stories")
@@ -131,34 +162,58 @@ class StoryDetailView: ViewController {
     }
 
     @objc func tapBold() {
+        if !contentTextView.isFirstResponder {
+            return
+        }
         contentTextView.wrap(selectedTextWith: "**")
     }
 
     @objc func tapItalic() {
+        if !contentTextView.isFirstResponder {
+            return
+        }
         contentTextView.wrap(selectedTextWith: "*")
     }
 
     @objc func tapHeader() {
+        if !contentTextView.isFirstResponder {
+            return
+        }
         contentTextView.wrap(selectedLineWith: "# ", wrapperRight: "", max: 6)
     }
 
     @objc func tapQuote() {
+        if !contentTextView.isFirstResponder {
+            return
+        }
         contentTextView.wrap(selectedLineWith: "> ", wrapperRight: "", max: 1)
     }
 
     @objc func tapList() {
+        if !contentTextView.isFirstResponder {
+            return
+        }
         contentTextView.wrap(selectedLineWith: "* ", wrapperRight: "", max: 1)
     }
 
     @objc func tapNumeredList() {
+        if !contentTextView.isFirstResponder {
+            return
+        }
         contentTextView.wrap(selectedLineWith: "1. ", wrapperRight: "", max: 1)
     }
 
     @objc func tapLink() {
+        if !contentTextView.isFirstResponder {
+            return
+        }
         contentTextView.wrap(selectedTextWith: "[", wrapperRight: "](https://)")
     }
 
     @objc func tapImage() {
+        if !contentTextView.isFirstResponder {
+            return
+        }
         onInsertImage?()
     }
 
