@@ -53,7 +53,7 @@ class Presenter<VC: UIViewController>: PresenterProtocol {
     func didDisappear() {}
 
     func show(error: Error) {
-        if error.isUnauthoriezed || error.cannotConnect {
+        if error.isUnauthorized || error.cannotConnect {
             sessionNotificationCenter.post(.signOut, object: Account.current)
             return
         }

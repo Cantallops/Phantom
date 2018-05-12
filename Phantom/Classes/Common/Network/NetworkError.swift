@@ -85,7 +85,7 @@ struct NetworkError: Error {
 }
 
 extension Error {
-    var isUnauthoriezed: Bool {
+    var isUnauthorized: Bool {
         if let error = self as? NetworkError {
             return error.kind == .unauthorized
         }
