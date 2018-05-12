@@ -259,6 +259,7 @@ private extension StoryDetailView {
         textContainer = NSTextContainer(size: .zero)
         layoutManager.addTextContainer(textContainer)
         contentTextView = TextView(frame: view.frame, textContainer: textContainer)
+        contentTextView.keyboardDismissMode = .interactive
         contentTextView.text = markdown
         contentTextView.font = theme.codeFont
         contentTextView.accessibilityIdentifier = "content"
