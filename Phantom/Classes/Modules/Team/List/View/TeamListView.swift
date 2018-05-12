@@ -29,12 +29,6 @@ class TeamListView: TableViewController {
             navigationController?.navigationBar.prefersLargeTitles = true
             navigationItem.largeTitleDisplayMode = .always
         }
-        // FIXME: Uncommnet when develop create teammember
-        /*navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .add,
-            target: self,
-            action: #selector(tapAdd)
-        )*/
     }
 
     override func isRefreshable() -> Bool {

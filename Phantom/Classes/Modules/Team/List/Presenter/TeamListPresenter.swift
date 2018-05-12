@@ -63,10 +63,8 @@ class TeamListPresenter: Presenter<TeamListView> {
         var inactiveCells: [TableCellConf] = []
         for user in users {
             let conf = TeamMemberTableViewCell.Conf(user: user)
-            // FIXME: Remove when develop teammember's detail module
             conf.accessoryType = .none
             conf.canSelect = false
-            // End fixme
             conf.deselect = true
             if user.status.isActiveStatus() {
                 activeCells.append(conf)

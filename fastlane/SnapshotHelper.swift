@@ -12,7 +12,7 @@
 //            bottom of the file to notify users about
 //            the new SnapshotHelper.swift
 // -----------------------------------------------------
-
+// swiftlint:disable line_length
 import Foundation
 import XCTest
 
@@ -70,7 +70,7 @@ open class Snapshot: NSObject {
     }
 
     open class func setupSnapshot(_ app: XCUIApplication) {
-        
+
         Snapshot.app = app
 
         do {
@@ -89,7 +89,7 @@ open class Snapshot: NSObject {
             print("CacheDirectory is not set - probably running on a physical device?")
             return
         }
-        
+
         let path = cacheDirectory.appendingPathComponent("language.txt")
 
         do {
@@ -106,7 +106,7 @@ open class Snapshot: NSObject {
             print("CacheDirectory is not set - probably running on a physical device?")
             return
         }
-        
+
         let path = cacheDirectory.appendingPathComponent("locale.txt")
 
         do {
@@ -126,7 +126,7 @@ open class Snapshot: NSObject {
             print("CacheDirectory is not set - probably running on a physical device?")
             return
         }
-        
+
         let path = cacheDirectory.appendingPathComponent("snapshot-launch_arguments.txt")
         app.launchArguments += ["-FASTLANE_SNAPSHOT", "YES", "-ui_testing"]
 
@@ -155,12 +155,12 @@ open class Snapshot: NSObject {
         #if os(OSX)
             XCUIApplication().typeKey(XCUIKeyboardKeySecondaryFn, modifierFlags: [])
         #else
-            
+
             guard let app = self.app else {
                 print("XCUIApplication is not set. Please call setupSnapshot(app) before snapshot().")
                 return
             }
-            
+
             guard let window = app.windows.allElementsBoundByIndex.first(where: { $0.frame.isEmpty == false }) else {
                 print("Couldn't find an element window in XCUIApplication with a non-empty frame.")
                 return

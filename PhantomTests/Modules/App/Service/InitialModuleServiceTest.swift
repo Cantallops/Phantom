@@ -13,6 +13,7 @@ class InitialModuleServiceTest: XCTestCase {
 
     fileprivate var service: UIApplicationDelegate!
     fileprivate var application: UIApplication!
+    // swiftlint:disable:next weak_delegate
     fileprivate weak var delegate: AppDelegate!
 
     private let dashboard = UIViewController()
