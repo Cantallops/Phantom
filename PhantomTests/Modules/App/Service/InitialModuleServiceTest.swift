@@ -37,7 +37,7 @@ class InitialModuleServiceTest: XCTestCase {
 
     func testShouldReturnFalseIfThereIsNoWindow() {
         delegate.window = nil
-        let result = service.application?(application, didFinishLaunchingWithOptions: [:]) ?? true
+        let result = service.application!(application, didFinishLaunchingWithOptions: [:])
         XCTAssertFalse(result, "If there are no window should return false")
     }
 
@@ -48,7 +48,7 @@ class InitialModuleServiceTest: XCTestCase {
             object: nil,
             handler: nil
         )
-        let result = service.application?(application, didFinishLaunchingWithOptions: [:]) ?? false
+        let result = service.application!(application, didFinishLaunchingWithOptions: [:])
         XCTAssertTrue(result)
         waitForExpectations(timeout: 2, handler: nil)
         guard let viewController = getRootViewController() else {
@@ -60,7 +60,7 @@ class InitialModuleServiceTest: XCTestCase {
     }
 
     func testShouldInitializeNavigationViewWithBlogSiteAsRoot() {
-        let result = service.application?(application, didFinishLaunchingWithOptions: [:]) ?? false
+        let result = service.application!(application, didFinishLaunchingWithOptions: [:])
         XCTAssertTrue(result, "Should return true")
         let viewController = getRootViewController()!
         XCTAssertTrue(viewController == dashboard, "The initial view should be Dashboard instance")
@@ -68,10 +68,7 @@ class InitialModuleServiceTest: XCTestCase {
     }
 
     func getRootViewController() -> UIViewController? {
-        guard let window = delegate.window else {
-            XCTFail("Window should be initialized")
-            return nil
-        }
+        let window = delegate.window!
         return window.rootViewController
     }
 }
