@@ -32,6 +32,8 @@ class ImageUploaderView: UIView {
 
     private var uploader: ImageUploader!
 
+    var worker: Worker = AsyncWorker()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         customInit()
@@ -115,9 +117,9 @@ class ImageUploaderView: UIView {
 
     private func showImage(inUrl url: URL) {
         clear()
-        async(loaders: [activityIndicatorView], background: {
+        let task = Task(loaders: [activityIndicatorView], task: {
             return Network.Image.get(fromURL: url)
-        }, main: { [weak self] result in
+        }, completion: { [weak self] result in
             switch result {
             case .success(let image):
                 self?.imageView.image = image
@@ -126,6 +128,7 @@ class ImageUploaderView: UIView {
                 self?.handle(error: error)
             }
         })
+        worker.execute(task: task)
     }
 
     private func handleUpload(withResult imageResult: ImageUploader.ImageResult) {

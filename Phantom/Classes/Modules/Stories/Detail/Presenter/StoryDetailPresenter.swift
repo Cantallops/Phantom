@@ -13,6 +13,7 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
 
     private var autoSaveDebounce: Debounce!
 
+    let worker: Worker
     let createInteractor: Interactor<Story, Story>
     let editInteractor: Interactor<Story, Story>
     let deleteInteractor: Interactor<Story, Story>
@@ -26,6 +27,7 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
     var initialStory: Story
 
     init(
+        worker: Worker = AsyncWorker(),
         story: Story?,
         userPreferences: Preferences,
         createInteractor: Interactor<Story, Story>,
@@ -34,6 +36,7 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
         publisherBuilder: Builder<PublisherArg, UIViewController>,
         settingsBuilder: Builder<StorySettingsArg, UIViewController>
     ) {
+        self.worker = worker
         self.userPreferences = userPreferences
         self.initialStory = story.mutated
         self.story = story.mutated
@@ -115,9 +118,9 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
             return
         }
         if story.isNew {
-            async(loaders: [view], background: { [unowned self] in
+            let task = Task(loaders: [view], task: { [unowned self] in
                 return self.createInteractor.execute(args: self.story)
-            }, main: { [weak self] result in
+            }, completion: { [weak self] result in
                 switch result {
                 case .success(let story):
                     self?.saveSucceed(story: story)
@@ -129,6 +132,7 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
                     self?.autoSave()
                 }
             })
+            worker.execute(task: task)
         } else {
             update(story: story, loaders: [view]) { [weak self] result in
                 switch result {
@@ -147,9 +151,9 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
 
     private func delete() {
         autoSaveDebounce.invalidate()
-        async(loaders: [view], background: { [unowned self] in
+        let task = Task(loaders: [view], task: { [unowned self] in
             return self.deleteInteractor.execute(args: self.story)
-        }, main: { [weak self] result in
+        }, completion: { [weak self] result in
             switch result {
             case .success: self?.deleteSucceed()
             case .failure(let error):
@@ -157,6 +161,7 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
                 self?.autoSave()
             }
         })
+        worker.execute(task: task)
     }
 
     private func saveSucceed(story: Story) {
@@ -210,12 +215,12 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
     }
 
     private func update(story: Story, loaders: [Loader]?, onResult: @escaping (Result<Story>) -> Void ) {
-        async(loaders: loaders,
-              background: { [unowned self] in
-                return self.editInteractor.execute(args: story)
-              }, main: { result in
-                  onResult(result)
-              })
+        let task = Task(loaders: loaders, task: { [unowned self] in
+            return self.editInteractor.execute(args: story)
+        }, completion: { result in
+            onResult(result)
+        })
+        worker.execute(task: task)
     }
 
     private func publish(
@@ -263,6 +268,20 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
         view.navigationController?.pushViewController(webView, animated: true)
     }
 
+    private func needToBeSaved(story: Story) -> Bool {
+        return story.isNew || story != initialStory
+    }
+
+    private func uploadImage() {
+        imageUploader.show(in: view)
+    }
+
+    private func onImageUploaded(uri: String) {
+        view.insert(imageWithUri: uri)
+    }
+}
+
+extension StoryDetailPresenter {
     private func askToSaveIfNecessaryBeforeDismiss() {
         guard let nav = view.navigationController else { return }
         if !needToBeSaved(story: story) {
@@ -290,18 +309,6 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
             self?.autoSaveDebounce.reset()
         }))
         nav.present(alert, animated: true, completion: nil)
-    }
-
-    private func needToBeSaved(story: Story) -> Bool {
-        return story.isNew || story != initialStory
-    }
-
-    private func uploadImage() {
-        imageUploader.show(in: view)
-    }
-
-    private func onImageUploaded(uri: String) {
-        view.insert(imageWithUri: uri)
     }
 }
 

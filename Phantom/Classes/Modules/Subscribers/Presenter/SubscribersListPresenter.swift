@@ -10,13 +10,16 @@ import UIKit
 
 class SubscribersListPresenter: Presenter<SubscribersListView> {
 
+    private let worker: Worker
     private let getSubscribers: Interactor<Meta?, Paginated<[Subscriber]>>
     private var meta: Meta?
     private var subscribers: [Subscriber] = []
 
     init(
+        worker: Worker = AsyncWorker(),
         getSubscribers: Interactor<Meta?, Paginated<[Subscriber]>> = GetSubscribersInteractor()
     ) {
+        self.worker = worker
         self.getSubscribers = getSubscribers
         super.init()
     }
@@ -31,9 +34,9 @@ class SubscribersListPresenter: Presenter<SubscribersListView> {
         if let meta = meta, !meta.pagination.isFirst {
             loaders = []
         }
-        async(loaders: loaders, background: { [unowned self] in
+        let task = Task(loaders: loaders, task: { [unowned self] in
             return self.getSubscribers.execute(args: self.meta)
-            }, main: { [weak self] result in
+        }, completion: { [weak self] result in
                 switch result {
                 case .success(let paginated):
                     self?.process(paginated: paginated)
@@ -42,6 +45,7 @@ class SubscribersListPresenter: Presenter<SubscribersListView> {
                     self?.process(error: error)
                 }
         })
+        worker.execute(task: task)
     }
 
     private func process(paginated: Paginated<[Subscriber]>) {

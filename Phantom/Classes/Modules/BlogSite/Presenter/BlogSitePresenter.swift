@@ -10,13 +10,16 @@ import UIKit
 
 class BlogSitePresenter: Presenter<BlogSiteView> {
 
+    private let worker: Worker
     private let detectGhostInstallation: Interactor<URL, String>
     private let signInFactory: Factory<UIViewController>
 
     init(
+        worker: Worker = AsyncWorker(),
         detectGhostInstallation: Interactor<URL, String> = DetectGhostInstallationInteractor(),
         signInFactory: Factory<UIViewController> = SignInFactory()
     ) {
+        self.worker = worker
         self.detectGhostInstallation = detectGhostInstallation
         self.signInFactory = signInFactory
         super.init()
@@ -36,16 +39,15 @@ class BlogSitePresenter: Presenter<BlogSiteView> {
             show(error: Errors.Form.notFilled)
             return
         }
-        async(
-            loaders: [view.goButton],
-            background: { [unowned self]  in
+        let task = Task(loaders: [view.goButton], task: { [unowned self]  in
                 self.detectGhostInstallation.execute(args: url)
-        }, main: { [unowned self] result in
+        }, completion: { [unowned self] result in
             switch result {
             case .success(let title): self.goToLogin(withTitle: title)
             case .failure(let error): self.show(error: error)
             }
         })
+        worker.execute(task: task)
     }
 
     private func goToLogin(withTitle title: String) {

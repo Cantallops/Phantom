@@ -10,6 +10,7 @@ import UIKit
 
 class StoriesListPresenter: Presenter<StoriesListView> {
 
+    private let worker: Worker
     private let storyInternalNotificationCenter: InternalNotificationCenter<Story>
     private var storyObservers: [NSObjectProtocol] = []
     private let tagInternalNotificationCenter: InternalNotificationCenter<Tag>
@@ -26,12 +27,14 @@ class StoriesListPresenter: Presenter<StoriesListView> {
     private var stories: [Story] = []
 
     init(
+        worker: Worker = AsyncWorker(),
         storyInternalNotificationCenter: InternalNotificationCenter<Story>,
         tagInternalNotificationCenter: InternalNotificationCenter<Tag>,
         getStoriesListInteractor: Interactor<Meta?, Paginated<[Story]>> = GetStoriesListInteractor(),
         storyDetailBuilder: Builder<Story?, ViewController> = StoryDetailBuilder(),
         filterStories: Interactor<([Story], StoryFilters), [Story]> = FilterStoriesInteractor()
     ) {
+        self.worker = worker
         self.storyInternalNotificationCenter = storyInternalNotificationCenter
         self.tagInternalNotificationCenter = tagInternalNotificationCenter
         self.getStoriesListInteractor = getStoriesListInteractor
@@ -55,9 +58,9 @@ class StoriesListPresenter: Presenter<StoriesListView> {
         if let meta = meta, !meta.pagination.isFirst {
             loaders = []
         }
-        async(loaders: loaders, background: { [unowned self] in
+        let task = Task(loaders: loaders, task: { [unowned self] in
                 return self.getStoriesListInteractor.execute(args: self.meta)
-        }, main: { [weak self] result in
+        }, completion: { [weak self] result in
             switch result {
             case .success(let paginated): self?.process(paginated: paginated)
             case .failure(let error):
@@ -65,6 +68,7 @@ class StoriesListPresenter: Presenter<StoriesListView> {
                 self?.process(error: error)
             }
         })
+        worker.execute(task: task)
     }
 
     private func process(paginated: Paginated<[Story]>) {

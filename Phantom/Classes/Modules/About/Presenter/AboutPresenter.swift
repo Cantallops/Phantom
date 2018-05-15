@@ -10,13 +10,16 @@ import UIKit
 
 class AboutPresenter: Presenter<AboutView> {
 
+    private let worker: Worker
     private let getAboutGhost: Interactor<Any?, AboutGhost>
     private let acknowledgementsFactory: Factory<UIViewController>
 
     init(
+        worker: Worker = AsyncWorker(),
         getAboutGhost: Interactor<Any?, AboutGhost> = GetAboutGhostConfigurationInteractor(),
         acknowledgementsFactory: Factory<UIViewController> = AcknowledgementsFactory()
     ) {
+        self.worker = worker
         self.getAboutGhost = getAboutGhost
         self.acknowledgementsFactory = acknowledgementsFactory
         super.init()
@@ -28,14 +31,15 @@ class AboutPresenter: Presenter<AboutView> {
     }
 
     private func loadSections() {
-        async(loaders: [self], background: { [unowned self] in
+        let task = Task(loaders: [self], task: { [unowned self] in
             return self.getAboutGhost.execute(args: nil)
-        }, main: { [weak self] result in
+        }, completion: { [weak self] result in
             switch result {
             case .success(let about): self?.setUpSections(aboutGhost: about)
             case .failure(let error): self?.show(error: error)
             }
         })
+        worker.execute(task: task)
     }
 
     private func setUpSections(aboutGhost: AboutGhost) {

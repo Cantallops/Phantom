@@ -10,13 +10,16 @@ import UIKit
 
 class TeamListPresenter: Presenter<TeamListView> {
 
-    let getMemberListInteractor: Interactor<Meta?, Paginated<[TeamMember]>>
-    var meta: Meta?
-    var users: [TeamMember] = []
+    private let worker: Worker
+    private let getMemberListInteractor: Interactor<Meta?, Paginated<[TeamMember]>>
+    private var meta: Meta?
+    private var users: [TeamMember] = []
 
     init(
+        worker: Worker = AsyncWorker(),
         getMemberListInteractor: Interactor<Meta?, Paginated<[TeamMember]>> = GetMembersInteractor()
     ) {
+        self.worker = worker
         self.getMemberListInteractor = getMemberListInteractor
         super.init()
     }
@@ -32,16 +35,17 @@ class TeamListPresenter: Presenter<TeamListView> {
         if let meta = meta, !meta.pagination.isFirst {
             loaders = []
         }
-        async(loaders: loaders, background: { [unowned self] in
+        let task = Task(loaders: loaders, task: { [unowned self] in
             return self.getMemberListInteractor.execute(args: self.meta)
-        }, main: { [weak self] result in
-            switch result {
-            case .success(let paginated): self?.process(paginated: paginated)
-            case .failure(let error):
-                self?.view.sections = []
-                self?.process(error: error)
-            }
+        }, completion: { [weak self] result in
+                switch result {
+                case .success(let paginated): self?.process(paginated: paginated)
+                case .failure(let error):
+                    self?.view.sections = []
+                    self?.process(error: error)
+                }
         })
+        worker.execute(task: task)
     }
 
     private func process(paginated: Paginated<[TeamMember]>) {

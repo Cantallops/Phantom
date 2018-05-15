@@ -13,6 +13,7 @@ typealias OnDeleteStoryAction = (Story) -> Void
 
 class StorySettingsPresenter: Presenter<StorySettingsView> {
 
+    private let worker: Worker
     private var story: Story
     private let onEdit: OnEditStoryAction
     private let onDelete: OnDeleteStoryAction
@@ -32,6 +33,7 @@ class StorySettingsPresenter: Presenter<StorySettingsView> {
     private var tags: [Tag] = []
 
     init(
+        worker: Worker = AsyncWorker(),
         story: Story,
         onEdit: @escaping OnEditStoryAction,
         onDelete: @escaping OnDeleteStoryAction,
@@ -40,6 +42,7 @@ class StorySettingsPresenter: Presenter<StorySettingsView> {
         getMe: Interactor<Any?, TeamMember>,
         metaDataBuilder: Builder<MetaDataArg, UIViewController>
     ) {
+        self.worker = worker
         self.story = story
         self.onEdit = onEdit
         self.onDelete = onDelete
@@ -58,32 +61,34 @@ class StorySettingsPresenter: Presenter<StorySettingsView> {
     }
 
     private func loadTags() {
-        async(background: { [unowned self]  () -> Result<Paginated<[Tag]>> in
+        let task = Task(task: { [unowned self]  () -> Result<Paginated<[Tag]>> in
             let meta = Meta(pagination: Meta.Pagination.all)
             return self.getTags.execute(args: meta)
-        }, main: {  [weak self] result in
+        }, completion: {  [weak self] result in
             switch result {
             case .success(let paginatedTag): self?.tags = paginatedTag.object
             case .failure(let error): self?.show(error: error)
             }
             self?.showSections()
         })
+        worker.execute(task: task)
     }
 
     private func loadAuthors() {
-        async(background: { [unowned self] () -> Result<(Paginated<[TeamMember]>, TeamMember)> in
+        let task = Task(task: { [unowned self] () -> Result<(Paginated<[TeamMember]>, TeamMember)> in
             let meta = Meta(pagination: Meta.Pagination.all)
             let result = self.getMembers.execute(args: meta).combined(result: self.getMe.execute(args: nil))
             return result
-            }, main: { [weak self] result in
-                switch result {
-                case .success(let paginatedMembers, let me):
-                    self?.authors = paginatedMembers.object.map({ $0.author })
-                    self?.me = me
-                case .failure(let error): self?.show(error: error)
-                }
-                self?.showSections()
+        }, completion: { [weak self] result in
+            switch result {
+            case .success(let paginatedMembers, let me):
+                self?.authors = paginatedMembers.object.map({ $0.author })
+                self?.me = me
+            case .failure(let error): self?.show(error: error)
+            }
+            self?.showSections()
         })
+        worker.execute(task: task)
     }
 
     private func showSections() {

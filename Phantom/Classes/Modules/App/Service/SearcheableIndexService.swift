@@ -11,6 +11,8 @@ import CoreSpotlight
 
 class SearcheableIndexService: NSObject, UIApplicationDelegate {
 
+    private let worker: Worker
+
     private let getStories: Interactor<Meta?, Paginated<[Story]>>
     private let indexStories: Interactor<([Story], Account), Any?>
     private let removeIndexStories: Interactor<Account, Any?>
@@ -20,12 +22,14 @@ class SearcheableIndexService: NSObject, UIApplicationDelegate {
     private var observers: [NSObjectProtocol] = []
 
     init(
+        worker: Worker = AsyncWorker(),
         getStories: Interactor<Meta?, Paginated<[Story]>> = GetStoriesListInteractor(),
         indexStories: Interactor<([Story], Account), Any?> = IndexStoriesInteractor(),
         removeIndexStories: Interactor<Account, Any?> = RemoveIndexStoriesInteractor(),
         indexStory: Interactor<(Story, Account), Any?> = IndexStoryInteractor(),
         removeIndexStory: Interactor<(Story, Account), Any?> = RemoveIndexStoryInteractor()
     ) {
+        self.worker = worker
         self.getStories = getStories
         self.indexStories = indexStories
         self.removeIndexStories = removeIndexStories
@@ -72,23 +76,27 @@ class SearcheableIndexService: NSObject, UIApplicationDelegate {
     }
 
     private func doIndexStories(account: Account) {
-        async(background: {
+        let task = Task(task: {
             let result = self.getStories.execute(args: nil)
             let args = (result.value?.object ?? [], account)
             self.indexStories.execute(args: args)
         })
+        worker.execute(task: task)
     }
 
     private func doRemoveIndexStories(account: Account) {
-        async(background: { self.removeIndexStories.execute(args: account) })
+        let task = Task(task: { self.removeIndexStories.execute(args: account) })
+        worker.execute(task: task)
     }
 
     private func doIndex(story: Story, account: Account) {
-        async(background: { self.indexStory.execute(args: (story, account)) })
+        let task = Task(task: { self.indexStory.execute(args: (story, account)) })
+        worker.execute(task: task)
     }
 
     private func doRemoveIndex(story: Story, account: Account) {
-        async(background: { self.removeIndexStory.execute(args: (story, account)) })
+        let task = Task(task: { self.removeIndexStory.execute(args: (story, account)) })
+        worker.execute(task: task)
     }
 }
 

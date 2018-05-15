@@ -20,6 +20,7 @@ class MorePresenter: Presenter<MoreView> {
         }
     }
 
+    private let worker: Worker
     private let account: Account?
     private let doSignOutInteractor: Interactor<Any?, Any?>
     private let getCurrentBlogInfo: Interactor<Any?, BlogInfo>
@@ -29,6 +30,7 @@ class MorePresenter: Presenter<MoreView> {
     private let openRateAppURLInteractor: Interactor<Account?, Any?>
 
     init(
+        worker: Worker = AsyncWorker(),
         account: Account?,
         doSignOutInteractor: Interactor<Any?, Any?> = DoSignOutInteractor(),
         getCurrentBlogInfo: Interactor<Any?, BlogInfo> = GetCurrentBlogInfoInteractor(),
@@ -37,6 +39,7 @@ class MorePresenter: Presenter<MoreView> {
         aboutFactory: Factory<UIViewController> = AboutFactory(),
         openRateAppURLInteractor: Interactor<Account?, Any?> = OpenRateAppURLInteractor()
     ) {
+        self.worker = worker
         self.account = account
         self.doSignOutInteractor = doSignOutInteractor
         self.getCurrentBlogInfo = getCurrentBlogInfo
@@ -91,9 +94,9 @@ class MorePresenter: Presenter<MoreView> {
     }
 
     fileprivate func loadMe() {
-        async(background: { [unowned self] in
+        let task = Task(task: { [unowned self] in
             return self.getCurrentBlogInfo.execute(args: nil)
-        }, main: { [weak self] result in
+        }, completion: { [weak self] result in
             switch result {
             case .success(let blogInfo):
                 self?.blogInfo = blogInfo
@@ -101,11 +104,12 @@ class MorePresenter: Presenter<MoreView> {
                 self?.show(error: error)
             }
         })
+        worker.execute(task: task)
     }
     fileprivate func loadSettingsSection() {
-        async(background: { [unowned self] in
+        let task = Task(task: { [unowned self] in
             return self.getSettingsSection.execute(args: nil)
-        }, main: { [weak self] result in
+        }, completion: { [weak self] result in
             switch result {
             case .success(let settings):
                 self?.settings = settings
@@ -113,6 +117,7 @@ class MorePresenter: Presenter<MoreView> {
                 self?.show(error: error)
             }
         })
+        worker.execute(task: task)
     }
 
     fileprivate func getBlogInfoSection(using blogInfo: BlogInfo) -> UITableView.Section {
@@ -179,8 +184,9 @@ class MorePresenter: Presenter<MoreView> {
     }
 
     private func signOut() {
-        async(background: { [weak self] in
+        let task = Task(task: { [weak self] in
             return self?.doSignOutInteractor.execute(args: nil)
         })
+        worker.execute(task: task)
     }
 }

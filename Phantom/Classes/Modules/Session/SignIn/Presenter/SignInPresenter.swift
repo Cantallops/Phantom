@@ -9,11 +9,14 @@
 import UIKit
 
 class SignInPresenter: Presenter<SignInView> {
+    private let worker: Worker
     private let doCredentialSignIn: Interactor<Credentials, Any?>
 
     init(
+        worker: Worker = AsyncWorker(),
         doCredentialSignIn: Interactor<Credentials, Any?> = DoCredentialSignInInteractor()
     ) {
+        self.worker = worker
         self.doCredentialSignIn = doCredentialSignIn
         super.init()
     }
@@ -32,16 +35,15 @@ class SignInPresenter: Presenter<SignInView> {
             return
         }
         let signInCredentials = Credentials(email: email, password: pass)
-        async(
-            loaders: [view.signInButton],
-            background: { [unowned self]  in
+        let task = Task(loaders: [view.signInButton], task: { [unowned self]  in
                 self.doCredentialSignIn.execute(args: signInCredentials)
-        }, main: { [unowned self] result in
+        }, completion: { [unowned self] result in
             switch result {
             case .success: self.goToDashboard()
             case .failure(let error): self.show(error: error)
             }
         })
+        worker.execute(task: task)
     }
 
     private func goToDashboard() {

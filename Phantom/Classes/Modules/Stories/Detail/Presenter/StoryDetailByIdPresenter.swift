@@ -13,6 +13,7 @@ class StoryDetailByIdPresenter: StoryDetailPresenter {
     let getStoryById: Interactor<String, Story>
 
     init(
+        worker: Worker = AsyncWorker(),
         id: String,
         userPreferences: Preferences,
         getStoryById: Interactor<String, Story>,
@@ -25,6 +26,7 @@ class StoryDetailByIdPresenter: StoryDetailPresenter {
         self.id = id
         self.getStoryById = getStoryById
         super.init(
+            worker: worker,
             story: nil,
             userPreferences: userPreferences,
             createInteractor: createInteractor,
@@ -43,14 +45,15 @@ class StoryDetailByIdPresenter: StoryDetailPresenter {
     }
 
     func load(byID id: String) {
-        async(loaders: [self], background: { [unowned self] in
+        let task = Task(loaders: [self], task: { [unowned self] in
             return self.getStoryById.execute(args: id)
-        }, main: { [weak self] result in
+        }, completion: { [weak self] result in
             switch result {
             case .success(let story): self?.show(story: story)
             case .failure(let error): self?.show(error: error)
             }
         })
+        worker.execute(task: task)
     }
 
     private func show(story: Story) {

@@ -1,39 +1,48 @@
 //
-//  AsyncHelperTest.swift
+//  AsyncWorkerTest.swift
 //  PhantomTests
 //
-//  Created by Alberto Cantallops on 16/09/2017.
-//  Copyright © 2017 Alberto Cantallops. All rights reserved.
+//  Created by Alberto Cantallops on 15/05/2018.
+//  Copyright © 2018 Alberto Cantallops. All rights reserved.
 //
 
 import XCTest
 @testable import Phantom
 
-class AsyncHelperTest: XCTestCase {
+class AsyncWorkerTest: XCTestCase {
+
+    var worker: AsyncWorker!
+
+    override func setUp() {
+        super.setUp()
+        worker = AsyncWorker()
+    }
 
     func testShouldCallOnRespectiveThreads() {
         let runBackgroundExpectation = expectation(description: "Run background")
         let runMainExpectation = expectation(description: "Run main")
-        async(background: { () -> Bool in
+        let task = Task(task: { () -> Bool in
             runBackgroundExpectation.fulfill()
             XCTAssertFalse(Thread.isMainThread)
             return true
-        }, main: { _ in
+        }, completion: { _ in
             XCTAssertTrue(Thread.isMainThread)
             runMainExpectation.fulfill()
         })
+        worker.execute(task: task)
         waitForExpectations(timeout: 0.2)
     }
 
     func testMainShouldReceiveResultOfBackground() {
         let expectedResult = "hi"
         let runMainExpectation = expectation(description: "Run main")
-        async(background: { () -> String in
+        let task = Task(task: {
             return expectedResult
-        }, main: { result in
+        }, completion: { result in
             XCTAssertEqual(result, expectedResult)
             runMainExpectation.fulfill()
         })
+        worker.execute(task: task)
         waitForExpectations(timeout: 0.2)
     }
 }

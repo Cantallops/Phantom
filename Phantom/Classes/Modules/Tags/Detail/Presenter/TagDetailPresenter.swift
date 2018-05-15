@@ -12,6 +12,7 @@ class TagDetailPresenter: Presenter<TagDetailView> {
 
     private var tag: Tag
 
+    private let worker: Worker
     private let createInteractor: Interactor<Tag, Tag>
     private let editInteractor: Interactor<Tag, Tag>
     private let deleteInteractor: Interactor<Tag, Tag>
@@ -23,6 +24,7 @@ class TagDetailPresenter: Presenter<TagDetailView> {
     }
 
     init(
+        worker: Worker = AsyncWorker(),
         tag: Tag?,
         createInteractor: Interactor<Tag, Tag>,
         editInteractor: Interactor<Tag, Tag>,
@@ -30,6 +32,7 @@ class TagDetailPresenter: Presenter<TagDetailView> {
         metaDataBuilder: Builder<MetaDataArg, UIViewController>,
         postListBuilder: Builder<StoryFilters?, UIViewController>
     ) {
+        self.worker = worker
         self.tag = tag.mutated
         self.createInteractor = createInteractor
         self.editInteractor = editInteractor
@@ -52,22 +55,21 @@ class TagDetailPresenter: Presenter<TagDetailView> {
     }
 
     private func save() {
+        var task = Task(loaders: [view], task: { [unowned self] in
+            return self.editInteractor.execute(args: self.tag)
+        }, completion: { [weak self] result in
+            switch result {
+            case .success(let tag):
+                // Send notification
+                self?.tag = tag
+                self?.loadSections()
+            case .failure(let error): self?.handle(error: error)
+            }
+        })
         if tag.isNew {
-            async(loaders: [view], background: { [unowned self] in
+            task = Task(loaders: [view], task: { [unowned self] in
                 return self.createInteractor.execute(args: self.tag)
-            }, main: { [weak self] result in
-                switch result {
-                case .success(let tag):
-                    // Send notification
-                    self?.tag = tag
-                    self?.loadSections()
-                case .failure(let error): self?.handle(error: error)
-                }
-            })
-        } else {
-            async(loaders: [view], background: { [unowned self] in
-                return self.editInteractor.execute(args: self.tag)
-            }, main: { [weak self] result in
+            }, completion: { [weak self] result in
                 switch result {
                 case .success(let tag):
                     // Send notification
@@ -77,6 +79,7 @@ class TagDetailPresenter: Presenter<TagDetailView> {
                 }
             })
         }
+        worker.execute(task: task)
     }
 
     private func askToDelete() {
@@ -94,15 +97,16 @@ class TagDetailPresenter: Presenter<TagDetailView> {
     }
 
     private func delete() {
-        async(loaders: [view], background: { [unowned self] in
+        let task = Task(loaders: [view], task: { [unowned self] in
             return self.deleteInteractor.execute(args: self.tag)
-        }, main: { [weak self] result in
+        }, completion: { [weak self] result in
             switch result {
             case .success:
                 self?.view.navigationController?.popViewController(animated: true)
             case .failure(let error): self?.handle(error: error)
             }
         })
+        worker.execute(task: task)
     }
 
     private func handle(error: Error) {

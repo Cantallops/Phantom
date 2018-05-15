@@ -44,6 +44,7 @@ class ImageUploader: NSObject {
     private var uploader: DataSource<File, String> = UploadFile()
     private var onResult: OnResult!
     private var onCancel: OnCancel?
+    var worker: Worker = AsyncWorker()
 
     convenience init(
         loaders: [Loader]? = nil,
@@ -91,10 +92,11 @@ class ImageUploader: NSObject {
             name: url.lastPathComponent
         )
 
-        async(loaders: loaders, background: {
+        let task = Task(loaders: loaders, task: {
             return self.uploader.execute(args: file)
-        }, main: { [weak self] result in
+        }, completion: { [weak self] result in
             self?.onResult((result, chosenImage))
         })
+        worker.execute(task: task)
     }
 }

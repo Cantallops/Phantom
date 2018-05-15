@@ -10,6 +10,8 @@ import UIKit
 
 class TagsListPresenter: Presenter<TagsListView> {
 
+    private let worker: Worker
+
     private let tagInternalNotificationCenter: InternalNotificationCenter<Tag>
     private var tagObservers: [NSObjectProtocol] = []
 
@@ -19,10 +21,12 @@ class TagsListPresenter: Presenter<TagsListView> {
     private var tags: [Tag] = []
 
     init(
+        worker: Worker = AsyncWorker(),
         tagInternalNotificationCenter: InternalNotificationCenter<Tag>,
         getTagsListInteractor: Interactor<Meta?, Paginated<[Tag]>> = GetTagListInteractor(),
         tagDetailBuilder: Builder<Tag?, UIViewController> = TagDetailBuilder()
     ) {
+        self.worker = worker
         self.tagInternalNotificationCenter = tagInternalNotificationCenter
         self.getTagsListInteractor = getTagsListInteractor
         self.tagDetailBuilder = tagDetailBuilder
@@ -58,9 +62,9 @@ class TagsListPresenter: Presenter<TagsListView> {
         if let meta = meta, !meta.pagination.isFirst {
             loaders = []
         }
-        async(loaders: loaders, background: { [unowned self] in
+        let task = Task(loaders: loaders, task: { [unowned self] in
             return self.getTagsListInteractor.execute(args: self.meta)
-        }, main: { [weak self] result in
+        }, completion: { [weak self] result in
             switch result {
             case .success(let paginated): self?.process(paginated: paginated)
             case .failure(let error):
@@ -68,6 +72,7 @@ class TagsListPresenter: Presenter<TagsListView> {
                 self?.process(error: error)
             }
         })
+        worker.execute(task: task)
     }
 
     private func process(paginated: Paginated<[Tag]>) {

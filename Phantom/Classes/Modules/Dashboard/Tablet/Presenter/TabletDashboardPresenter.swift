@@ -27,6 +27,7 @@ class TabletDashboardPresenter: Presenter<TabletDashboardView> {
         }
     }
 
+    private let worker: Worker
     private let account: Account?
     private let getDashboardSections: Interactor<Any?, [Dashboard.Section]>
     private let sessionFactory: Factory<UIViewController>
@@ -40,6 +41,7 @@ class TabletDashboardPresenter: Presenter<TabletDashboardView> {
     private var sections: [Dashboard.Section]?
 
     init(
+        worker: Worker = AsyncWorker(),
         account: Account?,
         getDashboardSections: Interactor<Any?, [Dashboard.Section]> = GetDashboardSectionsInteractor(),
         sessionFactory: Factory<UIViewController> = SessionFactory(),
@@ -50,6 +52,7 @@ class TabletDashboardPresenter: Presenter<TabletDashboardView> {
         aboutFactory: Factory<UIViewController> = AboutFactory(),
         openRateAppURLInteractor: Interactor<Account?, Any?> = OpenRateAppURLInteractor()
     ) {
+        self.worker = worker
         self.account = account
         self.getDashboardSections = getDashboardSections
         self.sessionFactory = sessionFactory
@@ -106,41 +109,44 @@ class TabletDashboardPresenter: Presenter<TabletDashboardView> {
     }
 
     private func loadDashboardSections() {
-        async(background: { [unowned self] in
+        let task = Task(task: { [unowned self] in
             return self.getDashboardSections.execute(args: nil)
-            }, main: { [unowned self] result in
-                switch result {
-                case .success(let sections):
-                    self.dashboardSections = sections
-                case .failure(let error): self.show(error: error)
-                }
+        }, completion: { [unowned self] result in
+            switch result {
+            case .success(let sections):
+                self.dashboardSections = sections
+            case .failure(let error): self.show(error: error)
+            }
         })
+        worker.execute(task: task)
     }
 
     fileprivate func loadMe() {
-        async(background: { [unowned self] in
+        let task = Task(task: { [unowned self] in
             return self.getCurrentBlogInfo.execute(args: nil)
-            }, main: { [weak self] result in
-                switch result {
-                case .success(let blogInfo):
-                    self?.blogInfo = blogInfo
-                case .failure(let error):
-                    self?.show(error: error)
-                }
+        }, completion: { [weak self] result in
+            switch result {
+            case .success(let blogInfo):
+                self?.blogInfo = blogInfo
+            case .failure(let error):
+                self?.show(error: error)
+            }
         })
+        worker.execute(task: task)
     }
 
     fileprivate func loadSettingsSection() {
-        async(background: { [unowned self] in
+        let task = Task(task: { [unowned self] in
             return self.getSettingsSection.execute(args: nil)
-            }, main: { [weak self] result in
-                switch result {
-                case .success(let settings):
-                    self?.settings = settings
-                case .failure(let error):
-                    self?.show(error: error)
-                }
+        }, completion: { [weak self] result in
+            switch result {
+            case .success(let settings):
+                self?.settings = settings
+            case .failure(let error):
+                self?.show(error: error)
+            }
         })
+        worker.execute(task: task)
     }
 
     private func getDashboardSection(using sections: [Dashboard.Section]) -> UITableView.Section {

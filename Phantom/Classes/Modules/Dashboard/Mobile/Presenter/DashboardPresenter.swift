@@ -10,6 +10,7 @@ import UIKit
 
 class DashboardPresenter: Presenter<DashboardView> {
 
+    private let worker: Worker
     private let getDashboardSections: Interactor<Any?, [Dashboard.Section]>
     private let sessionFactory: Factory<UIViewController>
     private let getFavIconImage: Interactor<Any?, UIImage>
@@ -18,10 +19,12 @@ class DashboardPresenter: Presenter<DashboardView> {
     private var observers: [NSObjectProtocol] = []
 
     init(
+        worker: Worker = AsyncWorker(),
         getDashboardSections: Interactor<Any?, [Dashboard.Section]> = GetDashboardSectionsInteractor(),
         sessionFactory: Factory<UIViewController> = SessionFactory(),
         getFavIconImage: Interactor<Any?, UIImage> = GetFavIconImageInteractor()
     ) {
+        self.worker = worker
         self.getDashboardSections = getDashboardSections
         self.sessionFactory = sessionFactory
         self.getFavIconImage = getFavIconImage
@@ -61,9 +64,9 @@ class DashboardPresenter: Presenter<DashboardView> {
     }
 
     private func loadSections() {
-        async(background: { [unowned self] in
+        let task = Task(task: { [unowned self] in
             return self.getDashboardSections.execute(args: nil)
-        }, main: { [unowned self] result in
+        }, completion: { [unowned self] result in
             switch result {
             case .success(let sections):
                 self.sections = sections
@@ -71,6 +74,7 @@ class DashboardPresenter: Presenter<DashboardView> {
             case .failure(let error): self.show(error: error)
             }
         })
+        worker.execute(task: task)
     }
 
     private func process(sections: [Dashboard.Section]) {
@@ -90,9 +94,9 @@ class DashboardPresenter: Presenter<DashboardView> {
     }
 
     private func loadProfile() {
-        async(background: {
+        let task = Task(task: {
             return self.getFavIconImage.execute(args: nil)
-        }, main: { [weak self] result in
+        }, completion: { [weak self] result in
             switch result {
             case .success(let image):
                 self?.addProfile(withImage: image.resize(withSize: CGSize(width: 25, height: 25)))
@@ -100,6 +104,7 @@ class DashboardPresenter: Presenter<DashboardView> {
                 self?.addProfile(withImage: nil)
             }
         })
+        worker.execute(task: task)
     }
 
     private func addProfile(withImage image: UIImage?) {
