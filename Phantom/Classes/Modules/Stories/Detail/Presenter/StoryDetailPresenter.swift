@@ -21,17 +21,20 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
 
     private var imageUploader: ImageUploader!
 
+    let userPreferences: Preferences
     var story: Story
     var initialStory: Story
 
     init(
         story: Story?,
+        userPreferences: Preferences,
         createInteractor: Interactor<Story, Story>,
         editInteractor: Interactor<Story, Story>,
         deleteInteractor: Interactor<Story, Story>,
         publisherBuilder: Builder<PublisherArg, UIViewController>,
         settingsBuilder: Builder<StorySettingsArg, UIViewController>
     ) {
+        self.userPreferences = userPreferences
         self.initialStory = story.mutated
         self.story = story.mutated
         self.createInteractor = createInteractor
@@ -53,6 +56,8 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
         view.onInsertImage = uploadImage
         view.onTitleResignFirstResponder = saveIfIsNewStory
         view.onPreview = preview
+        view.spellChecking = userPreferences.spellChecking ? .yes : .no
+        view.autocorrection = userPreferences.autocorrection ? .yes : .no
         imageUploader = ImageUploader(
             onResult: { [weak self] result, _ in
                 switch result {

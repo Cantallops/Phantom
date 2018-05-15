@@ -8,21 +8,21 @@
 
 import Foundation
 
-extension UserDefaults {
+extension Preferences {
     private static let kRateShownDateKey = "rateShownDate"
     var rateShownDate: Date {
         get {
-            guard object(forKey: UserDefaults.kRateShownDateKey) != nil else {
+            guard object(forKey: Preferences.kRateShownDateKey) != nil else {
                 let date = Date()
-                set(date.timeIntervalSince1970, forKey: UserDefaults.kRateShownDateKey)
+                set(date.timeIntervalSince1970, forKey: Preferences.kRateShownDateKey)
                 return date
             }
-            let timeInterval = double(forKey: UserDefaults.kRateShownDateKey)
+            let timeInterval = double(forKey: Preferences.kRateShownDateKey)
             return Date(timeIntervalSince1970: timeInterval)
         }
         set {
             let timeInterval = newValue.timeIntervalSince1970
-            set(timeInterval, forKey: UserDefaults.kRateShownDateKey)
+            set(timeInterval, forKey: Preferences.kRateShownDateKey)
         }
     }
 }

@@ -13,17 +13,17 @@ extension InternalNotification {
     static let indexStories = InternalNotification(name: "IndexStories")
 }
 
-extension UserDefaults {
+extension Preferences {
     private static let kIndexStoriesKey = "IndexStories"
     var indexStories: Bool {
         get {
-            guard object(forKey: UserDefaults.kIndexStoriesKey) != nil else {
+            guard object(forKey: Preferences.kIndexStoriesKey) != nil else {
                 return true
             }
-            return bool(forKey: UserDefaults.kIndexStoriesKey)
+            return bool(forKey: Preferences.kIndexStoriesKey)
         }
         set {
-            set(newValue, forKey: UserDefaults.kIndexStoriesKey)
+            set(newValue, forKey: Preferences.kIndexStoriesKey)
             indexStoriesNotificationCenter.post(.indexStories, object: newValue)
         }
     }

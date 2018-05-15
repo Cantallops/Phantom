@@ -15,6 +15,10 @@ protocol UITableViewSectionHeader {
 
 extension UITableViewSectionHeader {
     func height(forWidth width: CGFloat) -> CGFloat {
-        return customView.systemLayoutSizeFitting(CGSize(width: width, height: 0)).height
+        return customView.systemLayoutSizeFitting(
+            CGSize(width: width, height: 0),
+            withHorizontalFittingPriority: .required,
+            verticalFittingPriority: .defaultLow
+        ).height
     }
 }

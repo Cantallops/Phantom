@@ -12,6 +12,7 @@ class StoryDetailBuilderById: Builder<String, ViewController> {
     override func build(arg: String) -> ViewController {
         let presenter = StoryDetailByIdPresenter(
             id: arg,
+            userPreferences: Account.current?.preferences ?? Preferences(),
             getStoryById: GetStoryByIdInteractor(),
             createInteractor: CreateStoryInteractor(createRemote: PostStoryRemote()),
             editInteractor: EditStoryInteractor(editRemote: PutStoryRemote()),

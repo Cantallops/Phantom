@@ -9,9 +9,11 @@
 import Foundation
 
 class StoryDetailBuilder: Builder<Story?, ViewController> {
+
     override func build(arg: Story?) -> ViewController {
         let presenter = StoryDetailPresenter(
             story: arg,
+            userPreferences: Account.current?.preferences ?? Preferences(),
             createInteractor: CreateStoryInteractor(createRemote: PostStoryRemote()),
             editInteractor: EditStoryInteractor(editRemote: PutStoryRemote()),
             deleteInteractor: DeleteStoryInteractor(deleteRemote: DeleteStoryRemote()),

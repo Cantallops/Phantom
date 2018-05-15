@@ -15,6 +15,6 @@ protocol UITableViewSectionFooter {
 
 extension UITableViewSectionFooter {
     func height(forWidth width: CGFloat) -> CGFloat {
-        return customView.systemLayoutSizeFitting(CGSize(width: width, height: 0)).height
+        return UITableViewAutomaticDimension
     }
 }

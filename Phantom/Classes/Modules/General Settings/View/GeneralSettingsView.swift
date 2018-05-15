@@ -28,4 +28,8 @@ class GeneralSettingsView: TableViewController {
         }
     }
 
+    override func setUpTable() {
+        super.setUpTable()
+        animatedChanges = true
+    }
 }

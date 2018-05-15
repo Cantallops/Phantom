@@ -37,8 +37,8 @@ extension Account {
         return "\(Story.searcheableDomain)+\(identifier)"
     }
 
-    var preferences: UserDefaults {
-        return UserDefaults(suiteName: blogUrl)!
+    var preferences: Preferences {
+        return Preferences(suiteName: blogUrl)!
     }
 }
 

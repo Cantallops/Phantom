@@ -38,6 +38,13 @@ class SwitchTableViewCell: TableViewCell {
             self.estimatedHeight = 44
             self.height = 44
         }
+
+        override func isEqual(_ object: Any?) -> Bool {
+            guard let switchCell = object as? Conf else {
+                return false
+            }
+            return switchCell.text == text
+        }
     }
 
     override func prepareForReuse() {

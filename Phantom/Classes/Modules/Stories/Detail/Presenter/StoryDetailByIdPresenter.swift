@@ -14,6 +14,7 @@ class StoryDetailByIdPresenter: StoryDetailPresenter {
 
     init(
         id: String,
+        userPreferences: Preferences,
         getStoryById: Interactor<String, Story>,
         createInteractor: Interactor<Story, Story>,
         editInteractor: Interactor<Story, Story>,
@@ -25,6 +26,7 @@ class StoryDetailByIdPresenter: StoryDetailPresenter {
         self.getStoryById = getStoryById
         super.init(
             story: nil,
+            userPreferences: userPreferences,
             createInteractor: createInteractor,
             editInteractor: editInteractor,
             deleteInteractor: deleteInteractor,

@@ -13,7 +13,16 @@ class StoryDetailView: ViewController {
 
     @IBOutlet private weak var titleTextView: TextView!
     @IBOutlet weak var topTitleTextViewConstraint: NSLayoutConstraint!
-
+    var spellChecking: UITextSpellCheckingType = .default {
+        didSet {
+            contentTextView?.spellCheckingType = spellChecking
+        }
+    }
+    var autocorrection: UITextAutocorrectionType = .default {
+        didSet {
+            contentTextView?.autocorrectionType = autocorrection
+        }
+    }
     var onWriteContent: TextView.OnWriteClosure = { _ in } {
         didSet {
             contentTextView?.onWrite = onWriteContent
@@ -262,6 +271,8 @@ private extension StoryDetailView {
         contentTextView.keyboardDismissMode = .interactive
         contentTextView.text = markdown
         contentTextView.font = theme.codeFont
+        contentTextView.autocorrectionType = autocorrection
+        contentTextView.spellCheckingType = spellChecking
         contentTextView.accessibilityIdentifier = "content"
         contentTextView.placeholder = "Begin writing your story..."
         contentTextView.layer.borderWidth = 0
@@ -271,7 +282,6 @@ private extension StoryDetailView {
             self.topTitleTextViewConstraint.constant = -scroll.contentOffset.y
         }
         contentTextView.translatesAutoresizingMaskIntoConstraints = false
-        contentTextView.autocorrectionType = .no
         contentTextView.autocapitalizationType = .none
         view.addSubview(contentTextView)
         view.sendSubview(toBack: contentTextView)
