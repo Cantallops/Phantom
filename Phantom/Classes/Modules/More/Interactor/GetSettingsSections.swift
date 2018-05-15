@@ -12,29 +12,32 @@ class GetSettingsSections: Interactor<Any?, [UIViewController]> {
 
     private let getMe: Interactor<Any?, TeamMember>
 
-    private let generalSettingsBuilder: Builder<Account, UIViewController>
+    private let generalSettingsFactory: Factory<UIViewController>
     private let designFactory: Factory<UIViewController>
     private let tagsListFactory: Factory<UIViewController>
     private let codeInjectionFactory: Factory<UIViewController>
     private let appsFactory: Factory<UIViewController>
     private let labsFactory: Factory<UIViewController>
+    private let appSettingsBuilder: Builder<Preferences, UIViewController>
 
     init(
         getMe: Interactor<Any?, TeamMember> = GetMeInteractor(),
-        generalSettingsBuilder: Builder<Account, UIViewController> = GeneralSettingsBuilder(),
+        generalSettingsFactory: Factory<UIViewController> = GeneralSettingsFactory(),
         designFactory: Factory<UIViewController> = DesignFactory(),
         tagsListFactory: Factory<UIViewController> = TagsListFactory(),
         codeInjectionFactory: Factory<UIViewController> = CodeInjectionFactory(),
         appsFactory: Factory<UIViewController> = AppsFactory(),
-        labsFactory: Factory<UIViewController> = LabsFactory()
+        labsFactory: Factory<UIViewController> = LabsFactory(),
+        appSettingsBuilder: Builder<Preferences, UIViewController> = AppSettingsBuilder()
     ) {
         self.getMe = getMe
-        self.generalSettingsBuilder = generalSettingsBuilder
+        self.generalSettingsFactory = generalSettingsFactory
         self.designFactory = designFactory
         self.tagsListFactory = tagsListFactory
         self.codeInjectionFactory = codeInjectionFactory
         self.appsFactory = appsFactory
         self.labsFactory = labsFactory
+        self.appSettingsBuilder = appSettingsBuilder
         super.init()
     }
 
@@ -49,18 +52,21 @@ class GetSettingsSections: Interactor<Any?, [UIViewController]> {
     }
 
     private func get(sectionsForUser user: TeamMember) -> [UIViewController] {
+        let account = Account.current!
         switch user.role {
         case .author:
-            return []
+            return [
+                appSettingsBuilder.build(arg: account.preferences)
+            ]
         case .editor:
             return [
                 tagsListFactory.build(),
-                generalSettingsBuilder.build(arg: Account.current!)
+                appSettingsBuilder.build(arg: account.preferences)
             ]
         default:
             return [
                 tagsListFactory.build(),
-                generalSettingsBuilder.build(arg: Account.current!)
+                appSettingsBuilder.build(arg: account.preferences)
             ]
         }
     }

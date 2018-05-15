@@ -9,12 +9,12 @@
 import XCTest
 @testable import Phantom
 
-class GeneralSettingsBuilderTest: XCTestCase {
-    fileprivate var builder: Builder<Account, UIViewController>!
+class GeneralSettingsFactoryTest: XCTestCase {
+    fileprivate var factory: Factory<UIViewController>!
 
     override func setUp() {
         super.setUp()
-        builder = GeneralSettingsBuilder()
+        factory = GeneralSettingsFactory()
     }
 
     func testBuild() {
