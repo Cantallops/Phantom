@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -48,7 +49,7 @@
                     </subviews>
                     <constraints>
                         <constraint firstItem="VcR-Kb-w79" firstAttribute="height" secondItem="HDS-Po-d4Q" secondAttribute="height" id="lo7-yI-sAg"/>
-                        <constraint firstAttribute="width" constant="300" id="naW-17-4f3"/>
+                        <constraint firstAttribute="width" priority="750" constant="300" id="naW-17-4f3"/>
                     </constraints>
                 </stackView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzD-SJ-Ver" customClass="Label" customModule="Phantom" customModuleProvider="target">
@@ -61,6 +62,8 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="chb-hU-C7L" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="2Ir-3b-hhX"/>
+                <constraint firstItem="chb-hU-C7L" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="H0w-xE-Qzt"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="chb-hU-C7L" secondAttribute="trailing" constant="10" id="TlQ-3b-lDc"/>
                 <constraint firstItem="chb-hU-C7L" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="UID-4I-JCT"/>
                 <constraint firstItem="bzD-SJ-Ver" firstAttribute="leading" secondItem="chb-hU-C7L" secondAttribute="leading" id="f0K-Yu-dXN"/>
                 <constraint firstItem="bzD-SJ-Ver" firstAttribute="trailing" secondItem="chb-hU-C7L" secondAttribute="trailing" id="n2r-Sn-4cJ"/>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -60,7 +60,7 @@
                     </subviews>
                     <constraints>
                         <constraint firstItem="5Bc-rg-hNh" firstAttribute="height" secondItem="AEx-y3-0ec" secondAttribute="height" id="E0a-gT-aDe"/>
-                        <constraint firstAttribute="width" constant="300" id="Ldd-cF-Pmr"/>
+                        <constraint firstAttribute="width" priority="750" constant="300" id="Ldd-cF-Pmr"/>
                         <constraint firstItem="mMt-1s-6PJ" firstAttribute="height" secondItem="AEx-y3-0ec" secondAttribute="height" id="uhn-Wp-njw"/>
                     </constraints>
                 </stackView>
@@ -75,6 +75,8 @@
             <constraints>
                 <constraint firstItem="zwf-Ir-aVD" firstAttribute="leading" secondItem="X2a-O9-IkO" secondAttribute="leading" id="Czx-FI-diP"/>
                 <constraint firstItem="X2a-O9-IkO" firstAttribute="centerY" secondItem="6cr-wc-J8x" secondAttribute="centerY" id="HP5-25-x6Y"/>
+                <constraint firstItem="EsQ-kr-QBk" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="X2a-O9-IkO" secondAttribute="trailing" constant="10" id="QwG-gC-tLY"/>
+                <constraint firstItem="X2a-O9-IkO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="EsQ-kr-QBk" secondAttribute="leading" constant="10" id="YG5-lg-Bki"/>
                 <constraint firstItem="X2a-O9-IkO" firstAttribute="centerX" secondItem="6cr-wc-J8x" secondAttribute="centerX" id="oeD-Bb-k2V"/>
                 <constraint firstItem="zwf-Ir-aVD" firstAttribute="trailing" secondItem="X2a-O9-IkO" secondAttribute="trailing" id="syu-yn-XCI"/>
                 <constraint firstItem="zwf-Ir-aVD" firstAttribute="top" secondItem="X2a-O9-IkO" secondAttribute="bottom" constant="10" id="xvy-vg-zyz"/>
