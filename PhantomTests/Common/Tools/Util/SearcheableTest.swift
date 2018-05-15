@@ -17,6 +17,11 @@ class SearcheableTest: XCTestCase {
         SearcheableFake(terms: ["Thrid", "title"])
     ]
 
+    func testSearchEmptyText() {
+        let result = searcheable.search(text: "")
+        XCTAssertEqual(result.count, searcheable.count)
+    }
+
     func testSearchWithResults() {
         let result = searcheable.search(text: "term")
         XCTAssertEqual(result.count, 2)

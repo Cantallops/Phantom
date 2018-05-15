@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import Phantom
 
 class StringUtilsTest: XCTestCase {
 

@@ -38,11 +38,7 @@ class Presenter<VC: UIViewController>: PresenterProtocol {
 
     func didLoad() {}
     func didLayoutSubviews() {
-        basicLoader.frame = CGRect(
-            x: view.view.frame.width/2 - 50,
-            y: view.view.frame.height/2 - 50,
-            width: 100,
-            height: 100)
+        reloadLoadingFrame()
     }
     func willAppear() {
         basicLoader.removeFromSuperview()
@@ -71,10 +67,20 @@ extension Presenter: Loader {
     var isLoading: Bool {
         return basicLoader.isLoading
     }
+
     func start() {
         basicLoader.start()
     }
+
     func stop() {
         basicLoader.stop()
+    }
+
+    private func reloadLoadingFrame() {
+        basicLoader.frame = CGRect(
+            x: view.view.frame.width/2 - 50,
+            y: view.view.frame.height/2 - 50,
+            width: 100,
+            height: 100)
     }
 }
