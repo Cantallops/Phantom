@@ -42,6 +42,20 @@ class ViewController: UIViewController, Presentable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.willAppear()
+        let keyboardDidShowObserver = NotificationCenter.default.addObserver(
+            forName: .UIKeyboardDidShow,
+            object: nil,
+            queue: nil,
+            using: keyboardDidShow
+        )
+        observers.append(keyboardDidShowObserver)
+        let keyboardWillShowObserver = NotificationCenter.default.addObserver(
+            forName: .UIKeyboardWillShow,
+            object: nil,
+            queue: nil,
+            using: keyboardWillBeShown
+        )
+        observers.append(keyboardWillShowObserver)
         let keyboardFrameChangeObserver = NotificationCenter.default.addObserver(
             forName: .UIKeyboardWillChangeFrame,
             object: nil,
@@ -56,6 +70,13 @@ class ViewController: UIViewController, Presentable {
             using: keyboardWillBeHidden
         )
         observers.append(keyboardWillHideObserver)
+        let keyboardDidHideObserver = NotificationCenter.default.addObserver(
+            forName: .UIKeyboardDidHide,
+            object: nil,
+            queue: nil,
+            using: keyboardDidHide
+        )
+        observers.append(keyboardDidHideObserver)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -89,6 +110,23 @@ class ViewController: UIViewController, Presentable {
     func setUpNavigation() {
     }
 
+    private func removeObservers() {
+        for observer in observers {
+            NotificationCenter.default.removeObserver(observer)
+        }
+        observers.removeAll()
+    }
+
+    func keyboard(frame: CGRect) {
+        recalculateScrollViewInsets(frame: frame)
+    }
+    func keyboardWillShown() {}
+    func keyboardShown() {}
+    func keyboardWillHide() {}
+    func keyboardHide() {}
+}
+
+extension ViewController {
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(
             target: self,
@@ -106,11 +144,29 @@ class ViewController: UIViewController, Presentable {
         }
     }
 
-    @objc private func keyboardWillBeHidden(notification: Notification) {
-        keyboard(frame: .zero)
+    @objc private func keyboardWillBeShown(notification: Notification) {
+        keyboardWillShown()
     }
 
-    func keyboard(frame: CGRect) {
+    @objc private func keyboardDidShow(notification: Notification) {
+        if let userInfo = notification.userInfo,
+            let rect = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect {
+            keyboard(frame: rect)
+        }
+        keyboardShown()
+    }
+
+    @objc private func keyboardDidHide(notification: Notification) {
+        keyboard(frame: .zero)
+        keyboardHide()
+    }
+
+    @objc private func keyboardWillBeHidden(notification: Notification) {
+        keyboard(frame: .zero)
+        keyboardWillHide()
+    }
+
+    private func recalculateScrollViewInsets(frame: CGRect) {
         guard let scrollView = view.findScrollView(maxDeep: 0) else {
             return
         }
@@ -140,13 +196,6 @@ class ViewController: UIViewController, Presentable {
 
     @objc func dismissKeyboard() {
         view.endEditing(true)
-    }
-
-    private func removeObservers() {
-        for observer in observers {
-            NotificationCenter.default.removeObserver(observer)
-        }
-        observers.removeAll()
     }
 }
 

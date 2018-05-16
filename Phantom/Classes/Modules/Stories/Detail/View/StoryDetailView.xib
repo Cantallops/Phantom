@@ -6,12 +6,15 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StoryDetailView" customModule="Phantom" customModuleProvider="target">
             <connections>
+                <outlet property="keyboardHideButton" destination="ThN-rw-PP8" id="3lh-0e-Gux"/>
+                <outlet property="keyboardHideButtonBottomConstraint" destination="e1e-O1-BHa" id="jh8-N6-wAf"/>
                 <outlet property="titleTextView" destination="2Yu-es-KF4" id="O2U-Du-Yv3"/>
                 <outlet property="topTitleTextViewConstraint" destination="mX2-Nj-TGX" id="Ca6-pg-N6A"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -28,15 +31,31 @@
                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ThN-rw-PP8">
+                    <rect key="frame" x="325" y="617" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="ThN-rw-PP8" secondAttribute="height" multiplier="1:1" id="6YK-cF-yAi"/>
+                        <constraint firstAttribute="width" constant="40" id="UQv-OO-HW1"/>
+                    </constraints>
+                    <state key="normal" image="ic_keyboard_hide"/>
+                    <connections>
+                        <action selector="hideKeyboard" destination="-1" eventType="touchUpInside" id="6co-57-Xit"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="2Yu-es-KF4" secondAttribute="trailing" id="0s2-tr-mZY"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ThN-rw-PP8" secondAttribute="trailing" constant="10" id="YuP-Fm-JB8"/>
                 <constraint firstItem="2Yu-es-KF4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="b2R-ew-rgL"/>
+                <constraint firstAttribute="bottom" secondItem="ThN-rw-PP8" secondAttribute="bottom" constant="10" id="e1e-O1-BHa"/>
                 <constraint firstItem="2Yu-es-KF4" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="mX2-Nj-TGX"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="-164.5" y="95.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="ic_keyboard_hide" width="50" height="50"/>
+    </resources>
 </document>

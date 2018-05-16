@@ -12,6 +12,8 @@ import Highlightr
 class StoryDetailView: ViewController {
 
     @IBOutlet private weak var titleTextView: TextView!
+    @IBOutlet private weak var keyboardHideButton: UIButton!
+    @IBOutlet private weak var keyboardHideButtonBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var topTitleTextViewConstraint: NSLayoutConstraint!
     var spellChecking: UITextSpellCheckingType = .default {
         didSet {
@@ -232,6 +234,42 @@ class StoryDetailView: ViewController {
         }
         contentTextView.replace(selectedTextRange, withText: "![image](\(uri))")
         contentTextView.becomeFirstResponder() // Return the focus
+    }
+
+    @IBAction func hideKeyboard() {
+        dismissKeyboard()
+    }
+
+    override func keyboardWillHide() {
+        super.keyboardWillHide()
+        if UIDevice.current.isPhone {
+            keyboardHideButtonBottomConstraint.constant = 0
+            UIView.animate(withDuration: 0.5, animations: {
+                self.view.layoutIfNeeded()
+                self.keyboardHideButton.alpha = 0
+            }, completion: { _ in
+                self.keyboardHideButton.isHidden = true
+            })
+        }
+    }
+
+    override func keyboardShown() {
+        super.keyboardShown()
+        if UIDevice.current.isPhone {
+            self.keyboardHideButton.isHidden = false
+            keyboardHideButton.alpha = 0
+            UIView.animate(withDuration: 0.5) {
+                self.keyboardHideButton.alpha = 1
+            }
+        }
+    }
+
+    override func keyboard(frame: CGRect) {
+        super.keyboard(frame: frame)
+        if UIDevice.current.isPhone {
+            let intersect = frame.intersection(view.frame)
+            keyboardHideButtonBottomConstraint.constant = 10 + intersect.height
+        }
     }
 }
 
