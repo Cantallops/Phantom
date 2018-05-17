@@ -195,11 +195,12 @@ class TabletDashboardPresenter: Presenter<TabletDashboardView> {
         let conf = SubtitleTableViewCell.Conf(
             text: blogInfo.blogConf.blogTitle,
             subtitle: blogInfo.user.name,
-            image: blogInfo.favicon?.resize(withSize: CGSize(width: 50, height: 50))
+            image: blogInfo.favicon?.resize(withSize: CGSize(width: 50, height: 50)),
+            cornerRadius: 4
         )
         conf.canSelect = false
         var section = UITableView.Section(id: "BlogInfo", cells: [conf])
-        section.header = EmptyTableSectionHeader(height: 20)
+        section.header = EmptyTableSectionHeader(height: 40)
         section.footer = EmptyTableSectionFooter(height: 20)
         return section
     }

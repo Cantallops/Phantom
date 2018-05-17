@@ -29,7 +29,7 @@ class LoadUIAppearanceService: NSObject, UIApplicationDelegate {
         #if DEBUG
         if isRunningScreenshotTests {
             let statusBarManager: SDStatusBarManager = SDStatusBarManager.sharedInstance()
-            statusBarManager.carrierName = "acantallops"
+            statusBarManager.carrierName = "Phantom"
             statusBarManager.bluetoothState = .hidden
             statusBarManager.batteryDetailEnabled = false
             statusBarManager.networkType = .typeLTE

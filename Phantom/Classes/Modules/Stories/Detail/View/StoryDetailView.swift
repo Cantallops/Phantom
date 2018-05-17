@@ -70,18 +70,14 @@ class StoryDetailView: ViewController {
 
     override var keyCommands: [UIKeyCommand]? {
         return [
-            UIKeyCommand(
-                input: "b", modifierFlags: .command, action: #selector(tapBold), discoverabilityTitle: "Bold"
-            ),
+            UIKeyCommand(input: "b", modifierFlags: .command, action: #selector(tapBold), discoverabilityTitle: "Bold"),
             UIKeyCommand(
                 input: "i", modifierFlags: .command, action: #selector(tapItalic), discoverabilityTitle: "Emphasize"
             ),
             UIKeyCommand(
                 input: "h", modifierFlags: .command, action: #selector(tapHeader), discoverabilityTitle: "Heading"
             ),
-            UIKeyCommand(
-                input: "l", modifierFlags: .command, action: #selector(tapList), discoverabilityTitle: "List"
-            ),
+            UIKeyCommand(input: "l", modifierFlags: .command, action: #selector(tapList), discoverabilityTitle: "List"),
             UIKeyCommand(
                 input: "l", modifierFlags: [.command, .alternate], action: #selector(tapNumeredList),
                 discoverabilityTitle: "Ordered List"
@@ -89,9 +85,7 @@ class StoryDetailView: ViewController {
             UIKeyCommand(
                 input: "'", modifierFlags: .command, action: #selector(tapQuote), discoverabilityTitle: "Blockquote"
             ),
-            UIKeyCommand(
-                input: "k", modifierFlags: .command, action: #selector(tapLink), discoverabilityTitle: "Link"
-            ),
+            UIKeyCommand(input: "k", modifierFlags: .command, action: #selector(tapLink), discoverabilityTitle: "Link"),
             UIKeyCommand(
                 input: "i", modifierFlags: [.command, .shift], action: #selector(tapImage),
                 discoverabilityTitle: "Image"
@@ -118,6 +112,7 @@ class StoryDetailView: ViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        let top = titleTextView.frame.height
         var left: CGFloat = 10
         var right: CGFloat = 10
         if view.frame.size.width > 620 {
@@ -128,12 +123,7 @@ class StoryDetailView: ViewController {
         titleTextInsets.right = right
         titleTextInsets.left = left
         titleTextView.textContainerInset = titleTextInsets
-        contentTextView.textContainerInset = UIEdgeInsets(
-            top: titleTextView.frame.height,
-            left: left,
-            bottom: 20,
-            right: right
-        )
+        contentTextView.textContainerInset = UIEdgeInsets(top: top, left: left, bottom: 20, right: right)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -173,65 +163,47 @@ class StoryDetailView: ViewController {
     }
 
     @objc func tapBold() {
-        if !contentTextView.isFirstResponder {
-            return
-        }
+        if !contentTextView.isFirstResponder { return }
         contentTextView.wrap(selectedTextWith: "**")
     }
 
     @objc func tapItalic() {
-        if !contentTextView.isFirstResponder {
-            return
-        }
+        if !contentTextView.isFirstResponder { return }
         contentTextView.wrap(selectedTextWith: "*")
     }
 
     @objc func tapHeader() {
-        if !contentTextView.isFirstResponder {
-            return
-        }
+        if !contentTextView.isFirstResponder { return }
         contentTextView.wrap(selectedLineWith: "# ", wrapperRight: "", max: 6)
     }
 
     @objc func tapQuote() {
-        if !contentTextView.isFirstResponder {
-            return
-        }
+        if !contentTextView.isFirstResponder { return }
         contentTextView.wrap(selectedLineWith: "> ", wrapperRight: "", max: 1)
     }
 
     @objc func tapList() {
-        if !contentTextView.isFirstResponder {
-            return
-        }
+        if !contentTextView.isFirstResponder { return }
         contentTextView.wrap(selectedLineWith: "* ", wrapperRight: "", max: 1)
     }
 
     @objc func tapNumeredList() {
-        if !contentTextView.isFirstResponder {
-            return
-        }
+        if !contentTextView.isFirstResponder { return }
         contentTextView.wrap(selectedLineWith: "1. ", wrapperRight: "", max: 1)
     }
 
     @objc func tapLink() {
-        if !contentTextView.isFirstResponder {
-            return
-        }
+        if !contentTextView.isFirstResponder { return }
         contentTextView.wrap(selectedTextWith: "[", wrapperRight: "](https://)")
     }
 
     @objc func tapImage() {
-        if !contentTextView.isFirstResponder {
-            return
-        }
+        if !contentTextView.isFirstResponder { return }
         onInsertImage?()
     }
 
     func insert(imageWithUri uri: String) {
-        guard let selectedTextRange = contentTextView.selectedTextRange else {
-            return
-        }
+        guard let selectedTextRange = contentTextView.selectedTextRange else { return }
         contentTextView.replace(selectedTextRange, withText: "![image](\(uri))")
         contentTextView.becomeFirstResponder() // Return the focus
     }

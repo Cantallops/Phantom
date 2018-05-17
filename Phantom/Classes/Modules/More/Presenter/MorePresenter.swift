@@ -124,7 +124,8 @@ class MorePresenter: Presenter<MoreView> {
         let conf = SubtitleTableViewCell.Conf(
             text: blogInfo.blogConf.blogTitle,
             subtitle: blogInfo.user.name,
-            image: blogInfo.favicon?.resize(withSize: CGSize(width: 50, height: 50))
+            image: blogInfo.favicon?.resize(withSize: CGSize(width: 50, height: 50)),
+            cornerRadius: 4
         )
         conf.canSelect = false
         conf.accessoryType = .none
