@@ -108,7 +108,7 @@ class DashboardPresenter: Presenter<DashboardView> {
     }
 
     private func addProfile(withImage image: UIImage?) {
-        let imageNotTinted = (image ?? #imageLiteral(resourceName: "ic_tab_team")).withRenderingMode(.alwaysOriginal)
+        let imageNotTinted = (image ?? #imageLiteral(resourceName: "ic_tab_team")).rounded(withCornerRadius: 4).withRenderingMode(.alwaysOriginal)
         for viewController in view.viewControllers ?? [] {
             if let nav = viewController as? UINavigationController {
                 let button = UIBarButtonItem(

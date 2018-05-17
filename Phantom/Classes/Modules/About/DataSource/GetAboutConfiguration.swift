@@ -26,7 +26,7 @@ private struct AboutConfigurationApi: Codable {
 
 class GetAboutConfiguration: DataSource<Any?, AboutGhost> {
     override func execute(args: Any?) -> Result<AboutGhost> {
-        let provider =  AboutConfigurationProvider()
+        let provider = AboutConfigurationProvider()
         let result: Result<AboutConfigurationApi> = Network(provider: provider).call()
         switch result {
         case .success(let aboutConfigurationApi):

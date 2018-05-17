@@ -18,10 +18,24 @@ public extension UIImage {
         let renderFormat = UIGraphicsImageRendererFormat.default()
         renderFormat.opaque = false
         let renderer = UIGraphicsImageRenderer(size: newSize, format: renderFormat)
-        let newImage = renderer.image { _ in
+        let resizedImage = renderer.image { _ in
             self.draw(in: CGRect(origin: .zero, size: newSize))
         }
 
-        return newImage
+        return resizedImage
+    }
+
+    func rounded(withCornerRadius radius: CGFloat) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+
+        let clippingPath = UIBezierPath(roundedRect: CGRect(origin: .zero, size: size), cornerRadius: radius)
+        clippingPath.addClip()
+
+        draw(in: CGRect(origin: .zero, size: size))
+
+        let roundedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        return roundedImage
     }
 }
