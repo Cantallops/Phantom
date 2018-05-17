@@ -11,7 +11,7 @@ import XCTest
 class SignInRobot {
 
     @discardableResult
-    func typeEmail(_ email: String = "alberto.cantallops@gmail.com") -> Self {
+    func typeEmail(_ email: String = "iosphantomeditor@gmail.com") -> Self {
         let app = XCUIApplication()
         app.type(text: email, onField: "email")
         return self
