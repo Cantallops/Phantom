@@ -33,6 +33,7 @@ platform :ios do
 
   desc "Deploy a new beta version to TestFlight"
   lane :beta_release do
+    run_tests(scheme: "PhantomDev")
     build_app(scheme: "Phantom")
     upload_to_testflight
   end
@@ -40,9 +41,9 @@ platform :ios do
   desc "Deploy a new version to the App Store"
   lane :release do
     capture_screenshots(scheme: "PhantomScreenshots")
+    run_tests(scheme: "PhantomDev")
     build_app(scheme: "Phantom")
     upload_to_app_store(force: true)
-    # frame_screenshots
   end
 
   lane :upload do
