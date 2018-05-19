@@ -12,9 +12,11 @@ struct SettingsAPIProvider: NetworkProvider {
     var method: HTTPMethod {
         return .GET
     }
+
     var uri: String {
         return "/settings/"
     }
+
     var authenticated: Bool {
         return true
     }

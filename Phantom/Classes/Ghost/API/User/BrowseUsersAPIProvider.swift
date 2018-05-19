@@ -12,15 +12,18 @@ struct BrowseUsersAPIProvider: NetworkProvider {
     var method: HTTPMethod {
         return .GET
     }
+
     var uri: String {
         return "/users/"
     }
+
     var parameters: JSON {
         return [
             "include": "roles",
             "limit": "all"
         ]
     }
+
     var authenticated: Bool {
         return true
     }

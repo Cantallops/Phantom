@@ -14,9 +14,11 @@ struct AddPostAPIProvider: NetworkProvider {
     var method: HTTPMethod {
         return .POST
     }
+
     var uri: String {
         return "/posts/"
     }
+
     var parameters: JSON {
         var post: JSON = [:]
         post["featured"] = story.featured
@@ -38,7 +40,7 @@ struct AddPostAPIProvider: NetworkProvider {
 
     var queryParameters: JSON {
         return [
-            "include": "author, tags",
+            "include": "author,tags",
             "formats": "mobiledoc,html"
         ]
     }
@@ -46,6 +48,7 @@ struct AddPostAPIProvider: NetworkProvider {
     var authenticated: Bool {
         return true
     }
+
     var contentType: ContentType {
         return .json
     }

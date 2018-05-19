@@ -15,6 +15,7 @@ struct ConfigurationAPIProvider: NetworkProvider {
     var method: HTTPMethod {
         return .GET
     }
+
     var uri: String {
         return "/configuration"
     }

@@ -19,7 +19,7 @@ class GetStoryRemote: DataSource<String, Story> {
     }
 
     override func execute(args: String) -> Result<Story> {
-        let provider = ReadPostAPIProvider(storyId: args)
+        let provider = ReadPostAPIProvider(id: args)
         let result: Result<StoryRemote> = Network().call(provider: provider)
         switch result {
         case .success(let storyRemote):

@@ -14,18 +14,22 @@ struct RevokeAccessTokenAPIProvider: NetworkProvider {
     var method: HTTPMethod {
         return .POST
     }
+
     var uri: String {
         return "/authentication/revoke"
     }
+
     var parameters: JSON {
         return [
             "tokenTypeHint": "access_token",
             "token": oauth.accessToken
         ]
     }
+
     var useClientKeys: Bool {
         return true
     }
+
     var authenticated: Bool {
         return true
     }

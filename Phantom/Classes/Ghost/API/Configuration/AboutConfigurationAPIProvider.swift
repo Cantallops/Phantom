@@ -12,9 +12,11 @@ struct AboutConfigurationAPIProvider: NetworkProvider {
     var method: HTTPMethod {
         return .GET
     }
+
     var uri: String {
         return "/configuration/about/"
     }
+
     var authenticated: Bool {
         return true
     }

@@ -14,15 +14,18 @@ struct OauthRefreshAPIProvider: NetworkProvider {
     var method: HTTPMethod {
         return .POST
     }
+
     var uri: String {
         return "/authentication/token"
     }
+
     var parameters: JSON {
         return [
             "grant_type": "refresh_token",
             "refresh_token": oauth.refreshToken
         ]
     }
+
     var useClientKeys: Bool {
         return true
     }

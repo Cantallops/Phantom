@@ -14,15 +14,18 @@ struct RevokeRefreshTokenAPIProvider: NetworkProvider {
     var method: HTTPMethod {
         return .POST
     }
+
     var uri: String {
         return "/authentication/revoke"
     }
+
     var parameters: JSON {
         return [
             "tokenTypeHint": "refresh_token",
             "token": oauth.refreshToken
         ]
     }
+
     var authenticated: Bool {
         return true
     }

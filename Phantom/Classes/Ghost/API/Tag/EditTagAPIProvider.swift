@@ -14,9 +14,11 @@ struct EditTagAPIProvider: NetworkProvider {
     var method: HTTPMethod {
         return .PUT
     }
+
     var uri: String {
-        return "/tags/\(tag.id)"
+        return "/tags/\(tag.id)/"
     }
+
     var parameters: JSON {
         return [
             "tags": [
@@ -35,6 +37,7 @@ struct EditTagAPIProvider: NetworkProvider {
     var authenticated: Bool {
         return true
     }
+
     var contentType: ContentType {
         return .json
     }

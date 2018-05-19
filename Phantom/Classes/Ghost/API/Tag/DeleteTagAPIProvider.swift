@@ -14,9 +14,11 @@ struct DeleteTagAPIProvider: NetworkProvider {
     var method: HTTPMethod {
         return .DELETE
     }
+
     var uri: String {
-        return "/tags/\(tag.id)"
+        return "/tags/\(tag.id)/"
     }
+
     var authenticated: Bool {
         return true
     }

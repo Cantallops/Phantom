@@ -24,7 +24,7 @@ extension Story {
         plaintext: nil,
         status: Story.Status.draft,
         excerpt: nil,
-        tags: [],
+        tags: [.any],
         updatedAt: Date(),
         publishedAt: nil,
         metaTitle: nil,

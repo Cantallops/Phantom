@@ -12,15 +12,18 @@ struct BrowseTagsAPIProvider: NetworkProvider {
     var method: HTTPMethod {
         return .GET
     }
+
     var uri: String {
         return "/tags/"
     }
+
     var parameters: JSON {
         return [
             "limit": "all",
             "include": "count.posts"
         ]
     }
+
     var authenticated: Bool {
         return true
     }

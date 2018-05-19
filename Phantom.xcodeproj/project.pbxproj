@@ -76,6 +76,26 @@
 		561E7A8420AE21B900A35BC6 /* BrowseTagsAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E7A8320AE21B900A35BC6 /* BrowseTagsAPIProvider.swift */; };
 		561E7A8620AE21D300A35BC6 /* ReadUserAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E7A8520AE21D300A35BC6 /* ReadUserAPIProvider.swift */; };
 		561E7A8820AE21E800A35BC6 /* BrowseUsersAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E7A8720AE21E800A35BC6 /* BrowseUsersAPIProvider.swift */; };
+		561E7A9720B0C97400A35BC6 /* AboutConfigurationAPIProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E7A9620B0C97400A35BC6 /* AboutConfigurationAPIProviderTest.swift */; };
+		561E7A9920B0CFF900A35BC6 /* ConfigurationAPIProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E7A9820B0CFF900A35BC6 /* ConfigurationAPIProviderTest.swift */; };
+		561E7A9C20B0D0AD00A35BC6 /* OauthAPIProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E7A9B20B0D0AD00A35BC6 /* OauthAPIProviderTest.swift */; };
+		561E7A9E20B0D25300A35BC6 /* OauthRefreshAPIProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E7A9D20B0D25300A35BC6 /* OauthRefreshAPIProviderTest.swift */; };
+		561E7AA020B0D3E700A35BC6 /* RevokeAccessTokenAPIProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E7A9F20B0D3E700A35BC6 /* RevokeAccessTokenAPIProviderTest.swift */; };
+		561E7AA220B0D6F100A35BC6 /* RevokeRefreshTokenAPIProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E7AA120B0D6F100A35BC6 /* RevokeRefreshTokenAPIProviderTest.swift */; };
+		561E7AAA20B0D88000A35BC6 /* SettingsAPIProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E7AA920B0D88000A35BC6 /* SettingsAPIProviderTest.swift */; };
+		561E7AAD20B0D8BE00A35BC6 /* SubscribersAPIProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E7AAC20B0D8BE00A35BC6 /* SubscribersAPIProviderTest.swift */; };
+		561E7AAF20B0D90600A35BC6 /* UploadFileAPIProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E7AAE20B0D90600A35BC6 /* UploadFileAPIProviderTest.swift */; };
+		561E7AB120B0DDE000A35BC6 /* BrowseUsersAPIProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E7AB020B0DDE000A35BC6 /* BrowseUsersAPIProviderTest.swift */; };
+		561E7AB320B0DF2400A35BC6 /* ReadUserAPIProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E7AB220B0DF2400A35BC6 /* ReadUserAPIProviderTest.swift */; };
+		561E7AB520B0DFB500A35BC6 /* AddPostAPIProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E7AB420B0DFB500A35BC6 /* AddPostAPIProviderTest.swift */; };
+		561E7AB720B0E1C000A35BC6 /* BrowsePostsAPIProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E7AB620B0E1C000A35BC6 /* BrowsePostsAPIProviderTest.swift */; };
+		561E7AB920B0E29700A35BC6 /* DeletePostAPIProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E7AB820B0E29700A35BC6 /* DeletePostAPIProviderTest.swift */; };
+		561E7ABB20B0E31F00A35BC6 /* ReadPostAPIProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E7ABA20B0E31F00A35BC6 /* ReadPostAPIProviderTest.swift */; };
+		561E7ABD20B0E48000A35BC6 /* EditPostAPIProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E7ABC20B0E48000A35BC6 /* EditPostAPIProviderTest.swift */; };
+		561E7ABF20B0E52C00A35BC6 /* AddTagAPIProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E7ABE20B0E52C00A35BC6 /* AddTagAPIProviderTest.swift */; };
+		561E7AC120B0E53C00A35BC6 /* BrowseTagsAPIProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E7AC020B0E53C00A35BC6 /* BrowseTagsAPIProviderTest.swift */; };
+		561E7AC320B0E54900A35BC6 /* DeleteTagAPIProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E7AC220B0E54900A35BC6 /* DeleteTagAPIProviderTest.swift */; };
+		561E7AC520B0E55700A35BC6 /* EditTagAPIProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E7AC420B0E55700A35BC6 /* EditTagAPIProviderTest.swift */; };
 		561E90DA1F89509B008DDCF5 /* StorySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E90D81F89509B008DDCF5 /* StorySettingsView.swift */; };
 		561E90DD1F8950B7008DDCF5 /* StorySettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E90DC1F8950B7008DDCF5 /* StorySettingsPresenter.swift */; };
 		561E90E01F895102008DDCF5 /* TeamMemberDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E90DE1F895102008DDCF5 /* TeamMemberDetailView.swift */; };
@@ -480,6 +500,26 @@
 		561E7A8320AE21B900A35BC6 /* BrowseTagsAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseTagsAPIProvider.swift; sourceTree = "<group>"; };
 		561E7A8520AE21D300A35BC6 /* ReadUserAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadUserAPIProvider.swift; sourceTree = "<group>"; };
 		561E7A8720AE21E800A35BC6 /* BrowseUsersAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseUsersAPIProvider.swift; sourceTree = "<group>"; };
+		561E7A9620B0C97400A35BC6 /* AboutConfigurationAPIProviderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutConfigurationAPIProviderTest.swift; sourceTree = "<group>"; };
+		561E7A9820B0CFF900A35BC6 /* ConfigurationAPIProviderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationAPIProviderTest.swift; sourceTree = "<group>"; };
+		561E7A9B20B0D0AD00A35BC6 /* OauthAPIProviderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OauthAPIProviderTest.swift; sourceTree = "<group>"; };
+		561E7A9D20B0D25300A35BC6 /* OauthRefreshAPIProviderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OauthRefreshAPIProviderTest.swift; sourceTree = "<group>"; };
+		561E7A9F20B0D3E700A35BC6 /* RevokeAccessTokenAPIProviderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevokeAccessTokenAPIProviderTest.swift; sourceTree = "<group>"; };
+		561E7AA120B0D6F100A35BC6 /* RevokeRefreshTokenAPIProviderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevokeRefreshTokenAPIProviderTest.swift; sourceTree = "<group>"; };
+		561E7AA920B0D88000A35BC6 /* SettingsAPIProviderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAPIProviderTest.swift; sourceTree = "<group>"; };
+		561E7AAC20B0D8BE00A35BC6 /* SubscribersAPIProviderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribersAPIProviderTest.swift; sourceTree = "<group>"; };
+		561E7AAE20B0D90600A35BC6 /* UploadFileAPIProviderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFileAPIProviderTest.swift; sourceTree = "<group>"; };
+		561E7AB020B0DDE000A35BC6 /* BrowseUsersAPIProviderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseUsersAPIProviderTest.swift; sourceTree = "<group>"; };
+		561E7AB220B0DF2400A35BC6 /* ReadUserAPIProviderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadUserAPIProviderTest.swift; sourceTree = "<group>"; };
+		561E7AB420B0DFB500A35BC6 /* AddPostAPIProviderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostAPIProviderTest.swift; sourceTree = "<group>"; };
+		561E7AB620B0E1C000A35BC6 /* BrowsePostsAPIProviderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowsePostsAPIProviderTest.swift; sourceTree = "<group>"; };
+		561E7AB820B0E29700A35BC6 /* DeletePostAPIProviderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePostAPIProviderTest.swift; sourceTree = "<group>"; };
+		561E7ABA20B0E31F00A35BC6 /* ReadPostAPIProviderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadPostAPIProviderTest.swift; sourceTree = "<group>"; };
+		561E7ABC20B0E48000A35BC6 /* EditPostAPIProviderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostAPIProviderTest.swift; sourceTree = "<group>"; };
+		561E7ABE20B0E52C00A35BC6 /* AddTagAPIProviderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTagAPIProviderTest.swift; sourceTree = "<group>"; };
+		561E7AC020B0E53C00A35BC6 /* BrowseTagsAPIProviderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseTagsAPIProviderTest.swift; sourceTree = "<group>"; };
+		561E7AC220B0E54900A35BC6 /* DeleteTagAPIProviderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTagAPIProviderTest.swift; sourceTree = "<group>"; };
+		561E7AC420B0E55700A35BC6 /* EditTagAPIProviderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTagAPIProviderTest.swift; sourceTree = "<group>"; };
 		561E90D81F89509B008DDCF5 /* StorySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorySettingsView.swift; sourceTree = "<group>"; };
 		561E90DC1F8950B7008DDCF5 /* StorySettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorySettingsPresenter.swift; sourceTree = "<group>"; };
 		561E90DE1F895102008DDCF5 /* TeamMemberDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMemberDetailView.swift; sourceTree = "<group>"; };
@@ -1073,10 +1113,10 @@
 		561E7A6020AE1EEC00A35BC6 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				561E7A8D20AE22AA00A35BC6 /* Configuration */,
 				561E7A8B20AE227500A35BC6 /* Authentication */,
-				561E7A8F20AE22E000A35BC6 /* Settings */,
+				561E7A8D20AE22AA00A35BC6 /* Configuration */,
 				561E7A8920AE224C00A35BC6 /* Posts */,
+				561E7A8F20AE22E000A35BC6 /* Settings */,
 				561E7A8C20AE229A00A35BC6 /* Subscriber */,
 				561E7A8A20AE226200A35BC6 /* Tag */,
 				561E7A9020AE22ED00A35BC6 /* Uploads */,
@@ -1159,6 +1199,105 @@
 				561E7A6320AE1F5C00A35BC6 /* UploadFileAPIProvider.swift */,
 			);
 			path = Uploads;
+			sourceTree = "<group>";
+		};
+		561E7A9220B0BE6600A35BC6 /* Ghost */ = {
+			isa = PBXGroup;
+			children = (
+				561E7A9320B0BE7400A35BC6 /* API */,
+			);
+			path = Ghost;
+			sourceTree = "<group>";
+		};
+		561E7A9320B0BE7400A35BC6 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				561E7A9A20B0D08D00A35BC6 /* Authentication */,
+				561E7A9420B0BE7E00A35BC6 /* Configuration */,
+				561E7AA320B0D83700A35BC6 /* Posts */,
+				561E7AA420B0D85700A35BC6 /* Settings */,
+				561E7AA520B0D85B00A35BC6 /* Subscriber */,
+				561E7AA620B0D86200A35BC6 /* Tag */,
+				561E7AA720B0D86700A35BC6 /* Uploads */,
+				561E7AA820B0D86C00A35BC6 /* User */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		561E7A9420B0BE7E00A35BC6 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				561E7A9620B0C97400A35BC6 /* AboutConfigurationAPIProviderTest.swift */,
+				561E7A9820B0CFF900A35BC6 /* ConfigurationAPIProviderTest.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		561E7A9A20B0D08D00A35BC6 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				561E7A9B20B0D0AD00A35BC6 /* OauthAPIProviderTest.swift */,
+				561E7A9D20B0D25300A35BC6 /* OauthRefreshAPIProviderTest.swift */,
+				561E7A9F20B0D3E700A35BC6 /* RevokeAccessTokenAPIProviderTest.swift */,
+				561E7AA120B0D6F100A35BC6 /* RevokeRefreshTokenAPIProviderTest.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		561E7AA320B0D83700A35BC6 /* Posts */ = {
+			isa = PBXGroup;
+			children = (
+				561E7AB420B0DFB500A35BC6 /* AddPostAPIProviderTest.swift */,
+				561E7AB620B0E1C000A35BC6 /* BrowsePostsAPIProviderTest.swift */,
+				561E7AB820B0E29700A35BC6 /* DeletePostAPIProviderTest.swift */,
+				561E7ABC20B0E48000A35BC6 /* EditPostAPIProviderTest.swift */,
+				561E7ABA20B0E31F00A35BC6 /* ReadPostAPIProviderTest.swift */,
+			);
+			path = Posts;
+			sourceTree = "<group>";
+		};
+		561E7AA420B0D85700A35BC6 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				561E7AA920B0D88000A35BC6 /* SettingsAPIProviderTest.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		561E7AA520B0D85B00A35BC6 /* Subscriber */ = {
+			isa = PBXGroup;
+			children = (
+				561E7AAC20B0D8BE00A35BC6 /* SubscribersAPIProviderTest.swift */,
+			);
+			path = Subscriber;
+			sourceTree = "<group>";
+		};
+		561E7AA620B0D86200A35BC6 /* Tag */ = {
+			isa = PBXGroup;
+			children = (
+				561E7ABE20B0E52C00A35BC6 /* AddTagAPIProviderTest.swift */,
+				561E7AC020B0E53C00A35BC6 /* BrowseTagsAPIProviderTest.swift */,
+				561E7AC220B0E54900A35BC6 /* DeleteTagAPIProviderTest.swift */,
+				561E7AC420B0E55700A35BC6 /* EditTagAPIProviderTest.swift */,
+			);
+			path = Tag;
+			sourceTree = "<group>";
+		};
+		561E7AA720B0D86700A35BC6 /* Uploads */ = {
+			isa = PBXGroup;
+			children = (
+				561E7AAE20B0D90600A35BC6 /* UploadFileAPIProviderTest.swift */,
+			);
+			path = Uploads;
+			sourceTree = "<group>";
+		};
+		561E7AA820B0D86C00A35BC6 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				561E7AB020B0DDE000A35BC6 /* BrowseUsersAPIProviderTest.swift */,
+				561E7AB220B0DF2400A35BC6 /* ReadUserAPIProviderTest.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		56241E6E1FE05EAC00468062 /* Loader */ = {
@@ -1928,11 +2067,12 @@
 		5672C94E1F5F215800439F46 /* PhantomTests */ = {
 			isa = PBXGroup;
 			children = (
-				566BFDCA1F7C36AC0051AD9F /* Helpers */,
-				5672C97B1F5F3FC800439F46 /* Common */,
-				563189681F66ED87006B29D5 /* Modules */,
 				5672C9511F5F215800439F46 /* Info.plist */,
 				5672C9701F5F351300439F46 /* AppDelegateTest.swift */,
+				561E7A9220B0BE6600A35BC6 /* Ghost */,
+				5672C97B1F5F3FC800439F46 /* Common */,
+				566BFDCA1F7C36AC0051AD9F /* Helpers */,
+				563189681F66ED87006B29D5 /* Modules */,
 			);
 			path = PhantomTests;
 			sourceTree = "<group>";
@@ -4294,6 +4434,7 @@
 				56958B861F72E6E0005A8B08 /* ButtonLoaderTest.swift in Sources */,
 				5692AE9F1F6D5D04004A65A4 /* InteractorTest.swift in Sources */,
 				566DB6881FF5790B0000124D /* GetAboutGhostConfigurationTest.swift in Sources */,
+				561E7A9720B0C97400A35BC6 /* AboutConfigurationAPIProviderTest.swift in Sources */,
 				56F95DC12092796100EDD56C /* SearcheableTest.swift in Sources */,
 				5678B95F201A4D6000EBDD03 /* MetaTest.swift in Sources */,
 				561E7A5920AB73A300A35BC6 /* AsyncWorkerTest.swift in Sources */,
@@ -4303,6 +4444,8 @@
 				56EB107320338EA80070BE17 /* UITableViewSectionTest.swift in Sources */,
 				566DB6B71FF583270000124D /* StoriesListFactoryTest.swift in Sources */,
 				569335091FDD7EFD00F0B108 /* BuilderTest.swift in Sources */,
+				561E7AB520B0DFB500A35BC6 /* AddPostAPIProviderTest.swift in Sources */,
+				561E7AB720B0E1C000A35BC6 /* BrowsePostsAPIProviderTest.swift in Sources */,
 				5639AA86201A790F00B8753E /* EditStoryInteractorTest.swift in Sources */,
 				56958B841F72E12A005A8B08 /* URLHttpTest.swift in Sources */,
 				56016D8A1FF1AF1C00BB066F /* FakeAccount.swift in Sources */,
@@ -4310,6 +4453,8 @@
 				5639AA6E201A754D00B8753E /* GetSubscribersTest.swift in Sources */,
 				569E55D11FDD6E2400A22C22 /* DateTest.swift in Sources */,
 				56B836261F6719D70017905D /* TextFieldTest.swift in Sources */,
+				561E7ABF20B0E52C00A35BC6 /* AddTagAPIProviderTest.swift in Sources */,
+				561E7AAA20B0D88000A35BC6 /* SettingsAPIProviderTest.swift in Sources */,
 				56241E721FE05EE400468062 /* MockLoader.swift in Sources */,
 				566BFDC91F7C35F40051AD9F /* DoCredentialSignInTest.swift in Sources */,
 				5639AA7F201A786600B8753E /* MockStory.swift in Sources */,
@@ -4322,18 +4467,23 @@
 				566DB67D1FF570230000124D /* AcknowledgementsFactoryTest.swift in Sources */,
 				566DB68C1FF57B160000124D /* AppsFactoryTest.swift in Sources */,
 				56A69B1C2028C494008544F7 /* TeamMemberStatusTest.swift in Sources */,
+				561E7AC120B0E53C00A35BC6 /* BrowseTagsAPIProviderTest.swift in Sources */,
 				561CD18B1F7191F400EF7C8F /* NetworkTest.swift in Sources */,
 				56836BC71F7ACD80009ADE15 /* SignInFactoryTest.swift in Sources */,
 				566BFDD41F7C39EC0051AD9F /* FormErrors.swift in Sources */,
 				566DB6851FF572B40000124D /* AboutFactoryTest.swift in Sources */,
 				566DB6B11FF581AA0000124D /* MoreFactoryTest.swift in Sources */,
+				561E7A9E20B0D25300A35BC6 /* OauthRefreshAPIProviderTest.swift in Sources */,
 				5639AA75201A771000B8753E /* MockTag.swift in Sources */,
+				561E7AB120B0DDE000A35BC6 /* BrowseUsersAPIProviderTest.swift in Sources */,
 				566DB6B91FF583F90000124D /* SubscribersListFactoryTest.swift in Sources */,
 				569E55D71FDD76BF00A22C22 /* CodableUtilsTest.swift in Sources */,
 				5639AA89201A792100B8753E /* DeleteStoryInteractorTest.swift in Sources */,
 				5639AA69201A73F800B8753E /* DeleteTagInteractorTest.swift in Sources */,
 				5631897A1F66F80E006B29D5 /* ViewControllerTest.swift in Sources */,
+				561E7A9C20B0D0AD00A35BC6 /* OauthAPIProviderTest.swift in Sources */,
 				5692AEA81F6D66F0004A65A4 /* ResultTest.swift in Sources */,
+				561E7AC520B0E55700A35BC6 /* EditTagAPIProviderTest.swift in Sources */,
 				5639AA5E201A6D7E00B8753E /* GetMeTest.swift in Sources */,
 				56EB107020338CD60070BE17 /* UITableViewFullDelegateTest.swift in Sources */,
 				56241E761FE0665D00468062 /* NetworkErrorTest.swift in Sources */,
@@ -4346,27 +4496,37 @@
 				563189751F66F366006B29D5 /* BlogSiteViewTest.swift in Sources */,
 				5639AA67201A73ED00B8753E /* CreateTagInteractorTest.swift in Sources */,
 				561E7A5B20AB7E7A00A35BC6 /* WorkerTest.swift in Sources */,
+				561E7AC320B0E54900A35BC6 /* DeleteTagAPIProviderTest.swift in Sources */,
 				56EB106420337A830070BE17 /* BlogConfigurationTest.swift in Sources */,
 				566DB6BF1FF584D60000124D /* TeamListFactoryTest.swift in Sources */,
 				5639AA6B201A740200B8753E /* EditTagInteractorTest.swift in Sources */,
 				5631896C1F66EDAA006B29D5 /* InitialModuleServiceTest.swift in Sources */,
 				565E80A51F670E29000DC618 /* ButtonTest.swift in Sources */,
 				5692AEAE1F6D6AC5004A65A4 /* DataSourceTest.swift in Sources */,
+				561E7A9920B0CFF900A35BC6 /* ConfigurationAPIProviderTest.swift in Sources */,
 				5639AA7C201A782B00B8753E /* MockSubscriber.swift in Sources */,
+				561E7AAF20B0D90600A35BC6 /* UploadFileAPIProviderTest.swift in Sources */,
 				5639AA79201A778B00B8753E /* MockTeamMember.swift in Sources */,
+				561E7AA020B0D3E700A35BC6 /* RevokeAccessTokenAPIProviderTest.swift in Sources */,
 				561E7A5E20AB83C700A35BC6 /* UIImageResizeTest.swift in Sources */,
 				5692AEB91F6D7105004A65A4 /* DetectGhostInstallationTest.swift in Sources */,
 				5678B965201A610800EBDD03 /* DeviceTest.swift in Sources */,
+				561E7ABB20B0E31F00A35BC6 /* ReadPostAPIProviderTest.swift in Sources */,
+				561E7AB920B0E29700A35BC6 /* DeletePostAPIProviderTest.swift in Sources */,
+				561E7AAD20B0D8BE00A35BC6 /* SubscribersAPIProviderTest.swift in Sources */,
 				569335041FDD7D7300F0B108 /* MockBuilder.swift in Sources */,
 				56836BCA1F7ACEE8009ADE15 /* BlogSiteFactoryTest.swift in Sources */,
+				561E7AB320B0DF2400A35BC6 /* ReadUserAPIProviderTest.swift in Sources */,
 				5693350F1FDD84AA00F0B108 /* FactoryTest.swift in Sources */,
 				566DB6941FF57D860000124D /* DashboardFactoryTest.swift in Sources */,
 				56836BC31F7ACA1F009ADE15 /* MockFactory.swift in Sources */,
 				566DB6AB1FF580A00000124D /* GeneralSettingsFactoryTest.swift in Sources */,
+				561E7AA220B0D6F100A35BC6 /* RevokeRefreshTokenAPIProviderTest.swift in Sources */,
 				5692AEA51F6D6459004A65A4 /* MockInteractor.swift in Sources */,
 				5639AA60201A6F9D00B8753E /* GetMembersTest.swift in Sources */,
 				5693351F1FE059F000F0B108 /* UIViewUtilsTest.swift in Sources */,
 				5639AA63201A72D900B8753E /* GetTagListTest.swift in Sources */,
+				561E7ABD20B0E48000A35BC6 /* EditPostAPIProviderTest.swift in Sources */,
 				56EB1062203371DF0070BE17 /* BundleTest.swift in Sources */,
 				56F95DB72090F75500EDD56C /* FilterStoriesTest.swift in Sources */,
 				5693350B1FDD7F4A00F0B108 /* TestFatalError.swift in Sources */,

@@ -14,9 +14,11 @@ struct BrowsePostsAPIProvider: NetworkProvider {
     var method: HTTPMethod {
         return .GET
     }
+
     var uri: String {
         return "/posts/"
     }
+
     var parameters: JSON {
         var params: JSON = [
             "limit": "all",
@@ -30,6 +32,7 @@ struct BrowsePostsAPIProvider: NetworkProvider {
         }
         return params
     }
+
     var authenticated: Bool {
         return true
     }

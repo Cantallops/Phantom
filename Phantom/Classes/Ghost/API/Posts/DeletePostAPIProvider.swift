@@ -14,6 +14,7 @@ struct DeletePostAPIProvider: NetworkProvider {
     var method: HTTPMethod {
         return .DELETE
     }
+
     var uri: String {
         return "/posts/\(story.id)/"
     }
@@ -21,6 +22,7 @@ struct DeletePostAPIProvider: NetworkProvider {
     var authenticated: Bool {
         return true
     }
+
     var contentType: ContentType {
         return .json
     }

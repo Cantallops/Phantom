@@ -14,9 +14,11 @@ struct OauthAPIProvider: NetworkProvider {
     var method: HTTPMethod {
         return .POST
     }
+
     var uri: String {
         return "/authentication/token"
     }
+
     var parameters: JSON {
         return [
             "grant_type": "password",
@@ -24,6 +26,7 @@ struct OauthAPIProvider: NetworkProvider {
             "username": credentials.email
         ]
     }
+
     var useClientKeys: Bool {
         return true
     }

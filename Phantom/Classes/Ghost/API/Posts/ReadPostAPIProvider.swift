@@ -9,24 +9,28 @@
 import Foundation
 
 struct ReadPostAPIProvider: NetworkProvider {
-    let storyId: String
+    let id: String
 
     var method: HTTPMethod {
         return .GET
     }
+
     var uri: String {
-        return "/posts/\(storyId)/"
+        return "/posts/\(id)/"
     }
+
     var queryParameters: JSON {
         return [
-            "include": "author, tags",
+            "include": "author,tags",
             "status": "all",
             "formats": "mobiledoc,html"
         ]
     }
+
     var authenticated: Bool {
         return true
     }
+
     var contentType: ContentType {
         return .json
     }

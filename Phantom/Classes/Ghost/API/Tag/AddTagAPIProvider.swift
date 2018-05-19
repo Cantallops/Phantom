@@ -14,9 +14,11 @@ struct AddTagAPIProvider: NetworkProvider {
     var method: HTTPMethod {
         return .POST
     }
+
     var uri: String {
-        return "/tags"
+        return "/tags/"
     }
+
     var parameters: JSON {
         return [
             "tags": [
@@ -31,10 +33,13 @@ struct AddTagAPIProvider: NetworkProvider {
             ]
         ]
     }
+
     var authenticated: Bool {
         return true
     }
+
     var contentType: ContentType {
         return .json
     }
+
 }

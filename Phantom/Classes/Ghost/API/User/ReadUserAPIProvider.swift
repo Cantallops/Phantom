@@ -14,14 +14,17 @@ struct ReadUserAPIProvider: NetworkProvider {
     var method: HTTPMethod {
         return .GET
     }
+
     var uri: String {
         return "/users/\(id)/"
     }
+
     var parameters: JSON {
         return [
             "include": "roles"
         ]
     }
+
     var authenticated: Bool {
         return true
     }

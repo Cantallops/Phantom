@@ -14,15 +14,19 @@ struct UploadFileAPIProvider: NetworkProvider {
     var method: HTTPMethod {
         return .POST
     }
+
     var uri: String {
         return "/uploads/"
     }
+
     var authenticated: Bool {
         return true
     }
+
     var contentType: ContentType {
         return .multipart
     }
+
     var fileToUpload: File? {
         return file
     }

@@ -14,9 +14,11 @@ struct EditPostAPIProvider: NetworkProvider {
     var method: HTTPMethod {
         return .PUT
     }
+
     var uri: String {
         return "/posts/\(story.id)/"
     }
+
     var parameters: JSON {
         var post: JSON = [:]
         post["featured"] = story.featured
@@ -50,7 +52,7 @@ struct EditPostAPIProvider: NetworkProvider {
 
     var queryParameters: JSON {
         return [
-            "include": "author, tags",
+            "include": "author,tags",
             "formats": "mobiledoc,html"
         ]
     }
@@ -58,6 +60,7 @@ struct EditPostAPIProvider: NetworkProvider {
     var authenticated: Bool {
         return true
     }
+
     var contentType: ContentType {
         return .json
     }

@@ -12,15 +12,18 @@ struct SubscribersAPIProvider: NetworkProvider {
     var method: HTTPMethod {
         return .GET
     }
+
     var uri: String {
         return "/subscribers/"
     }
+
     var parameters: JSON {
         let params: JSON = [
             "limit": "all"
         ]
         return params
     }
+
     var authenticated: Bool {
         return true
     }
