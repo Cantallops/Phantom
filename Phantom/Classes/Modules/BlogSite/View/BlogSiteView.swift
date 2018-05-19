@@ -13,6 +13,7 @@ class BlogSiteView: ViewController {
     @IBOutlet weak var urlField: TextField!
     @IBOutlet weak var goButton: Button!
     @IBOutlet weak var errorLabel: Label!
+    var onTapAbout: (() -> Void)?
 
     var onTapButton: ((String?) -> Void)?
 
@@ -33,6 +34,10 @@ class BlogSiteView: ViewController {
     @IBAction func onTapGoButton() {
         let text = urlField.text
         onTapButton?(text)
+    }
+
+    @IBAction func onTapAboutButton() {
+        onTapAbout?()
     }
 
     func show(error: String) {

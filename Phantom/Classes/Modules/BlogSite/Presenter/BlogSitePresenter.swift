@@ -13,21 +13,25 @@ class BlogSitePresenter: Presenter<BlogSiteView> {
     private let worker: Worker
     private let detectGhostInstallation: Interactor<URL, String>
     private let signInFactory: Factory<UIViewController>
+    private let aboutFactory: Factory<UIViewController>
 
     init(
         worker: Worker = AsyncWorker(),
         detectGhostInstallation: Interactor<URL, String> = DetectGhostInstallationInteractor(),
-        signInFactory: Factory<UIViewController> = SignInFactory()
+        signInFactory: Factory<UIViewController> = SignInFactory(),
+        aboutFactory: Factory<UIViewController> = AboutFactory()
     ) {
         self.worker = worker
         self.detectGhostInstallation = detectGhostInstallation
         self.signInFactory = signInFactory
+        self.aboutFactory = aboutFactory
         super.init()
     }
 
     override func didLoad() {
         super.didLoad()
         view.onTapButton = detectGhost
+        view.onTapAbout = goToAbout
         if let lastAccount = Account.last {
             view.urlField.text = lastAccount.blogUrl
             detectGhost(urlString: lastAccount.blogUrl)
@@ -55,7 +59,11 @@ class BlogSitePresenter: Presenter<BlogSiteView> {
         let signInView = signInFactory.build()
         signInView.title = title
         view.navigationController?.pushViewController(signInView, animated: true)
+    }
 
+    private func goToAbout() {
+        let aboutView = aboutFactory.build()
+        view.navigationController?.pushViewController(aboutView, animated: true)
     }
 
     override func show(error: Error) {

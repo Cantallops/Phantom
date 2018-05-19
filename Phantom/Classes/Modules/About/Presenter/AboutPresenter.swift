@@ -31,28 +31,44 @@ class AboutPresenter: Presenter<AboutView> {
     }
 
     private func loadSections() {
+        guard let account = Account.current, account.loggedIn else {
+            setUpSections()
+            return
+        }
         let task = Task(loaders: [self], task: { [unowned self] in
             return self.getAboutGhost.execute(args: nil)
         }, completion: { [weak self] result in
             switch result {
             case .success(let about): self?.setUpSections(aboutGhost: about)
-            case .failure(let error): self?.show(error: error)
+            case .failure(let error):
+                self?.setUpSections()
+                self?.show(error: error)
             }
         })
         worker.execute(task: task)
     }
 
-    private func setUpSections(aboutGhost: AboutGhost) {
-        view.sections = getSections(aboutGhost: aboutGhost)
+    private func setUpSections(aboutGhost: AboutGhost? = nil) {
+        if let aboutGhost = aboutGhost {
+            view.sections = getSections(aboutGhost: aboutGhost)
+        } else {
+            view.sections = getAppSections()
+        }
     }
 
     private func getSections(aboutGhost: AboutGhost) -> [UITableView.Section] {
-        let sections: [UITableView.Section] = [
-            getAboutGhostSection(aboutGhost),
+        var sections: [UITableView.Section] = [
+            getAboutGhostSection(aboutGhost)
+        ]
+        sections.append(contentsOf: getAppSections())
+        return sections
+    }
+
+    private func getAppSections() -> [UITableView.Section] {
+        return [
             getAboutApp(Bundle.main),
             getAcknowledgementsSection()
         ]
-        return sections
     }
 
     private func getAboutGhostSection(_ aboutGhost: AboutGhost) -> UITableView.Section {

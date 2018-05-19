@@ -58,11 +58,21 @@
                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vop-Ru-NvE">
+                    <rect key="frame" x="279" y="527" width="31" height="31"/>
+                    <state key="normal" image="ic_table_info"/>
+                    <connections>
+                        <action selector="onTapAboutButton" destination="-1" eventType="touchUpInside" id="ypt-yu-IeW"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="chb-hU-C7L" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="2Ir-3b-hhX"/>
+                <constraint firstItem="vop-Ru-NvE" firstAttribute="trailing" secondItem="chb-hU-C7L" secondAttribute="trailing" id="6JR-wa-NQs"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="vop-Ru-NvE" secondAttribute="bottom" constant="10" id="Ewp-O7-121"/>
                 <constraint firstItem="chb-hU-C7L" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="H0w-xE-Qzt"/>
+                <constraint firstItem="vop-Ru-NvE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="chb-hU-C7L" secondAttribute="bottom" constant="8" id="TFt-wP-87h"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="chb-hU-C7L" secondAttribute="trailing" constant="10" id="TlQ-3b-lDc"/>
                 <constraint firstItem="chb-hU-C7L" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="UID-4I-JCT"/>
                 <constraint firstItem="bzD-SJ-Ver" firstAttribute="leading" secondItem="chb-hU-C7L" secondAttribute="leading" id="f0K-Yu-dXN"/>
@@ -73,4 +83,7 @@
             <point key="canvasLocation" x="33.5" y="54.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="ic_table_info" width="31" height="31"/>
+    </resources>
 </document>
