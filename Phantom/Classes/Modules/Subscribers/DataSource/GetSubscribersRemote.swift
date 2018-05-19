@@ -8,25 +8,6 @@
 
 import Foundation
 
-private struct SubscribersProvider: NetworkProvider {
-
-    var method: HTTPMethod {
-        return .GET
-    }
-    var uri: String {
-        return "/subscribers/"
-    }
-    var parameters: JSON {
-        let params: JSON = [
-            "limit": "all"
-        ]
-        return params
-    }
-    var authenticated: Bool {
-        return true
-    }
-}
-
 class GetSubscribersRemote: DataSource<Meta?, Paginated<[Subscriber]>> {
 
     struct PaginatedSubscribers: Codable {
@@ -39,8 +20,8 @@ class GetSubscribersRemote: DataSource<Meta?, Paginated<[Subscriber]>> {
     }
 
     override func execute(args: Meta?) -> Result<Paginated<[Subscriber]>> {
-        let provider = SubscribersProvider()
-        let result: Result<PaginatedSubscribers> = Network(provider: provider).call()
+        let provider = SubscribersAPIProvider()
+        let result: Result<PaginatedSubscribers> = Network().call(provider: provider)
         switch result {
         case .success(let paginated):
             return .success(paginated.paginated)

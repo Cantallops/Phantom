@@ -8,38 +8,6 @@
 
 import Foundation
 
-private struct PutTagProvider: NetworkProvider {
-    let tag: Tag
-
-    var method: HTTPMethod {
-        return .PUT
-    }
-    var uri: String {
-        return "/tags/\(tag.id)"
-    }
-    var parameters: JSON {
-        return [
-            "tags": [
-                [
-                    "name": tag.name,
-                    "slug": tag.slug,
-                    "description": tag.description,
-                    "meta_title": tag.metaTitle,
-                    "meta_description": tag.metaDescription,
-                    "feature_image": tag.featureImage
-                ]
-            ]
-        ]
-    }
-
-    var authenticated: Bool {
-        return true
-    }
-    var contentType: ContentType {
-        return .json
-    }
-}
-
 struct TagRemote: Codable {
     let tags: [Tag]
 
@@ -59,8 +27,8 @@ class PutTagRemote: DataSource<Tag, Tag> {
     }
 
     override func execute(args: Tag) -> Result<Tag> {
-        let provider = PutTagProvider(tag: args)
-        let result: Result<TagRemote> = Network(provider: provider).call()
+        let provider = EditTagAPIProvider(tag: args)
+        let result: Result<TagRemote> = Network().call(provider: provider)
         switch result {
         case .success(let tagRemote):
             if let tag = tagRemote.tag {

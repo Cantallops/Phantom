@@ -8,37 +8,6 @@
 
 import Foundation
 
-private struct PostTagProvider: NetworkProvider {
-    let tag: Tag
-
-    var method: HTTPMethod {
-        return .POST
-    }
-    var uri: String {
-        return "/tags"
-    }
-    var parameters: JSON {
-        return [
-            "tags": [
-                [
-                    "name": tag.name,
-                    "slug": tag.slug,
-                    "description": tag.description,
-                    "meta_title": tag.metaTitle,
-                    "meta_description": tag.metaDescription,
-                    "feature_image": tag.featureImage
-                ]
-            ]
-        ]
-    }
-    var authenticated: Bool {
-        return true
-    }
-    var contentType: ContentType {
-        return .json
-    }
-}
-
 class PostTagRemote: DataSource<Tag, Tag> {
 
     private let internalNotificationCenter: InternalNotificationCenter<Tag>
@@ -50,8 +19,8 @@ class PostTagRemote: DataSource<Tag, Tag> {
     }
 
     override func execute(args: Tag) -> Result<Tag> {
-        let provider = PostTagProvider(tag: args)
-        let result: Result<TagRemote> = Network(provider: provider).call()
+        let provider = AddTagAPIProvider(tag: args)
+        let result: Result<TagRemote> = Network().call(provider: provider)
         switch result {
         case .success(let tagRemote):
             if let tag = tagRemote.tag {

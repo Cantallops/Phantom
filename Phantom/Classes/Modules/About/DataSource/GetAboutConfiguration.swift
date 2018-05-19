@@ -8,26 +8,14 @@
 
 import Foundation
 
-private struct AboutConfigurationProvider: NetworkProvider {
-    var method: HTTPMethod {
-        return .GET
-    }
-    var uri: String {
-        return "/configuration/about/"
-    }
-    var authenticated: Bool {
-        return true
-    }
-}
-
 private struct AboutConfigurationApi: Codable {
     var configuration: [AboutGhost]
 }
 
 class GetAboutConfiguration: DataSource<Any?, AboutGhost> {
     override func execute(args: Any?) -> Result<AboutGhost> {
-        let provider = AboutConfigurationProvider()
-        let result: Result<AboutConfigurationApi> = Network(provider: provider).call()
+        let provider = AboutConfigurationAPIProvider()
+        let result: Result<AboutConfigurationApi> = Network().call(provider: provider)
         switch result {
         case .success(let aboutConfigurationApi):
             guard let aboutConfiguration = aboutConfigurationApi.configuration.first else {

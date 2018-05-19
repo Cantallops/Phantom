@@ -19,13 +19,13 @@ class NetworkCall: XCTestCase {
             versioning: "ghost/api/v0.1",
             uri: "configuration"
         )
-        let network = Network(provider: provider)
-        let response: Result<Data> = network.call()
+        let network = Network()
+        let response: Result<Data> = network.call(provider: provider)
         XCTAssertTrue(response.isSuccess)
     }
 
     func testProcessSucced() {
-        let network = Network(provider: TestProvider())
+        let network = Network()
         let data = "{\"date\":\"hola\"}".data(using: .utf8)
 
         let response: Result<Data> = network.process(data: data, response: nil, error: nil)
@@ -34,14 +34,14 @@ class NetworkCall: XCTestCase {
     }
 
     func testProcessFailure() {
-        let network = Network(provider: TestProvider())
+        let network = Network()
 
         let response: Result<Data> = network.process(data: nil, response: nil, error: NetworkError(kind: .unknown))
         XCTAssertTrue(response.isFailure)
     }
 
     func testProcessNotDetectErrorNorData() {
-        let network = Network(provider: TestProvider())
+        let network = Network()
         let responseExpected = URLResponse()
         let response: Result<Data> = network.process(data: nil, response: responseExpected, error: nil)
         XCTAssertTrue(response.isFailure)

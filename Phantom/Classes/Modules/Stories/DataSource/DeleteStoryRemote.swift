@@ -8,24 +8,6 @@
 
 import Foundation
 
-private struct DeleteStoryProvider: NetworkProvider {
-    let story: Story
-
-    var method: HTTPMethod {
-        return .DELETE
-    }
-    var uri: String {
-        return "/posts/\(story.id)/"
-    }
-
-    var authenticated: Bool {
-        return true
-    }
-    var contentType: ContentType {
-        return .json
-    }
-}
-
 class DeleteStoryRemote: DataSource<Story, Story> {
 
     private let storyInternalNC: InternalNotificationCenter<Story>
@@ -37,8 +19,8 @@ class DeleteStoryRemote: DataSource<Story, Story> {
     }
 
     override func execute(args: Story) -> Result<Story> {
-        let provider = DeleteStoryProvider(story: args)
-        let result: Result<Data> = Network(provider: provider).call()
+        let provider = DeletePostAPIProvider(story: args)
+        let result: Result<Data> = Network().call(provider: provider)
         switch result {
         case .success:
             storyInternalNC.post(.storyDelete, object: args)

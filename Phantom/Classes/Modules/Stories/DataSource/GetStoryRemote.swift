@@ -8,30 +8,6 @@
 
 import Foundation
 
-private struct GetStoryProvider: NetworkProvider {
-    let storyId: String
-
-    var method: HTTPMethod {
-        return .GET
-    }
-    var uri: String {
-        return "/posts/\(storyId)/"
-    }
-    var queryParameters: JSON {
-        return [
-            "include": "author, tags",
-            "status": "all",
-            "formats": "mobiledoc,html"
-        ]
-    }
-    var authenticated: Bool {
-        return true
-    }
-    var contentType: ContentType {
-        return .json
-    }
-}
-
 class GetStoryRemote: DataSource<String, Story> {
 
     struct StoryRemote: Codable {
@@ -43,8 +19,8 @@ class GetStoryRemote: DataSource<String, Story> {
     }
 
     override func execute(args: String) -> Result<Story> {
-        let provider = GetStoryProvider(storyId: args)
-        let result: Result<StoryRemote> = Network(provider: provider).call()
+        let provider = ReadPostAPIProvider(storyId: args)
+        let result: Result<StoryRemote> = Network().call(provider: provider)
         switch result {
         case .success(let storyRemote):
             if let story = storyRemote.story {

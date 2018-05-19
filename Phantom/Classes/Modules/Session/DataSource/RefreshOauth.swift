@@ -8,26 +8,6 @@
 
 import Foundation
 
-private struct OauthProvider: NetworkProvider {
-    let oauth: Oauth
-
-    var method: HTTPMethod {
-        return .POST
-    }
-    var uri: String {
-        return "/authentication/token"
-    }
-    var parameters: JSON {
-        return [
-            "grant_type": "refresh_token",
-            "refresh_token": oauth.refreshToken
-        ]
-    }
-    var useClientKeys: Bool {
-        return true
-    }
-}
-
 struct RefreshedOauth: Codable {
     let accessToken: String
     let expiresIn: Int
@@ -51,8 +31,8 @@ struct RefreshedOauth: Codable {
 
 class RefreshOauth: DataSource<Oauth, Oauth> {
     override func execute(args: Oauth) -> Result<Oauth> {
-        let provider = OauthProvider(oauth: args)
-        let result: Result<RefreshedOauth> = Network(provider: provider).call(tryRefreshOauth: false)
+        let provider = OauthRefreshAPIProvider(oauth: args)
+        let result: Result<RefreshedOauth> = Network().call(provider: provider, tryRefreshOauth: false)
         switch result {
         case .success(let refreshedOauth):
             return .success(refreshedOauth.getOauth(fromOauth: args))

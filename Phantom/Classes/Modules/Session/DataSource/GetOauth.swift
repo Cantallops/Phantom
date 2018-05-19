@@ -26,30 +26,9 @@ struct Oauth: Codable {
     }
 }
 
-private struct OauthProvider: NetworkProvider {
-    let credentials: Credentials
-
-    var method: HTTPMethod {
-        return .POST
-    }
-    var uri: String {
-        return "/authentication/token"
-    }
-    var parameters: JSON {
-        return [
-            "grant_type": "password",
-            "password": credentials.password,
-            "username": credentials.email
-        ]
-    }
-    var useClientKeys: Bool {
-        return true
-    }
-}
-
 class GetOauth: DataSource<Credentials, Oauth> {
     override func execute(args: Credentials) -> Result<Oauth> {
-        let provider = OauthProvider(credentials: args)
-        return Network(provider: provider).call(tryRefreshOauth: false)
+        let provider = OauthAPIProvider(credentials: args)
+        return Network().call(provider: provider, tryRefreshOauth: false)
     }
 }

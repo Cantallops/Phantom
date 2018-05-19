@@ -8,31 +8,11 @@
 
 import Foundation
 
-private struct UploadProvider: NetworkProvider {
-    let file: File
-
-    var method: HTTPMethod {
-        return .POST
-    }
-    var uri: String {
-        return "/uploads/"
-    }
-    var authenticated: Bool {
-        return true
-    }
-    var contentType: ContentType {
-        return .multipart
-    }
-    var fileToUpload: File? {
-        return file
-    }
-}
-
 class UploadFile: DataSource<File, String> {
 
     override func execute(args: File) -> Result<String> {
-        let provider = UploadProvider(file: args)
-        let result: Result<Data> = Network(provider: provider).call()
+        let provider = UploadFileAPIProvider(file: args)
+        let result: Result<Data> = Network().call(provider: provider)
         switch result {
         case .success(let data):
             let error = NetworkError(kind: .parse, debugDescription: "No image's URI found")

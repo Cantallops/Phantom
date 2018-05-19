@@ -8,34 +8,14 @@
 
 import Foundation
 
-private struct RevokeRefreshTokenProvider: NetworkProvider {
-    let oauth: Oauth
-
-    var method: HTTPMethod {
-        return .POST
-    }
-    var uri: String {
-        return "/authentication/revoke"
-    }
-    var parameters: JSON {
-        return [
-            "tokenTypeHint": "refresh_token",
-            "token": oauth.refreshToken
-        ]
-    }
-    var authenticated: Bool {
-        return true
-    }
-}
-
 struct RevokedRefreshToken: Codable {
     let token: String
 }
 
 class RevokeRefreshToken: DataSource<Oauth, Any?> {
     override func execute(args: Oauth) -> Result<Any?> {
-        let provider = RevokeRefreshTokenProvider(oauth: args)
-        let result: Result<RevokedRefreshToken> = Network(provider: provider).call(tryRefreshOauth: false)
+        let provider = RevokeRefreshTokenAPIProvider(oauth: args)
+        let result: Result<RevokedRefreshToken> = Network().call(provider: provider, tryRefreshOauth: false)
         switch result {
         case .success(let revokedOauth):
             if revokedOauth.token != args.accessToken {

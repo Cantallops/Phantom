@@ -8,61 +8,6 @@
 
 import Foundation
 
-private struct PutStoryProvider: NetworkProvider {
-    let story: Story
-
-    var method: HTTPMethod {
-        return .PUT
-    }
-    var uri: String {
-        return "/posts/\(story.id)/"
-    }
-    var parameters: JSON {
-        var post: JSON = [:]
-        post["featured"] = story.featured
-        post["feature_image"] = story.featureImage
-        post["mobiledoc"] = story.mobiledoc
-        post["page"] = story.page
-        post["featured"] = story.featured
-        post["slug"] = story.slug
-        post["status"] = story.status.rawValue
-        post["title"] = story.title
-        post["published_at"] = story.publishedAt?.apiFormated()
-        post["custom_excerpt"] = story.excerpt
-        post["meta_title"] = story.metaTitle
-        post["meta_description"] = story.metaDescription
-        post["author"] = story.author?.id
-
-        var jsonTags: [JSON] = []
-        for tag in story.tags {
-            var jsonTag: JSON = [:]
-            if !tag.id.isEmpty {
-                jsonTag["id"] = tag.id
-            }
-            jsonTag["name"] = tag.name
-            jsonTags.append(jsonTag)
-        }
-        post["tags"] = jsonTags
-        return [
-            "posts": [post]
-        ]
-    }
-
-    var queryParameters: JSON {
-        return [
-            "include": "author, tags",
-            "formats": "mobiledoc,html"
-        ]
-    }
-
-    var authenticated: Bool {
-        return true
-    }
-    var contentType: ContentType {
-        return .json
-    }
-}
-
 struct StoryRemote: Codable {
     struct Object: Codable {
         let id: String
@@ -88,8 +33,8 @@ class PutStoryRemote: DataSource<Story, Story> {
     }
 
     override func execute(args: Story) -> Result<Story> {
-        let provider = PutStoryProvider(story: args)
-        let result: Result<StoryRemote> = Network(provider: provider).call()
+        let provider = EditPostAPIProvider(story: args)
+        let result: Result<StoryRemote> = Network().call(provider: provider)
         switch result {
         case .success(let storyRemote):
             if let story = storyRemote.story {

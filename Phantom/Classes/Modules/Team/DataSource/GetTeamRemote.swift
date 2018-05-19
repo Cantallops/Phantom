@@ -8,24 +8,6 @@
 
 import Foundation
 
-private struct TeamProvider: NetworkProvider {
-    var method: HTTPMethod {
-        return .GET
-    }
-    var uri: String {
-        return "/users/"
-    }
-    var parameters: JSON {
-        return [
-            "include": "roles",
-            "limit": "all"
-        ]
-    }
-    var authenticated: Bool {
-        return true
-    }
-}
-
 class GetTeamRemote: DataSource<Meta?, Paginated<[TeamMember]>> {
 
     struct PaginatedTeam: Codable {
@@ -38,8 +20,8 @@ class GetTeamRemote: DataSource<Meta?, Paginated<[TeamMember]>> {
     }
 
     override func execute(args: Meta?) -> Result<Paginated<[TeamMember]>> {
-        let provider = TeamProvider()
-        let result: Result<PaginatedTeam> = Network(provider: provider).call()
+        let provider = BrowseUsersAPIProvider()
+        let result: Result<PaginatedTeam> = Network().call(provider: provider)
         switch result {
         case .success(let members):
             return .success(members.paginated)

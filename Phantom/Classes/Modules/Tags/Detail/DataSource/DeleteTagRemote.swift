@@ -8,20 +8,6 @@
 
 import Foundation
 
-private struct DeleteTagProvider: NetworkProvider {
-    let tag: Tag
-
-    var method: HTTPMethod {
-        return .DELETE
-    }
-    var uri: String {
-        return "/tags/\(tag.id)"
-    }
-    var authenticated: Bool {
-        return true
-    }
-}
-
 class DeleteTagRemote: DataSource<Tag, Tag> {
 
     private let internalNotificationCenter: InternalNotificationCenter<Tag>
@@ -33,8 +19,8 @@ class DeleteTagRemote: DataSource<Tag, Tag> {
     }
 
     override func execute(args: Tag) -> Result<Tag> {
-        let provider = DeleteTagProvider(tag: args)
-        let result: Result<Data> = Network(provider: provider).call()
+        let provider = DeleteTagAPIProvider(tag: args)
+        let result: Result<Data> = Network().call(provider: provider)
         switch result {
         case .success:
             internalNotificationCenter.post(.tagDelete, object: args)

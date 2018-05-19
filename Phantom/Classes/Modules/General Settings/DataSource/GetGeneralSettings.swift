@@ -8,22 +8,10 @@
 
 import Foundation
 
-private struct SettingsProvider: NetworkProvider {
-    var method: HTTPMethod {
-        return .GET
-    }
-    var uri: String {
-        return "/settings/"
-    }
-    var authenticated: Bool {
-        return true
-    }
-}
-
 class GetGeneralSettings: DataSource<Any?, GeneralSettings> {
     override func execute(args: Any?) -> Result<GeneralSettings> {
-        let provider = SettingsProvider()
-        let result: Result<GeneralSettings> = Network(provider: provider).call()
+        let provider = SettingsAPIProvider()
+        let result: Result<GeneralSettings> = Network().call(provider: provider)
         return result
     }
 }

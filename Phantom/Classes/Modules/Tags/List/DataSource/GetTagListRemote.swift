@@ -8,24 +8,6 @@
 
 import Foundation
 
-private struct TagListProvider: NetworkProvider {
-    var method: HTTPMethod {
-        return .GET
-    }
-    var uri: String {
-        return "/tags/"
-    }
-    var parameters: JSON {
-        return [
-            "limit": "all",
-            "include": "count.posts"
-        ]
-    }
-    var authenticated: Bool {
-        return true
-    }
-}
-
 class GetTagListRemote: DataSource<Meta?, Paginated<[Tag]>> {
 
     struct PaginatedTags: Codable {
@@ -38,8 +20,8 @@ class GetTagListRemote: DataSource<Meta?, Paginated<[Tag]>> {
     }
 
     override func execute(args: Meta?) -> Result<Paginated<[Tag]>> {
-        let provider = TagListProvider()
-        let result: Result<PaginatedTags> = Network(provider: provider).call()
+        let provider = BrowseTagsAPIProvider()
+        let result: Result<PaginatedTags> = Network().call(provider: provider)
         switch result {
         case .success(let paginatedTags):
             return .success(paginatedTags.paginated)

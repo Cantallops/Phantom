@@ -8,49 +8,6 @@
 
 import Foundation
 
-private struct PostStoryProvider: NetworkProvider {
-    let story: Story
-
-    var method: HTTPMethod {
-        return .POST
-    }
-    var uri: String {
-        return "/posts/"
-    }
-    var parameters: JSON {
-        var post: JSON = [:]
-        post["featured"] = story.featured
-        post["feature_image"] = story.featureImage
-        post["mobiledoc"] = story.mobiledoc
-        post["page"] = story.page
-        post["featured"] = story.featured
-        post["slug"] = story.slug
-        post["status"] = story.status.rawValue
-        post["title"] = story.title
-        post["published_at"] = story.publishedAt?.apiFormated()
-        post["custom_excerpt"] = story.excerpt
-        post["meta_title"] = story.metaTitle
-        post["meta_description"] = story.metaDescription
-        return [
-            "posts": [post]
-        ]
-    }
-
-    var queryParameters: JSON {
-        return [
-            "include": "author, tags",
-            "formats": "mobiledoc,html"
-        ]
-    }
-
-    var authenticated: Bool {
-        return true
-    }
-    var contentType: ContentType {
-        return .json
-    }
-}
-
 class PostStoryRemote: DataSource<Story, Story> {
 
     private let storyInternalNC: InternalNotificationCenter<Story>
@@ -62,8 +19,8 @@ class PostStoryRemote: DataSource<Story, Story> {
     }
 
     override func execute(args: Story) -> Result<Story> {
-        let provider = PostStoryProvider(story: args)
-        let result: Result<StoryRemote> = Network(provider: provider).call()
+        let provider = AddPostAPIProvider(story: args)
+        let result: Result<StoryRemote> = Network().call(provider: provider)
         switch result {
         case .success(let storyRemote):
             if let story = storyRemote.story {

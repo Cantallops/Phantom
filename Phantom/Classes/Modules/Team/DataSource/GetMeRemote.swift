@@ -8,23 +8,6 @@
 
 import Foundation
 
-private struct MeProvider: NetworkProvider {
-    var method: HTTPMethod {
-        return .GET
-    }
-    var uri: String {
-        return "/users/me/"
-    }
-    var parameters: JSON {
-        return [
-            "include": "roles"
-        ]
-    }
-    var authenticated: Bool {
-        return true
-    }
-}
-
 class GetMeRemote: DataSource<Any?, TeamMember> {
 
     struct TeamMemberApi: Codable {
@@ -36,8 +19,8 @@ class GetMeRemote: DataSource<Any?, TeamMember> {
     }
 
     override func execute(args: Any?) -> Result<TeamMember> {
-        let provider = MeProvider()
-        let result: Result<TeamMemberApi> = Network(provider: provider).call()
+        let provider = ReadUserAPIProvider(id: "me")
+        let result: Result<TeamMemberApi> = Network().call(provider: provider)
         switch result {
         case .success(let members):
             guard let user = members.user else {

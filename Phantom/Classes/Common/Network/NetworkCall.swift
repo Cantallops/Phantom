@@ -9,16 +9,17 @@
 import UIKit
 
 extension Network {
-    func call<T: Codable>(tryRefreshOauth: Bool = true) -> Result<T> {
+    func call<T: Codable>(provider: NetworkProvider, tryRefreshOauth: Bool = true) -> Result<T> {
+        let forwardRedirection = ForwardRedirection(provider: provider)
         let session = URLSession(
             configuration: URLSession.shared.configuration,
-            delegate: self,
+            delegate: forwardRedirection,
             delegateQueue: nil
         )
         let semaphore = DispatchSemaphore(value: 0)
         var result: Result<T> = .failure(NetworkError(kind: .unknown))
         networkIndicator(activate: true)
-        let dataTask = session.dataTask(with: urlRequest) { data, response, error in
+        let dataTask = session.dataTask(with: provider.urlRequest) { data, response, error in
             result = self.process(data: data, response: response, error: error)
             semaphore.signal()
         }
@@ -33,7 +34,7 @@ extension Network {
                 case .success(let oauth):
                     account.oauth = oauth
                     Account.current = account
-                    return call(tryRefreshOauth: false)
+                    return call(provider: provider, tryRefreshOauth: false)
                 case .failure:
                     return result
                 }
@@ -66,13 +67,20 @@ extension Network {
 
 }
 
-extension Network: URLSessionTaskDelegate {
+class ForwardRedirection: NSObject, URLSessionTaskDelegate {
+    let provider: NetworkProvider
+
+    init(provider: NetworkProvider) {
+        self.provider = provider
+    }
+
     func urlSession(_ session: URLSession,
                     task: URLSessionTask,
                     willPerformHTTPRedirection response: HTTPURLResponse,
                     newRequest request: URLRequest,
-                    completionHandler: @escaping (URLRequest?) -> Void) {
-        var newRequest = urlRequest
+                    completionHandler: @escaping (URLRequest?) -> Void
+    ) {
+        var newRequest = provider.urlRequest
         newRequest.url = request.url
         completionHandler(newRequest)
     }
