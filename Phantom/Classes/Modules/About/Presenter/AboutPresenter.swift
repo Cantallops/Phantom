@@ -125,7 +125,10 @@ class AboutPresenter: Presenter<AboutView> {
     }
 
     private func getAcknowledgementsSection() -> UITableView.Section {
-        let acknowledgementsCellConf = BasicTableViewCell.Conf(text: "Acknowledgements")
+        let acknowledgementsCellConf = BasicTableViewCell.Conf(
+            text: "Acknowledgements",
+            image: #imageLiteral(resourceName: "ic_table_acknowledge")
+        )
         acknowledgementsCellConf.onSelect = { [unowned self] in
             self.openAcknowledgements()
         }
