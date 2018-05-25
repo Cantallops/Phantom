@@ -276,10 +276,7 @@
 		569447D81FE9AD700045B752 /* SimpleTableSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569447D71FE9AD700045B752 /* SimpleTableSectionHeaderView.xib */; };
 		569447DC1FE9C1CC0045B752 /* EmptyTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569447DB1FE9C1CC0045B752 /* EmptyTableHeader.swift */; };
 		569447E11FE9C3590045B752 /* EmptyTableSectionFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569447E01FE9C3590045B752 /* EmptyTableSectionFooter.swift */; };
-		569447E41FE9C4840045B752 /* SubtitleTableSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569447E31FE9C4840045B752 /* SubtitleTableSectionHeader.swift */; };
-		569447E61FE9C5040045B752 /* SubtitleTableSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569447E51FE9C5040045B752 /* SubtitleTableSectionHeaderView.xib */; };
 		569447ED1FED541D0045B752 /* MetaDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569447EB1FED541D0045B752 /* MetaDataView.swift */; };
-		569447EE1FED541D0045B752 /* MetaDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569447EC1FED541D0045B752 /* MetaDataView.xib */; };
 		569447F01FED542D0045B752 /* MetaDataPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569447EF1FED542D0045B752 /* MetaDataPresenter.swift */; };
 		569447F31FED54C30045B752 /* MetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569447F21FED54C30045B752 /* MetaData.swift */; };
 		569447F51FED58640045B752 /* MetaDataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569447F41FED58640045B752 /* MetaDataBuilder.swift */; };
@@ -706,8 +703,6 @@
 		569447D71FE9AD700045B752 /* SimpleTableSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleTableSectionHeaderView.xib; sourceTree = "<group>"; };
 		569447DB1FE9C1CC0045B752 /* EmptyTableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableHeader.swift; sourceTree = "<group>"; };
 		569447E01FE9C3590045B752 /* EmptyTableSectionFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableSectionFooter.swift; sourceTree = "<group>"; };
-		569447E31FE9C4840045B752 /* SubtitleTableSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleTableSectionHeader.swift; sourceTree = "<group>"; };
-		569447E51FE9C5040045B752 /* SubtitleTableSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubtitleTableSectionHeaderView.xib; sourceTree = "<group>"; };
 		569447EB1FED541D0045B752 /* MetaDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaDataView.swift; sourceTree = "<group>"; };
 		569447EC1FED541D0045B752 /* MetaDataView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MetaDataView.xib; sourceTree = "<group>"; };
 		569447EF1FED542D0045B752 /* MetaDataPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaDataPresenter.swift; sourceTree = "<group>"; };
@@ -3047,7 +3042,6 @@
 				56EB106B20337EE20070BE17 /* UITableViewSectionHeader.swift */,
 				569447DA1FE9C1AE0045B752 /* Empty */,
 				569447D91FE9C1A60045B752 /* Simple */,
-				569447E21FE9C46B0045B752 /* Subtitle */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -3096,15 +3090,6 @@
 				569447E01FE9C3590045B752 /* EmptyTableSectionFooter.swift */,
 			);
 			path = Empty;
-			sourceTree = "<group>";
-		};
-		569447E21FE9C46B0045B752 /* Subtitle */ = {
-			isa = PBXGroup;
-			children = (
-				569447E31FE9C4840045B752 /* SubtitleTableSectionHeader.swift */,
-				569447E51FE9C5040045B752 /* SubtitleTableSectionHeaderView.xib */,
-			);
-			path = Subtitle;
 			sourceTree = "<group>";
 		};
 		569447E71FED53C60045B752 /* MetaData */ = {
@@ -4049,7 +4034,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5608671B1FA9DF49002A9790 /* SubtitleTableViewCell.xib in Resources */,
-				569447E61FE9C5040045B752 /* SubtitleTableSectionHeaderView.xib in Resources */,
 				561E7A4420AA238A00A35BC6 /* SimpleTableSectionFooterView.xib in Resources */,
 				568558B51F89464F000AA39F /* AppsView.xib in Resources */,
 				5672C9451F5F215800439F46 /* LaunchScreen.storyboard in Resources */,
@@ -4060,7 +4044,6 @@
 				560867201FAA29C4002A9790 /* SpaceTableViewCell.xib in Resources */,
 				5682D0711F86AC4F008DEC22 /* StoryDetailView.xib in Resources */,
 				56E2D4691FBCA27D00DD4A7D /* ImageUploaderTableViewCell.xib in Resources */,
-				569447EE1FED541D0045B752 /* MetaDataView.xib in Resources */,
 				56E2D4511FBA3E6D00DD4A7D /* PublisherView.xib in Resources */,
 				56E2D4641FBCA17100DD4A7D /* ImageUploaderView.xib in Resources */,
 				56836BB31F7AB40F009ADE15 /* SignInView.xib in Resources */,
@@ -4281,7 +4264,6 @@
 				561E7A8020AE218000A35BC6 /* EditTagAPIProvider.swift in Sources */,
 				5682D0701F86AC4F008DEC22 /* StoryDetailView.swift in Sources */,
 				5682D0851F86B8D6008DEC22 /* SubscribersListFactory.swift in Sources */,
-				569447E41FE9C4840045B752 /* SubtitleTableSectionHeader.swift in Sources */,
 				561E7A6620AE1FA000A35BC6 /* SettingsAPIProvider.swift in Sources */,
 				566BFDC41F7C2D880051AD9F /* GetOauth.swift in Sources */,
 				561E7A7020AE208800A35BC6 /* RevokeRefreshTokenAPIProvider.swift in Sources */,
