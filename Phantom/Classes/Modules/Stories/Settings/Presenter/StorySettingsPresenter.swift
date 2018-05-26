@@ -21,6 +21,7 @@ class StorySettingsPresenter: Presenter<StorySettingsView> {
     private let getMembers: Interactor<Meta?, Paginated<[TeamMember]>>
     private let getMe: Interactor<Any?, TeamMember>
     private let metaDataBuilder: Builder<MetaDataArg, UIViewController>
+    private let getTemplates: Interactor<Any?, [Theme.Template]>
 
     private var me: TeamMember?
     private var showAuthors: Bool {
@@ -31,6 +32,7 @@ class StorySettingsPresenter: Presenter<StorySettingsView> {
     }
     private var authors: [Story.Author] = []
     private var tags: [Tag] = []
+    private var templates: [Theme.Template] = []
 
     init(
         worker: Worker = AsyncWorker(),
@@ -40,7 +42,8 @@ class StorySettingsPresenter: Presenter<StorySettingsView> {
         getTags: Interactor<Meta?, Paginated<[Tag]>>,
         getMembers: Interactor<Meta?, Paginated<[TeamMember]>>,
         getMe: Interactor<Any?, TeamMember>,
-        metaDataBuilder: Builder<MetaDataArg, UIViewController>
+        metaDataBuilder: Builder<MetaDataArg, UIViewController>,
+        getTemplates: Interactor<Any?, [Theme.Template]>
     ) {
         self.worker = worker
         self.story = story
@@ -50,6 +53,7 @@ class StorySettingsPresenter: Presenter<StorySettingsView> {
         self.getMembers = getMembers
         self.getMe = getMe
         self.metaDataBuilder = metaDataBuilder
+        self.getTemplates = getTemplates
         super.init()
     }
 
@@ -58,6 +62,7 @@ class StorySettingsPresenter: Presenter<StorySettingsView> {
         view.title = "Post settings"
         loadTags()
         loadAuthors()
+        loadTemplates()
     }
 
     private func loadTags() {
@@ -91,8 +96,26 @@ class StorySettingsPresenter: Presenter<StorySettingsView> {
         worker.execute(task: task)
     }
 
+    private func loadTemplates() {
+        let task = Task(task: { [unowned self] () -> Result<[Theme.Template]> in
+            return self.getTemplates.execute(args: nil)
+            }, completion: { [weak self] result in
+                switch result {
+                case .success(let templates): self?.templates = templates
+                case .failure(let error): self?.show(error: error)
+                }
+                self?.showSections()
+        })
+        worker.execute(task: task)
+    }
+
     private func showSections() {
-        view.sections = getSections(withTags: tags, authors: authors, showAuthors: showAuthors)
+        view.sections = getSections(
+            withTags: tags,
+            authors: authors,
+            showAuthors: showAuthors,
+            templates: templates
+        )
     }
 
     private func askToDelete() {
@@ -120,7 +143,8 @@ class StorySettingsPresenter: Presenter<StorySettingsView> {
     private func getSections(
         withTags tags: [Tag],
         authors: [Story.Author],
-        showAuthors: Bool
+        showAuthors: Bool,
+        templates: [Theme.Template]
     ) -> [UITableView.Section] {
         let spaceCellConf = SpaceTableViewCell.Conf(height: 20)
 
@@ -136,6 +160,10 @@ class StorySettingsPresenter: Presenter<StorySettingsView> {
         }
         cells.append(spaceCellConf)
         cells.append(contentsOf: getMetaDataSection())
+        if !templates.isEmpty {
+            cells.append(spaceCellConf)
+            cells.append(getTemplateSection(with: templates))
+        }
         cells.append(contentsOf: [
             spaceCellConf,
             getIsPageCellConf(),
@@ -222,7 +250,7 @@ private extension StorySettingsPresenter {
             onTagsChange: { [unowned self] _, tags in
                 self.story.tags = tags.getTags()
                 self.edited(story: self.story)
-        },
+            },
             currentTags: story.tags.getCellTags(),
             possibleTags: tags.getCellTags()
         )
@@ -260,9 +288,7 @@ private extension StorySettingsPresenter {
             text: "Meta Data",
             subtitle: "Extra content for SEO and social media"
         )
-        metaDataInfoCellConf.onSelect = { [unowned self] in
-            self.openMetaDataEditor()
-        }
+        metaDataInfoCellConf.onSelect = openMetaDataEditor
         metaDataInfoCellConf.deselect = true
         metaDataInfoCellConf.accessoryType = .disclosureIndicator
         return [metaDataInfoCellConf]
@@ -286,10 +312,26 @@ private extension StorySettingsPresenter {
             onSwitch: { [unowned self] isFeatured in
                 self.story.featured = isFeatured
                 self.edited(story: self.story)
-            },
-            isOn: story.featured
+            }, isOn: story.featured
         )
         return isFeaturedCellConf
+    }
+
+    func getTemplateSection(with templates: [Theme.Template]) -> TableCellConf {
+        let defaultTemplate = Theme.Template(name: "Default", filename: "default")
+        var allTemplates = [defaultTemplate]
+        allTemplates.append(contentsOf: templates)
+        let templatesPickerConf = PickerTableViewCell.Conf(
+            title: "Template",
+            selected: allTemplates.first(where: { $0.filename == self.story.customTemplate }) ?? defaultTemplate,
+            options: allTemplates,
+            placeholder: "Choose a template",
+            explain: nil) { _, pickerable in
+                guard let template = pickerable as? Theme.Template else { return }
+                self.story.customTemplate = (template == defaultTemplate) ? nil : template.filename
+                self.edited(story: self.story)
+        }
+        return templatesPickerConf
     }
 
     func getDeleteCellConf() -> TableCellConf {
@@ -346,7 +388,10 @@ extension Array where Element==Tag {
     }
 }
 
-extension Story.Author: Pickerable {
+extension Theme.Template: Pickerable {
+    var id: String {
+        return name
+    }
 }
 
 extension TeamMember: Pickerable {

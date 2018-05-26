@@ -329,6 +329,7 @@ extension Optional where Wrapped==Story {
             plaintext: self?.plaintext,
             status: self?.status ?? .draft,
             excerpt: self?.excerpt,
+            customTemplate: self?.customTemplate,
             tags: self?.tags ?? [],
             updatedAt: self?.updatedAt ?? Date(),
             publishedAt: self?.publishedAt,

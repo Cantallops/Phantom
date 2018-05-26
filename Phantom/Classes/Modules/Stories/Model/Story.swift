@@ -23,6 +23,7 @@ struct Story: Codable {
     var plaintext: String?
     var status: Status
     var excerpt: String?
+    var customTemplate: String?
 
     var tags: [Tag]
 
@@ -82,6 +83,7 @@ struct Story: Codable {
         case updatedAt = "updated_at"
         case publishedAt = "published_at"
         case excerpt = "custom_excerpt"
+        case customTemplate = "custom_template"
         case tags
         case metaTitle = "meta_title"
         case metaDescription = "meta_description"

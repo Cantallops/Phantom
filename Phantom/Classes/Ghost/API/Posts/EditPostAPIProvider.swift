@@ -33,6 +33,7 @@ struct EditPostAPIProvider: NetworkProvider {
         post["custom_excerpt"] = story.excerpt
         post["meta_title"] = story.metaTitle
         post["meta_description"] = story.metaDescription
+        post["custom_template"] = story.customTemplate
 
         var jsonAuthors: [JSON] = []
         for author in story.authors {
