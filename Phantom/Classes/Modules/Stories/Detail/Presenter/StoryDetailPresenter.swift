@@ -323,6 +323,7 @@ extension Optional where Wrapped==Story {
             featured: self?.featured ?? false,
             page: self?.page ?? false,
             author: self?.author,
+            authors: self?.authors ?? [],
             mobiledoc: self?.mobiledoc ?? "",
             html: self?.html,
             plaintext: self?.plaintext,

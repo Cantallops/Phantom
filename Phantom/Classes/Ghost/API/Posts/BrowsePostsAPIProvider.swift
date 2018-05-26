@@ -23,7 +23,7 @@ struct BrowsePostsAPIProvider: NetworkProvider {
         var params: JSON = [
             "limit": "all",
             "status": "all",
-            "include": "author,tags",
+            "include": "author,authors,tags",
             "staticPages": "all",
             "formats": "mobiledoc,html,plaintext"
         ]

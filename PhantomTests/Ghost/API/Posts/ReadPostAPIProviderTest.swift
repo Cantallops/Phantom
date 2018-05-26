@@ -37,7 +37,7 @@ class ReadPostAPIProviderTest: XCTestCase {
 
     func testQueryParams() {
         let params = provider.queryParameters
-        XCTAssertEqual(params["include"] as? String, "author,tags")
+        XCTAssertEqual(params["include"] as? String, "author,authors,tags")
         XCTAssertEqual(params["status"] as? String, "all")
         XCTAssertEqual(params["formats"] as? String, "mobiledoc,html")
     }

@@ -21,7 +21,7 @@ struct ReadPostAPIProvider: NetworkProvider {
 
     var queryParameters: JSON {
         return [
-            "include": "author,tags",
+            "include": "author,authors,tags",
             "status": "all",
             "formats": "mobiledoc,html"
         ]

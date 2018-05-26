@@ -19,6 +19,7 @@ extension Story {
         featured: false,
         page: false,
         author: nil,
+        authors: [],
         mobiledoc: Story.MobileDoc(),
         html: nil,
         plaintext: nil,

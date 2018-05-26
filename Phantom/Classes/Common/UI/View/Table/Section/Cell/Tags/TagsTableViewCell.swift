@@ -19,9 +19,10 @@ class TagsTableViewCell: TableViewCell {
     typealias OnTagChangeClosure = ((Conf, [Tag]) -> Void)?
 
     @IBOutlet weak var titleLabel: Label!
-     @IBOutlet weak private var tagsField: WSTagsField!
+    @IBOutlet weak private var tagsField: WSTagsField!
     private var suggestionsBar: UIToolbar!
     private var possibleTags: [Tag] = []
+    private var canAddNewTags: Bool = true
 
     class Conf: TableCellConf {
 
@@ -31,18 +32,20 @@ class TagsTableViewCell: TableViewCell {
         var onTagsChange: OnTagChangeClosure
         var currentTags: [Tag]
         var possibleTags: [Tag]
+        var canAddNewTags: Bool
 
         init(
             title: String? = nil,
             onTagsChange: OnTagChangeClosure = nil,
             currentTags: [Tag] = [],
-            possibleTags: [Tag] = []
+            possibleTags: [Tag] = [],
+            canAddNewTags: Bool = true
         ) {
             self.title = title
             self.onTagsChange = onTagsChange
             self.currentTags = currentTags
             self.possibleTags = possibleTags
-
+            self.canAddNewTags = canAddNewTags
             super.init(
                 identifier: "TagsViewCell",
                 nib: UINib(nibName: "TagsTableViewCell", bundle: nil)
@@ -60,7 +63,7 @@ class TagsTableViewCell: TableViewCell {
         tagsField.layer.masksToBounds = true
         tagsField.layer.borderWidth = 1.0
         tagsField.layer.borderColor = Color.border.cgColor
-        tagsField.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        tagsField.contentInset = UIEdgeInsets(top: 13, left: 8, bottom: 8, right: 8)
         tagsField.spaceBetweenTags = 5.0
         tagsField.font = UIFont.preferredFont(forTextStyle: .footnote)
         tagsField.tintColor = Color.tint
@@ -83,10 +86,18 @@ class TagsTableViewCell: TableViewCell {
         suggestionsBar = UIToolbar()
         suggestionsBar.isTranslucent = false
         possibleTags = conf.possibleTags
+        canAddNewTags = conf.canAddNewTags
         for currentTag in conf.currentTags {
             tagsField.addTag(currentTag.name)
         }
         reloadSuggestions()
+        tagsField.onVerifyTag = { _, text in
+            if self.canAddNewTags {
+                return true
+            } else {
+                return conf.possibleTags.contains(where: { $0.name.lowercased() == text.lowercased() })
+            }
+        }
         tagsField.onDidChangeHeightTo = { _, height in
             self.refreshHeight?()
         }
@@ -99,7 +110,7 @@ class TagsTableViewCell: TableViewCell {
     private func reloadSuggestions(text: String = "") {
         let suggestions = getSuggestions(forText: text)
         var items = generateBarButtonItems(forSuggestions: suggestions)
-        if !text.isEmpty {
+        if !text.isEmpty && canAddNewTags {
             let flex = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
             let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTag))
             items.append(flex)
@@ -146,7 +157,7 @@ class TagsTableViewCell: TableViewCell {
     private func changeTags(wsTags: [WSTag], conf: Conf) {
         let possibleTags = self.possibleTags
         let tags = wsTags.map { wsTag -> Tag in
-            let filteredTags = possibleTags.filter { $0.name == wsTag.text }
+            let filteredTags = possibleTags.filter { $0.name.lowercased() == wsTag.text.lowercased() }
             switch filteredTags.count {
             case 0: return Tag(id: "", name: wsTag.text)
             case 0...: return filteredTags.first!

@@ -17,6 +17,7 @@ struct Story: Codable {
     var featured: Bool
     var page: Bool
     var author: Author?
+    var authors: [Author]
     var mobiledoc: MobileDoc
     var html: HTML?
     var plaintext: String?
@@ -41,7 +42,7 @@ struct Story: Codable {
         case scheduled
     }
 
-    struct Author: Codable {
+    struct Author: Codable, Equatable {
         let id: String
         var name: String
     }
@@ -73,6 +74,7 @@ struct Story: Codable {
         case featured
         case page
         case author
+        case authors
         case mobiledoc
         case html
         case plaintext
@@ -126,7 +128,10 @@ extension Story: Equatable {
         if lhs.page != rhs.page {
             return false
         }
-        if lhs.author?.id != rhs.author?.id {
+        if lhs.author != rhs.author {
+            return false
+        }
+        if lhs.authors != rhs.authors {
             return false
         }
         if lhs.mobiledoc != rhs.mobiledoc {

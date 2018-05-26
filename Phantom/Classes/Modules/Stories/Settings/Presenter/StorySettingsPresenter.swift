@@ -242,17 +242,17 @@ private extension StorySettingsPresenter {
     }
 
     func getAuthorPickerCellConf(withAuthors authors: [Story.Author]) -> TableCellConf {
-        let authorPicker = PickerTableViewCell.Conf(
+        let authorPickerConf = TagsTableViewCell.Conf(
             title: "Author",
-            selected: story.author,
-            options: authors,
-            placeholder: "Select an author") { [unowned self] (_, selected) in
-                if let author = selected as? Story.Author {
-                    self.story.author = author
-                    self.edited(story: self.story)
-                }
-        }
-        return authorPicker
+            onTagsChange: { [unowned self] _, tags in
+                self.story.authors = tags.map({ Story.Author(id: $0.id, name: $0.name) })
+                self.edited(story: self.story)
+            },
+            currentTags: story.authors.map({ TagsTableViewCell.Tag(id: $0.id, name: $0.name) }),
+            possibleTags: authors.map({ TagsTableViewCell.Tag(id: $0.id, name: $0.name) }),
+            canAddNewTags: false
+        )
+        return authorPickerConf
     }
 
     func getMetaDataSection() -> [TableCellConf] {

@@ -80,5 +80,4 @@ class PickerTableViewCell: TableViewCell {
             self?.selectItself()
         }
     }
-
 }

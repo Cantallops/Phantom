@@ -33,8 +33,15 @@ struct EditPostAPIProvider: NetworkProvider {
         post["custom_excerpt"] = story.excerpt
         post["meta_title"] = story.metaTitle
         post["meta_description"] = story.metaDescription
-        post["author"] = story.author?.id
 
+        var jsonAuthors: [JSON] = []
+        for author in story.authors {
+            var jsonAuthor: JSON = [:]
+            jsonAuthor["id"] = author.id
+            jsonAuthor["name"] = author.name
+            jsonAuthors.append(jsonAuthor)
+        }
+        post["authors"] = jsonAuthors
         var jsonTags: [JSON] = []
         for tag in story.tags {
             var jsonTag: JSON = [:]

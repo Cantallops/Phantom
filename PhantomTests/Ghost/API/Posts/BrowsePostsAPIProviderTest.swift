@@ -39,7 +39,7 @@ class BrowsePostsAPIProviderTest: XCTestCase {
         XCTAssertEqual(params["limit"] as? String, "all")
         XCTAssertEqual(params["status"] as? String, "all")
         XCTAssertEqual(params["staticPages"] as? String, "all")
-        XCTAssertEqual(params["include"] as? String, "author,tags")
+        XCTAssertEqual(params["include"] as? String, "author,authors,tags")
         XCTAssertEqual(params["formats"] as? String, "mobiledoc,html,plaintext")
     }
 
@@ -49,7 +49,7 @@ class BrowsePostsAPIProviderTest: XCTestCase {
         XCTAssertEqual(params["limit"] as? String, "all")
         XCTAssertEqual(params["status"] as? String, "all")
         XCTAssertEqual(params["staticPages"] as? String, "all")
-        XCTAssertEqual(params["include"] as? String, "author,tags")
+        XCTAssertEqual(params["include"] as? String, "author,authors,tags")
         XCTAssertEqual(params["formats"] as? String, "mobiledoc,html,plaintext")
         XCTAssertEqual(params["filter"] as? String, "author:filter")
     }
