@@ -288,8 +288,8 @@ private extension StoryDetailView {
         contentTextView.layer.borderWidth = 0
         contentTextView.layer.cornerRadius = 0
         contentTextView.onWrite = onWriteContent
-        contentTextView.onScroll = { [unowned self] scroll in
-            self.topTitleTextViewConstraint.constant = -scroll.contentOffset.y
+        contentTextView.onScroll = { [weak self] scroll in
+            self?.topTitleTextViewConstraint.constant = -scroll.contentOffset.y
         }
         contentTextView.translatesAutoresizingMaskIntoConstraints = false
         contentTextView.autocapitalizationType = .none
