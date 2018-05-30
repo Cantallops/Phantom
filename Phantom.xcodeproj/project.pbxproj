@@ -712,7 +712,6 @@
 		569447DB1FE9C1CC0045B752 /* EmptyTableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableHeader.swift; sourceTree = "<group>"; };
 		569447E01FE9C3590045B752 /* EmptyTableSectionFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableSectionFooter.swift; sourceTree = "<group>"; };
 		569447EB1FED541D0045B752 /* MetaDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaDataView.swift; sourceTree = "<group>"; };
-		569447EC1FED541D0045B752 /* MetaDataView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MetaDataView.xib; sourceTree = "<group>"; };
 		569447EF1FED542D0045B752 /* MetaDataPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaDataPresenter.swift; sourceTree = "<group>"; };
 		569447F21FED54C30045B752 /* MetaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaData.swift; sourceTree = "<group>"; };
 		569447F41FED58640045B752 /* MetaDataBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaDataBuilder.swift; sourceTree = "<group>"; };
@@ -3143,7 +3142,6 @@
 			isa = PBXGroup;
 			children = (
 				569447EB1FED541D0045B752 /* MetaDataView.swift */,
-				569447EC1FED541D0045B752 /* MetaDataView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
