@@ -8,17 +8,30 @@
 
 import UIKit
 
-protocol UITableViewSectionHeader {
-    var customView: UIView { get set }
-    func height(forWidth width: CGFloat) -> CGFloat
+class UITableViewSectionHeaderConf: NSObject {
+    var identifier: String = ""
+    var nib: UINib?
+
+    var height: CGFloat = UITableViewAutomaticDimension
+    var estimatedHeight: CGFloat = 44
+
+    init(
+        identifier: String,
+        nib: UINib?
+    ) {
+        self.identifier = identifier
+        self.nib = nib
+        super.init()
+    }
+
+    func height(forWidth width: CGFloat) -> CGFloat {
+        return height
+    }
+
 }
 
-extension UITableViewSectionHeader {
-    func height(forWidth width: CGFloat) -> CGFloat {
-        return customView.systemLayoutSizeFitting(
-            CGSize(width: width, height: 0),
-            withHorizontalFittingPriority: .required,
-            verticalFittingPriority: .defaultLow
-        ).height
+class UITableViewSectionHeaderView: UITableViewHeaderFooterView {
+    func configure(with configuration: UITableViewSectionHeaderConf) {
+
     }
 }

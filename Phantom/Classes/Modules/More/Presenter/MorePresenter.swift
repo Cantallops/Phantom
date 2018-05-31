@@ -88,8 +88,8 @@ class MorePresenter: Presenter<MoreView> {
             cells.append(conf)
         }
         var section = UITableView.Section(id: "Settings", cells: cells)
-        section.header = SimpleTableSectionHeader(title: "Settings")
-        section.footer = EmptyTableSectionFooter(height: 20)
+        section.header = SimpleTableSectionHeaderConf(title: "Settings")
+        section.footer = EmptyTableSectionFooterConf(height: 20)
         return section
     }
 
@@ -130,8 +130,8 @@ class MorePresenter: Presenter<MoreView> {
         conf.canSelect = false
         conf.accessoryType = .none
         var section = UITableView.Section(id: "BlogInfo", cells: [conf])
-        section.header = EmptyTableSectionHeader(height: 20)
-        section.footer = EmptyTableSectionFooter(height: 20)
+        section.header = EmptyTableSectionHeaderConf(height: 20)
+        section.footer = EmptyTableSectionFooterConf(height: 20)
         return section
     }
 
@@ -150,8 +150,8 @@ class MorePresenter: Presenter<MoreView> {
         rateConf.deselect = true
         rateConf.onSelect = openRateApp
         var section = UITableView.Section(id: "Info", cells: [aboutConf, rateConf])
-        section.header = EmptyTableSectionHeader(height: 20)
-        section.footer = EmptyTableSectionFooter(height: 20)
+        section.header = EmptyTableSectionHeaderConf(height: 20)
+        section.footer = EmptyTableSectionFooterConf(height: 20)
         return section
     }
 
@@ -165,8 +165,8 @@ class MorePresenter: Presenter<MoreView> {
             self?.signOut()
         }
         var section = UITableView.Section(id: "SignOut", cells: [conf])
-        section.header = EmptyTableSectionHeader(height: 20)
-        section.footer = EmptyTableSectionFooter(height: 20)
+        section.header = EmptyTableSectionHeaderConf(height: 20)
+        section.footer = EmptyTableSectionFooterConf(height: 20)
         return section
     }
 

@@ -35,8 +35,8 @@ class AppSettingsPresenter: Presenter<AppSettingsView> {
         let indexStoriesCell = SwitchTableViewCell.Conf(text: "Index posts", onSwitch: { [weak self] bool in
             self?.preferences.indexStories = bool
         }, isOn: preferences.indexStories)
-        let header = SimpleTableSectionHeader(title: "Spotlight")
-        let footer = SimpleTableSectionFooter(
+        let header = SimpleTableSectionHeaderConf(title: "Spotlight")
+        let footer = SimpleTableSectionFooterConf(
             title: "Allow the app to index all your post to search them inside spotlight"
         )
         return UITableView.Section(id: "Spotlight", header: header, cells: [indexStoriesCell], footer: footer)
@@ -57,8 +57,8 @@ class AppSettingsPresenter: Presenter<AppSettingsView> {
             isOn: preferences.autocapitalization
         )
         let cells = [spellCheckingCell, autocorrectionCell, autocapitalizationCell]
-        let header = SimpleTableSectionHeader(title: "Editor settings")
-        let footer = SimpleTableSectionFooter(
+        let header = SimpleTableSectionHeaderConf(title: "Editor settings")
+        let footer = SimpleTableSectionFooterConf(
             title: "These settings does not override your system settings. Settings > General > Keyboard"
         )
         return UITableView.Section(id: "EditorSettings", header: header, cells: cells, footer: footer)

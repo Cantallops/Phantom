@@ -1,42 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SimpleTableSectionHeaderView" customModule="Phantom" customModuleProvider="target">
-            <connections>
-                <outlet property="titleLabel" destination="eZW-Vg-b69" id="B9M-wc-n2s"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" id="iN0-l3-epB" customClass="SimpleTableSectionHeaderView" customModule="Phantom" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZW-Vg-b69" customClass="Label" customModule="Phantom" customModuleProvider="target">
-                    <rect key="frame" x="15" y="5" width="345" height="38"/>
+                    <rect key="frame" x="16" y="25" width="343" height="18"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="eZW-Vg-b69" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="FWA-Iz-mDl"/>
+                <constraint firstItem="eZW-Vg-b69" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="FWA-Iz-mDl"/>
                 <constraint firstItem="eZW-Vg-b69" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="H39-Ml-FPu"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="eZW-Vg-b69" secondAttribute="bottom" constant="5" id="l2c-sH-dwa"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="eZW-Vg-b69" secondAttribute="trailing" constant="15" id="rha-El-ln4"/>
+                <constraint firstAttribute="trailingMargin" secondItem="eZW-Vg-b69" secondAttribute="trailing" id="rha-El-ln4"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="titleLabel" destination="eZW-Vg-b69" id="T49-Zu-lTv"/>
+            </connections>
             <point key="canvasLocation" x="-215" y="-251"/>
         </view>
     </objects>

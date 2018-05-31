@@ -165,8 +165,8 @@ class TabletDashboardPresenter: Presenter<TabletDashboardView> {
         cells.first?.initialySelected = true
         cells.first?.onSelect?()
         var section = UITableView.Section(id: "Dashboard", cells: cells)
-        section.header = EmptyTableSectionHeader(height: 10)
-        section.footer = EmptyTableSectionFooter(height: 20)
+        section.header = EmptyTableSectionHeaderConf(height: 10)
+        section.footer = EmptyTableSectionFooterConf(height: 20)
         return section
     }
 
@@ -184,10 +184,9 @@ class TabletDashboardPresenter: Presenter<TabletDashboardView> {
             cells.append(conf)
         }
         var section = UITableView.Section(id: "Settings", cells: cells)
-        let header = SimpleTableSectionHeader(title: "Settings")
-        header.customView.backgroundColor = Color.lighterGrey
+        let header = SimpleTableSectionHeaderConf(title: "Settings")
         section.header = header
-        section.footer = EmptyTableSectionFooter(height: 20)
+        section.footer = EmptyTableSectionFooterConf(height: 20)
         return section
     }
 
@@ -200,8 +199,8 @@ class TabletDashboardPresenter: Presenter<TabletDashboardView> {
         )
         conf.canSelect = false
         var section = UITableView.Section(id: "BlogInfo", cells: [conf])
-        section.header = EmptyTableSectionHeader(height: 40)
-        section.footer = EmptyTableSectionFooter(height: 20)
+        section.header = EmptyTableSectionHeaderConf(height: 40)
+        section.footer = EmptyTableSectionFooterConf(height: 20)
         return section
     }
 
@@ -218,8 +217,8 @@ class TabletDashboardPresenter: Presenter<TabletDashboardView> {
         rateConf.deselect = true
         rateConf.onSelect = openRateApp
         var section = UITableView.Section(id: "Info", cells: [aboutConf, rateConf])
-        section.header = EmptyTableSectionHeader(height: 20)
-        section.footer = EmptyTableSectionFooter(height: 20)
+        section.header = EmptyTableSectionHeaderConf(height: 20)
+        section.footer = EmptyTableSectionFooterConf(height: 20)
         return section
     }
 
@@ -235,8 +234,8 @@ class TabletDashboardPresenter: Presenter<TabletDashboardView> {
         conf.deselect = true
         conf.onSelect = signOut
         var section = UITableView.Section(id: "SignOut", cells: [conf])
-        section.header = EmptyTableSectionHeader(height: 20)
-        section.footer = EmptyTableSectionFooter(height: 20)
+        section.header = EmptyTableSectionHeaderConf(height: 20)
+        section.footer = EmptyTableSectionFooterConf(height: 20)
         return section
     }
 

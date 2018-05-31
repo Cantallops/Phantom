@@ -47,7 +47,7 @@
 		561E7A3E20AA16A400A35BC6 /* UserPreferences+Editor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E7A3D20AA16A400A35BC6 /* UserPreferences+Editor.swift */; };
 		561E7A4020AA185700A35BC6 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E7A3F20AA185700A35BC6 /* Preferences.swift */; };
 		561E7A4420AA238A00A35BC6 /* SimpleTableSectionFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 561E7A4220AA238A00A35BC6 /* SimpleTableSectionFooterView.xib */; };
-		561E7A4520AA238A00A35BC6 /* SimpleTableSectionFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E7A4320AA238A00A35BC6 /* SimpleTableSectionFooter.swift */; };
+		561E7A4520AA238A00A35BC6 /* SimpleTableSectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E7A4320AA238A00A35BC6 /* SimpleTableSectionFooterView.swift */; };
 		561E7A4E20AB696200A35BC6 /* AppSettingsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E7A4920AB696200A35BC6 /* AppSettingsFactory.swift */; };
 		561E7A4F20AB696200A35BC6 /* AppSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E7A4B20AB696200A35BC6 /* AppSettingsView.swift */; };
 		561E7A5020AB696200A35BC6 /* AppSettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E7A4D20AB696200A35BC6 /* AppSettingsPresenter.swift */; };
@@ -374,6 +374,8 @@
 		56EC330F1FABB42900A5742A /* DeleteTagRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EC330E1FABB42900A5742A /* DeleteTagRemote.swift */; };
 		56EC33111FABB57D00A5742A /* PutTagRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EC33101FABB57D00A5742A /* PutTagRemote.swift */; };
 		56EC33131FABC1B400A5742A /* PostTagRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EC33121FABC1B400A5742A /* PostTagRemote.swift */; };
+		56ECA68620C0970B0095B0EF /* EmptyTableSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56ECA68520C0970B0095B0EF /* EmptyTableSectionHeaderView.xib */; };
+		56ECA68820C0A1A10095B0EF /* EmptyTableSectionFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56ECA68720C0A1A10095B0EF /* EmptyTableSectionFooterView.xib */; };
 		56ED3EF11FDAFC6C0069736A /* TestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ED3EF01FDAFC6C0069736A /* TestService.swift */; };
 		56F003DF1F7C112500E9707A /* DoCredentialSignInInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F003DE1F7C112500E9707A /* DoCredentialSignInInteractor.swift */; };
 		56F003E41F7C1EBD00E9707A /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56F003E31F7C1EBD00E9707A /* LocalAuthentication.framework */; };
@@ -472,7 +474,7 @@
 		561E7A3D20AA16A400A35BC6 /* UserPreferences+Editor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserPreferences+Editor.swift"; sourceTree = "<group>"; };
 		561E7A3F20AA185700A35BC6 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		561E7A4220AA238A00A35BC6 /* SimpleTableSectionFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleTableSectionFooterView.xib; sourceTree = "<group>"; };
-		561E7A4320AA238A00A35BC6 /* SimpleTableSectionFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleTableSectionFooter.swift; sourceTree = "<group>"; };
+		561E7A4320AA238A00A35BC6 /* SimpleTableSectionFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleTableSectionFooterView.swift; sourceTree = "<group>"; };
 		561E7A4920AB696200A35BC6 /* AppSettingsFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettingsFactory.swift; sourceTree = "<group>"; };
 		561E7A4B20AB696200A35BC6 /* AppSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettingsView.swift; sourceTree = "<group>"; };
 		561E7A4D20AB696200A35BC6 /* AppSettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettingsPresenter.swift; sourceTree = "<group>"; };
@@ -803,6 +805,8 @@
 		56EC330E1FABB42900A5742A /* DeleteTagRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTagRemote.swift; sourceTree = "<group>"; };
 		56EC33101FABB57D00A5742A /* PutTagRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PutTagRemote.swift; sourceTree = "<group>"; };
 		56EC33121FABC1B400A5742A /* PostTagRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTagRemote.swift; sourceTree = "<group>"; };
+		56ECA68520C0970B0095B0EF /* EmptyTableSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyTableSectionHeaderView.xib; sourceTree = "<group>"; };
+		56ECA68720C0A1A10095B0EF /* EmptyTableSectionFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyTableSectionFooterView.xib; sourceTree = "<group>"; };
 		56ED3EF01FDAFC6C0069736A /* TestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestService.swift; sourceTree = "<group>"; };
 		56F003DE1F7C112500E9707A /* DoCredentialSignInInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoCredentialSignInInteractor.swift; sourceTree = "<group>"; };
 		56F003E31F7C1EBD00E9707A /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
@@ -1038,7 +1042,7 @@
 		561E7A4120AA232D00A35BC6 /* Simple */ = {
 			isa = PBXGroup;
 			children = (
-				561E7A4320AA238A00A35BC6 /* SimpleTableSectionFooter.swift */,
+				561E7A4320AA238A00A35BC6 /* SimpleTableSectionFooterView.swift */,
 				561E7A4220AA238A00A35BC6 /* SimpleTableSectionFooterView.xib */,
 			);
 			path = Simple;
@@ -3094,6 +3098,7 @@
 			isa = PBXGroup;
 			children = (
 				569447DB1FE9C1CC0045B752 /* EmptyTableHeader.swift */,
+				56ECA68520C0970B0095B0EF /* EmptyTableSectionHeaderView.xib */,
 			);
 			path = Empty;
 			sourceTree = "<group>";
@@ -3123,6 +3128,7 @@
 			isa = PBXGroup;
 			children = (
 				569447E01FE9C3590045B752 /* EmptyTableSectionFooter.swift */,
+				56ECA68720C0A1A10095B0EF /* EmptyTableSectionFooterView.xib */,
 			);
 			path = Empty;
 			sourceTree = "<group>";
@@ -4071,6 +4077,7 @@
 				561E7A4420AA238A00A35BC6 /* SimpleTableSectionFooterView.xib in Resources */,
 				568558B51F89464F000AA39F /* AppsView.xib in Resources */,
 				5672C9451F5F215800439F46 /* LaunchScreen.storyboard in Resources */,
+				56ECA68620C0970B0095B0EF /* EmptyTableSectionHeaderView.xib in Resources */,
 				56E2D47C1FBF47C400DD4A7D /* TagsTableViewCell.xib in Resources */,
 				56E2D4751FBE3CC100DD4A7D /* SwitchTableViewCell.xib in Resources */,
 				56C4655E1F654132001ABAC8 /* BlogSiteView.xib in Resources */,
@@ -4096,6 +4103,7 @@
 				568558BD1F8946DA000AA39F /* CodeInjectionView.xib in Resources */,
 				561E90E11F895102008DDCF5 /* TeamMemberDetailView.xib in Resources */,
 				5612C53E1FA4BA21004974E1 /* RightDetailTableViewCell.xib in Resources */,
+				56ECA68820C0A1A10095B0EF /* EmptyTableSectionFooterView.xib in Resources */,
 				5672C9421F5F215800439F46 /* Assets.xcassets in Resources */,
 				563C39EE1FB5FA4100D2FD3B /* StoryTableViewCell.xib in Resources */,
 				56988B351FF00EA10000EFBC /* AttributedTableViewCell.xib in Resources */,
@@ -4437,7 +4445,7 @@
 				561CD18F1F71B94A00EF7C8F /* NetworkError.swift in Sources */,
 				561E7A5220AB6F0A00A35BC6 /* Worker.swift in Sources */,
 				56F95DD220A0CAF800EDD56C /* StoriesListBuilder.swift in Sources */,
-				561E7A4520AA238A00A35BC6 /* SimpleTableSectionFooter.swift in Sources */,
+				561E7A4520AA238A00A35BC6 /* SimpleTableSectionFooterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

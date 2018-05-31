@@ -78,9 +78,9 @@ class TeamListPresenter: Presenter<TeamListView> {
         }
         var activeSection = UITableView.Section(
             id: "ActiveUsers",
-            header: SimpleTableSectionHeader(title: "Active users"),
+            header: SimpleTableSectionHeaderConf(title: "Active users"),
             cells: activeCells,
-            footer: EmptyTableSectionFooter(height: 20)
+            footer: EmptyTableSectionFooterConf(height: 20)
         )
         if inactiveCells.isEmpty {
             activeSection.header = nil
@@ -88,9 +88,9 @@ class TeamListPresenter: Presenter<TeamListView> {
         }
         let inactiveSection = UITableView.Section(
             id: "InactiveUsers",
-            header: SimpleTableSectionHeader(title: "Suspended users"),
+            header: SimpleTableSectionHeaderConf(title: "Suspended users"),
             cells: inactiveCells,
-            footer: EmptyTableSectionFooter(height: 20)
+            footer: EmptyTableSectionFooterConf(height: 20)
         )
         return [activeSection, inactiveSection]
     }

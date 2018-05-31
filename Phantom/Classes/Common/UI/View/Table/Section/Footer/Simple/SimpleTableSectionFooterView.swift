@@ -1,5 +1,5 @@
 //
-//  SimpleTableSectionHeaderView.swift
+//  SimpleTableSectionFooterView.swift
 //  Phantom
 //
 //  Created by Alberto Cantallops on 19/12/2017.
@@ -8,21 +8,21 @@
 
 import UIKit
 
-class SimpleTableSectionHeaderConf: UITableViewSectionHeaderConf {
+class SimpleTableSectionFooterConf: UITableViewSectionFooterConf {
     var title: String
 
     init(title: String) {
         self.title = title
         super.init(
-            identifier: "SimpleTableSectionHeader",
-            nib: UINib(nibName: "SimpleTableSectionHeaderView", bundle: nil)
+            identifier: "SimpleTableSectionFooter",
+            nib: UINib(nibName: "SimpleTableSectionFooterView", bundle: nil)
         )
     }
 }
 
-class SimpleTableSectionHeaderView: UITableViewSectionHeaderView {
+class SimpleTableSectionFooterView: UITableViewSectionFooterView {
 
-    @IBOutlet fileprivate weak var titleLabel: Label!
+    @IBOutlet weak var titleLabel: Label!
     var title: String = "" {
         didSet {
             titleLabel?.text = title
@@ -34,9 +34,9 @@ class SimpleTableSectionHeaderView: UITableViewSectionHeaderView {
         titleLabel.text = ""
     }
 
-    override func configure(with configuration: UITableViewSectionHeaderConf) {
+    override func configure(with configuration: UITableViewSectionFooterConf) {
         super.configure(with: configuration)
-        guard let conf = configuration as? SimpleTableSectionHeaderConf else {
+        guard let conf = configuration as? SimpleTableSectionFooterConf else {
             return
         }
         title = conf.title

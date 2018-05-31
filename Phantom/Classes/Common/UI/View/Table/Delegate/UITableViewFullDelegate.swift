@@ -117,12 +117,60 @@ extension UITableViewFullDelegate: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let section = sections[section]
-        return section.header?.customView
+        guard let headerConf = section.header else {
+            return nil
+        }
+        var view = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerConf.identifier)
+        if view == nil {
+            tableView.register(headerConf.nib, forHeaderFooterViewReuseIdentifier: headerConf.identifier)
+            view = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerConf.identifier)
+        }
+        return view
+    }
+
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let view = view as? UITableViewSectionHeaderView,
+            let headerConf = sections[section].header else {
+            return
+        }
+        view.configure(with: headerConf)
+    }
+
+    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        let tableSection = sections[section]
+        guard let headerConf = tableSection.header else {
+            return 0
+        }
+        return headerConf.estimatedHeight
     }
 
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let section = sections[section]
-        return section.footer?.customView
+        guard let footerConf = section.footer else {
+            return nil
+        }
+        var view = tableView.dequeueReusableHeaderFooterView(withIdentifier: footerConf.identifier)
+        if view == nil {
+            tableView.register(footerConf.nib, forHeaderFooterViewReuseIdentifier: footerConf.identifier)
+            view = tableView.dequeueReusableHeaderFooterView(withIdentifier: footerConf.identifier)
+        }
+        return view
+    }
+
+    func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        guard let view = view as? UITableViewSectionFooterView,
+            let footerConf = sections[section].footer else {
+                return
+        }
+        view.configure(with: footerConf)
+    }
+
+    func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
+        let tableSection = sections[section]
+        guard let footerConf = tableSection.footer else {
+            return 0
+        }
+        return footerConf.estimatedHeight
     }
 }
 

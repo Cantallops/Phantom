@@ -95,9 +95,9 @@ class AboutPresenter: Presenter<AboutView> {
         let cells: [TableCellConf] = [versionConf, envConf, dbConf, mailConf]
         return UITableView.Section(
             id: "About",
-            header: SimpleTableSectionHeader(title: "About Ghost"),
+            header: SimpleTableSectionHeaderConf(title: "About Ghost"),
             cells: cells,
-            footer: EmptyTableSectionFooter(height: 20)
+            footer: EmptyTableSectionFooterConf(height: 20)
         )
     }
 
@@ -118,9 +118,9 @@ class AboutPresenter: Presenter<AboutView> {
         ]
         return UITableView.Section(
             id: "About \(bundle.appName)",
-            header: SimpleTableSectionHeader(title: "About \(bundle.appName)"),
+            header: SimpleTableSectionHeaderConf(title: "About \(bundle.appName)"),
             cells: cells,
-            footer: EmptyTableSectionFooter(height: 20)
+            footer: EmptyTableSectionFooterConf(height: 20)
         )
     }
 
@@ -136,9 +136,9 @@ class AboutPresenter: Presenter<AboutView> {
         acknowledgementsCellConf.accessoryType = .disclosureIndicator
         return UITableView.Section(
             id: "Acknowledgements",
-            header: EmptyTableSectionHeader(height: 20),
+            header: EmptyTableSectionHeaderConf(height: 20),
             cells: [acknowledgementsCellConf],
-            footer: EmptyTableSectionFooter(height: 20)
+            footer: EmptyTableSectionFooterConf(height: 20)
         )
     }
 

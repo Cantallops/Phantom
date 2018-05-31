@@ -8,16 +8,17 @@
 
 import UIKit
 
-struct EmptyTableSectionHeader: UITableViewSectionHeader {
-    var customView: UIView
-    private let height: CGFloat
+class EmptyTableSectionHeaderConf: UITableViewSectionHeaderConf {
 
-    init(height: CGFloat) {
+    init(height: CGFloat = 20) {
+        super.init(
+            identifier: "EmptyTableSectionHeader",
+            nib: UINib(nibName: "EmptyTableSectionHeaderView", bundle: nil)
+        )
         self.height = height
-        customView = UIView()
     }
+}
 
-    func height(forWidth width: CGFloat) -> CGFloat {
-        return height
-    }
+class EmptyTableSectionHeaderView: UITableViewSectionHeaderView {
+
 }

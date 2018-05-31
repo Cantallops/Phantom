@@ -8,16 +8,17 @@
 
 import UIKit
 
-struct EmptyTableSectionFooter: UITableViewSectionFooter {
-    var customView: UIView
-    private let height: CGFloat
+class EmptyTableSectionFooterConf: UITableViewSectionFooterConf {
 
-    init(height: CGFloat) {
+    init(height: CGFloat = 20) {
+        super.init(
+            identifier: "EmptyTableSectionFooter",
+            nib: UINib(nibName: "EmptyTableSectionFooterView", bundle: nil)
+        )
         self.height = height
-        customView = UIView()
     }
+}
 
-    func height(forWidth width: CGFloat) -> CGFloat {
-        return height
-    }
+class EmptyTableSectionFooterView: UITableViewSectionFooterView {
+
 }

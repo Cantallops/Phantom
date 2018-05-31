@@ -34,9 +34,9 @@ class AcknowledgementsPresenter: Presenter<AcknowledgementsView> {
         uiIconsConf.showSelection = false
         let iconSection = UITableView.Section(
             id: "Icons",
-            header: SimpleTableSectionHeader(title: "Icons"),
+            header: SimpleTableSectionHeaderConf(title: "Icons"),
             cells: [iconConf, uiIconsConf],
-            footer: EmptyTableSectionFooter(height: 20)
+            footer: EmptyTableSectionFooterConf(height: 20)
         )
         sections.append(iconSection)
 
@@ -49,9 +49,9 @@ class AcknowledgementsPresenter: Presenter<AcknowledgementsView> {
             cellConf.canSelect = false
             let section = UITableView.Section(
                 id: acknowledgement.name,
-                header: SimpleTableSectionHeader(title: acknowledgement.name),
+                header: SimpleTableSectionHeaderConf(title: acknowledgement.name),
                 cells: [cellConf],
-                footer: EmptyTableSectionFooter(height: 20)
+                footer: EmptyTableSectionFooterConf(height: 20)
             )
             sections.append(section)
         }

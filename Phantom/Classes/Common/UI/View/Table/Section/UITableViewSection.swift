@@ -14,15 +14,15 @@ extension UITableView {
         typealias Element = TableCellConf
 
         var id: String
-        var header: UITableViewSectionHeader?
+        var header: UITableViewSectionHeaderConf?
         var cells: [TableCellConf]
-        var footer: UITableViewSectionFooter?
+        var footer: UITableViewSectionFooterConf?
 
         init(
             id: String,
-            header: UITableViewSectionHeader? = nil,
+            header: UITableViewSectionHeaderConf? = nil,
             cells: [TableCellConf],
-            footer: UITableViewSectionFooter? = nil
+            footer: UITableViewSectionFooterConf? = nil
         ) {
             self.id = id
             self.header = header
