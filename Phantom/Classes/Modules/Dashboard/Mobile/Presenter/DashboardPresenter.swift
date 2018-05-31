@@ -64,7 +64,7 @@ class DashboardPresenter: Presenter<DashboardView> {
     }
 
     private func loadSections() {
-        let task = Task(task: { [unowned self] in
+        let task = Task(qos: .userInitiated, task: { [unowned self] in
             return self.getDashboardSections.execute(args: nil)
         }, completion: { [unowned self] result in
             switch result {
@@ -94,7 +94,7 @@ class DashboardPresenter: Presenter<DashboardView> {
     }
 
     private func loadProfile() {
-        let task = Task(task: {
+        let task = Task(qos: .userInitiated, task: {
             return self.getFavIconImage.execute(args: nil)
         }, completion: { [weak self] result in
             switch result {

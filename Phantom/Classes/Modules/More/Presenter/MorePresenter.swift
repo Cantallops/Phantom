@@ -94,7 +94,7 @@ class MorePresenter: Presenter<MoreView> {
     }
 
     fileprivate func loadMe() {
-        let task = Task(task: { [unowned self] in
+        let task = Task(qos: .userInitiated, task: { [unowned self] in
             return self.getCurrentBlogInfo.execute(args: nil)
         }, completion: { [weak self] result in
             switch result {
@@ -107,7 +107,7 @@ class MorePresenter: Presenter<MoreView> {
         worker.execute(task: task)
     }
     fileprivate func loadSettingsSection() {
-        let task = Task(task: { [unowned self] in
+        let task = Task(qos: .userInitiated, task: { [unowned self] in
             return self.getSettingsSection.execute(args: nil)
         }, completion: { [weak self] result in
             switch result {
@@ -185,7 +185,7 @@ class MorePresenter: Presenter<MoreView> {
     }
 
     private func signOut() {
-        let task = Task(task: { [weak self] in
+        let task = Task(qos: .userInitiated, task: { [weak self] in
             return self?.doSignOutInteractor.execute(args: nil)
         })
         worker.execute(task: task)

@@ -35,7 +35,7 @@ class AboutPresenter: Presenter<AboutView> {
             setUpSections()
             return
         }
-        let task = Task(loaders: [self], task: { [unowned self] in
+        let task = Task(loaders: [self], qos: .userInitiated, task: { [unowned self] in
             return self.getAboutGhost.execute(args: nil)
         }, completion: { [weak self] result in
             switch result {

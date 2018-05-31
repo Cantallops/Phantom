@@ -10,7 +10,7 @@ import Foundation
 
 class AsyncWorker: Worker {
     override func execute<R>(task: Task<R>) {
-        let queue = DispatchQueue(label: "background-worker", attributes: [])
+        let queue = DispatchQueue.global(qos: task.qos)
         task.loaders?.start()
         queue.async {
             let result = task.task()

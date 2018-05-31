@@ -76,7 +76,7 @@ class SearcheableIndexService: NSObject, UIApplicationDelegate {
     }
 
     private func doIndexStories(account: Account) {
-        let task = Task(task: {
+        let task = Task(qos: .utility, task: {
             let result = self.getStories.execute(args: nil)
             let args = (result.value?.object ?? [], account)
             self.indexStories.execute(args: args)
@@ -85,17 +85,17 @@ class SearcheableIndexService: NSObject, UIApplicationDelegate {
     }
 
     private func doRemoveIndexStories(account: Account) {
-        let task = Task(task: { self.removeIndexStories.execute(args: account) })
+        let task = Task(qos: .utility, task: { self.removeIndexStories.execute(args: account) })
         worker.execute(task: task)
     }
 
     private func doIndex(story: Story, account: Account) {
-        let task = Task(task: { self.indexStory.execute(args: (story, account)) })
+        let task = Task(qos: .utility, task: { self.indexStory.execute(args: (story, account)) })
         worker.execute(task: task)
     }
 
     private func doRemoveIndex(story: Story, account: Account) {
-        let task = Task(task: { self.removeIndexStory.execute(args: (story, account)) })
+        let task = Task(qos: .utility, task: { self.removeIndexStory.execute(args: (story, account)) })
         worker.execute(task: task)
     }
 }

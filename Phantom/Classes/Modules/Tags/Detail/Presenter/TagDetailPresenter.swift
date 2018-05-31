@@ -67,7 +67,7 @@ class TagDetailPresenter: Presenter<TagDetailView> {
             }
         })
         if tag.isNew {
-            task = Task(loaders: [view], task: { [unowned self] in
+            task = Task(loaders: [view], qos: .userInitiated, task: { [unowned self] in
                 return self.createInteractor.execute(args: self.tag)
             }, completion: { [weak self] result in
                 switch result {
@@ -97,7 +97,7 @@ class TagDetailPresenter: Presenter<TagDetailView> {
     }
 
     private func delete() {
-        let task = Task(loaders: [view], task: { [unowned self] in
+        let task = Task(loaders: [view], qos: .userInitiated, task: { [unowned self] in
             return self.deleteInteractor.execute(args: self.tag)
         }, completion: { [weak self] result in
             switch result {

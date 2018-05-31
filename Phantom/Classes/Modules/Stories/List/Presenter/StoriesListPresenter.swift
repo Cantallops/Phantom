@@ -58,7 +58,7 @@ class StoriesListPresenter: Presenter<StoriesListView> {
         if let meta = meta, !meta.pagination.isFirst {
             loaders = []
         }
-        let task = Task(loaders: loaders, task: { [unowned self] in
+        let task = Task(loaders: loaders, qos: .userInitiated, task: { [unowned self] in
                 return self.getStoriesListInteractor.execute(args: self.meta)
         }, completion: { [weak self] result in
             switch result {

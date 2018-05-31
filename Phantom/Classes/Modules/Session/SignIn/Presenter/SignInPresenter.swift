@@ -35,7 +35,7 @@ class SignInPresenter: Presenter<SignInView> {
             return
         }
         let signInCredentials = Credentials(email: email, password: pass)
-        let task = Task(loaders: [view.signInButton], task: { [unowned self]  in
+        let task = Task(loaders: [view.signInButton], qos: .userInitiated, task: { [unowned self]  in
                 self.doCredentialSignIn.execute(args: signInCredentials)
         }, completion: { [unowned self] result in
             switch result {

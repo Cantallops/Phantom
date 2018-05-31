@@ -117,7 +117,7 @@ class ImageUploaderView: UIView {
 
     private func showImage(inUrl url: URL) {
         clear()
-        let task = Task(loaders: [activityIndicatorView], task: {
+        let task = Task(loaders: [activityIndicatorView], qos: .userInitiated, task: {
             return Network.Image.get(fromURL: url)
         }, completion: { [weak self] result in
             switch result {

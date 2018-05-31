@@ -43,7 +43,7 @@ class BlogSitePresenter: Presenter<BlogSiteView> {
             show(error: Errors.Form.notFilled)
             return
         }
-        let task = Task(loaders: [view.goButton], task: { [unowned self]  in
+        let task = Task(loaders: [view.goButton], qos: .userInitiated, task: { [unowned self]  in
                 self.detectGhostInstallation.execute(args: url)
         }, completion: { [unowned self] result in
             switch result {

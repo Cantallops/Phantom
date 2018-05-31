@@ -66,7 +66,7 @@ class StorySettingsPresenter: Presenter<StorySettingsView> {
     }
 
     private func loadTags() {
-        let task = Task(task: { [unowned self]  () -> Result<Paginated<[Tag]>> in
+        let task = Task(qos: .userInitiated, task: { [unowned self]  () -> Result<Paginated<[Tag]>> in
             let meta = Meta(pagination: Meta.Pagination.all)
             return self.getTags.execute(args: meta)
         }, completion: {  [weak self] result in
@@ -80,24 +80,27 @@ class StorySettingsPresenter: Presenter<StorySettingsView> {
     }
 
     private func loadAuthors() {
-        let task = Task(task: { [unowned self] () -> Result<(Paginated<[TeamMember]>, TeamMember)> in
-            let meta = Meta(pagination: Meta.Pagination.all)
-            let result = self.getMembers.execute(args: meta).combined(result: self.getMe.execute(args: nil))
-            return result
-        }, completion: { [weak self] result in
-            switch result {
-            case .success(let paginatedMembers, let me):
-                self?.authors = paginatedMembers.object.map({ $0.author })
-                self?.me = me
-            case .failure(let error): self?.show(error: error)
+        let task = Task(
+            qos: .userInitiated,
+            task: { [unowned self] () -> Result<(Paginated<[TeamMember]>, TeamMember)> in
+                let meta = Meta(pagination: Meta.Pagination.all)
+                return self.getMembers.execute(args: meta).combined(result: self.getMe.execute(args: nil))
+            },
+            completion: { [weak self] result in
+                switch result {
+                case .success(let paginatedMembers, let me):
+                    self?.authors = paginatedMembers.object.map({ $0.author })
+                    self?.me = me
+                case .failure(let error): self?.show(error: error)
+                }
+                self?.showSections()
             }
-            self?.showSections()
-        })
+        )
         worker.execute(task: task)
     }
 
     private func loadTemplates() {
-        let task = Task(task: { [unowned self] () -> Result<[Theme.Template]> in
+        let task = Task(qos: .userInitiated, task: { [unowned self] () -> Result<[Theme.Template]> in
             return self.getTemplates.execute(args: nil)
             }, completion: { [weak self] result in
                 switch result {
@@ -368,8 +371,7 @@ extension TagsTableViewCell.Tag {
 extension Array where Element==TagsTableViewCell.Tag {
     func getTags() -> [Tag] {
         return map({
-            Tag(
-                id: $0.id,
+            Tag(id: $0.id,
                 name: $0.name,
                 slug: "",
                 description: nil,

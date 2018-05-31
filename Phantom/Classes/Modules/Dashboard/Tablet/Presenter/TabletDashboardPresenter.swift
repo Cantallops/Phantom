@@ -109,7 +109,7 @@ class TabletDashboardPresenter: Presenter<TabletDashboardView> {
     }
 
     private func loadDashboardSections() {
-        let task = Task(task: { [unowned self] in
+        let task = Task(qos: .userInitiated, task: { [unowned self] in
             return self.getDashboardSections.execute(args: nil)
         }, completion: { [unowned self] result in
             switch result {
@@ -122,7 +122,7 @@ class TabletDashboardPresenter: Presenter<TabletDashboardView> {
     }
 
     fileprivate func loadMe() {
-        let task = Task(task: { [unowned self] in
+        let task = Task(qos: .userInitiated, task: { [unowned self] in
             return self.getCurrentBlogInfo.execute(args: nil)
         }, completion: { [weak self] result in
             switch result {
@@ -136,7 +136,7 @@ class TabletDashboardPresenter: Presenter<TabletDashboardView> {
     }
 
     fileprivate func loadSettingsSection() {
-        let task = Task(task: { [unowned self] in
+        let task = Task(qos: .userInitiated, task: { [unowned self] in
             return self.getSettingsSection.execute(args: nil)
         }, completion: { [weak self] result in
             switch result {

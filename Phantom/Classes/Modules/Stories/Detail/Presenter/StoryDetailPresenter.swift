@@ -119,7 +119,7 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
             return
         }
         if story.isNew {
-            let task = Task(loaders: [view], task: { [unowned self] in
+            let task = Task(loaders: [view], qos: .userInitiated, task: { [unowned self] in
                 return self.createInteractor.execute(args: self.story)
             }, completion: { [weak self] result in
                 switch result {
@@ -152,7 +152,7 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
 
     private func delete() {
         autoSaveDebounce.invalidate()
-        let task = Task(loaders: [view], task: { [unowned self] in
+        let task = Task(loaders: [view], qos: .userInitiated, task: { [unowned self] in
             return self.deleteInteractor.execute(args: self.story)
         }, completion: { [weak self] result in
             switch result {
@@ -215,8 +215,8 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
         autoSave()
     }
 
-    private func update(story: Story, loaders: [Loader]?, onResult: @escaping (Result<Story>) -> Void ) {
-        let task = Task(loaders: loaders, task: { [unowned self] in
+    private func update(story: Story, loaders: [Loader]?, onResult: @escaping (Result<Story>) -> Void) {
+        let task = Task(loaders: loaders, qos: .userInitiated, task: { [unowned self] in
             return self.editInteractor.execute(args: story)
         }, completion: { result in
             onResult(result)
