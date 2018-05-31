@@ -25,6 +25,11 @@ class StoryDetailView: ViewController {
             contentTextView?.autocorrectionType = autocorrection
         }
     }
+    var autocapitalization: UITextAutocapitalizationType = .sentences {
+        didSet {
+            contentTextView?.autocapitalizationType = autocapitalization
+        }
+    }
     var onWriteContent: TextView.OnWriteClosure = { _ in } {
         didSet {
             contentTextView?.onWrite = onWriteContent
@@ -283,6 +288,7 @@ private extension StoryDetailView {
         contentTextView.font = theme.codeFont
         contentTextView.autocorrectionType = autocorrection
         contentTextView.spellCheckingType = spellChecking
+        contentTextView.autocapitalizationType = autocapitalization
         contentTextView.accessibilityIdentifier = "content"
         contentTextView.placeholder = "Begin writing your story..."
         contentTextView.layer.borderWidth = 0
@@ -292,7 +298,6 @@ private extension StoryDetailView {
             self?.topTitleTextViewConstraint.constant = -scroll.contentOffset.y
         }
         contentTextView.translatesAutoresizingMaskIntoConstraints = false
-        contentTextView.autocapitalizationType = .none
         view.addSubview(contentTextView)
         view.sendSubview(toBack: contentTextView)
         var layoutGuide = view.layoutMarginsGuide

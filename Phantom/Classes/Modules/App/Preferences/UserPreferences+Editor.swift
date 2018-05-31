@@ -34,4 +34,17 @@ extension Preferences {
             set(newValue, forKey: Preferences.kSpellChecking)
         }
     }
+
+    private static let kAutocapitalization = "autocapitalization"
+    var autocapitalization: Bool {
+        get {
+            guard object(forKey: Preferences.kAutocapitalization) != nil else {
+                return true
+            }
+            return bool(forKey: Preferences.kAutocapitalization)
+        }
+        set {
+            set(newValue, forKey: Preferences.kAutocapitalization)
+        }
+    }
 }

@@ -61,6 +61,7 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
         view.onPreview = preview
         view.spellChecking = userPreferences.spellChecking ? .yes : .no
         view.autocorrection = userPreferences.autocorrection ? .yes : .no
+        view.autocapitalization = userPreferences.autocapitalization ? .sentences : .none
         imageUploader = ImageUploader(
             onResult: { [weak self] result, _ in
                 switch result {

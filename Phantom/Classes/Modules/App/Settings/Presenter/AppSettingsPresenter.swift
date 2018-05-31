@@ -49,7 +49,14 @@ class AppSettingsPresenter: Presenter<AppSettingsView> {
         let autocorrectionCell = SwitchTableViewCell.Conf(text: "Autocorrection", onSwitch: { [weak self] bool in
             self?.preferences.autocorrection = bool
         }, isOn: preferences.autocorrection)
-        let cells = [spellCheckingCell, autocorrectionCell]
+        let autocapitalizationCell = SwitchTableViewCell.Conf(
+            text: "Autocapitalization",
+            onSwitch: { [weak self] bool in
+                self?.preferences.autocapitalization = bool
+            },
+            isOn: preferences.autocapitalization
+        )
+        let cells = [spellCheckingCell, autocorrectionCell, autocapitalizationCell]
         let header = SimpleTableSectionHeader(title: "Editor settings")
         let footer = SimpleTableSectionFooter(
             title: "These settings does not override your system settings. Settings > General > Keyboard"
