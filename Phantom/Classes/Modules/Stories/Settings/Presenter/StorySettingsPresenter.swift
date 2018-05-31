@@ -276,7 +276,7 @@ private extension StorySettingsPresenter {
                 self.story.authors = tags.map({ Story.Author(id: $0.id, name: $0.name) })
                 self.edited(story: self.story)
             },
-            currentTags: story.authors.map({ TagsTableViewCell.Tag(id: $0.id, name: $0.name) }),
+            currentTags: story.getAuthors().map({ TagsTableViewCell.Tag(id: $0.id, name: $0.name) }),
             possibleTags: authors.map({ TagsTableViewCell.Tag(id: $0.id, name: $0.name) }),
             canAddNewTags: false
         )

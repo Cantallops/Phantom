@@ -70,10 +70,9 @@ class StoryTableViewCell: TableViewCell {
 
     private func configure(authorWith conf: Conf) {
         authorLabel.text = ""
-        if !conf.story.authors.isEmpty {
-            authorLabel.text = "by \(conf.story.authors.compactMap({ $0.name }).joined(separator: ", "))"
-        } else if let author = conf.story.author?.name {
-            authorLabel.text = "by \(author)"
+        let authors = conf.story.getAuthors()
+        if !authors.isEmpty {
+            authorLabel.text = "by \(authors.compactMap({ $0.name }).joined(separator: ", "))"
         }
     }
 

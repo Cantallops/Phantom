@@ -17,7 +17,7 @@ struct Story: Codable {
     var featured: Bool
     var page: Bool
     var author: Author?
-    var authors: [Author]
+    var authors: [Author]?
     var mobiledoc: MobileDoc
     var html: HTML?
     var plaintext: String?
@@ -87,6 +87,17 @@ struct Story: Codable {
         case tags
         case metaTitle = "meta_title"
         case metaDescription = "meta_description"
+    }
+}
+
+extension Story {
+    func getAuthors() -> [Author] {
+        if let authors = authors {
+            return authors
+        } else if let author = author {
+            return [author]
+        }
+        return []
     }
 }
 

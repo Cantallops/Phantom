@@ -36,7 +36,7 @@ struct EditPostAPIProvider: NetworkProvider {
         post["custom_template"] = story.customTemplate
 
         var jsonAuthors: [JSON] = []
-        for author in story.authors {
+        for author in story.getAuthors() {
             var jsonAuthor: JSON = [:]
             jsonAuthor["id"] = author.id
             jsonAuthor["name"] = author.name
