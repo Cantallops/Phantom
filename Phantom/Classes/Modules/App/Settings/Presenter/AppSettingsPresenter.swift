@@ -43,14 +43,14 @@ class AppSettingsPresenter: Presenter<AppSettingsView> {
     }
 
     private func getEditorSettingsSection() -> UITableView.Section {
-        let spellCheckingCell = SwitchTableViewCell.Conf(text: "Spell Checking", onSwitch: { [weak self] bool in
+        let spellCheckingCell = SwitchTableViewCell.Conf(text: "Check Spelling", onSwitch: { [weak self] bool in
             self?.preferences.spellChecking = bool
         }, isOn: preferences.spellChecking)
-        let autocorrectionCell = SwitchTableViewCell.Conf(text: "Autocorrection", onSwitch: { [weak self] bool in
+        let autocorrectionCell = SwitchTableViewCell.Conf(text: "Auto-Correction", onSwitch: { [weak self] bool in
             self?.preferences.autocorrection = bool
         }, isOn: preferences.autocorrection)
         let autocapitalizationCell = SwitchTableViewCell.Conf(
-            text: "Autocapitalization",
+            text: "Auto-Capitalization",
             onSwitch: { [weak self] bool in
                 self?.preferences.autocapitalization = bool
             },
