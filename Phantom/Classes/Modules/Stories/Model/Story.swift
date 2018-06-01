@@ -92,7 +92,7 @@ struct Story: Codable {
 
 extension Story {
     func getAuthors() -> [Author] {
-        if let authors = authors {
+        if let authors = authors, !authors.isEmpty {
             return authors
         } else if let author = author {
             return [author]
