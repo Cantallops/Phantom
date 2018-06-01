@@ -25,7 +25,19 @@ class UITableViewSectionFooterConf: NSObject {
     }
 
     func height(forWidth width: CGFloat) -> CGFloat {
-        return height
+        if height != UITableViewAutomaticDimension {
+            return height
+        }
+        guard let nib = nib,
+            let view = nib.instantiate(withOwner: nil, options: nil).first as? UITableViewSectionFooterView else {
+                return  height
+        }
+        view.configure(with: self)
+        return view.systemLayoutSizeFitting(
+            CGSize(width: width, height: 0),
+            withHorizontalFittingPriority: .required,
+            verticalFittingPriority: .defaultLow
+        ).height
     }
 
 }
