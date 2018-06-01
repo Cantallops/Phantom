@@ -10,7 +10,7 @@ import UIKit
 
 class EmptyTableSectionFooterConf: UITableViewSectionFooterConf {
 
-    init(height: CGFloat = 20) {
+    init(height: CGFloat = 0) {
         super.init(
             identifier: "EmptyTableSectionFooter",
             nib: UINib(nibName: "EmptyTableSectionFooterView", bundle: nil)

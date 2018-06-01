@@ -83,7 +83,7 @@ class TeamListPresenter: Presenter<TeamListView> {
             footer: EmptyTableSectionFooterConf(height: 20)
         )
         if inactiveCells.isEmpty {
-            activeSection.header = nil
+            activeSection.header = EmptyTableSectionHeaderConf()
             return [activeSection]
         }
         let inactiveSection = UITableView.Section(

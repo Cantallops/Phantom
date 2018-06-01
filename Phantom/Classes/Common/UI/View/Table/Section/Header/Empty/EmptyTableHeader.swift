@@ -10,7 +10,7 @@ import UIKit
 
 class EmptyTableSectionHeaderConf: UITableViewSectionHeaderConf {
 
-    init(height: CGFloat = 20) {
+    init(height: CGFloat = 0) {
         super.init(
             identifier: "EmptyTableSectionHeader",
             nib: UINib(nibName: "EmptyTableSectionHeaderView", bundle: nil)
