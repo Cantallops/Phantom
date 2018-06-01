@@ -27,6 +27,6 @@ class BundleTest: XCTestCase {
     }
 
     func testBuildNumber() {
-        XCTAssertEqual(bundle.buildNumber, "1.0.9.0")
+        XCTAssertEqual(bundle.buildNumber, "1.0.9.1")
     }
 }
