@@ -372,7 +372,11 @@ private extension StoryDetailView {
         let link = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_post_link"), style: .plain, target: self, action: #selector(tapLink))
         let image = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_post_image"), style: .plain, target: self, action: #selector(tapImage))
 
-        let items = [bold, italics, header, flex, quote, list, numeredList, flex, link, image]
+        var items = [bold, italics, header, flex, quote, list, numeredList, flex, link, image]
+        if UIDevice.current.isPad {
+            let kbDismiss = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_post_keyboard_hide"), style: .plain, target: self, action: #selector(hideKeyboard))
+            items.append(contentsOf: [flex, kbDismiss])
+        }
         for item in items {
             item.image = item.image?.withRenderingMode(.alwaysOriginal)
         }
