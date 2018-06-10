@@ -33,6 +33,8 @@ class TabletDashboardView: UISplitViewController {
     init(presenter: Presenter<TabletDashboardView>) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
+        sideView = TableViewController(presenter: self)
+        viewControllers = [sideView, UITableViewController()]
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -41,8 +43,8 @@ class TabletDashboardView: UISplitViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.didLoad()
         setUpUI()
+        presenter.didLoad()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -67,10 +69,8 @@ class TabletDashboardView: UISplitViewController {
 
     fileprivate func setUpUI() {
         delegate = self
-        maximumPrimaryColumnWidth = 280
         view.backgroundColor = Color.white
-        sideView = TableViewController(presenter: self)
-        viewControllers = [sideView, UITableViewController()]
+        maximumPrimaryColumnWidth = 280
         preferredDisplayMode = .allVisible
     }
 
