@@ -40,7 +40,7 @@ struct AddPostAPIProvider: NetworkProvider {
 
     var queryParameters: JSON {
         return [
-            "include": "author,tags",
+            "include": "author,authors,tags",
             "formats": "mobiledoc,html"
         ]
     }
