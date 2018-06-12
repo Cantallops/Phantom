@@ -36,7 +36,28 @@ class EditPostAPIProviderTest: XCTestCase {
     }
 
     func testParams() {
-        XCTAssertNotNil(provider.parameters["posts"])
+        let posts = (provider.parameters["posts"]! as? [JSON])!
+        let postJSON = posts.first!
+        let authorJSON = (postJSON["authors"] as? [JSON])!.first!
+        let tagJSON = (postJSON["tags"] as? [JSON])!.first!
+
+        XCTAssertEqual(postJSON["title"] as? String, post.title)
+        XCTAssertEqual(postJSON["featured"] as? Bool, post.featured)
+        XCTAssertEqual(postJSON["feature_image"] as? String, post.featureImage)
+        XCTAssertEqual(postJSON["mobiledoc"] as? String, post.mobiledoc)
+        XCTAssertEqual(postJSON["page"] as? Bool, post.page)
+        XCTAssertEqual(postJSON["featured"] as? Bool, post.featured)
+        XCTAssertEqual(postJSON["slug"] as? String, post.slug)
+        XCTAssertEqual(postJSON["status"] as? String, post.status.rawValue)
+        XCTAssertEqual(postJSON["published_at"] as? String, post.publishedAt?.apiFormated())
+        XCTAssertEqual(postJSON["custom_excerpt"] as? String, post.excerpt)
+        XCTAssertEqual(postJSON["meta_title"] as? String, post.metaTitle)
+        XCTAssertEqual(postJSON["meta_description"] as? String, post.metaDescription)
+        XCTAssertEqual(postJSON["custom_template"] as? String, post.customTemplate)
+        XCTAssertEqual(authorJSON["id"] as? String, post.getAuthors().first?.id)
+        XCTAssertEqual(authorJSON["name"] as? String, post.getAuthors().first?.name)
+        XCTAssertEqual(tagJSON["id"] as? String, post.tags.first?.id)
+        XCTAssertEqual(tagJSON["name"] as? String, post.tags.first?.name)
     }
 
     func testQueryParams() {

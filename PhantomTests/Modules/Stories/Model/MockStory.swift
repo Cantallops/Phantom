@@ -19,7 +19,7 @@ extension Story {
         featured: false,
         page: false,
         author: nil,
-        authors: [],
+        authors: [.any],
         mobiledoc: Story.MobileDoc(),
         html: nil,
         plaintext: nil,
@@ -44,4 +44,8 @@ extension Story {
         story.tags = tags
         return story
     }
+}
+
+extension Story.Author {
+    static let any = Story.Author(id: "ID", name: "Name")
 }
