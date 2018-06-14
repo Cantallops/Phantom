@@ -14,7 +14,7 @@ class LoggerService: NSObject, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]? = nil
         ) -> Bool {
-        initLogger()
+        Logger.enable()
         return true
     }
 }
