@@ -110,7 +110,7 @@ extension Error {
 
 extension NetworkError: LocalizedError {
     public var errorDescription: String? {
-        return self.localizedDescription
+        return self.localizedDescription ?? error?.localizedDescription
     }
 }
 
