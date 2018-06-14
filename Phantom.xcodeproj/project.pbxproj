@@ -29,6 +29,9 @@
 		5612C53D1FA4BA21004974E1 /* RightDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612C53B1FA4BA21004974E1 /* RightDetailTableViewCell.swift */; };
 		5612C53E1FA4BA21004974E1 /* RightDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5612C53C1FA4BA21004974E1 /* RightDetailTableViewCell.xib */; };
 		5612C5411FA4CA31004974E1 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612C5401FA4CA31004974E1 /* Tag.swift */; };
+		561763A320D2DBFB00152901 /* CleanroomLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 561763A220D2DBFB00152901 /* CleanroomLogger.framework */; };
+		561763A620D2DC3900152901 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561763A520D2DC3900152901 /* Logger.swift */; };
+		561763A820D2ED3400152901 /* LoggerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561763A720D2ED3400152901 /* LoggerService.swift */; };
 		56178B701FAF809900EA8026 /* RefreshOauth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56178B6F1FAF809900EA8026 /* RefreshOauth.swift */; };
 		56178B721FAF8C0000EA8026 /* LoadStateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56178B711FAF8C0000EA8026 /* LoadStateService.swift */; };
 		561C26281FB78D9100840DA9 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C26271FB78D9100840DA9 /* StringUtils.swift */; };
@@ -456,6 +459,9 @@
 		5612C53B1FA4BA21004974E1 /* RightDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightDetailTableViewCell.swift; sourceTree = "<group>"; };
 		5612C53C1FA4BA21004974E1 /* RightDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RightDetailTableViewCell.xib; sourceTree = "<group>"; };
 		5612C5401FA4CA31004974E1 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		561763A220D2DBFB00152901 /* CleanroomLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CleanroomLogger.framework; path = Carthage/Build/iOS/CleanroomLogger.framework; sourceTree = "<group>"; };
+		561763A520D2DC3900152901 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		561763A720D2ED3400152901 /* LoggerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerService.swift; sourceTree = "<group>"; };
 		56178B6F1FAF809900EA8026 /* RefreshOauth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshOauth.swift; sourceTree = "<group>"; };
 		56178B711FAF8C0000EA8026 /* LoadStateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadStateService.swift; sourceTree = "<group>"; };
 		561C26271FB78D9100840DA9 /* StringUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
@@ -845,6 +851,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				561763A320D2DBFB00152901 /* CleanroomLogger.framework in Frameworks */,
 				56038D7220A643CE0071F03B /* Differ.framework in Frameworks */,
 				56F95DC92094F43E00EDD56C /* Highlightr.framework in Frameworks */,
 				56F95DC5209281DF00EDD56C /* DynamicBlurView.framework in Frameworks */,
@@ -984,6 +991,14 @@
 				5612C5401FA4CA31004974E1 /* Tag.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		561763A420D2DC3000152901 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				561763A520D2DC3900152901 /* Logger.swift */,
+			);
+			path = Logger;
 			sourceTree = "<group>";
 		};
 		561C26261FB78D8100840DA9 /* String */ = {
@@ -1370,6 +1385,7 @@
 				56622C1D1FC0A4EF00CD5B13 /* LoadUIAppearanceService.swift */,
 				56F95DDF20A0EC7200EDD56C /* SearcheableIndexService.swift */,
 				56ED3EF01FDAFC6C0069736A /* TestService.swift */,
+				561763A720D2ED3400152901 /* LoggerService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -2145,6 +2161,7 @@
 		5672C96A1F5F23FC00439F46 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				561763A420D2DC3000152901 /* Logger */,
 				5672C9751F5F3EFA00439F46 /* Modules */,
 				561CD1861F7187DE00EF7C8F /* Network */,
 				56958B7D1F72E02F005A8B08 /* Tools */,
@@ -3802,6 +3819,7 @@
 		56F003E21F7C1EBC00E9707A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				561763A220D2DBFB00152901 /* CleanroomLogger.framework */,
 				56038D7120A643CE0071F03B /* Differ.framework */,
 				56F95DC82094F43D00EDD56C /* Highlightr.framework */,
 				56F95DC4209281DF00EDD56C /* DynamicBlurView.framework */,
@@ -4162,6 +4180,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Differ.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/DynamicBlurView.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Highlightr.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CleanroomLogger.framework",
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftDate.framework",
@@ -4171,6 +4190,7 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Differ.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/DynamicBlurView.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Highlightr.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CleanroomLogger.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -4228,12 +4248,14 @@
 				56E2D4701FBE0BF100DD4A7D /* DeleteStoryInteractor.swift in Sources */,
 				561E90E31F89511A008DDCF5 /* TeamMemberDetailPresenter.swift in Sources */,
 				561C262B1FB7906D00840DA9 /* CreateStoryInteractor.swift in Sources */,
+				561763A820D2ED3400152901 /* LoggerService.swift in Sources */,
 				561C26281FB78D9100840DA9 /* StringUtils.swift in Sources */,
 				56F95DE020A0EC7200EDD56C /* SearcheableIndexService.swift in Sources */,
 				569448251FEFD2310045B752 /* AcknowledgementsPresenter.swift in Sources */,
 				569447D61FE9AD5D0045B752 /* SimpleTableSectionHeader.swift in Sources */,
 				569447DC1FE9C1CC0045B752 /* EmptyTableHeader.swift in Sources */,
 				5682D0801F86B84B008DEC22 /* SubscribersListView.swift in Sources */,
+				561763A620D2DC3900152901 /* Logger.swift in Sources */,
 				5608671F1FAA29C4002A9790 /* SpaceTableViewCell.swift in Sources */,
 				5692AEAB1F6D6A6E004A65A4 /* DataSource.swift in Sources */,
 				569448111FEEFFEC0045B752 /* AboutPresenter.swift in Sources */,

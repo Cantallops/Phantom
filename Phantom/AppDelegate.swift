@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var checkRunningTest: Bool = true
 
     var services: [UIApplicationDelegate] = [
+        LoggerService(),
         LoadStateService(),
         LoadUIAppearanceService(),
         InitialModuleService(),

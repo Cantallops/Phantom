@@ -195,6 +195,10 @@ class AboutPresenter: Presenter<AboutView> {
             mailComposer.setMessageBody(body, isHTML: false)
             mailComposer.mailComposeDelegate = view
 
+            if let lastLogs = getLastLogsURL(),
+                let data = try? Data(contentsOf: lastLogs) {
+                mailComposer.addAttachmentData(data, mimeType: "text/plain", fileName: "logs.txt")
+            }
             view.present(mailComposer, animated: true, completion: nil)
         }
     }

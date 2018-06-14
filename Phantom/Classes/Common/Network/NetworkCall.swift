@@ -48,6 +48,7 @@ extension Network {
     func process<T: Codable>(data: Data?, response: URLResponse?, error: Error?) -> Result<T> {
         let networkResponse = Response(data: data, response: response, error: error)
         if let networkError = NetworkError(response: networkResponse) {
+            log(networkError)
             return .failure(networkError)
         }
         if let data = data {
@@ -58,10 +59,11 @@ extension Network {
                 let object = try T.decode(data)
                 return .success(object)
             } catch let error {
+                log(error)
                 return .failure(NetworkError(kind: .parse, response: networkResponse, error: error))
             }
         }
-
+        log("Network unknown error")
         return .failure(NetworkError(kind: .unknown, response: networkResponse))
     }
 
