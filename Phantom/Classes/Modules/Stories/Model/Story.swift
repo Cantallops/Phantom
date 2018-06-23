@@ -18,7 +18,7 @@ struct Story: Codable {
     var page: Bool
     var author: Author?
     var authors: [Author]?
-    var mobiledoc: MobileDoc
+    var mobiledoc: MobileDoc?
     var html: HTML?
     var plaintext: String?
     var status: Status
@@ -50,16 +50,19 @@ struct Story: Codable {
 
     var markdown: Markdown {
         get {
-            guard let data = mobiledoc.data(using: .utf8),
+            if let data = mobiledoc?.data(using: .utf8),
                 let anyJson = try? JSONSerialization.jsonObject(with: data, options: []),
                 let json = anyJson as? JSON,
                 let cards = json["cards"] as? [[Any]],
                 let firstCard = cards.first,
                 let cardMarkdown = firstCard.last as? JSON,
-                let markdown = cardMarkdown["markdown"] as? String else {
-                    return ""
+                let markdownFromMobileDoc = cardMarkdown["markdown"] as? String {
+                    return markdownFromMobileDoc
             }
-            return markdown
+            if let html = html {
+                return html
+            }
+            return plaintext ?? ""
         }
         set {
             mobiledoc = MobileDoc.get(from: newValue)

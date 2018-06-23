@@ -13,7 +13,7 @@ class LoggerService: NSObject, UIApplicationDelegate {
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]? = nil
-        ) -> Bool {
+    ) -> Bool {
         Logger.enable()
         return true
     }
