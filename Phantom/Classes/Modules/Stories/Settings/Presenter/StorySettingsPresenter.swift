@@ -154,6 +154,7 @@ class StorySettingsPresenter: Presenter<StorySettingsView> {
         var cells: [TableCellConf] = [
             getUploadImageCellConf(),
             getUrlFieldCellConf(),
+            getPublishDateCellConf(),
             getPreviewCellConf(),
             getTagsTextViewCellConf(withTags: tags),
             getExcerptTextViewCellConf()
@@ -230,6 +231,19 @@ private extension StorySettingsPresenter {
             }
         )
         return urlFieldCellConf
+    }
+
+    func getPublishDateCellConf() -> TableCellConf {
+        let publishDateCellConf = TextFieldTableViewCell.Conf(
+            title: "Publish Date",
+            textFieldPlaceholder: "",
+            inputMode: .fullDate(current: story.publishedAt, max: Date(), min: nil)
+        )
+        publishDateCellConf.onChangeDate = { [unowned self] _, date in
+            self.story.publishedAt = date
+            self.edited(story: self.story)
+        }
+        return publishDateCellConf
     }
 
     func getPreviewCellConf() -> TableCellConf {

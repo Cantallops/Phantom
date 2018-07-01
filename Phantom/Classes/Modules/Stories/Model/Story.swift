@@ -107,7 +107,7 @@ extension Story {
 extension Story {
     mutating func publish() {
         status = .published
-        publishedAt = Date()
+        self.publishedAt = publishedAt ?? Date()
     }
 
     mutating func setDraft() {

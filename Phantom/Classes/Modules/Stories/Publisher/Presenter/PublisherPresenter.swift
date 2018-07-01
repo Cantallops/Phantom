@@ -137,9 +137,7 @@ class PublisherPresenter: Presenter<PublisherView> {
         )
         schedule.onChangeDate = { [weak self] _, date in
             self?.publishDate = date
-        }
-        schedule.onSelect = { [weak self] in
-            self?.change(toPublishAction: .schedule(self?.publishDate ?? Date()))
+            self?.change(toPublishAction: .schedule(date ?? .init()))
         }
         return schedule
     }

@@ -52,7 +52,6 @@ class Logger {
         Log.enable(configuration: configs)
     }
 
-
     enum Severity {
         case info
         case warning
