@@ -132,7 +132,6 @@ extension TextFieldTableViewCell {
         datePicker.date = current ?? Date()
         datePicker.maximumDate = max
         datePicker.minimumDate = min
-        datePicker.locale = Locale(identifier: "en_GB")
         datePicker.datePickerMode = .dateAndTime
         datePicker.addTarget(self, action: #selector(datePickerValueChanged(sender:)), for: .valueChanged)
         textField.inputView = datePicker

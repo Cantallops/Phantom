@@ -18,8 +18,8 @@ public extension Date {
         return colloquialTime?.0
     }
 
-    func formated(format: String = "dd/MM/yyyy mm:ss") -> String {
-        return inGMTRegion().string(custom: format)
+    func formated(format: String = "dd/MM/yyyy HH:mm") -> String {
+        return inDefaultRegion().string(custom: format)
     }
 
     func apiFormated() -> String {
