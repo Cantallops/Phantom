@@ -113,6 +113,7 @@
 		562608EF20B9D6920004822E /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562608EE20B9D6920004822E /* Theme.swift */; };
 		562608F120B9D9160004822E /* GetCurrentTemplatesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562608F020B9D9160004822E /* GetCurrentTemplatesInteractor.swift */; };
 		56270DCD1F742E0B00E460ED /* FormErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56270DCC1F742E0B00E460ED /* FormErrors.swift */; };
+		56285D772120A1A700AD331F /* MobileDocKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56285D762120A1A700AD331F /* MobileDocKit.framework */; };
 		563189671F66E956006B29D5 /* InitialModuleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563189661F66E956006B29D5 /* InitialModuleService.swift */; };
 		5631896C1F66EDAA006B29D5 /* InitialModuleServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5631896B1F66EDAA006B29D5 /* InitialModuleServiceTest.swift */; };
 		563189751F66F366006B29D5 /* BlogSiteViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563189741F66F366006B29D5 /* BlogSiteViewTest.swift */; };
@@ -338,7 +339,6 @@
 		56AFDF161F869FE500ADA640 /* StoriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AFDF141F869FE500ADA640 /* StoriesListView.swift */; };
 		56AFDF1E1F86A0E000ADA640 /* StoriesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AFDF1D1F86A0E000ADA640 /* StoriesListPresenter.swift */; };
 		56AFDF201F86A3F500ADA640 /* DashboardFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AFDF1F1F86A3F500ADA640 /* DashboardFactory.swift */; };
-		56B05D40211B673000BC6A83 /* MobileDocKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56B05D3F211B673000BC6A83 /* MobileDocKit.framework */; };
 		56B836261F6719D70017905D /* TextFieldTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B836251F6719D70017905D /* TextFieldTest.swift */; };
 		56B836291F672C160017905D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B836281F672C160017905D /* Color.swift */; };
 		56BBA1CC1FB860E300C46916 /* RevokeAccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BBA1CB1FB860E300C46916 /* RevokeAccessToken.swift */; };
@@ -544,6 +544,7 @@
 		562608EE20B9D6920004822E /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		562608F020B9D9160004822E /* GetCurrentTemplatesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentTemplatesInteractor.swift; sourceTree = "<group>"; };
 		56270DCC1F742E0B00E460ED /* FormErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormErrors.swift; sourceTree = "<group>"; };
+		56285D762120A1A700AD331F /* MobileDocKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileDocKit.framework; path = Carthage/Build/iOS/MobileDocKit.framework; sourceTree = "<group>"; };
 		563189661F66E956006B29D5 /* InitialModuleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialModuleService.swift; sourceTree = "<group>"; };
 		5631896B1F66EDAA006B29D5 /* InitialModuleServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialModuleServiceTest.swift; sourceTree = "<group>"; };
 		563189741F66F366006B29D5 /* BlogSiteViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogSiteViewTest.swift; sourceTree = "<group>"; };
@@ -773,7 +774,6 @@
 		56AFDF141F869FE500ADA640 /* StoriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListView.swift; sourceTree = "<group>"; };
 		56AFDF1D1F86A0E000ADA640 /* StoriesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListPresenter.swift; sourceTree = "<group>"; };
 		56AFDF1F1F86A3F500ADA640 /* DashboardFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardFactory.swift; sourceTree = "<group>"; };
-		56B05D3F211B673000BC6A83 /* MobileDocKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MobileDocKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56B836251F6719D70017905D /* TextFieldTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTest.swift; sourceTree = "<group>"; };
 		56B836281F672C160017905D /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		56BBA1CB1FB860E300C46916 /* RevokeAccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevokeAccessToken.swift; sourceTree = "<group>"; };
@@ -853,7 +853,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56B05D40211B673000BC6A83 /* MobileDocKit.framework in Frameworks */,
+				56285D772120A1A700AD331F /* MobileDocKit.framework in Frameworks */,
 				561763A320D2DBFB00152901 /* CleanroomLogger.framework in Frameworks */,
 				56038D7220A643CE0071F03B /* Differ.framework in Frameworks */,
 				56F95DC92094F43E00EDD56C /* Highlightr.framework in Frameworks */,
@@ -3822,7 +3822,7 @@
 		56F003E21F7C1EBC00E9707A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				56B05D3F211B673000BC6A83 /* MobileDocKit.framework */,
+				56285D762120A1A700AD331F /* MobileDocKit.framework */,
 				561763A220D2DBFB00152901 /* CleanroomLogger.framework */,
 				56038D7120A643CE0071F03B /* Differ.framework */,
 				56F95DC82094F43D00EDD56C /* Highlightr.framework */,
@@ -4185,6 +4185,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/DynamicBlurView.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Highlightr.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CleanroomLogger.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/MobileDocKit.framework",
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftDate.framework",
@@ -4195,6 +4196,7 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/DynamicBlurView.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Highlightr.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CleanroomLogger.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/MobileDocKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
