@@ -53,9 +53,13 @@ class Presenter<VC: UIViewController>: PresenterProtocol {
             sessionNotificationCenter.post(.signOut, object: Account.current)
             return
         }
+        showErrorAlert(title: "Something was wrong", description: error.localizedDescription)
+    }
+
+    func showErrorAlert(title: String, description: String?) {
         let alert = UIAlertController(
-            title: "Something was wrong",
-            message: error.localizedDescription,
+            title: title,
+            message: description,
             preferredStyle: .alert
         )
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))

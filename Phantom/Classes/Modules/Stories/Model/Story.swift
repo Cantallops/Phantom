@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import MobileDocKit
 
-struct Story: Codable {
+struct Story {
     let id: String
     let uuid: String
     var title: String
@@ -33,7 +34,6 @@ struct Story: Codable {
     var metaTitle: String?
     var metaDescription: String?
 
-    typealias MobileDoc = String
     typealias HTML = String
     typealias Markdown = String
 
@@ -50,23 +50,46 @@ struct Story: Codable {
 
     var markdown: Markdown {
         get {
-            if let data = mobiledoc?.data(using: .utf8),
-                let anyJson = try? JSONSerialization.jsonObject(with: data, options: []),
-                let json = anyJson as? JSON,
-                let cards = json["cards"] as? [[Any]],
-                let firstCard = cards.first,
-                let cardMarkdown = firstCard.last as? JSON,
-                let markdownFromMobileDoc = cardMarkdown["markdown"] as? String {
-                    return markdownFromMobileDoc
+            if let mobiledoc = self.mobiledoc {
+                if let card = mobiledoc.cards.first as? GhostMarkdownCard {
+                    return card.markdown
+                } else if let card = mobiledoc.cards.first as? MarkdownCard {
+                    return card.markdown
+                }
             }
-            if let html = html {
-                return html
-            }
-            return plaintext ?? ""
+            return ""
         }
         set {
-            mobiledoc = MobileDoc.get(from: newValue)
+            mobiledoc = MobileDoc(
+                version: "0.3.1",
+                cards: [GhostMarkdownCard(markdown: newValue)],
+                sections: [CardSection(cardIndex: 0)]
+            )
         }
+    }
+    var editedWithKoeingEditor: Bool {
+        if let mobiledoc = self.mobiledoc {
+            guard let firstCard = mobiledoc.cards.first,
+                firstCard.canBeEditedWithBasicEditor() else {
+                    return true
+            }
+            return mobiledoc.sections.count > 1
+                || mobiledoc.cards.count != 1
+                || !mobiledoc.markups.isEmpty
+                || !mobiledoc.atoms.isEmpty
+        }
+        return false
+    }
+
+    var mobiledocString: String? {
+        let mobiledocEncoder = MobileDocEncoder()
+        guard
+            let mobiledoc = mobiledoc,
+            let jsonMobileDoc = try? mobiledocEncoder.encode(mobiledoc),
+            let jsonMobileDocData = try? JSONSerialization.data(withJSONObject: jsonMobileDoc) else {
+                return nil
+        }
+        return String(data: jsonMobileDocData, encoding: .utf8)
     }
 
     enum CodingKeys: String, CodingKey {
@@ -91,6 +114,90 @@ struct Story: Codable {
         case metaTitle = "meta_title"
         case metaDescription = "meta_description"
     }
+}
+
+extension Card {
+    func canBeEditedWithBasicEditor() -> Bool {
+        return self is GhostMarkdownCard || self is MarkdownCard
+    }
+}
+
+extension Story: Decodable {
+    init(from decoder: Swift.Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        var mobiledoc: MobileDoc?
+
+        if let mobiledocString = try container.decodeIfPresent(String.self, forKey: .mobiledoc) {
+            let jsonMobileDoc = try JSONSerialization.jsonObject(with: mobiledocString.data(using: .utf8)!)
+            let mobileDocDecoder = MobileDocDecoder(
+                cardsDecoder: CardsDecoder(
+                    customCardDecoders: [
+                        GhostMarkdownCardDecoder()
+                    ]
+                )
+            )
+            mobiledoc = try mobileDocDecoder.decode(fromJSON: (jsonMobileDoc as? [String: Any])!)
+        }
+
+        self.init(
+            id: try container.decode(String.self, forKey: .id),
+            uuid: try container.decode(String.self, forKey: .uuid),
+            title: try container.decode(String.self, forKey: .title),
+            slug: try container.decodeIfPresent(String.self, forKey: .slug),
+            featureImage: try container.decodeIfPresent(String.self, forKey: .featureImage),
+            featured: try container.decode(Bool.self, forKey: .featured),
+            page: try container.decode(Bool.self, forKey: .page),
+            author: try container.decodeIfPresent(Story.Author.self, forKey: .author),
+            authors: try container.decodeIfPresent([Story.Author].self, forKey: .authors),
+            mobiledoc: mobiledoc,
+            html: try container.decodeIfPresent(Story.HTML.self, forKey: .html),
+            plaintext: try container.decodeIfPresent(String.self, forKey: .plaintext),
+            status: try container.decode(Story.Status.self, forKey: .status),
+            excerpt: try container.decodeIfPresent(String.self, forKey: .excerpt),
+            customTemplate: try container.decodeIfPresent(String.self, forKey: .customTemplate),
+            tags: try container.decode([Tag].self, forKey: .tags),
+            updatedAt: try container.decode(Date.self, forKey: .updatedAt),
+            publishedAt: try container.decodeIfPresent(Date.self, forKey: .publishedAt),
+            metaTitle: try container.decodeIfPresent(String.self, forKey: .metaTitle),
+            metaDescription: try container.decodeIfPresent(String.self, forKey: .metaDescription)
+        )
+    }
+}
+
+extension Story: Encodable {
+
+    func encode(to encoder: Swift.Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+
+        try container.encode(id, forKey: .id)
+        try container.encode(uuid, forKey: .uuid)
+        try container.encode(title, forKey: .title)
+        try container.encode(slug, forKey: .slug)
+        try container.encode(featureImage, forKey: .featureImage)
+        try container.encode(featured, forKey: .featured)
+        try container.encode(page, forKey: .page)
+        try container.encode(author, forKey: .author)
+        try container.encode(authors, forKey: .authors)
+        try container.encode(html, forKey: .html)
+        try container.encode(plaintext, forKey: .plaintext)
+        try container.encode(status, forKey: .status)
+        try container.encode(excerpt, forKey: .excerpt)
+        try container.encode(customTemplate, forKey: .customTemplate)
+        try container.encode(tags, forKey: .tags)
+        try container.encode(updatedAt, forKey: .updatedAt)
+        try container.encode(publishedAt, forKey: .publishedAt)
+        try container.encode(metaTitle, forKey: .metaTitle)
+        try container.encode(metaDescription, forKey: .metaDescription)
+        if let mobiledoc = mobiledoc {
+            let mobiledocEncoder = MobileDocEncoder()
+            let jsonMobileDoc = try mobiledocEncoder.encode(mobiledoc)
+            let jsonMobileDocData = try JSONSerialization.data(withJSONObject: jsonMobileDoc)
+            let mobiledocString = String(data: jsonMobileDocData, encoding: .utf8)
+            try container.encode(mobiledocString, forKey: .mobiledoc)
+        }
+    }
+
 }
 
 extension Story {
@@ -191,31 +298,6 @@ extension Story {
     }
 }
 
-extension Story.MobileDoc {
-    static func get(from markdown: Story.Markdown) -> Story.MobileDoc {
-        let scapedMarkdown = markdown
-            .replacing("\\", "\\\\")
-            .replacing("\"", "\\\"")      // replace " with \"
-            .replacing("\n", "\\n")       // replace new line with \n
-            .replacing("\t", "\\t")       // replace tab with \t
-            .replacing("\r", "\\r")       // replace carriage return with \r
-        return """
-                {
-                    "version":"0.3.1",
-                    "markups":[],
-                    "atoms":[],
-                    "cards":[
-                        ["card-markdown", {
-                            "cardName":"card-markdown",
-                            "markdown":"\(scapedMarkdown)"
-                        }]
-                    ],
-                    "sections":[[10,0]]
-                }
-               """
-    }
-}
-
 extension Story {
     var metaData: MetaData {
         set {
@@ -235,4 +317,59 @@ extension Story {
 
 extension Story {
     static let searcheableDomain = "stories"
+}
+
+struct GhostMarkdownCard: Card {
+
+    static let name: String = "card-markdown"
+
+    var name: String {
+        return GhostMarkdownCard.name
+    }
+    var cardName: String
+    var markdown: String
+    var payload: [String: Any] {
+        return [
+            "cardName": cardName,
+            "markdown": markdown
+        ]
+    }
+
+    init(cardName: String = GhostMarkdownCard.name, markdown: String) {
+        self.cardName = cardName
+        self.markdown = markdown
+    }
+
+    func equal(_ rhs: Card) -> Bool {
+        guard let card = rhs as? GhostMarkdownCard else {
+            return false
+        }
+        if cardName != card.cardName {
+            return false
+        }
+        if markdown != card.markdown {
+            return false
+        }
+        if !NSDictionary(dictionary: payload).isEqual(to: card.payload) {
+            return false
+        }
+        return true
+    }
+}
+
+class GhostMarkdownCardDecoder: CardDecoder {
+
+    func decode(_ input: [Any]) -> Card? {
+        guard
+            input.first as? String == GhostMarkdownCard.name,
+            let payload = input.last as? [String: String],
+            payload.count == 2,
+            let markdown = payload["markdown"],
+            let cardName = payload["cardName"]
+        else {
+                return nil
+        }
+        return GhostMarkdownCard(cardName: cardName, markdown: markdown)
+    }
+
 }

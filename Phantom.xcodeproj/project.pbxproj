@@ -338,6 +338,7 @@
 		56AFDF161F869FE500ADA640 /* StoriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AFDF141F869FE500ADA640 /* StoriesListView.swift */; };
 		56AFDF1E1F86A0E000ADA640 /* StoriesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AFDF1D1F86A0E000ADA640 /* StoriesListPresenter.swift */; };
 		56AFDF201F86A3F500ADA640 /* DashboardFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AFDF1F1F86A3F500ADA640 /* DashboardFactory.swift */; };
+		56B05D40211B673000BC6A83 /* MobileDocKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56B05D3F211B673000BC6A83 /* MobileDocKit.framework */; };
 		56B836261F6719D70017905D /* TextFieldTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B836251F6719D70017905D /* TextFieldTest.swift */; };
 		56B836291F672C160017905D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B836281F672C160017905D /* Color.swift */; };
 		56BBA1CC1FB860E300C46916 /* RevokeAccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BBA1CB1FB860E300C46916 /* RevokeAccessToken.swift */; };
@@ -772,6 +773,7 @@
 		56AFDF141F869FE500ADA640 /* StoriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListView.swift; sourceTree = "<group>"; };
 		56AFDF1D1F86A0E000ADA640 /* StoriesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListPresenter.swift; sourceTree = "<group>"; };
 		56AFDF1F1F86A3F500ADA640 /* DashboardFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardFactory.swift; sourceTree = "<group>"; };
+		56B05D3F211B673000BC6A83 /* MobileDocKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MobileDocKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56B836251F6719D70017905D /* TextFieldTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTest.swift; sourceTree = "<group>"; };
 		56B836281F672C160017905D /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		56BBA1CB1FB860E300C46916 /* RevokeAccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevokeAccessToken.swift; sourceTree = "<group>"; };
@@ -851,6 +853,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56B05D40211B673000BC6A83 /* MobileDocKit.framework in Frameworks */,
 				561763A320D2DBFB00152901 /* CleanroomLogger.framework in Frameworks */,
 				56038D7220A643CE0071F03B /* Differ.framework in Frameworks */,
 				56F95DC92094F43E00EDD56C /* Highlightr.framework in Frameworks */,
@@ -3819,6 +3822,7 @@
 		56F003E21F7C1EBC00E9707A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				56B05D3F211B673000BC6A83 /* MobileDocKit.framework */,
 				561763A220D2DBFB00152901 /* CleanroomLogger.framework */,
 				56038D7120A643CE0071F03B /* Differ.framework */,
 				56F95DC82094F43D00EDD56C /* Highlightr.framework */,

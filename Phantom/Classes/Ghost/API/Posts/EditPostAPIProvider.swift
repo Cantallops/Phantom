@@ -23,7 +23,7 @@ struct EditPostAPIProvider: NetworkProvider {
         var post: JSON = [:]
         post["featured"] = story.featured
         post["feature_image"] = story.featureImage
-        post["mobiledoc"] = story.mobiledoc
+        post["mobiledoc"] = story.mobiledocString
         post["page"] = story.page
         post["featured"] = story.featured
         post["slug"] = story.slug
