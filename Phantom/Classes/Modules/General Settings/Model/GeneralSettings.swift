@@ -40,6 +40,9 @@ struct GeneralSettings: Codable {
             case isPrivate = "is_private"
             case password
             case publicHash = "public_hash"
+            case membersPublicKey = "members_public_key"
+            case membersPrivateKey = "members_private_key"
+            case membersSessionSecret = "members_session_secret"
         }
 
         enum Kind: String, Codable {
@@ -47,6 +50,7 @@ struct GeneralSettings: Codable {
             case blog
             case `private`
             case theme
+            case members
         }
     }
 

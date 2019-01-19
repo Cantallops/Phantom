@@ -87,7 +87,7 @@ class StoryDetailPresenter: Presenter<StoryDetailView> {
             view?.markdown = story.markdown
         }
         view?.status = story.status.rawValue.capitalized
-        var actionText: String? = nil
+        var actionText: String? = .none
         switch story.status {
         case .published:
             actionText = "Update"

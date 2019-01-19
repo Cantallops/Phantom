@@ -72,7 +72,11 @@ class PublisherView: ViewController {
         if let errorLabel = errorLabel, let text = errorLabel.text {
             labelHeight = text.height(withConstrainedWidth: view.frame.width, font: errorLabel.font)
         }
-        height = 20 + 25 + 10 + tableView.contentSize.height * 1.1 + 10 + 44 + 15 + labelHeight
+        var height: CGFloat = 20 + 25 + 10
+        height += tableView.contentSize.height * 1.1
+        height += 10 + 44 + 15
+        height += labelHeight
+        self.height = height
     }
 
     private func setUpTable() {
