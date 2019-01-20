@@ -54,7 +54,7 @@ class StoryTableViewCell: TableViewCell {
         configure(badgeWith: conf)
         configure(authorWith: conf)
         configure(timeWith: conf)
-        self.contentView.alpha = conf.story.editedWithKoeingEditor ? 0.5 : 1.0
+        self.contentView.alpha = conf.story.editedWithKoenigEditor ? 0.5 : 1.0
     }
 
     private func configure(badgeWith conf: Conf) {

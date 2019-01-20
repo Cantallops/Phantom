@@ -102,7 +102,7 @@ class StoriesListPresenter: Presenter<StoriesListView> {
             )
             conf.deselect = true
             conf.onSelect = { [weak self] in
-                if story.editedWithKoeingEditor {
+                if story.editedWithKoenigEditor {
                     self?.showErrorAlert(
                         title: "Post edited with unsupported format",
                         description: "The post has been edited with Koenig editor and it is not possible to edit within the app at this moment."

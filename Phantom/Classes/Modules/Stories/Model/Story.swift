@@ -67,7 +67,7 @@ struct Story {
             )
         }
     }
-    var editedWithKoeingEditor: Bool {
+    var editedWithKoenigEditor: Bool {
         if let mobiledoc = self.mobiledoc {
             guard let firstCard = mobiledoc.cards.first,
                 firstCard.canBeEditedWithBasicEditor() else {
