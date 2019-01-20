@@ -73,7 +73,7 @@ struct Story {
                 firstCard.canBeEditedWithBasicEditor() else {
                     return true
             }
-            return mobiledoc.sections.count > 1
+            return mobiledoc.sections.count > 2
                 || mobiledoc.cards.count != 1
                 || !mobiledoc.markups.isEmpty
                 || !mobiledoc.atoms.isEmpty
