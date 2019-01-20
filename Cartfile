@@ -3,6 +3,6 @@ github "Orderella/PopupDialog" ~> 0.7
 github "whitesmith/WSTagsField" ~> 3.1
 github "scalessec/Toast-Swift" ~> 3.0.1
 github "tonyarnold/Differ"
-github "raspu/Highlightr"
+github "raspu/Highlightr" "87465e7ac116a4c8672fa29aae840e9c9e68bedb"
 github "Cantallops/MobileDocKit"
 github "emaloney/CleanroomLogger" ~> 7.0.0

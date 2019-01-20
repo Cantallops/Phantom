@@ -13,7 +13,7 @@ class TableCellConf: NSObject {
     var nib: UINib?
 
     var accessoryView: UIView?
-    var accessoryType: UITableViewCellAccessoryType = .none
+    var accessoryType: UITableViewCell.AccessoryType = .none
     var selectionColor: UIColor = Color.lightBlue
 
     var onSelect: (() -> Void)?
@@ -27,7 +27,7 @@ class TableCellConf: NSObject {
         }
     }
 
-    var height: CGFloat = UITableViewAutomaticDimension
+    var height: CGFloat = UITableView.automaticDimension
     var estimatedHeight: CGFloat = 44
 
     var initialySelected: Bool = false

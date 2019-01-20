@@ -43,35 +43,35 @@ class ViewController: UIViewController, Presentable {
         super.viewWillAppear(animated)
         presenter.willAppear()
         let keyboardDidShowObserver = NotificationCenter.default.addObserver(
-            forName: .UIKeyboardDidShow,
+            forName: UIResponder.keyboardDidShowNotification,
             object: nil,
             queue: nil,
             using: keyboardDidShow
         )
         observers.append(keyboardDidShowObserver)
         let keyboardWillShowObserver = NotificationCenter.default.addObserver(
-            forName: .UIKeyboardWillShow,
+            forName: UIResponder.keyboardWillShowNotification,
             object: nil,
             queue: nil,
             using: keyboardWillBeShown
         )
         observers.append(keyboardWillShowObserver)
         let keyboardFrameChangeObserver = NotificationCenter.default.addObserver(
-            forName: .UIKeyboardWillChangeFrame,
+            forName: UIResponder.keyboardWillChangeFrameNotification,
             object: nil,
             queue: nil,
             using: keyboardFrameChange
         )
         observers.append(keyboardFrameChangeObserver)
         let keyboardWillHideObserver = NotificationCenter.default.addObserver(
-            forName: .UIKeyboardWillHide,
+            forName: UIResponder.keyboardWillHideNotification,
             object: nil,
             queue: nil,
             using: keyboardWillBeHidden
         )
         observers.append(keyboardWillHideObserver)
         let keyboardDidHideObserver = NotificationCenter.default.addObserver(
-            forName: .UIKeyboardDidHide,
+            forName: UIResponder.keyboardDidHideNotification,
             object: nil,
             queue: nil,
             using: keyboardDidHide
@@ -139,7 +139,7 @@ extension ViewController {
 
     @objc fileprivate func keyboardFrameChange(notification: Notification) {
         if let userInfo = notification.userInfo,
-            let rect = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect {
+            let rect = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
             keyboard(frame: rect)
         }
     }
@@ -150,7 +150,7 @@ extension ViewController {
 
     @objc private func keyboardDidShow(notification: Notification) {
         if let userInfo = notification.userInfo,
-            let rect = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect {
+            let rect = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
             keyboard(frame: rect)
         }
         keyboardShown()

@@ -12,7 +12,7 @@ class UITableViewSectionFooterConf: NSObject {
     var identifier: String = ""
     var nib: UINib?
 
-    var height: CGFloat = UITableViewAutomaticDimension
+    var height: CGFloat = UITableView.automaticDimension
     var estimatedHeight: CGFloat = 44
 
     init(
@@ -25,7 +25,7 @@ class UITableViewSectionFooterConf: NSObject {
     }
 
     func height(forWidth width: CGFloat) -> CGFloat {
-        if height != UITableViewAutomaticDimension {
+        if height != UITableView.automaticDimension {
             return height
         }
         guard let nib = nib,

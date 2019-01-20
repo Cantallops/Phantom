@@ -61,7 +61,7 @@ class AcknowledgementsPresenter: Presenter<AcknowledgementsView> {
     private func getIconText() -> NSAttributedString {
         let author = "Dimitry Miroliubov"
         let web = "www.flaticon.com"
-        let attrs: [NSAttributedStringKey: Any] = [
+        let attrs: [NSAttributedString.Key: Any] = [
             .font: UIFont.systemFont(ofSize: 15),
             .foregroundColor: Color.darkGrey
         ]
@@ -76,7 +76,7 @@ class AcknowledgementsPresenter: Presenter<AcknowledgementsView> {
 
     private func getUIIconsText() -> NSAttributedString {
         let web = "Icons8"
-        let attrs: [NSAttributedStringKey: Any] = [
+        let attrs: [NSAttributedString.Key: Any] = [
             .font: UIFont.systemFont(ofSize: 15),
             .foregroundColor: Color.darkGrey
         ]

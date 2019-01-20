@@ -63,7 +63,7 @@ extension Story {
             let imageURL = URL(string: imageSURL),
             let data = try? NSData(contentsOf: imageURL) as Data,
             let image = UIImage(data: data) {
-            attributeSet.thumbnailData = UIImagePNGRepresentation(image)
+            attributeSet.thumbnailData = image.pngData()
         }
         return CSSearchableItem(
             uniqueIdentifier: searcheableIdentifier(forAccount: account),

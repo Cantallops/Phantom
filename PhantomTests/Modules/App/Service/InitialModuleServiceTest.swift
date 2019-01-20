@@ -14,7 +14,7 @@ class InitialModuleServiceTest: XCTestCase {
     fileprivate var service: UIApplicationDelegate!
     fileprivate var application: UIApplication!
     // swiftlint:disable:next weak_delegate
-    fileprivate weak var delegate: AppDelegate!
+    fileprivate var delegate: AppDelegate!
 
     private let dashboard = UIViewController()
     private let sessionView = UIViewController()
@@ -32,13 +32,8 @@ class InitialModuleServiceTest: XCTestCase {
     override func tearDown() {
         Account.current = nil
         Account.last = nil
+        delegate = nil
         super.tearDown()
-    }
-
-    func testShouldReturnFalseIfThereIsNoWindow() {
-        delegate.window = nil
-        let result = service.application!(application, didFinishLaunchingWithOptions: [:])
-        XCTAssertFalse(result, "If there are no window should return false")
     }
 
     func testShouldInitializeNavigationViewLogged() {

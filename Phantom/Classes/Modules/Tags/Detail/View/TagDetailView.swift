@@ -51,7 +51,7 @@ extension TagDetailView: Loader {
     }
 
     func start() {
-        let uiBusy = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let uiBusy = UIActivityIndicatorView(style: .gray)
         uiBusy.hidesWhenStopped = true
         uiBusy.startAnimating()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: uiBusy)

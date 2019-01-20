@@ -410,5 +410,4 @@ extension Theme.Template: Pickerable {
     }
 }
 
-extension TeamMember: Pickerable {
-}
+extension TeamMember: Pickerable {}

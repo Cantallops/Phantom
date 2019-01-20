@@ -26,7 +26,7 @@ class Presenter<VC: UIViewController>: PresenterProtocol {
     lazy fileprivate var basicLoader: UIActivityIndicatorView = {
         let frame = CGRect(origin: .zero, size: CGSize(width: 100, height: 100))
         let activity = UIActivityIndicatorView(frame: frame)
-        activity.activityIndicatorViewStyle = .whiteLarge
+        activity.style = .whiteLarge
         activity.color = Color.tint
         activity.backgroundColor = Color.lightGrey
         activity.layer.cornerRadius = 4

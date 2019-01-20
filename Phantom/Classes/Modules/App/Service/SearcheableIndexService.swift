@@ -41,7 +41,7 @@ class SearcheableIndexService: NSObject, UIApplicationDelegate {
 
     func application(
         _ application: UIApplication,
-        didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]? = nil
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
     ) -> Bool {
         if let account = Account.current {
             if account.preferences.indexStories {
@@ -56,7 +56,7 @@ class SearcheableIndexService: NSObject, UIApplicationDelegate {
     func application(
         _ application: UIApplication,
         continue userActivity: NSUserActivity,
-        restorationHandler: @escaping ([Any]?) -> Void
+        restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void
     ) -> Bool {
         if userActivity.activityType == CSSearchableItemActionType,
             let uniqueIdentifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String,

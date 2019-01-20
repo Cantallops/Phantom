@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MobileDocKit
 @testable import Phantom
 
 extension Story {
@@ -20,7 +21,7 @@ extension Story {
         page: false,
         author: nil,
         authors: [.any],
-        mobiledoc: Story.MobileDoc(),
+        mobiledoc: MobileDoc(version: "1"),
         html: nil,
         plaintext: nil,
         status: Story.Status.draft,

@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/swift-4-green.svg)
+![](https://img.shields.io/badge/swift-4.2-green.svg)
 ![](https://img.shields.io/badge/platform-iOS-lightgrey.svg)
 [![](https://img.shields.io/badge/dependecies-Carthage-blue.svg)](https://github.com/Carthage/Carthage)
 [![Build Status](https://travis-ci.org/Cantallops/Phantom.svg?branch=master)](https://travis-ci.org/Cantallops/Phantom)

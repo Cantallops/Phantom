@@ -44,7 +44,6 @@ class EditPostAPIProviderTest: XCTestCase {
         XCTAssertEqual(postJSON["title"] as? String, post.title)
         XCTAssertEqual(postJSON["featured"] as? Bool, post.featured)
         XCTAssertEqual(postJSON["feature_image"] as? String, post.featureImage)
-        XCTAssertEqual(postJSON["mobiledoc"] as? String, post.mobiledoc)
         XCTAssertEqual(postJSON["page"] as? Bool, post.page)
         XCTAssertEqual(postJSON["featured"] as? Bool, post.featured)
         XCTAssertEqual(postJSON["slug"] as? String, post.slug)

@@ -170,12 +170,12 @@ extension TextView {
         guard let startOfLine = tokenizer.position(
                 from: currentPosition,
                 toBoundary: .paragraph,
-                inDirection: UITextStorageDirection.backward.rawValue
+                inDirection: UITextDirection(rawValue: UITextStorageDirection.backward.rawValue)
             ),
             let endOfLine = tokenizer.position(
                 from: currentPosition,
                 toBoundary: .paragraph,
-                inDirection: UITextStorageDirection.forward.rawValue
+                inDirection: UITextDirection(rawValue: UITextStorageDirection.forward.rawValue)
             ),
             let rangeToWrap = textRange(from: startOfLine, to: endOfLine) else {
             return

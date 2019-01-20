@@ -10,7 +10,10 @@ import UIKit
 
 extension ImageUploader: UIImagePickerControllerDelegate {
 
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
+    func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
+    ) {
         picker.dismiss(animated: true)
         uploadImage(withInfo: info)
     }
@@ -64,14 +67,14 @@ class ImageUploader: NSObject {
     }
 
     private func uploadImage(
-        withInfo info: [String: Any]
+        withInfo info: [UIImagePickerController.InfoKey: Any]
     ) {
-        var imageURLKeyPath = UIImagePickerControllerMediaURL
+        var imageURLKeyPath = info[.mediaURL]
         if #available(iOS 11.0, *) {
-            imageURLKeyPath = UIImagePickerControllerImageURL
+            imageURLKeyPath = info[.imageURL]
         }
-        guard let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage,
-            let url = info[imageURLKeyPath] as? URL else {
+        guard let chosenImage = info[.originalImage] as? UIImage,
+            let url = imageURLKeyPath as? URL else {
                 onResult((.failure(NetworkError(kind: .unknown)), nil))
                 return
         }
@@ -80,7 +83,7 @@ class ImageUploader: NSObject {
         if resized.size.height > maxWidthOrHeight || resized.size.width > maxWidthOrHeight {
             resized = chosenImage.resize(withSize: CGSize(width: maxWidthOrHeight, height: maxWidthOrHeight))
         }
-        guard let data = UIImageJPEGRepresentation(resized, 0.5) else {
+        guard let data = resized.jpegData(compressionQuality: 0.5) else {
                 onResult((.failure(NetworkError(kind: .unknown)), nil))
                 return
         }

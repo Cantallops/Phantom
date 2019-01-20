@@ -105,7 +105,7 @@ extension UITableViewFullDelegateTest {
         onSelect: (() -> Void)? = nil,
         canSelect: Bool = true,
         initialySelected: Bool = false,
-        height: CGFloat = UITableViewAutomaticDimension
+        height: CGFloat = UITableView.automaticDimension
     ) -> [UITableView.Section] {
         let cellConf = TableCellConf(identifier: "id", nib: nil)
         cellConf.onSelect = onSelect

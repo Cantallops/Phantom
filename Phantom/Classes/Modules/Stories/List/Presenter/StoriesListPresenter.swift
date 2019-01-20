@@ -105,7 +105,7 @@ class StoriesListPresenter: Presenter<StoriesListView> {
                 if story.editedWithKoeingEditor {
                     self?.showErrorAlert(
                         title: "Post edited with unsupported format",
-                        description: "The post has been edited with beta Koenig editor and it is not possible to edit within the app at this moment. Currently working on it."
+                        description: "The post has been edited with Koenig editor and it is not possible to edit within the app at this moment."
                     )
                 } else {
                     self?.goToStoryDetail(with: story)

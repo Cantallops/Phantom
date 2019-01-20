@@ -92,6 +92,7 @@ class ResultTest: XCTestCase {
         let combinedResult = result1.combined(result: result2)
         XCTAssertTrue(combinedResult.isFailure)
         XCTAssertTrue(combinedResult.error is CombinedError)
-        XCTAssertEqual(combinedResult.error?.localizedDescription, "Error 1\nError 2")
+        XCTAssertTrue(combinedResult.error!.localizedDescription.contains("Error 1"))
+        XCTAssertTrue(combinedResult.error!.localizedDescription.contains("Error 2"))
     }
 }

@@ -299,7 +299,7 @@ private extension StoryDetailView {
         }
         contentTextView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(contentTextView)
-        view.sendSubview(toBack: contentTextView)
+        view.sendSubviewToBack(contentTextView)
         var layoutGuide = view.layoutMarginsGuide
         if #available(iOS 11.0, *) {
             layoutGuide = view.safeAreaLayoutGuide
@@ -392,7 +392,7 @@ extension StoryDetailView: Loader {
     }
 
     func start() {
-        let uiBusy = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let uiBusy = UIActivityIndicatorView(style: .gray)
         uiBusy.hidesWhenStopped = true
         uiBusy.startAnimating()
         toolbarItems?.removeFirst()
