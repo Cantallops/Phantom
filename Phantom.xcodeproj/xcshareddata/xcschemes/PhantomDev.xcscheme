@@ -43,12 +43,20 @@
       enableThreadSanitizer = "YES"
       enableUBSanitizer = "YES"
       codeCoverageEnabled = "YES"
+      onlyGenerateCoverageForSpecifiedTargets = "YES"
       shouldUseLaunchSchemeArgsEnv = "YES">
+      <CodeCoverageTargets>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "5672C9331F5F215800439F46"
+            BuildableName = "Phantom.app"
+            BlueprintName = "Phantom"
+            ReferencedContainer = "container:Phantom.xcodeproj">
+         </BuildableReference>
+      </CodeCoverageTargets>
       <Testables>
          <TestableReference
-            skipped = "NO"
-            parallelizable = "YES"
-            testExecutionOrdering = "random">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5672C94A1F5F215800439F46"
